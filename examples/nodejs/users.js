@@ -1,5 +1,5 @@
-const {CometServer} = require("../../dist/index")
-
+// NOTE: to run this script directly, you need to have run a build of the main code using npm run build
+const {CometServer} = require('../../dist/cjs/index')
 
 
 async function main () {
