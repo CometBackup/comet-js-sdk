@@ -25,7 +25,7 @@ Note: Comet Server has a CORS policy that will block  API calls, you will need t
 **Include comet js sdk in the browser from UNPKG CDN**
 
 ```html
-<script src="https://unpkg.com/comet-js-sdk@1.0.0/dist/comet.min.js" ></script>
+<script src="https://unpkg.com/comet-js-sdk@1.0.2/dist/comet.min.js" ></script>
 <script>
     const config = {
         url: "http://localhost:8060/",
