@@ -1,5 +1,5 @@
 {
-  "name": "comet.js",
+  "name": "comet-js-sdk",
   "version": "1.0.0",
   "description": "The SDK for usage with a Comet Backup Comet Server",
   "scripts": {
@@ -19,10 +19,8 @@
   },
   "keywords": [
     "SDK",
-    "Comet",
-    "Backup",
-    "Comet",
-    "Server"
+    "Comet Backup",
+    "Comet Server"
   ],
   "author": "Comet Backup",
   "license": "Copyright Comet Licensing LTD",
