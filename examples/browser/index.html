@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Hello Comet Server</title>
-    <!-- NOTE: this has been copied from the dist folder, but in production you should use unpkg to reference the specific built version of comet.js -->
-    <script src="https://unpkg.com/comet-js-sdk@1.0.0/dist/comet.min.js" ></script>
+    <!-- NOTE: You need to be running a comet server behind a gateway which includes valid CORS header overrides. A Comet Server will reject requests that come from another origin -->
+    <script src="https://unpkg.com/comet-js-sdk@latest/dist/comet.js" ></script>
     <script>
         const config = {
             url: "http://localhost:8060/",
