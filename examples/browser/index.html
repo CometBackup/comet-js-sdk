@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Hello Comet Server</title>
+    <!-- NOTE: this has been copied from the dist folder, but in production you should use unpkg to reference the specific built version of comet.js -->
+    <script src="https://unpkg.com/comet-js-sdk@1.0.0/dist/comet.min.js" ></script>
+    <script>
+        const config = {
+            url: "http://localhost:8060/",
+            username: 'admin',
+            password: 'admin'
+        }
+        const cs = new comet.CometServer(config);
+
+        cs.AdminMetaStatsP(true)
+            .then(success => {
+                console.log(success)
+            }, error => {
+                alert(error)
+                console.error(error)
+            })
+    </script>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+</html>

@@ -8,7 +8,7 @@ const CONFIG = {
 
 test('should connect', async () => {
     const srv = new CometServer(CONFIG)
-    const res = await srv.AdminAccountPropertiesP();
+    const res = await srv.AdminAccountPropertiesP()
     expect(res).toBeTruthy()
     expect(res.Permissions).toBeTruthy()
 })
