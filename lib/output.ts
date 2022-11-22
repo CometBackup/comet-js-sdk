@@ -361,6 +361,13 @@ export const DESTINATIONTYPE_SWIFT = 1007;
 export const DESTINATIONTYPE_B2 = 1008;
 
 /**
+ * DESTINATIONTYPE_STORJ
+ *
+ * @var {number}
+ */
+export const DESTINATIONTYPE_STORJ = 1009;
+
+/**
  * DESTINATIONTYPE_LATEST
  *
  * @var {number}
@@ -413,13 +420,6 @@ export const FTPS_MODE_IMPLICIT = 1;
  * @var {number}
  */
 export const FTPS_MODE_EXPLICIT = 2;
-
-/**
- * InstallerMetadataFile
- *
- * @var {string}
- */
-export const InstallerMetadataFile = "installer.json";
 
 /**
  * SEVERITY_INFO
@@ -602,6 +602,22 @@ export const RESTORETYPE_VMDK_FILE_NULL = 8;
  * @var {number}
  */
 export const RESTORETYPE_VMDK_FILE_ARCHIVE = 9;
+
+/**
+ * RESTORETYPE_MYSQL
+ * RestoreType: 
+ *
+ * @var {number}
+ */
+export const RESTORETYPE_MYSQL = 10;
+
+/**
+ * RESTORETYPE_MSSQL
+ * RestoreType: 
+ *
+ * @var {number}
+ */
+export const RESTORETYPE_MSSQL = 11;
 
 /**
  * RESTORETYPE_PROCESS_TARBALL
@@ -1020,6 +1036,22 @@ export const MSSQL_METHOD_OLEDB_NATIVE = "OLEDB_NATIVE";
 export const MSSQL_METHOD_OLEDB_32 = "OLEDB_32";
 
 /**
+ * MSSQL_RESTORE_RECOVERY
+ * MSSQLRestoreOpt: 
+ *
+ * @var {string}
+ */
+export const MSSQL_RESTORE_RECOVERY = "RECOVERY";
+
+/**
+ * MSSQL_RESTORE_NORECOVERY
+ * MSSQLRestoreOpt: 
+ *
+ * @var {string}
+ */
+export const MSSQL_RESTORE_NORECOVERY = "NO_RECOVERY";
+
+/**
  * STOREDOBJECTTYPE_FILE
  * StoredObjectType: 
  *
@@ -1351,7 +1383,7 @@ export const VMWARE_SNAPSHOT_MEMORY = "memory";
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "22.6.5";
+export const APPLICATION_VERSION = "22.9.9";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -1365,14 +1397,14 @@ export const APPLICATION_VERSION_MAJOR = 22;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MINOR = 6;
+export const APPLICATION_VERSION_MINOR = 9;
 
 /**
  * APPLICATION_VERSION_REVISION
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 5;
+export const APPLICATION_VERSION_REVISION = 9;
 
 /**
  * RELEASE_CODENAME
@@ -1930,6 +1962,22 @@ export const REMOTESERVER_S3_GENERIC = "s3";
 export const REMOTESERVER_AWS = "aws";
 
 /**
+ * REMOTESERVER_STORJ
+ * RemoteServerType: 
+ *
+ * @var {string}
+ */
+export const REMOTESERVER_STORJ = "storj";
+
+/**
+ * REMOTESERVER_IDRIVEE2
+ * RemoteServerType: 
+ *
+ * @var {string}
+ */
+export const REMOTESERVER_IDRIVEE2 = "idrivee2";
+
+/**
  * LDAPSECURITYMETHOD_PLAIN
  * LDAPSecurityMethod: 
  *
@@ -2064,6 +2112,22 @@ export const SEVT_BUCKET_NEW = 4300;
  * @var {number}
  */
 export const SEVT__MAX = 4999;
+
+/**
+ * PSA_TYPE_GENERIC
+ * PSAType: 
+ *
+ * @var {number}
+ */
+export const PSA_TYPE_GENERIC = 0;
+
+/**
+ * PSA_TYPE_GRADIENT
+ * PSAType: 
+ *
+ * @var {number}
+ */
+export const PSA_TYPE_GRADIENT = 1;
 
 /**
  * DEFAULT_BRAND_NAME
@@ -2375,6 +2439,8 @@ export type libcomet_AdminUserPermissions = {
 	PreventChangePassword?: boolean // Omission from JSON will be interpreted as false
 	AllowEditBranding?: boolean // Omission from JSON will be interpreted as false
 	AllowEditRemoteStorage?: boolean // Omission from JSON will be interpreted as false
+	AllowEditWebhooks?: boolean // Omission from JSON will be interpreted as false
+	DenyConstellationRole?: boolean // Omission from JSON will be interpreted as false
 }
 
 export function New_Zero_libcomet_AdminUserPermissions(): libcomet_AdminUserPermissions {
@@ -3135,12 +3201,14 @@ export function New_Zero_libcomet_BucketProperties(): libcomet_BucketProperties 
 
 
 export type libcomet_BucketUsageInfo = {
+	AccessKey: string
 	ExistsOnServers: number[]
 	InUseBy: libcomet_UserOnServer[]
 }
 
 export function New_Zero_libcomet_BucketUsageInfo(): libcomet_BucketUsageInfo {
 	return {
+		"AccessKey": "",
 		"ExistsOnServers": [],
 		"InUseBy": [],
 	};
@@ -3367,6 +3435,7 @@ export type libcomet_DestinationConfig = {
 	S3SecretKey: string
 	S3BucketName: string
 	S3Subdir: string
+	S3CustomRegion: string
 	S3UsesV2Signing: boolean
 	SFTPServer: string
 	SFTPUsername: string
@@ -3396,6 +3465,7 @@ export type libcomet_DestinationConfig = {
 	LocalcopyWinSMBPasswordFormat: number
 	Swift: libcomet_SwiftDestinationLocation
 	B2: libcomet_B2DestinationLocation
+	Storj: libcomet_StorjDestinationLocation
 	SpanTargets: libcomet_DestinationLocation[]
 	SpanUseStaticSlots: boolean
 	EncryptionKeyEncryptionMethod: number
@@ -3426,6 +3496,7 @@ export function New_Zero_libcomet_DestinationConfig(): libcomet_DestinationConfi
 		"S3SecretKey": "",
 		"S3BucketName": "",
 		"S3Subdir": "",
+		"S3CustomRegion": "",
 		"S3UsesV2Signing": false,
 		"SFTPServer": "",
 		"SFTPUsername": "",
@@ -3455,6 +3526,7 @@ export function New_Zero_libcomet_DestinationConfig(): libcomet_DestinationConfi
 		"LocalcopyWinSMBPasswordFormat": 0,
 		"Swift": New_Zero_libcomet_SwiftDestinationLocation(),
 		"B2": New_Zero_libcomet_B2DestinationLocation(),
+		"Storj": New_Zero_libcomet_StorjDestinationLocation(),
 		"SpanTargets": [],
 		"SpanUseStaticSlots": false,
 		"EncryptionKeyEncryptionMethod": 0,
@@ -3478,6 +3550,7 @@ export function libcomet_DestinationConfig_set_embedded_libcomet_DestinationLoca
 	dest.S3SecretKey = src.S3SecretKey
 	dest.S3BucketName = src.S3BucketName
 	dest.S3Subdir = src.S3Subdir
+	dest.S3CustomRegion = src.S3CustomRegion
 	dest.S3UsesV2Signing = src.S3UsesV2Signing
 	dest.SFTPServer = src.SFTPServer
 	dest.SFTPUsername = src.SFTPUsername
@@ -3507,6 +3580,7 @@ export function libcomet_DestinationConfig_set_embedded_libcomet_DestinationLoca
 	dest.LocalcopyWinSMBPasswordFormat = src.LocalcopyWinSMBPasswordFormat
 	dest.Swift = src.Swift
 	dest.B2 = src.B2
+	dest.Storj = src.Storj
 	dest.SpanTargets = src.SpanTargets
 	dest.SpanUseStaticSlots = src.SpanUseStaticSlots
 }
@@ -3523,6 +3597,7 @@ export type libcomet_DestinationLocation = {
 	S3SecretKey: string
 	S3BucketName: string
 	S3Subdir: string
+	S3CustomRegion: string
 	S3UsesV2Signing: boolean
 	SFTPServer: string
 	SFTPUsername: string
@@ -3552,6 +3627,7 @@ export type libcomet_DestinationLocation = {
 	LocalcopyWinSMBPasswordFormat: number
 	Swift: libcomet_SwiftDestinationLocation
 	B2: libcomet_B2DestinationLocation
+	Storj: libcomet_StorjDestinationLocation
 	SpanTargets: libcomet_DestinationLocation[]
 	SpanUseStaticSlots: boolean
 }
@@ -3568,6 +3644,7 @@ export function New_Zero_libcomet_DestinationLocation(): libcomet_DestinationLoc
 		"S3SecretKey": "",
 		"S3BucketName": "",
 		"S3Subdir": "",
+		"S3CustomRegion": "",
 		"S3UsesV2Signing": false,
 		"SFTPServer": "",
 		"SFTPUsername": "",
@@ -3597,6 +3674,7 @@ export function New_Zero_libcomet_DestinationLocation(): libcomet_DestinationLoc
 		"LocalcopyWinSMBPasswordFormat": 0,
 		"Swift": New_Zero_libcomet_SwiftDestinationLocation(),
 		"B2": New_Zero_libcomet_B2DestinationLocation(),
+		"Storj": New_Zero_libcomet_StorjDestinationLocation(),
 		"SpanTargets": [],
 		"SpanUseStaticSlots": false,
 	};
@@ -3615,6 +3693,7 @@ export function libcomet_DestinationLocation_set_embedded_libcomet_S3Destination
 	dest.S3SecretKey = src.S3SecretKey
 	dest.S3BucketName = src.S3BucketName
 	dest.S3Subdir = src.S3Subdir
+	dest.S3CustomRegion = src.S3CustomRegion
 	dest.S3UsesV2Signing = src.S3UsesV2Signing
 }
 
@@ -3907,6 +3986,7 @@ export type libcomet_ExternalAuthenticationSource = {
 	 * Amazon AWS - Virtual Storage Role
 	 */
 	AWS?: libcomet_AmazonAWSVirtualStorageRoleSettings // Omission from JSON will be interpreted as the zero value for this field type
+	Storj?: libcomet_StorjVirtualStorageRoleSetting // Omission from JSON will be interpreted as the zero value for this field type
 	NewUserPermissions: libcomet_AdminUserPermissions
 }
 
@@ -3930,6 +4010,7 @@ export function libcomet_ExternalAuthenticationSource_set_embedded_libcomet_Remo
 	dest.Custom = src.Custom
 	dest.S3 = src.S3
 	dest.AWS = src.AWS
+	dest.Storj = src.Storj
 }
 
 
@@ -4321,6 +4402,27 @@ export function New_Zero_libcomet_MSSQLConnection(): libcomet_MSSQLConnection {
 }
 
 
+export type libcomet_MSSQLLoginArgs = {
+	Instance: string
+	AuthMode: string
+	Username: string
+	Password: string
+	MethodIsOledb32Bit: boolean
+	RestoreNoRecovery: boolean
+}
+
+export function New_Zero_libcomet_MSSQLLoginArgs(): libcomet_MSSQLLoginArgs {
+	return {
+		"Instance": "",
+		"AuthMode": "",
+		"Username": "",
+		"Password": "",
+		"MethodIsOledb32Bit": false,
+		"RestoreNoRecovery": false,
+	};
+}
+
+
 export type libcomet_MacOSCodeSignProperties = {
 	Level: number
 	SignLocally: boolean
@@ -4557,6 +4659,7 @@ export type libcomet_Office365MixedVirtualAccount = {
 	SiteID?: string // Omission from JSON will be interpreted as empty-string
 	WebID?: string // Omission from JSON will be interpreted as empty-string
 	WebURL?: string // Omission from JSON will be interpreted as empty-string
+	UserPrincipalName?: string // Omission from JSON will be interpreted as empty-string
 	EnabledServiceOption?: number // Omission from JSON will be interpreted as 0 (zero)
 	Members?: string[] // Omission from JSON will be interpreted as an empty array
 	ServiceOptions?: number // Omission from JSON will be interpreted as 0 (zero)
@@ -4596,9 +4699,12 @@ export type libcomet_Organization = {
 	SoftwareBuildRole: libcomet_SoftwareBuildRoleOptions
 	Branding: libcomet_BrandingOptions
 	RemoteStorage: libcomet_RemoteStorageOption[]
+	ConstellationRole: libcomet_ConstellationRoleOptions
 	WebhookOptions: {[k: string]: libcomet_WebhookOption}
+	PSAConfigs: libcomet_PSAConfig[]
 	Email: libcomet_EmailOptions
 	IsSuspended: boolean
+	ExperimentalOptions?: string[] // Omission from JSON will be interpreted as an empty array
 }
 
 export function New_Zero_libcomet_Organization(): libcomet_Organization {
@@ -4608,9 +4714,22 @@ export function New_Zero_libcomet_Organization(): libcomet_Organization {
 		"SoftwareBuildRole": New_Zero_libcomet_SoftwareBuildRoleOptions(),
 		"Branding": New_Zero_libcomet_BrandingOptions(),
 		"RemoteStorage": [],
+		"ConstellationRole": New_Zero_libcomet_ConstellationRoleOptions(),
 		"WebhookOptions": {},
+		"PSAConfigs": [],
 		"Email": New_Zero_libcomet_EmailOptions(),
 		"IsSuspended": false,
+	};
+}
+
+
+export type libcomet_OrganizationLoginURLResponse = {
+	LoginURL: string
+}
+
+export function New_Zero_libcomet_OrganizationLoginURLResponse(): libcomet_OrganizationLoginURLResponse {
+	return {
+		"LoginURL": "",
 	};
 }
 
@@ -4628,6 +4747,21 @@ export function New_Zero_libcomet_OrganizationResponse(): libcomet_OrganizationR
 		"Message": "",
 		"ID": "",
 		"Organization": New_Zero_libcomet_Organization(),
+	};
+}
+
+
+export type libcomet_PSAConfig = {
+	URL: string
+	CustomHeaders?: {[k: string]: string} // Omission from JSON will be interpreted as an empty map
+	Type: number
+	PartnerKey?: string // Omission from JSON will be interpreted as empty-string
+}
+
+export function New_Zero_libcomet_PSAConfig(): libcomet_PSAConfig {
+	return {
+		"URL": "",
+		"Type": 0,
 	};
 }
 
@@ -4829,6 +4963,7 @@ export type libcomet_RemoteServerAddress = {
 	 * Amazon AWS - Virtual Storage Role
 	 */
 	AWS?: libcomet_AmazonAWSVirtualStorageRoleSettings // Omission from JSON will be interpreted as the zero value for this field type
+	Storj?: libcomet_StorjVirtualStorageRoleSetting // Omission from JSON will be interpreted as the zero value for this field type
 }
 
 export function New_Zero_libcomet_RemoteServerAddress(): libcomet_RemoteServerAddress {
@@ -4854,6 +4989,7 @@ export type libcomet_RemoteStorageOption = {
 	 * Amazon AWS - Virtual Storage Role
 	 */
 	AWS?: libcomet_AmazonAWSVirtualStorageRoleSettings // Omission from JSON will be interpreted as the zero value for this field type
+	Storj?: libcomet_StorjVirtualStorageRoleSetting // Omission from JSON will be interpreted as the zero value for this field type
 	StorageLimitEnabled: boolean
 	StorageLimitBytes: number
 	RebrandStorage: boolean
@@ -4881,6 +5017,7 @@ export function libcomet_RemoteStorageOption_set_embedded_libcomet_RemoteServerA
 	dest.Custom = src.Custom
 	dest.S3 = src.S3
 	dest.AWS = src.AWS
+	dest.Storj = src.Storj
 }
 
 
@@ -4899,6 +5036,7 @@ export type libcomet_ReplicaServer = {
 	 * Amazon AWS - Virtual Storage Role
 	 */
 	AWS?: libcomet_AmazonAWSVirtualStorageRoleSettings // Omission from JSON will be interpreted as the zero value for this field type
+	Storj?: libcomet_StorjVirtualStorageRoleSetting // Omission from JSON will be interpreted as the zero value for this field type
 	ReplicaDeletionStrategy?: string // Omission from JSON will be interpreted as empty-string
 }
 
@@ -4921,6 +5059,7 @@ export function libcomet_ReplicaServer_set_embedded_libcomet_RemoteServerAddress
 	dest.Custom = src.Custom
 	dest.S3 = src.S3
 	dest.AWS = src.AWS
+	dest.Storj = src.Storj
 }
 
 
@@ -4980,21 +5119,42 @@ export function libcomet_RequestStorageVaultResponseMessage_set_embedded_libcome
 export type libcomet_RestoreJobAdvancedOptions = {
 	Type: number
 	OverwriteExistingFiles: boolean
+	OverwriteIfNewer: boolean
 	DestIsOriginalLocation: boolean
 	DestPath: string
 	ExactDestPaths: string[]
 	ArchiveFormat: number
 	Office365Credential?: libcomet_Office365Credential // Omission from JSON will be interpreted as the zero value for this field type
+	Username: string
+	Password: string
+	Host: string
+	Port: string
+	UseSsl: boolean
+	SslAllowInvalid: boolean
+	SslCaFile: string
+	SslCrtFile: string
+	SslKeyFile: string
+	MsSqlConnection?: libcomet_MSSQLLoginArgs // Omission from JSON will be interpreted as the zero value for this field type
 }
 
 export function New_Zero_libcomet_RestoreJobAdvancedOptions(): libcomet_RestoreJobAdvancedOptions {
 	return {
 		"Type": 0,
 		"OverwriteExistingFiles": false,
+		"OverwriteIfNewer": false,
 		"DestIsOriginalLocation": false,
 		"DestPath": "",
 		"ExactDestPaths": [],
 		"ArchiveFormat": 0,
+		"Username": "",
+		"Password": "",
+		"Host": "",
+		"Port": "",
+		"UseSsl": false,
+		"SslAllowInvalid": false,
+		"SslCaFile": "",
+		"SslCrtFile": "",
+		"SslKeyFile": "",
 	};
 }
 
@@ -5044,6 +5204,7 @@ export type libcomet_S3DestinationLocation = {
 	S3SecretKey: string
 	S3BucketName: string
 	S3Subdir: string
+	S3CustomRegion: string
 	S3UsesV2Signing: boolean
 }
 
@@ -5055,6 +5216,7 @@ export function New_Zero_libcomet_S3DestinationLocation(): libcomet_S3Destinatio
 		"S3SecretKey": "",
 		"S3BucketName": "",
 		"S3Subdir": "",
+		"S3CustomRegion": "",
 		"S3UsesV2Signing": false,
 	};
 }
@@ -5170,6 +5332,28 @@ export function New_Zero_libcomet_SearchClause(): libcomet_SearchClause {
 }
 
 
+export type libcomet_SelfBackupExportOptions = {
+	Location: libcomet_DestinationLocation
+	EncryptionKey: string
+	EncryptionKeyFormat: number
+	Compression: number
+	ExcludeJobsDB: boolean
+	RestrictToSingleOrgID?: string // Omission from JSON will be interpreted as empty-string
+	Index: number
+}
+
+export function New_Zero_libcomet_SelfBackupExportOptions(): libcomet_SelfBackupExportOptions {
+	return {
+		"Location": New_Zero_libcomet_DestinationLocation(),
+		"EncryptionKey": "",
+		"EncryptionKeyFormat": 0,
+		"Compression": 0,
+		"ExcludeJobsDB": false,
+		"Index": 0,
+	};
+}
+
+
 export type libcomet_SelfBackupOptions = {
 	Targets: libcomet_SelfBackupTarget[]
 }
@@ -5201,33 +5385,47 @@ export function New_Zero_libcomet_SelfBackupStatistics(): libcomet_SelfBackupSta
 
 
 export type libcomet_SelfBackupTarget = {
-	Location: libcomet_DestinationLocation
 	Schedule: libcomet_ScheduleConfig[]
 	ScheduleTimezone: string
 	RetentionPolicy: libcomet_RetentionPolicy
+	Location: libcomet_DestinationLocation
 	EncryptionKey: string
 	EncryptionKeyFormat: number
 	Compression: number
 	ExcludeJobsDB: boolean
+	RestrictToSingleOrgID?: string // Omission from JSON will be interpreted as empty-string
+	Index: number
 }
 
 export function New_Zero_libcomet_SelfBackupTarget(): libcomet_SelfBackupTarget {
 	return {
-		"Location": New_Zero_libcomet_DestinationLocation(),
 		"Schedule": [],
 		"ScheduleTimezone": "",
 		"RetentionPolicy": New_Zero_libcomet_RetentionPolicy(),
+		"Location": New_Zero_libcomet_DestinationLocation(),
 		"EncryptionKey": "",
 		"EncryptionKeyFormat": 0,
 		"Compression": 0,
 		"ExcludeJobsDB": false,
+		"Index": 0,
 	};
+}
+
+export function libcomet_SelfBackupTarget_set_embedded_libcomet_SelfBackupExportOptions(dest: libcomet_SelfBackupTarget, src: libcomet_SelfBackupExportOptions): void {
+	dest.Location = src.Location
+	dest.EncryptionKey = src.EncryptionKey
+	dest.EncryptionKeyFormat = src.EncryptionKeyFormat
+	dest.Compression = src.Compression
+	dest.ExcludeJobsDB = src.ExcludeJobsDB
+	dest.RestrictToSingleOrgID = src.RestrictToSingleOrgID
+	dest.Index = src.Index
 }
 
 
 export type libcomet_ServerConfigOptions = {
 	ExperimentalOptions?: string[] // Omission from JSON will be interpreted as an empty array
 	WebhookOptions: {[k: string]: libcomet_WebhookOption}
+	PSAConfigs: libcomet_PSAConfig[]
 	License: libcomet_LicenseOptions
 	Branding: libcomet_BrandingOptions
 	AdminUsers: libcomet_AllowedAdminUser[]
@@ -5249,6 +5447,7 @@ export type libcomet_ServerConfigOptions = {
 export function New_Zero_libcomet_ServerConfigOptions(): libcomet_ServerConfigOptions {
 	return {
 		"WebhookOptions": {},
+		"PSAConfigs": [],
 		"License": New_Zero_libcomet_LicenseOptions(),
 		"Branding": New_Zero_libcomet_BrandingOptions(),
 		"AdminUsers": [],
@@ -5332,6 +5531,8 @@ export type libcomet_ServerMetaVersionInfo = {
 	ServerStartHash: string
 	CurrentTime: number
 	ServerLicenseHash: string
+	ServerLicenseFeaturesAll: boolean
+	ServerLicenseFeatureSet: number
 	LicenseValidUntil: number
 	EmailsSentSuccessfully: number
 	EmailsSentErrors: number
@@ -5357,6 +5558,8 @@ export function New_Zero_libcomet_ServerMetaVersionInfo(): libcomet_ServerMetaVe
 		"ServerStartHash": "",
 		"CurrentTime": 0,
 		"ServerLicenseHash": "",
+		"ServerLicenseFeaturesAll": false,
+		"ServerLicenseFeatureSet": 0,
 		"LicenseValidUntil": 0,
 		"EmailsSentSuccessfully": 0,
 		"EmailsSentErrors": 0,
@@ -5641,6 +5844,41 @@ export function New_Zero_libcomet_StoredObject(): libcomet_StoredObject {
 }
 
 
+export type libcomet_StorjDestinationLocation = {
+	SatelliteAddress: string
+	APIKey: string
+	Passphrase: string
+	StorjBucket: string
+	StorjBucketPrefix?: string // Omission from JSON will be interpreted as empty-string
+}
+
+export function New_Zero_libcomet_StorjDestinationLocation(): libcomet_StorjDestinationLocation {
+	return {
+		"SatelliteAddress": "",
+		"APIKey": "",
+		"Passphrase": "",
+		"StorjBucket": "",
+	};
+}
+
+
+export type libcomet_StorjVirtualStorageRoleSetting = {
+	SatelliteAddress: string
+	APIKey: string
+	Passphrase: string
+	Bucket: string
+}
+
+export function New_Zero_libcomet_StorjVirtualStorageRoleSetting(): libcomet_StorjVirtualStorageRoleSetting {
+	return {
+		"SatelliteAddress": "",
+		"APIKey": "",
+		"Passphrase": "",
+		"Bucket": "",
+	};
+}
+
+
 export type libcomet_StreamableEvent = {
 	OwnerOrganizationID: string
 	Type: number
@@ -5851,7 +6089,8 @@ export function New_Zero_libcomet_UpdateCampaignDeviceStatus(): libcomet_UpdateC
 /**
  * This data structure describes which devices should receive a remote software upgrade. Both the
  * target version criteria (UpgradeOlder/ReinstallCurrentVer/DowngradeNewer) and the target device
- * criteria (ApplyDeviceFilter/DeviceFilter) must be met in order for the remote upgrade to be applied.
+ * criteria (ApplyDeviceFilter/DeviceFilter) must be met in order for the remote upgrade to be
+ * applied.
  */
 export type libcomet_UpdateCampaignOptions = {
 	Active: boolean
@@ -6098,15 +6337,15 @@ export type libcomet_UserProfileConfig = {
 	AllProtectedItemsQuotaBytes: number
 	MaximumDevices: number
 	/**
-	 * If the PolicyID field is set to a non-empty string, the Comet Server will enforce the contents of
-	 * the Policy field based on the matching server's policy. Otherwise if the PolicyID field is set to an
-	 * empty string, the administrator may configure any custom values in the Policy field.
+	 * If the PolicyID field is set to a non-empty string, the Comet Server will enforce the contents
+	 * of the Policy field based on the matching server's policy. Otherwise if the PolicyID field is
+	 * set to an empty string, the administrator may configure any custom values in the Policy field.
 	 */
 	PolicyID: string
 	Policy: libcomet_UserPolicy
 	/**
-	 * To change the user's password, use the AdminResetUserPassword API instead of accessing these fields
-	 * directly. Otherwise, other encrypted fields in the user profile may become corrupted.
+	 * To change the user's password, use the AdminResetUserPassword API instead of accessing these
+	 * fields directly. Otherwise, other encrypted fields in the user profile may become corrupted.
 	 */
 	PasswordFormat: number
 	PasswordHash: string
@@ -6725,16 +6964,18 @@ export default class CometServerAPIBase {
 	 * @param {string} U2FClientData U2F response data supplied by hardware token
 	 * @param {string} U2FRegistrationData U2F response data supplied by hardware token
 	 * @param {string} U2FVersion U2F response data supplied by hardware token
-	 * @param {string} Description Optional description of the token
+	 * @param {string|null} Description Description of the token
 	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
 	 */
-	async AdminAccountU2fSubmitChallengeResponseP(U2FChallengeID: string, U2FClientData: string, U2FRegistrationData: string, U2FVersion: string, Description: string): Promise<libcomet_CometAPIResponseMessage> {
+	async AdminAccountU2fSubmitChallengeResponseP(U2FChallengeID: string, U2FClientData: string, U2FRegistrationData: string, U2FVersion: string, Description: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
 		let params: { [s: string]: string; } = {};
 		params["U2FChallengeID"] = U2FChallengeID;
 		params["U2FClientData"] = U2FClientData;
 		params["U2FRegistrationData"] = U2FRegistrationData;
 		params["U2FVersion"] = U2FVersion;
-		params["Description"] = Description;
+		if (Description !== null) {
+			params["Description"] = Description;
+		}
 		return await this._requestP("api/v1/admin/account/u2f/submit-challenge-response", params);
 	}
 
@@ -6954,7 +7195,6 @@ export default class CometServerAPIBase {
 	 * Get Constellation bucket usage report (cached)
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
 	 * This API requires the Constellation Role to be enabled.
 	 * 
 	 * @return {Promise<libcomet_ConstellationCheckReport>} 
@@ -6968,7 +7208,6 @@ export default class CometServerAPIBase {
 	 * Get Constellation bucket usage report (regenerate)
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
 	 * This API requires the Constellation Role to be enabled.
 	 * 
 	 * @return {Promise<libcomet_ConstellationCheckReport>} 
@@ -6996,7 +7235,6 @@ export default class CometServerAPIBase {
 	 * Get Constellation status
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
 	 * This API requires the Constellation Role to be enabled.
 	 * 
 	 * @return {Promise<libcomet_ConstellationStatusAPIResponse>} 
@@ -7190,6 +7428,23 @@ export default class CometServerAPIBase {
 	}
 
 	/**
+	 * AdminDispatcherGetDefaultLoginUrl
+	 * Get the default login URL for a tenant
+	 * 
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * 
+	 * @param {string} OrganizationID Target organization
+	 * @return {Promise<libcomet_OrganizationLoginURLResponse>} 
+	 */
+	async AdminDispatcherGetDefaultLoginUrlP(OrganizationID: string): Promise<libcomet_OrganizationLoginURLResponse> {
+		let params: { [s: string]: string; } = {};
+		params["OrganizationID"] = OrganizationID;
+		return await this._requestP("api/v1/admin/dispatcher/get-default-login-url", params);
+	}
+
+	/**
 	 * AdminDispatcherImportApply
 	 * Instruct a live connected device to import settings from an installed product
 	 * This command is understood by Comet Backup 17.12.0 and newer.
@@ -7232,10 +7487,15 @@ export default class CometServerAPIBase {
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
 	 * 
+	 * @param {string|null} UserNameFilter User name filter string
 	 * @return {Promise<{[k: string]: libcomet_LiveUserConnection}>} 
 	 */
-	async AdminDispatcherListActiveP(): Promise<{[k: string]: libcomet_LiveUserConnection}> {
-		return await this._requestP("api/v1/admin/dispatcher/list-active", {});
+	async AdminDispatcherListActiveP(UserNameFilter: string|null = null): Promise<{[k: string]: libcomet_LiveUserConnection}> {
+		let params: { [s: string]: string; } = {};
+		if (UserNameFilter !== null) {
+			params["UserNameFilter"] = UserNameFilter;
+		}
+		return await this._requestP("api/v1/admin/dispatcher/list-active", params);
 	}
 
 	/**
@@ -7784,12 +8044,16 @@ export default class CometServerAPIBase {
 	 * 
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} NewURL The new external URL of this server
+	 * @param {boolean|null} Force No checks will be done using previous URL
 	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
 	 */
-	async AdminDispatcherUpdateLoginUrlP(TargetID: string, NewURL: string): Promise<libcomet_CometAPIResponseMessage> {
+	async AdminDispatcherUpdateLoginUrlP(TargetID: string, NewURL: string, Force: boolean|null = null): Promise<libcomet_CometAPIResponseMessage> {
 		let params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["NewURL"] = NewURL;
+		if (Force !== null) {
+			params["Force"] = (Force ? "1" : "0");
+		}
 		return await this._requestP("api/v1/admin/dispatcher/update-login-url", params);
 	}
 
@@ -8112,6 +8376,35 @@ export default class CometServerAPIBase {
 	}
 
 	/**
+	 * AdminMetaConstellationConfigGet
+	 * Get Constellation configuration for the current organization
+	 * 
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Constellation Role to be enabled.
+	 * 
+	 * @return {Promise<libcomet_ConstellationRoleOptions>} 
+	 */
+	async AdminMetaConstellationConfigGetP(): Promise<libcomet_ConstellationRoleOptions> {
+		return await this._requestP("api/v1/admin/meta/constellation/config/get", {});
+	}
+
+	/**
+	 * AdminMetaConstellationConfigSet
+	 * Set Constellation configuration for the current organization
+	 * 
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Constellation Role to be enabled.
+	 * 
+	 * @param {libcomet_ConstellationRoleOptions} ConstellationRoleOptions Constellation role options to set
+	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 */
+	async AdminMetaConstellationConfigSetP(ConstellationRoleOptions: libcomet_ConstellationRoleOptions): Promise<libcomet_CometAPIResponseMessage> {
+		let params: { [s: string]: string; } = {};
+		params["ConstellationRoleOptions"] = JSON.stringify(ConstellationRoleOptions);
+		return await this._requestP("api/v1/admin/meta/constellation/config/set", params);
+	}
+
+	/**
 	 * AdminMetaListAvailableLogDays
 	 * Get log files
 	 * 
@@ -8122,6 +8415,47 @@ export default class CometServerAPIBase {
 	 */
 	async AdminMetaListAvailableLogDaysP(): Promise<number[]> {
 		return await this._requestP("api/v1/admin/meta/list-available-log-days", {});
+	}
+
+	/**
+	 * AdminMetaPsaConfigListGet
+	 * Get the server PSA configuration
+	 * 
+	 * You must supply administrator authentication credentials to use this API.
+	 * 
+	 * @return {Promise<Object[]>} 
+	 */
+	async AdminMetaPsaConfigListGetP(): Promise<Object[]> {
+		return await this._requestP("api/v1/admin/meta/psa-config-list/get", {});
+	}
+
+	/**
+	 * AdminMetaPsaConfigListSet
+	 * Update the server PSA configuration
+	 * 
+	 * You must supply administrator authentication credentials to use this API.
+	 * 
+	 * @param {Object[]} PSAConfigList The replacement PSA configuration list
+	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 */
+	async AdminMetaPsaConfigListSetP(PSAConfigList: Object[]): Promise<libcomet_CometAPIResponseMessage> {
+		let params: { [s: string]: string; } = {};
+		params["PSAConfigList"] = JSON.stringify(PSAConfigList);
+		return await this._requestP("api/v1/admin/meta/psa-config-list/set", params);
+	}
+
+	/**
+	 * AdminMetaPsaConfigListSyncNow
+	 * Synchronize all PSA services now
+	 * This API applies to the current Organization's PSAConfig's only.
+	 * 
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 * 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 */
+	async AdminMetaPsaConfigListSyncNowP(): Promise<libcomet_CometAPIResponseMessage> {
+		return await this._requestP("api/v1/admin/meta/psa-config-list/sync-now", {});
 	}
 
 	/**
@@ -8413,6 +8747,22 @@ export default class CometServerAPIBase {
 	}
 
 	/**
+	 * AdminOrganizationExport
+	 * Run self-backup for a specific tenant
+	 * 
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * 
+	 * @param {libcomet_SelfBackupExportOptions} Options The export config options
+	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 */
+	async AdminOrganizationExportP(Options: libcomet_SelfBackupExportOptions): Promise<libcomet_CometAPIResponseMessage> {
+		let params: { [s: string]: string; } = {};
+		params["Options"] = JSON.stringify(Options);
+		return await this._requestP("api/v1/admin/organization/export", params);
+	}
+
+	/**
 	 * AdminOrganizationList
 	 * List Organizations
 	 * 
@@ -8650,14 +9000,16 @@ export default class CometServerAPIBase {
 	 * 
 	 * @param {string} TargetUser Selected account username
 	 * @param {string} NewPassword New account password
-	 * @param {string} OldPassword Old account password (optional)
+	 * @param {string|null} OldPassword Old account password. Required if no recovery code is present for the user account.
 	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
 	 */
-	async AdminResetUserPasswordP(TargetUser: string, NewPassword: string, OldPassword: string): Promise<libcomet_CometAPIResponseMessage> {
+	async AdminResetUserPasswordP(TargetUser: string, NewPassword: string, OldPassword: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
 		let params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		params["NewPassword"] = NewPassword;
-		params["OldPassword"] = OldPassword;
+		if (OldPassword !== null) {
+			params["OldPassword"] = OldPassword;
+		}
 		return await this._requestP("api/v1/admin/reset-user-password", params);
 	}
 
@@ -8678,6 +9030,19 @@ export default class CometServerAPIBase {
 		params["TargetUser"] = TargetUser;
 		params["TargetDevice"] = TargetDevice;
 		return await this._requestP("api/v1/admin/revoke-device", params);
+	}
+
+	/**
+	 * AdminSelfBackupStart
+	 * Run self-backup on all targets
+	 * 
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 */
+	async AdminSelfBackupStartP(): Promise<libcomet_CometAPIResponseMessage> {
+		return await this._requestP("api/v1/admin/self-backup/start", {});
 	}
 
 	/**
