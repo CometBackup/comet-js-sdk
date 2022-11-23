@@ -1,10 +1,10 @@
 {
   "name": "comet-js-sdk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "The SDK for usage with a Comet Backup Comet Server",
   "scripts": {
     "clean": "rm -rf dist/",
-    "build:browser": "esbuild browser-entrypoint.ts --bundle > dist/comet.js && esbuild browser-entrypoint.ts --bundle > dist/comet.min.js",
+    "build:browser": "esbuild browser-entrypoint.ts --sourcemap --bundle --target=chrome58,firefox57,safari11,edge16 > dist/comet.js && esbuild browser-entrypoint.ts --bundle --target=chrome58,firefox57,safari11,edge16 > dist/comet.min.js",
     "build": "tsc && tsc -p tsconfig.cjs.json && sh fixup.sh && npm run build:browser",
     "prepublish": "npm run build",
     "test": "jest"

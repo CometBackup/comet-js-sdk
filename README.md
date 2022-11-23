@@ -1,13 +1,15 @@
-# EXPERIMENTAL: Comet.js 
+# EXPERIMENTAL: Comet Javascript SDK 
 
 This project is the SDK for comet servers using typescript and javascript
 
-Created to be cross platform and work with Browsers or NodeJS environments.
+Created to be cross-platform and work with Browsers or NodeJS environments.
 
 Custom implementations may be built on CometServerBase by providing your own http request implementation.
 
 ```ts
-import CometServer from "comet.js";
+// NOTE: for nodejs usage use const { CometServer } = require('comet-js-sdk)
+// typescript example
+import CometServer from "comet-js-sdk";
 const srv = new CometServer({
     url: "https://your-server-name-here.offsitenetwork.net/",
     username: "admin",
