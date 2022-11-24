@@ -1,4 +1,4 @@
-# EXPERIMENTAL: Comet Javascript SDK 
+# Comet Javascript SDK 
 
 This project is the SDK for comet servers using typescript and javascript
 
