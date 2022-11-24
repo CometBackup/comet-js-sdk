@@ -72,4 +72,5 @@ The Comet Server API works great with next.js. There is an example repository yo
 - Update the changelog
 - Run tests `npm run test`
 - Login `npm login`
+- Build the publish dist folder `npm run prepublish`
 - Publish `npm run publish`

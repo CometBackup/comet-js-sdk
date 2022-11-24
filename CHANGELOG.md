@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2022-11-25 v1.0.5
+
+- Make it easier to have imports from comet-js-sdk when using typescript by adding all the lib types to the root of the library.
+
 ## 2022-11-23 v1.0.2
 
 - Based on 22.9.9
