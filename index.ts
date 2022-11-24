@@ -65,3 +65,6 @@ export class CometServer extends CometServerAPIBase {
         return body
     }
 }
+
+export * from "./lib/output";
+export { default as CometServerAPIBase } from "./lib/output";
