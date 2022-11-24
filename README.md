@@ -62,6 +62,10 @@ npm install
 npm run test
 ```
 
+**NextJS**
+
+The Comet Server API works great with next.js. There is an example repository you can use at https://github.com/CometBackup/example-nextjs-app
+
 ## Releasing
 
 - Update the changelog
