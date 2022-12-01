@@ -1,33 +1,47 @@
 # Comet Javascript SDK 
 
-This project is the SDK for comet servers using typescript and javascript
+[![@CometBackup on Twitter](http://img.shields.io/badge/twitter-%40CometBackup-blue.svg?style=flat)](https://twitter.com/CometBackup)
+![MIT License](https://img.shields.io/github/license/CometBackup/comet-js-sdk)
+[![npm](https://img.shields.io/npm/v/comet-js-sdk)](https://www.npmjs.com/package/comet-js-sdk)
 
-Created to be cross-platform and work with Browsers or NodeJS environments.
+This project is the SDK for Comet Servers using typescript and javascript.
 
-Custom implementations may be built on CometServerBase by providing your own http request implementation.
+## Features
+
+- Full coverage of Comet Server API methods, data structures, and constant definitions
+- Created to be cross-platform and work with Browsers or Node.Js environments
+- Available in minified, ESM, CommonJS versions for different use cases
+- Custom HTTP request implementations may be built on `CometServerBase` by providing your own http request implementation
+
+## Getting Started
+
+**Node.Js**
+
+1. `npm install -- comet-js-sdk`
+2. Import the library:
+	- `import CometServer from "comet.js";` (ESM)
+	- `const { CometServer } = require('comet-js-sdk')` (CommonJS)
+3. Liftoff!
+
+**Typescript**
 
 ```ts
-// NOTE: for nodejs usage use const { CometServer } = require('comet-js-sdk)
-// typescript example
 import CometServer from "comet-js-sdk";
 const srv = new CometServer({
     url: "https://your-server-name-here.offsitenetwork.net/",
     username: "admin",
     password: "admin"
 })
+
 const res = await srv.AdminAccountPropertiesP();
 ```
 
-## Getting Started
+**In the browser**
 
-**Browser**
-
-Note: Comet Server has a CORS policy that will block  API calls, you will need to have a gateway or proxy service to allow this API call to work
-
-**Include comet js sdk in the browser from UNPKG CDN**
+Note: Comet Server has [a CORS policy](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) that will block direct API calls - you will need to have a gateway or proxy service to allow this API call to work.
 
 ```html
-<script src="https://unpkg.com/comet-js-sdk@1.0.2/dist/comet.min.js" ></script>
+<script src="https://unpkg.com/comet-js-sdk@^1/dist/comet.min.js" ></script>
 <script>
     const config = {
         url: "http://localhost:8060/",
@@ -45,17 +59,13 @@ Note: Comet Server has a CORS policy that will block  API calls, you will need t
 </script>
 ```
 
+## Advanced: Using a custom network library
 
-**NodeJS**
 
-1. `npm install comet.js`
-2. Import the library `import CometServer from "comet.js";`
-3. Liftoff!
 
 ## Development environment
 
 - Requires Node LTS (17.x)
-
 
 ```shell
 npm install 
@@ -64,7 +74,7 @@ npm run test
 
 **NextJS**
 
-The Comet Server API works great with next.js. There is an example repository you can use at https://github.com/CometBackup/example-nextjs-app
+The Comet Server API works great with [Next.js](https://nextjs.org/). There is an example repository you can use at https://github.com/CometBackup/example-nextjs-app
 
 ## Releasing
 
