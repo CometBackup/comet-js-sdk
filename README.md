@@ -1,21 +1,21 @@
-# Comet Javascript SDK 
+# Comet JavaScript SDK 
 
 [![@CometBackup on Twitter](http://img.shields.io/badge/twitter-%40CometBackup-blue.svg?style=flat)](https://twitter.com/CometBackup)
 ![MIT License](https://img.shields.io/github/license/CometBackup/comet-js-sdk)
 [![npm](https://img.shields.io/npm/v/comet-js-sdk)](https://www.npmjs.com/package/comet-js-sdk)
 
-This project is the SDK for Comet Servers using typescript and javascript.
+This project is the SDK for Comet Servers using TypeScript and JavaScript.
 
 ## Features
 
 - Full coverage of Comet Server API methods, data structures, and constant definitions
-- Created to be cross-platform and work with Browsers or Node.Js environments
+- Created to be cross-platform and work with Browsers or Node.js environments
 - Available in minified, ESM, CommonJS versions for different use cases
 - Custom HTTP request implementations may be built on `CometServerBase` by providing your own http request implementation
 
 ## Getting Started
 
-**Node.Js**
+**Node.js**
 
 1. `npm install -- comet-js-sdk`
 2. Import the library:
@@ -23,7 +23,7 @@ This project is the SDK for Comet Servers using typescript and javascript.
 	- `const { CometServer } = require('comet-js-sdk')` (CommonJS)
 3. Liftoff!
 
-**Typescript**
+**TypeScript**
 
 ```ts
 import CometServer from "comet-js-sdk";
@@ -83,4 +83,4 @@ The Comet Server API works great with [Next.js](https://nextjs.org/). There is a
 - Run tests `npm run test`
 - Login `npm login`
 - Build the publish dist folder `npm run prepublish`
-- Publish `npm run publish`
+- Publish `npm publish`
