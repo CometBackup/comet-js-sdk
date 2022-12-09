@@ -1383,7 +1383,7 @@ export const VMWARE_SNAPSHOT_MEMORY = "memory";
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "22.9.9";
+export const APPLICATION_VERSION = "22.11.2";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -1397,21 +1397,21 @@ export const APPLICATION_VERSION_MAJOR = 22;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MINOR = 9;
+export const APPLICATION_VERSION_MINOR = 11;
 
 /**
  * APPLICATION_VERSION_REVISION
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 9;
+export const APPLICATION_VERSION_REVISION = 2;
 
 /**
  * RELEASE_CODENAME
  *
  * @var {string}
  */
-export const RELEASE_CODENAME = "Voyager";
+export const RELEASE_CODENAME = "Ananke";
 
 /**
  * ENCRYPTIONMETHOD_UNCONFIGURED
@@ -8423,9 +8423,9 @@ export default class CometServerAPIBase {
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
 	 * 
-	 * @return {Promise<Object[]>} 
+	 * @return {Promise<libcomet_PSAConfig[]>} 
 	 */
-	async AdminMetaPsaConfigListGetP(): Promise<Object[]> {
+	async AdminMetaPsaConfigListGetP(): Promise<libcomet_PSAConfig[]> {
 		return await this._requestP("api/v1/admin/meta/psa-config-list/get", {});
 	}
 
@@ -8435,10 +8435,10 @@ export default class CometServerAPIBase {
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
 	 * 
-	 * @param {Object[]} PSAConfigList The replacement PSA configuration list
+	 * @param {libcomet_PSAConfig[]} PSAConfigList The replacement PSA configuration list
 	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
 	 */
-	async AdminMetaPsaConfigListSetP(PSAConfigList: Object[]): Promise<libcomet_CometAPIResponseMessage> {
+	async AdminMetaPsaConfigListSetP(PSAConfigList: libcomet_PSAConfig[]): Promise<libcomet_CometAPIResponseMessage> {
 		let params: { [s: string]: string; } = {};
 		params["PSAConfigList"] = JSON.stringify(PSAConfigList);
 		return await this._requestP("api/v1/admin/meta/psa-config-list/set", params);
