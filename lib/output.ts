@@ -1383,7 +1383,7 @@ export const VMWARE_SNAPSHOT_MEMORY = "memory";
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "22.11.2";
+export const APPLICATION_VERSION = "22.12.2";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -1397,7 +1397,7 @@ export const APPLICATION_VERSION_MAJOR = 22;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MINOR = 11;
+export const APPLICATION_VERSION_MINOR = 12;
 
 /**
  * APPLICATION_VERSION_REVISION
@@ -1411,7 +1411,7 @@ export const APPLICATION_VERSION_REVISION = 2;
  *
  * @var {string}
  */
-export const RELEASE_CODENAME = "Ananke";
+export const RELEASE_CODENAME = "Voyager";
 
 /**
  * ENCRYPTIONMETHOD_UNCONFIGURED
@@ -1866,12 +1866,12 @@ export const SEARCHOPERATOR_BOOL_IS = "bool_is";
 export const SEARCHOPERATOR_BOOL_NIS = "bool_nis";
 
 /**
- * EMAIL_DELIVERY_NONE
+ * EMAIL_DELIVERY_INHERIT
  * EmailDeliveryType: 
  *
  * @var {string}
  */
-export const EMAIL_DELIVERY_NONE = "";
+export const EMAIL_DELIVERY_INHERIT = "";
 
 /**
  * EMAIL_DELIVERY_MX_DIRECT
@@ -1898,12 +1898,29 @@ export const EMAIL_DELIVERY_SMTP = "smtp";
 export const EMAIL_DELIVERY_SMTP_SSL = "smtp-ssl";
 
 /**
+ * EMAIL_DELIVERY_DISABLED
+ * EmailDeliveryType: 
+ *
+ * @var {string}
+ */
+export const EMAIL_DELIVERY_DISABLED = "disabled";
+
+/**
  * EMAIL_DELIVERY_BUILTIN
  * EmailDeliveryType: Legacy alias
  *
  * @var {string}
  */
 export const EMAIL_DELIVERY_BUILTIN = EMAIL_DELIVERY_MX_DIRECT;
+
+/**
+ * EMAIL_DELIVERY_NONE
+ * EmailDeliveryType: changed for clarity
+ *
+ * @var {string}
+ * @deprecated This const has been deprecated since Comet version 22.12.1
+ */
+export const EMAIL_DELIVERY_NONE = EMAIL_DELIVERY_INHERIT;
 
 /**
  * REMOTESERVER_COMET
@@ -2438,6 +2455,7 @@ export type libcomet_AdminUserPermissions = {
 	PreventServerShutdown?: boolean // Omission from JSON will be interpreted as false
 	PreventChangePassword?: boolean // Omission from JSON will be interpreted as false
 	AllowEditBranding?: boolean // Omission from JSON will be interpreted as false
+	AllowEditEmailOptions?: boolean // Omission from JSON will be interpreted as false
 	AllowEditRemoteStorage?: boolean // Omission from JSON will be interpreted as false
 	AllowEditWebhooks?: boolean // Omission from JSON will be interpreted as false
 	DenyConstellationRole?: boolean // Omission from JSON will be interpreted as false
@@ -3334,6 +3352,17 @@ export function New_Zero_libcomet_ContentMeasurementComponent(): libcomet_Conten
 }
 
 
+export type libcomet_CountJobsResponse = {
+	Count: number
+}
+
+export function New_Zero_libcomet_CountJobsResponse(): libcomet_CountJobsResponse {
+	return {
+		"Count": 0,
+	};
+}
+
+
 export type libcomet_CreateGroupPolicyResponse = {
 	Status: number
 	Message: string
@@ -3903,9 +3932,10 @@ export function New_Zero_libcomet_EDBFileInfo(): libcomet_EDBFileInfo {
 
 
 export type libcomet_EmailOptions = {
-	Mode: string
 	FromEmail: string
 	FromName: string
+	Mode: string
+	EmailReportingOptions?: libcomet_EmailReportingOption[] // Omission from JSON will be interpreted as an empty array
 	SMTPHost?: string // Omission from JSON will be interpreted as empty-string
 	SMTPPort?: number // Omission from JSON will be interpreted as 0 (zero)
 	SMTPUsername?: string // Omission from JSON will be interpreted as empty-string
@@ -3916,9 +3946,9 @@ export type libcomet_EmailOptions = {
 
 export function New_Zero_libcomet_EmailOptions(): libcomet_EmailOptions {
 	return {
-		"Mode": "",
 		"FromEmail": "",
 		"FromName": "",
+		"Mode": "",
 	};
 }
 
@@ -3968,6 +3998,23 @@ export function New_Zero_libcomet_EmailReportGeneratedPreview(): libcomet_EmailR
 export function libcomet_EmailReportGeneratedPreview_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_EmailReportGeneratedPreview, src: libcomet_CometAPIResponseMessage): void {
 	dest.Status = src.Status
 	dest.Message = src.Message
+}
+
+
+export type libcomet_EmailReportingOption = {
+	EmailReportConfig: libcomet_EmailReportConfig
+	LanguageCode: string
+	LocalTimezone: string
+	Recipients: string[]
+}
+
+export function New_Zero_libcomet_EmailReportingOption(): libcomet_EmailReportingOption {
+	return {
+		"EmailReportConfig": New_Zero_libcomet_EmailReportConfig(),
+		"LanguageCode": "",
+		"LocalTimezone": "",
+		"Recipients": [],
+	};
 }
 
 
@@ -5423,46 +5470,46 @@ export function libcomet_SelfBackupTarget_set_embedded_libcomet_SelfBackupExport
 
 
 export type libcomet_ServerConfigOptions = {
-	ExperimentalOptions?: string[] // Omission from JSON will be interpreted as an empty array
-	WebhookOptions: {[k: string]: libcomet_WebhookOption}
-	PSAConfigs: libcomet_PSAConfig[]
-	License: libcomet_LicenseOptions
-	Branding: libcomet_BrandingOptions
 	AdminUsers: libcomet_AllowedAdminUser[]
-	Organizations: {[k: string]: libcomet_Organization}
-	ExternalAdminUserSources: {[k: string]: libcomet_ExternalAuthenticationSource}
-	ListenAddresses: libcomet_HTTPConnectorOptions[]
-	TrustXForwardedFor: boolean
-	IPRateLimit: libcomet_RatelimitOptions
-	Email: libcomet_EmailOptions
 	AuthenticationRole: libcomet_AuthenticationRoleOptions
-	StorageRole: libcomet_StorageRoleOptions
-	SoftwareBuildRole: libcomet_SoftwareBuildRoleOptions
+	Branding: libcomet_BrandingOptions
 	ConstellationRole: libcomet_ConstellationRoleOptions
 	OverseerRole?: libcomet_ConstellationRoleOptions // ConstellationRole_Legacy. Omission from JSON will be interpreted as the zero value for this field type
+	Email: libcomet_EmailOptions
+	ExperimentalOptions?: string[] // Omission from JSON will be interpreted as an empty array
+	ExternalAdminUserSources: {[k: string]: libcomet_ExternalAuthenticationSource}
+	IPRateLimit: libcomet_RatelimitOptions
+	License: libcomet_LicenseOptions
+	ListenAddresses: libcomet_HTTPConnectorOptions[]
+	Organizations: {[k: string]: libcomet_Organization}
+	PSAConfigs: libcomet_PSAConfig[]
 	SelfBackup: libcomet_SelfBackupOptions
 	SessionSettings: libcomet_SessionOptions
+	SoftwareBuildRole: libcomet_SoftwareBuildRoleOptions
+	StorageRole: libcomet_StorageRoleOptions
+	TrustXForwardedFor: boolean
+	WebhookOptions: {[k: string]: libcomet_WebhookOption}
 }
 
 export function New_Zero_libcomet_ServerConfigOptions(): libcomet_ServerConfigOptions {
 	return {
-		"WebhookOptions": {},
-		"PSAConfigs": [],
-		"License": New_Zero_libcomet_LicenseOptions(),
-		"Branding": New_Zero_libcomet_BrandingOptions(),
 		"AdminUsers": [],
-		"Organizations": {},
-		"ExternalAdminUserSources": {},
-		"ListenAddresses": [],
-		"TrustXForwardedFor": false,
-		"IPRateLimit": New_Zero_libcomet_RatelimitOptions(),
-		"Email": New_Zero_libcomet_EmailOptions(),
 		"AuthenticationRole": New_Zero_libcomet_AuthenticationRoleOptions(),
-		"StorageRole": New_Zero_libcomet_StorageRoleOptions(),
-		"SoftwareBuildRole": New_Zero_libcomet_SoftwareBuildRoleOptions(),
+		"Branding": New_Zero_libcomet_BrandingOptions(),
 		"ConstellationRole": New_Zero_libcomet_ConstellationRoleOptions(),
+		"Email": New_Zero_libcomet_EmailOptions(),
+		"ExternalAdminUserSources": {},
+		"IPRateLimit": New_Zero_libcomet_RatelimitOptions(),
+		"License": New_Zero_libcomet_LicenseOptions(),
+		"ListenAddresses": [],
+		"Organizations": {},
+		"PSAConfigs": [],
 		"SelfBackup": New_Zero_libcomet_SelfBackupOptions(),
 		"SessionSettings": New_Zero_libcomet_SessionOptions(),
+		"SoftwareBuildRole": New_Zero_libcomet_SoftwareBuildRoleOptions(),
+		"StorageRole": New_Zero_libcomet_StorageRoleOptions(),
+		"TrustXForwardedFor": false,
+		"WebhookOptions": {},
 	};
 }
 
@@ -5654,6 +5701,7 @@ export function New_Zero_libcomet_SoftwareUpdateNewsResponse(): libcomet_Softwar
 
 export type libcomet_SourceBasicInfo = {
 	Description: string
+	O365AccountCount: number
 	Size: number
 	OverrideDestinationRetention?: {[k: string]: libcomet_RetentionPolicy} // Omission from JSON will be interpreted as an empty map
 }
@@ -5661,6 +5709,7 @@ export type libcomet_SourceBasicInfo = {
 export function New_Zero_libcomet_SourceBasicInfo(): libcomet_SourceBasicInfo {
 	return {
 		"Description": "",
+		"O365AccountCount": 0,
 		"Size": 0,
 	};
 }
@@ -6336,6 +6385,7 @@ export type libcomet_UserProfileConfig = {
 	AllProtectedItemsQuotaEnabled: boolean
 	AllProtectedItemsQuotaBytes: number
 	MaximumDevices: number
+	QuotaOffice365ProtectedAccounts: number
 	/**
 	 * If the PolicyID field is set to a non-empty string, the Comet Server will enforce the contents
 	 * of the Policy field based on the matching server's policy. Otherwise if the PolicyID field is
@@ -6377,6 +6427,7 @@ export function New_Zero_libcomet_UserProfileConfig(): libcomet_UserProfileConfi
 		"AllProtectedItemsQuotaEnabled": false,
 		"AllProtectedItemsQuotaBytes": 0,
 		"MaximumDevices": 0,
+		"QuotaOffice365ProtectedAccounts": 0,
 		"PolicyID": "",
 		"Policy": New_Zero_libcomet_UserPolicy(),
 		"PasswordFormat": 0,
@@ -6538,6 +6589,7 @@ export function New_Zero_libcomet_WasabiVirtualStorageRoleSettings(): libcomet_W
 export type libcomet_WebAuthnAuthenticatorSelection = {
 	authenticatorAttachment?: string // AuthenticatorAttachment. Omission from JSON will be interpreted as empty-string
 	requireResidentKey?: boolean // RequireResidentKey. Omission from JSON will be interpreted as false
+	residentKey?: string // ResidentKey. Omission from JSON will be interpreted as empty-string
 	userVerification?: string // UserVerification. Omission from JSON will be interpreted as empty-string
 }
 
@@ -7241,6 +7293,22 @@ export default class CometServerAPIBase {
 	 */
 	async AdminConstellationStatusP(): Promise<libcomet_ConstellationStatusAPIResponse> {
 		return await this._requestP("api/v1/admin/constellation/status", {});
+	}
+
+	/**
+	 * AdminCountJobsForCustomSearch
+	 * Count jobs (for custom search)
+	 * 
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 * 
+	 * @param {libcomet_SearchClause} Query (No description available)
+	 * @return {Promise<libcomet_CountJobsResponse>} 
+	 */
+	async AdminCountJobsForCustomSearchP(Query: libcomet_SearchClause): Promise<libcomet_CountJobsResponse> {
+		let params: { [s: string]: string; } = {};
+		params["Query"] = JSON.stringify(Query);
+		return await this._requestP("api/v1/admin/count-jobs-for-custom-search", params);
 	}
 
 	/**
@@ -8405,6 +8473,33 @@ export default class CometServerAPIBase {
 	}
 
 	/**
+	 * AdminMetaEmailOptionsGet
+	 * Get the email options
+	 * 
+	 * You must supply administrator authentication credentials to use this API.
+	 * 
+	 * @return {Promise<libcomet_EmailOptions>} 
+	 */
+	async AdminMetaEmailOptionsGetP(): Promise<libcomet_EmailOptions> {
+		return await this._requestP("api/v1/admin/meta/email-options/get", {});
+	}
+
+	/**
+	 * AdminMetaEmailOptionsSet
+	 * Set the email options
+	 * 
+	 * You must supply administrator authentication credentials to use this API.
+	 * 
+	 * @param {libcomet_EmailOptions} EmailOptions The replacement email reporting options.
+	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 */
+	async AdminMetaEmailOptionsSetP(EmailOptions: libcomet_EmailOptions): Promise<libcomet_CometAPIResponseMessage> {
+		let params: { [s: string]: string; } = {};
+		params["EmailOptions"] = JSON.stringify(EmailOptions);
+		return await this._requestP("api/v1/admin/meta/email-options/set", params);
+	}
+
+	/**
 	 * AdminMetaListAvailableLogDays
 	 * Get log files
 	 * 
@@ -8528,8 +8623,6 @@ export default class CometServerAPIBase {
 	 * This allows the Comet Server web interface to support testing different email credentials during setup.
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
-	 * Access to this API may be prevented on a per-administrator basis.
 	 * 
 	 * @param {libcomet_EmailOptions} EmailOptions Updated configuration content
 	 * @param {string} Recipient Target email address to send test email
@@ -8540,6 +8633,22 @@ export default class CometServerAPIBase {
 		params["EmailOptions"] = JSON.stringify(EmailOptions);
 		params["Recipient"] = Recipient;
 		return await this._requestP("api/v1/admin/meta/send-test-email", params);
+	}
+
+	/**
+	 * AdminMetaSendTestReport
+	 * Send a test admin email report
+	 * This allows a user to send a test email report
+	 * 
+	 * You must supply administrator authentication credentials to use this API.
+	 * 
+	 * @param {libcomet_EmailReportingOption} EmailReportingOption Test email reporting option for sending
+	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 */
+	async AdminMetaSendTestReportP(EmailReportingOption: libcomet_EmailReportingOption): Promise<libcomet_CometAPIResponseMessage> {
+		let params: { [s: string]: string; } = {};
+		params["EmailReportingOption"] = JSON.stringify(EmailReportingOption);
+		return await this._requestP("api/v1/admin/meta/send-test-report", params);
 	}
 
 	/**
