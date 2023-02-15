@@ -398,6 +398,22 @@ export const EMAILREPORTTYPE_IMMEDIATE = 0;
 export const EMAILREPORTTYPE_SUMMARY = 1;
 
 /**
+ * EMAILREPORTTYPE_GROUPED_STATUS
+ * EmailReportType: 
+ *
+ * @var {number}
+ */
+export const EMAILREPORTTYPE_GROUPED_STATUS = 2;
+
+/**
+ * EMAILREPORTTYPE_RECENT_ACTIVITY
+ * EmailReportType: 
+ *
+ * @var {number}
+ */
+export const EMAILREPORTTYPE_RECENT_ACTIVITY = 3;
+
+/**
  * FTPS_MODE_PLAINTEXT
  * FtpsModeType: 
  *
@@ -1236,6 +1252,30 @@ export const STOREDOBJECTTYPE_VMDK_WINEFS = "vmdkwinefs";
 export const STOREDOBJECTTYPE_VMDK_SYMLINK = "vmdksymlink";
 
 /**
+ * STOREDOBJECTTYPE_VIRTUALIMAGE_DISK
+ * StoredObjectType: 
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_VIRTUALIMAGE_DISK = "virtualimagedisk";
+
+/**
+ * STOREDOBJECTTYPE_VHDX_GPT_PARTITION
+ * StoredObjectType: 
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_VHDX_GPT_PARTITION = "vhdxpartitiongpt";
+
+/**
+ * STOREDOBJECTTYPE_VHDX_MBR_PARTITION
+ * StoredObjectType: 
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_VHDX_MBR_PARTITION = "vhdxpartitionmbr";
+
+/**
  * OS_ANY
  * ExtraFileExclusionOSRestriction: 
  *
@@ -1383,7 +1423,7 @@ export const VMWARE_SNAPSHOT_MEMORY = "memory";
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "22.12.2";
+export const APPLICATION_VERSION = "22.12.8";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -1404,7 +1444,7 @@ export const APPLICATION_VERSION_MINOR = 12;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 2;
+export const APPLICATION_VERSION_REVISION = 8;
 
 /**
  * RELEASE_CODENAME
@@ -1447,6 +1487,20 @@ export const TOTPRequiredError = "ERR_TOTP_REQUIRED";
  * @var {string}
  */
 export const UnsupportVmdkFileSystem = "ERR_UNSUPPORT_VMDK_FILE_SYSTEM";
+
+/**
+ * UnsupportVhdxFileSystem
+ *
+ * @var {string}
+ */
+export const UnsupportVhdxFileSystem = "ERR_UNSUPPORT_VHDX_FILE_SYSTEM";
+
+/**
+ * VhdxPartitonReadErrMsg
+ *
+ * @var {string}
+ */
+export const VhdxPartitonReadErrMsg = "ERR_VHDX_PARTITION";
 
 /**
  * EMAIL_WORKER_STATE_NOT_STARTED
@@ -3961,6 +4015,7 @@ export function libcomet_EmailOptions_set_embedded_libcomet_AdminEmailOptions(de
 export type libcomet_EmailReportConfig = {
 	ReportType: number
 	SummaryFrequency: libcomet_ScheduleConfig[]
+	TimeSpan?: libcomet_TimeSpan // Omission from JSON will be interpreted as the zero value for this field type
 	Filter: libcomet_SearchClause
 }
 
@@ -4515,6 +4570,9 @@ export type libcomet_MongoDBConnection = {
 	Username: string
 	Password: string
 	AuthenticationDB: string
+	/**
+	 * @deprecated This member has been deprecated since Comet version 22.12.3
+	 */
 	MongoShellPath: string
 	MongodumpPath: string
 	ReadPreference: string
@@ -4799,16 +4857,18 @@ export function New_Zero_libcomet_OrganizationResponse(): libcomet_OrganizationR
 
 
 export type libcomet_PSAConfig = {
-	URL: string
+	AlertsDisabled: boolean
 	CustomHeaders?: {[k: string]: string} // Omission from JSON will be interpreted as an empty map
-	Type: number
 	PartnerKey?: string // Omission from JSON will be interpreted as empty-string
+	Type: number
+	URL: string
 }
 
 export function New_Zero_libcomet_PSAConfig(): libcomet_PSAConfig {
 	return {
-		"URL": "",
+		"AlertsDisabled": false,
 		"Type": 0,
+		"URL": "",
 	};
 }
 
@@ -5654,6 +5714,25 @@ export function New_Zero_libcomet_SessionOptions(): libcomet_SessionOptions {
 }
 
 
+export type libcomet_SingleFieldSource = {
+	FieldName: string
+	FieldType: string
+	BoolVal: boolean
+	IntVal: number
+	StrVal: string
+}
+
+export function New_Zero_libcomet_SingleFieldSource(): libcomet_SingleFieldSource {
+	return {
+		"FieldName": "",
+		"FieldType": "",
+		"BoolVal": false,
+		"IntVal": 0,
+		"StrVal": "",
+	};
+}
+
+
 export type libcomet_SizeMeasurement = {
 	Size: number
 	MeasureStarted: number
@@ -5981,6 +6060,19 @@ export function New_Zero_libcomet_TestResponse(): libcomet_TestResponse {
 export function libcomet_TestResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_TestResponse, src: libcomet_CometAPIResponseMessage): void {
 	dest.Status = src.Status
 	dest.Message = src.Message
+}
+
+
+export type libcomet_TimeSpan = {
+	FrequencyType: number
+	Seconds: number
+}
+
+export function New_Zero_libcomet_TimeSpan(): libcomet_TimeSpan {
+	return {
+		"FrequencyType": 0,
+		"Seconds": 0,
+	};
 }
 
 
@@ -6382,6 +6474,7 @@ export type libcomet_UserProfileConfig = {
 	BackupRules: {[k: string]: libcomet_BackupRuleConfig}
 	Devices: {[k: string]: libcomet_DeviceConfig}
 	IsSuspended: boolean
+	LastSuspended?: number // Omission from JSON will be interpreted as 0 (zero)
 	AllProtectedItemsQuotaEnabled: boolean
 	AllProtectedItemsQuotaBytes: number
 	MaximumDevices: number
@@ -6468,6 +6561,7 @@ export type libcomet_VMDKSnapshotViewOptions = {
 	Enabled: boolean
 	PartitionGUID: string
 	ListPath: string
+	PartitionName: string
 }
 
 export function New_Zero_libcomet_VMDKSnapshotViewOptions(): libcomet_VMDKSnapshotViewOptions {
@@ -6475,6 +6569,7 @@ export function New_Zero_libcomet_VMDKSnapshotViewOptions(): libcomet_VMDKSnapsh
 		"Enabled": false,
 		"PartitionGUID": "",
 		"ListPath": "",
+		"PartitionName": "",
 	};
 }
 
@@ -7139,7 +7234,7 @@ export default class CometServerAPIBase {
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * 
 	 * @param {string} TargetUser the username of the admin to be deleted
 	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
@@ -7156,7 +7251,7 @@ export default class CometServerAPIBase {
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * 
 	 * @return {Promise<libcomet_AllowedAdminUser[]>} 
 	 */
@@ -7170,7 +7265,7 @@ export default class CometServerAPIBase {
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * 
 	 * @param {string} TargetUser the username for this new admin
 	 * @param {string} TargetPassword the password for this new admin user
@@ -7273,7 +7368,7 @@ export default class CometServerAPIBase {
 	 * Prune unused buckets
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * This API requires the Constellation Role to be enabled.
 	 * 
 	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
@@ -7501,7 +7596,7 @@ export default class CometServerAPIBase {
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * 
 	 * @param {string} OrganizationID Target organization
 	 * @return {Promise<libcomet_OrganizationLoginURLResponse>} 
@@ -8400,7 +8495,7 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminMetaBrandingConfigSet
 	 * Set Branding configuration
-	 * Note that file resources must be provided using a resource URI I.E `"resource://05ba0b90ee66bda433169581188aba8d29faa938f9464cccd651a02fdf2e5b57"`. See AdminMetaResourceNew for the API documentation to create new file resources.
+	 * Note that file resources must be provided using a resource URI, i.e `"resource://05ba0b90ee66bda433169581188aba8d29faa938f9464cccd651a02fdf2e5b57"`. See AdminMetaResourceNew for the API documentation to create new file resources.
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
@@ -8477,6 +8572,7 @@ export default class CometServerAPIBase {
 	 * Get the email options
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
+	 * Access to this API may be prevented on a per-administrator basis.
 	 * 
 	 * @return {Promise<libcomet_EmailOptions>} 
 	 */
@@ -8489,6 +8585,7 @@ export default class CometServerAPIBase {
 	 * Set the email options
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
+	 * Access to this API may be prevented on a per-administrator basis.
 	 * 
 	 * @param {libcomet_EmailOptions} EmailOptions The replacement email reporting options.
 	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
@@ -8504,7 +8601,7 @@ export default class CometServerAPIBase {
 	 * Get log files
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * 
 	 * @return {Promise<number[]>} 
 	 */
@@ -8560,7 +8657,7 @@ export default class CometServerAPIBase {
 	 * This API does not automatically convert line endings; around the 18.3.2 timeframe, log content may even contain mixed line-endings.
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * 
 	 * @param {number} Log A log day, selected from the options returned by the Get Log Files API
 	 * @return {Promise<string>} 
@@ -8608,7 +8705,7 @@ export default class CometServerAPIBase {
 	 * Prior to 18.9.2, this API terminated the server immediately without returning a response. In 18.9.2 and later, it returns a successful response before shutting down.
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * Access to this API may be prevented on a per-administrator basis.
 	 * 
 	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
@@ -8623,6 +8720,7 @@ export default class CometServerAPIBase {
 	 * This allows the Comet Server web interface to support testing different email credentials during setup.
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
+	 * Access to this API may be prevented on a per-administrator basis.
 	 * 
 	 * @param {libcomet_EmailOptions} EmailOptions Updated configuration content
 	 * @param {string} Recipient Target email address to send test email
@@ -8641,6 +8739,7 @@ export default class CometServerAPIBase {
 	 * This allows a user to send a test email report
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
+	 * Access to this API may be prevented on a per-administrator basis.
 	 * 
 	 * @param {libcomet_EmailReportingOption} EmailReportingOption Test email reporting option for sending
 	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
@@ -8657,7 +8756,7 @@ export default class CometServerAPIBase {
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * 
 	 * @return {Promise<libcomet_ServerConfigOptions>} 
 	 */
@@ -8672,7 +8771,7 @@ export default class CometServerAPIBase {
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * 
 	 * @return {Promise<string[]>} 
 	 */
@@ -8689,7 +8788,7 @@ export default class CometServerAPIBase {
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * 
 	 * @param {libcomet_ServerConfigOptions} Config Updated configuration content
 	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
@@ -8708,7 +8807,7 @@ export default class CometServerAPIBase {
 	 * Prior to 18.9.2, this API terminated the server immediately without returning a response. In 18.9.2 and later, it returns a successful response before shutting down.
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * Access to this API may be prevented on a per-administrator basis.
 	 * 
 	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
@@ -8763,6 +8862,7 @@ export default class CometServerAPIBase {
 	 * Get the server webhook configuration
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
+	 * Access to this API may be prevented on a per-administrator basis.
 	 * 
 	 * @return {Promise<{[k: string]: libcomet_WebhookOption}>} 
 	 */
@@ -8776,6 +8876,7 @@ export default class CometServerAPIBase {
 	 * Calling this endpoint will interrupt any messages currently queued for existing webhook destinations.
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
+	 * Access to this API may be prevented on a per-administrator basis.
 	 * 
 	 * @param {{[k: string]: libcomet_WebhookOption}} WebhookOptions The replacement webhook target options.
 	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
@@ -8838,7 +8939,7 @@ export default class CometServerAPIBase {
 	 * Prior to Comet 22.6.0, this API was documented as returning the OrganizationResponse type. However, it always has returned only a CometAPIResponseMessage.
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * 
 	 * @param {string|null} OrganizationID (No description available)
 	 * @param {libcomet_UninstallConfig|null} UninstallConfig Uninstall software configuration
@@ -8860,7 +8961,7 @@ export default class CometServerAPIBase {
 	 * Run self-backup for a specific tenant
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * 
 	 * @param {libcomet_SelfBackupExportOptions} Options The export config options
 	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
@@ -8876,7 +8977,7 @@ export default class CometServerAPIBase {
 	 * List Organizations
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * 
 	 * @return {Promise<{[k: string]: libcomet_Organization}>} 
 	 */
@@ -8891,7 +8992,7 @@ export default class CometServerAPIBase {
 	 * Prior to Comet 22.6.0, the 'ID' and 'Organization' fields were not present in the response.
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * 
 	 * @param {string|null} OrganizationID (No description available)
 	 * @param {libcomet_Organization|null} Organization (No description available)
@@ -9046,7 +9147,7 @@ export default class CometServerAPIBase {
 	 * Get Replication status
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * 
 	 * @return {Promise<libcomet_ReplicatorStateAPIResponse[]>} 
 	 */
@@ -9146,7 +9247,7 @@ export default class CometServerAPIBase {
 	 * Run self-backup on all targets
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * 
 	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
 	 */
@@ -9239,7 +9340,7 @@ export default class CometServerAPIBase {
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
 	 * This API requires the Storage Role to be enabled.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * 
 	 * @param {string|null} BucketID (This parameter is not used)
 	 * @return {Promise<libcomet_StorageFreeSpaceInfo>} 
@@ -9272,7 +9373,7 @@ export default class CometServerAPIBase {
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
 	 * This API requires the Storage Role to be enabled.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * 
 	 * @param {libcomet_DestinationLocation} ExtraData The destination location settings
 	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
@@ -9320,7 +9421,7 @@ export default class CometServerAPIBase {
 	 * Start a new software update campaign
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * This API requires the Software Build Role to be enabled.
 	 * This API requires the Auth Role to be enabled.
 	 * 
@@ -9338,7 +9439,7 @@ export default class CometServerAPIBase {
 	 * Get current campaign status
 	 * 
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API is only available for administrator accounts in the top-level Organization, not in any other Organization.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * This API requires the Software Build Role to be enabled.
 	 * This API requires the Auth Role to be enabled.
 	 * 
