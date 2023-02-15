@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2023-02-15 v1.0.8
+
+- Based on 22.12.8
+- Add `TimeSpan` option to `EmailReportOptions`
+- Add `AlertsDisabled` (default: false) toggle for `PSAConfig` objects
+- Add `LastSuspended` for tracking `UserProfileConfig` suspensions
+- Improve documentation
+
 ## 2023-01-11 v1.0.7
 
 - Based on 22.12.2
