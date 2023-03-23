@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2023-03-23 v1.1.0
+
+- Based on Comet 23.3.1
+- Support filter parameters on `AdminGetJobLogEntries`
+- Support S3 Object Lock
+- Support Azure Key Vault codesigning
+
 ## 2023-02-15 v1.0.8
 
 - Based on 22.12.8
