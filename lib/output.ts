@@ -3,6 +3,34 @@
 // CONSTANTS
 
 /**
+ * APPLICATION_VERSION
+ *
+ * @var {string}
+ */
+export const APPLICATION_VERSION = "23.3.1";
+
+/**
+ * APPLICATION_VERSION_MAJOR
+ *
+ * @var {number}
+ */
+export const APPLICATION_VERSION_MAJOR = 23;
+
+/**
+ * APPLICATION_VERSION_MINOR
+ *
+ * @var {number}
+ */
+export const APPLICATION_VERSION_MINOR = 3;
+
+/**
+ * APPLICATION_VERSION_REVISION
+ *
+ * @var {number}
+ */
+export const APPLICATION_VERSION_REVISION = 1;
+
+/**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
  * AutoRetentionLevel: The system will automatically choose how often to run an automatic Retention Pass after each backup job.
  *
@@ -33,6 +61,484 @@ export const BACKUPJOBAUTORETENTION_MORE_OFTEN = 2;
  * @var {number}
  */
 export const BACKUPJOBAUTORETENTION_LESS_OFTEN = 3;
+
+/**
+ * CLIENTBRANDINGBUILD_CUSTOM
+ * ClientBrandingBuildMode: Public-Doc: The software client will be custom-built by this Comet Server, allowing custom branding, default server URL, and codesigning.
+ *
+ * @var {number}
+ */
+export const CLIENTBRANDINGBUILD_CUSTOM = 0;
+
+/**
+ * CLIENTBRANDINGBUILD_PREBUILT
+ * ClientBrandingBuildMode: Public-Doc: A pre-built software client will be served, with Comet-branding, no server URL, and Comet codesigning.
+ *
+ * @var {number}
+ */
+export const CLIENTBRANDINGBUILD_PREBUILT = 1;
+
+/**
+ * COMPRESS_INVALID
+ * CompressMode: 
+ *
+ * @var {number}
+ */
+export const COMPRESS_INVALID = 0;
+
+/**
+ * COMPRESS_LVL_1
+ * CompressMode: 
+ *
+ * @var {number}
+ */
+export const COMPRESS_LVL_1 = 1;
+
+/**
+ * COMPRESS_LVL_2
+ * CompressMode: 
+ *
+ * @var {number}
+ */
+export const COMPRESS_LVL_2 = 2;
+
+/**
+ * COMPRESS_LVL_3
+ * CompressMode: 
+ *
+ * @var {number}
+ */
+export const COMPRESS_LVL_3 = 3;
+
+/**
+ * COMPRESS_LVL_4
+ * CompressMode: 
+ *
+ * @var {number}
+ */
+export const COMPRESS_LVL_4 = 4;
+
+/**
+ * COMPRESS_LVL_5
+ * CompressMode: 
+ *
+ * @var {number}
+ */
+export const COMPRESS_LVL_5 = 5;
+
+/**
+ * COMPRESS_MAX
+ * CompressMode: 
+ *
+ * @var {number}
+ */
+export const COMPRESS_MAX = COMPRESS_LVL_5;
+
+/**
+ * COMPRESS_DEFAULT
+ * CompressMode: 
+ *
+ * @var {number}
+ */
+export const COMPRESS_DEFAULT = COMPRESS_LVL_4;
+
+/**
+ * DEFAULT_LANGUAGE
+ * LanguageCode: 
+ *
+ * @var {string}
+ */
+export const DEFAULT_LANGUAGE = "en_US";
+
+/**
+ * DEFAULT_TIMEZONE
+ *
+ * @var {string}
+ */
+export const DEFAULT_TIMEZONE = "UTC";
+
+/**
+ * DEFAULT_BRAND_NAME
+ *
+ * @var {string}
+ */
+export const DEFAULT_BRAND_NAME = "COMET";
+
+/**
+ * DEFAULT_TOPCOLOR
+ * #1782D6"
+ *
+ * @var {string}
+ */
+export const DEFAULT_TOPCOLOR = "#06041E";
+
+/**
+ * DEFAULT_SESSIONTIMEOUT
+ *
+ * @var {number}
+ */
+export const DEFAULT_SESSIONTIMEOUT = 1800;
+
+/**
+ * DESTINATION_SFTP_AUTHMODE_NATIVE
+ * SftpAuthMode: 
+ *
+ * @var {number}
+ */
+export const DESTINATION_SFTP_AUTHMODE_NATIVE = 0;
+
+/**
+ * DESTINATION_SFTP_AUTHMODE_PASSWORD
+ * SftpAuthMode: 
+ *
+ * @var {number}
+ */
+export const DESTINATION_SFTP_AUTHMODE_PASSWORD = 1;
+
+/**
+ * DESTINATION_SFTP_AUTHMODE_PRIVATEKEY
+ * SftpAuthMode: 
+ *
+ * @var {number}
+ */
+export const DESTINATION_SFTP_AUTHMODE_PRIVATEKEY = 2;
+
+/**
+ * DESTINATIONTYPE___INVALID
+ *
+ * @var {number}
+ */
+export const DESTINATIONTYPE___INVALID = 0;
+
+/**
+ * DESTINATIONTYPE_S3
+ *
+ * @var {number}
+ */
+export const DESTINATIONTYPE_S3 = 1000;
+
+/**
+ * DESTINATIONTYPE_SFTP
+ *
+ * @var {number}
+ */
+export const DESTINATIONTYPE_SFTP = 1001;
+
+/**
+ * DESTINATIONTYPE_LOCALCOPY
+ *
+ * @var {number}
+ */
+export const DESTINATIONTYPE_LOCALCOPY = 1002;
+
+/**
+ * DESTINATIONTYPE_COMET
+ *
+ * @var {number}
+ */
+export const DESTINATIONTYPE_COMET = 1003;
+
+/**
+ * DESTINATIONTYPE_FTP
+ *
+ * @var {number}
+ */
+export const DESTINATIONTYPE_FTP = 1004;
+
+/**
+ * DESTINATIONTYPE_AZUREBLOB
+ *
+ * @var {number}
+ */
+export const DESTINATIONTYPE_AZUREBLOB = 1005;
+
+/**
+ * DESTINATIONTYPE_SPANNED
+ *
+ * @var {number}
+ */
+export const DESTINATIONTYPE_SPANNED = 1006;
+
+/**
+ * DESTINATIONTYPE_SWIFT
+ *
+ * @var {number}
+ */
+export const DESTINATIONTYPE_SWIFT = 1007;
+
+/**
+ * DESTINATIONTYPE_B2
+ *
+ * @var {number}
+ */
+export const DESTINATIONTYPE_B2 = 1008;
+
+/**
+ * DESTINATIONTYPE_STORJ
+ *
+ * @var {number}
+ */
+export const DESTINATIONTYPE_STORJ = 1009;
+
+/**
+ * DESTINATIONTYPE_LATEST
+ *
+ * @var {number}
+ */
+export const DESTINATIONTYPE_LATEST = 1100;
+
+/**
+ * DESTINATIONTYPE_ALL
+ *
+ * @var {number}
+ */
+export const DESTINATIONTYPE_ALL = 1101;
+
+/**
+ * EMAIL_WORKER_STATE_NOT_STARTED
+ *
+ * @var {number}
+ */
+export const EMAIL_WORKER_STATE_NOT_STARTED = 0;
+
+/**
+ * EMAIL_WORKER_STATE_STARTED
+ *
+ * @var {number}
+ */
+export const EMAIL_WORKER_STATE_STARTED = 1;
+
+/**
+ * EMAIL_WORKER_STATE_CALCULATING
+ *
+ * @var {number}
+ */
+export const EMAIL_WORKER_STATE_CALCULATING = 2;
+
+/**
+ * EMAIL_WORKER_STATE_WAITING
+ *
+ * @var {number}
+ */
+export const EMAIL_WORKER_STATE_WAITING = 3;
+
+/**
+ * EMAIL_WORKER_STATE_SENDING
+ *
+ * @var {number}
+ */
+export const EMAIL_WORKER_STATE_SENDING = 4;
+
+/**
+ * EMAIL_DELIVERY_INHERIT
+ * EmailDeliveryType: 
+ *
+ * @var {string}
+ */
+export const EMAIL_DELIVERY_INHERIT = "";
+
+/**
+ * EMAIL_DELIVERY_MX_DIRECT
+ * EmailDeliveryType: 
+ *
+ * @var {string}
+ */
+export const EMAIL_DELIVERY_MX_DIRECT = "builtin";
+
+/**
+ * EMAIL_DELIVERY_SMTP
+ * EmailDeliveryType: 
+ *
+ * @var {string}
+ */
+export const EMAIL_DELIVERY_SMTP = "smtp";
+
+/**
+ * EMAIL_DELIVERY_SMTP_SSL
+ * EmailDeliveryType: 
+ *
+ * @var {string}
+ */
+export const EMAIL_DELIVERY_SMTP_SSL = "smtp-ssl";
+
+/**
+ * EMAIL_DELIVERY_DISABLED
+ * EmailDeliveryType: 
+ *
+ * @var {string}
+ */
+export const EMAIL_DELIVERY_DISABLED = "disabled";
+
+/**
+ * EMAIL_DELIVERY_BUILTIN
+ * EmailDeliveryType: Legacy alias
+ *
+ * @var {string}
+ */
+export const EMAIL_DELIVERY_BUILTIN = EMAIL_DELIVERY_MX_DIRECT;
+
+/**
+ * EMAIL_DELIVERY_NONE
+ * EmailDeliveryType: changed for clarity
+ *
+ * @var {string}
+ * @deprecated This const has been deprecated since Comet version 22.12.1
+ */
+export const EMAIL_DELIVERY_NONE = EMAIL_DELIVERY_INHERIT;
+
+/**
+ * EMAILREPORTTYPE_IMMEDIATE
+ * EmailReportType: 
+ *
+ * @var {number}
+ */
+export const EMAILREPORTTYPE_IMMEDIATE = 0;
+
+/**
+ * EMAILREPORTTYPE_SUMMARY
+ * EmailReportType: 
+ *
+ * @var {number}
+ */
+export const EMAILREPORTTYPE_SUMMARY = 1;
+
+/**
+ * EMAILREPORTTYPE_GROUPED_STATUS
+ * EmailReportType: 
+ *
+ * @var {number}
+ */
+export const EMAILREPORTTYPE_GROUPED_STATUS = 2;
+
+/**
+ * EMAILREPORTTYPE_RECENT_ACTIVITY
+ * EmailReportType: 
+ *
+ * @var {number}
+ */
+export const EMAILREPORTTYPE_RECENT_ACTIVITY = 3;
+
+/**
+ * ENCRYPTIONMETHOD_UNCONFIGURED
+ *
+ * @var {number}
+ */
+export const ENCRYPTIONMETHOD_UNCONFIGURED = 0;
+
+/**
+ * ENGINE_BUILTIN_FILE
+ *
+ * @var {string}
+ */
+export const ENGINE_BUILTIN_FILE = "engine1/file";
+
+/**
+ * ENGINE_BUILTIN_STDOUT
+ *
+ * @var {string}
+ */
+export const ENGINE_BUILTIN_STDOUT = "engine1/stdout";
+
+/**
+ * ENGINE_BUILTIN_MYSQL
+ *
+ * @var {string}
+ */
+export const ENGINE_BUILTIN_MYSQL = "engine1/mysql";
+
+/**
+ * ENGINE_BUILTIN_SYSTEMSTATE
+ *
+ * @var {string}
+ */
+export const ENGINE_BUILTIN_SYSTEMSTATE = "engine1/systemstate";
+
+/**
+ * ENGINE_BUILTIN_MSSQL
+ *
+ * @var {string}
+ */
+export const ENGINE_BUILTIN_MSSQL = "engine1/mssql";
+
+/**
+ * ENGINE_BUILTIN_WINDOWSSYSTEM
+ *
+ * @var {string}
+ */
+export const ENGINE_BUILTIN_WINDOWSSYSTEM = "engine1/windowssystem";
+
+/**
+ * ENGINE_BUILTIN_EXCHANGEEDB
+ *
+ * @var {string}
+ */
+export const ENGINE_BUILTIN_EXCHANGEEDB = "engine1/exchangeedb";
+
+/**
+ * ENGINE_BUILTIN_VSSWRITER
+ *
+ * @var {string}
+ */
+export const ENGINE_BUILTIN_VSSWRITER = "engine1/vsswriter";
+
+/**
+ * ENGINE_BUILTIN_HYPERV
+ *
+ * @var {string}
+ */
+export const ENGINE_BUILTIN_HYPERV = "engine1/hyperv";
+
+/**
+ * ENGINE_BUILTIN_WINDISK
+ *
+ * @var {string}
+ */
+export const ENGINE_BUILTIN_WINDISK = "engine1/windisk";
+
+/**
+ * ENGINE_BUILTIN_MONGODB
+ *
+ * @var {string}
+ */
+export const ENGINE_BUILTIN_MONGODB = "engine1/mongodb";
+
+/**
+ * ENGINE_BUILTIN_MSOFFICE
+ *
+ * @var {string}
+ */
+export const ENGINE_BUILTIN_MSOFFICE = "engine1/winmsofficemail";
+
+/**
+ * ENGINE_BUILTIN_VMWARE
+ *
+ * @var {string}
+ */
+export const ENGINE_BUILTIN_VMWARE = "engine1/vmware";
+
+/**
+ * FTPS_MODE_PLAINTEXT
+ * FtpsModeType: 
+ *
+ * @var {number}
+ */
+export const FTPS_MODE_PLAINTEXT = 0;
+
+/**
+ * FTPS_MODE_IMPLICIT
+ * FtpsModeType: 
+ *
+ * @var {number}
+ */
+export const FTPS_MODE_IMPLICIT = 1;
+
+/**
+ * FTPS_MODE_EXPLICIT
+ * FtpsModeType: 
+ *
+ * @var {number}
+ */
+export const FTPS_MODE_EXPLICIT = 2;
 
 /**
  * JOB_CLASSIFICATION__MIN
@@ -291,217 +797,83 @@ export const JOB_STATUS_FAILED_ABANDONED = 7007;
 export const JOB_STATUS_FAILED__MAX = 7999;
 
 /**
- * DESTINATIONTYPE___INVALID
- *
- * @var {number}
- */
-export const DESTINATIONTYPE___INVALID = 0;
-
-/**
- * DESTINATIONTYPE_S3
- *
- * @var {number}
- */
-export const DESTINATIONTYPE_S3 = 1000;
-
-/**
- * DESTINATIONTYPE_SFTP
- *
- * @var {number}
- */
-export const DESTINATIONTYPE_SFTP = 1001;
-
-/**
- * DESTINATIONTYPE_LOCALCOPY
- *
- * @var {number}
- */
-export const DESTINATIONTYPE_LOCALCOPY = 1002;
-
-/**
- * DESTINATIONTYPE_COMET
- *
- * @var {number}
- */
-export const DESTINATIONTYPE_COMET = 1003;
-
-/**
- * DESTINATIONTYPE_FTP
- *
- * @var {number}
- */
-export const DESTINATIONTYPE_FTP = 1004;
-
-/**
- * DESTINATIONTYPE_AZUREBLOB
- *
- * @var {number}
- */
-export const DESTINATIONTYPE_AZUREBLOB = 1005;
-
-/**
- * DESTINATIONTYPE_SPANNED
- *
- * @var {number}
- */
-export const DESTINATIONTYPE_SPANNED = 1006;
-
-/**
- * DESTINATIONTYPE_SWIFT
- *
- * @var {number}
- */
-export const DESTINATIONTYPE_SWIFT = 1007;
-
-/**
- * DESTINATIONTYPE_B2
- *
- * @var {number}
- */
-export const DESTINATIONTYPE_B2 = 1008;
-
-/**
- * DESTINATIONTYPE_STORJ
- *
- * @var {number}
- */
-export const DESTINATIONTYPE_STORJ = 1009;
-
-/**
- * DESTINATIONTYPE_LATEST
- *
- * @var {number}
- */
-export const DESTINATIONTYPE_LATEST = 1100;
-
-/**
- * DESTINATIONTYPE_ALL
- *
- * @var {number}
- */
-export const DESTINATIONTYPE_ALL = 1101;
-
-/**
- * EMAILREPORTTYPE_IMMEDIATE
- * EmailReportType: 
- *
- * @var {number}
- */
-export const EMAILREPORTTYPE_IMMEDIATE = 0;
-
-/**
- * EMAILREPORTTYPE_SUMMARY
- * EmailReportType: 
- *
- * @var {number}
- */
-export const EMAILREPORTTYPE_SUMMARY = 1;
-
-/**
- * EMAILREPORTTYPE_GROUPED_STATUS
- * EmailReportType: 
- *
- * @var {number}
- */
-export const EMAILREPORTTYPE_GROUPED_STATUS = 2;
-
-/**
- * EMAILREPORTTYPE_RECENT_ACTIVITY
- * EmailReportType: 
- *
- * @var {number}
- */
-export const EMAILREPORTTYPE_RECENT_ACTIVITY = 3;
-
-/**
- * FTPS_MODE_PLAINTEXT
- * FtpsModeType: 
- *
- * @var {number}
- */
-export const FTPS_MODE_PLAINTEXT = 0;
-
-/**
- * FTPS_MODE_IMPLICIT
- * FtpsModeType: 
- *
- * @var {number}
- */
-export const FTPS_MODE_IMPLICIT = 1;
-
-/**
- * FTPS_MODE_EXPLICIT
- * FtpsModeType: 
- *
- * @var {number}
- */
-export const FTPS_MODE_EXPLICIT = 2;
-
-/**
- * SEVERITY_INFO
- * Severity: 
+ * LDAPSECURITYMETHOD_PLAIN
+ * LDAPSecurityMethod: 
  *
  * @var {string}
  */
-export const SEVERITY_INFO = "I";
+export const LDAPSECURITYMETHOD_PLAIN = "plain";
 
 /**
- * SEVERITY_WARNING
- * Severity: 
+ * LDAPSECURITYMETHOD_LDAPS
+ * LDAPSecurityMethod: 
  *
  * @var {string}
  */
-export const SEVERITY_WARNING = "W";
+export const LDAPSECURITYMETHOD_LDAPS = "ldaps";
 
 /**
- * SEVERITY_ERROR
- * Severity: 
+ * LDAPSECURITYMETHOD_STARTTLS
+ * LDAPSecurityMethod: 
  *
  * @var {string}
  */
-export const SEVERITY_ERROR = "E";
+export const LDAPSECURITYMETHOD_STARTTLS = "starttls";
 
 /**
- * MONGODB_DEFAULT_PORT
+ * LOGOIMAGE_NONE
+ * LogoImageType: 
  *
  * @var {number}
  */
-export const MONGODB_DEFAULT_PORT = 27017;
+export const LOGOIMAGE_NONE = 1;
 
 /**
- * SERVICE_CALENDAR
+ * LOGOIMAGE_AS_PER_FILE
+ * LogoImageType: 
  *
  * @var {number}
  */
-export const SERVICE_CALENDAR = 1;
+export const LOGOIMAGE_AS_PER_FILE = 2;
 
 /**
- * SERVICE_CONTACT
+ * LOGOIMAGE_COMETEMBEDDED
+ * LogoImageType: 
  *
  * @var {number}
  */
-export const SERVICE_CONTACT = 2;
+export const LOGOIMAGE_COMETEMBEDDED = 3;
 
 /**
- * SERVICE_MAIL
+ * MACOSCODESIGN_LEVEL_SIGN
+ * MacOSCodesignLevel: 
  *
  * @var {number}
  */
-export const SERVICE_MAIL = 4;
+export const MACOSCODESIGN_LEVEL_SIGN = 0;
 
 /**
- * SERVICE_SHAREPOINT
+ * MACOSCODESIGN_LEVEL_SIGN_NOTARISE
+ * MacOSCodesignLevel: 
  *
  * @var {number}
  */
-export const SERVICE_SHAREPOINT = 8;
+export const MACOSCODESIGN_LEVEL_SIGN_NOTARISE = 1;
 
 /**
- * SERVICE_ONEDRIVE
+ * MACOSCODESIGN_LEVEL_SIGN_NOTARISE_STAPLE
+ * MacOSCodesignLevel: 
  *
  * @var {number}
  */
-export const SERVICE_ONEDRIVE = 16;
+export const MACOSCODESIGN_LEVEL_SIGN_NOTARISE_STAPLE = 2;
+
+/**
+ * MINIMUM_LOG_RETENTION_DAYS
+ *
+ * @var {number}
+ */
+export const MINIMUM_LOG_RETENTION_DAYS = 10;
 
 /**
  * MIXED_VIRTUAL_ACCOUNT_TYPE_USER
@@ -530,6 +902,366 @@ export const MIXED_VIRTUAL_ACCOUNT_TYPE_TEAM_GROUP = 3;
  * @var {number}
  */
 export const MIXED_VIRTUAL_ACCOUNT_TYPE_SHAREPOINT_ONLY = 4;
+
+/**
+ * MONGODB_DEFAULT_PORT
+ *
+ * @var {number}
+ */
+export const MONGODB_DEFAULT_PORT = 27017;
+
+/**
+ * MSSQL_AUTH_WINDOWS
+ * MSSQLAuthMode: 
+ *
+ * @var {string}
+ */
+export const MSSQL_AUTH_WINDOWS = "windows";
+
+/**
+ * MSSQL_AUTH_NATIVE
+ * MSSQLAuthMode: 
+ *
+ * @var {string}
+ */
+export const MSSQL_AUTH_NATIVE = "native";
+
+/**
+ * MSSQL_METHOD_OLEDB_NATIVE
+ * MSSQLMethod: 
+ *
+ * @var {string}
+ */
+export const MSSQL_METHOD_OLEDB_NATIVE = "OLEDB_NATIVE";
+
+/**
+ * MSSQL_METHOD_OLEDB_32
+ * MSSQLMethod: 
+ *
+ * @var {string}
+ */
+export const MSSQL_METHOD_OLEDB_32 = "OLEDB_32";
+
+/**
+ * MSSQL_RESTORE_RECOVERY
+ * MSSQLRestoreOpt: 
+ *
+ * @var {string}
+ */
+export const MSSQL_RESTORE_RECOVERY = "RECOVERY";
+
+/**
+ * MSSQL_RESTORE_NORECOVERY
+ * MSSQLRestoreOpt: 
+ *
+ * @var {string}
+ */
+export const MSSQL_RESTORE_NORECOVERY = "NO_RECOVERY";
+
+/**
+ * OFFICE365_REGION_PUBLIC
+ *
+ * @var {string}
+ */
+export const OFFICE365_REGION_PUBLIC = "GlobalPublicCloud";
+
+/**
+ * OFFICE365_REGION_CHINA
+ *
+ * @var {string}
+ */
+export const OFFICE365_REGION_CHINA = "ChinaCloud";
+
+/**
+ * OFFICE365_REGION_GERMANY
+ *
+ * @var {string}
+ */
+export const OFFICE365_REGION_GERMANY = "GermanCloud";
+
+/**
+ * OFFICE365_REGION_US_GOVT
+ *
+ * @var {string}
+ */
+export const OFFICE365_REGION_US_GOVT = "USGovtGccCloud";
+
+/**
+ * OFFICE365_REGION_US_DOD
+ *
+ * @var {string}
+ */
+export const OFFICE365_REGION_US_DOD = "USGovtGccDoDCloud";
+
+/**
+ * OS_ANY
+ * ExtraFileExclusionOSRestriction: 
+ *
+ * @var {number}
+ */
+export const OS_ANY = 0;
+
+/**
+ * OS_ONLY_WINDOWS
+ * ExtraFileExclusionOSRestriction: 
+ *
+ * @var {number}
+ */
+export const OS_ONLY_WINDOWS = 1;
+
+/**
+ * OS_ONLY_WINDOWS_X8632
+ * ExtraFileExclusionOSRestriction: 
+ *
+ * @var {number}
+ */
+export const OS_ONLY_WINDOWS_X8632 = 2;
+
+/**
+ * OS_ONLY_WINDOWS_X8664
+ * ExtraFileExclusionOSRestriction: 
+ *
+ * @var {number}
+ */
+export const OS_ONLY_WINDOWS_X8664 = 3;
+
+/**
+ * OS_ONLY_MACOS
+ * ExtraFileExclusionOSRestriction: 
+ *
+ * @var {number}
+ */
+export const OS_ONLY_MACOS = 4;
+
+/**
+ * OS_ONLY_LINUX
+ * ExtraFileExclusionOSRestriction: 
+ *
+ * @var {number}
+ */
+export const OS_ONLY_LINUX = 5;
+
+/**
+ * PASSWORD_FORMAT_PLAINTEXT
+ *
+ * @var {number}
+ */
+export const PASSWORD_FORMAT_PLAINTEXT = 0;
+
+/**
+ * PSA_TYPE_GENERIC
+ * PSAType: 
+ *
+ * @var {number}
+ */
+export const PSA_TYPE_GENERIC = 0;
+
+/**
+ * PSA_TYPE_GRADIENT
+ * PSAType: 
+ *
+ * @var {number}
+ */
+export const PSA_TYPE_GRADIENT = 1;
+
+/**
+ * RELEASE_CODENAME
+ *
+ * @var {string}
+ */
+export const RELEASE_CODENAME = "Voyager";
+
+/**
+ * REMOTESERVER_COMET
+ * RemoteServerType: 
+ *
+ * @var {string}
+ */
+export const REMOTESERVER_COMET = "comet";
+
+/**
+ * REMOTESERVER_LDAP
+ * RemoteServerType: 
+ *
+ * @var {string}
+ */
+export const REMOTESERVER_LDAP = "ldap";
+
+/**
+ * REMOTESERVER_B2
+ * RemoteServerType: 
+ *
+ * @var {string}
+ */
+export const REMOTESERVER_B2 = "b2";
+
+/**
+ * REMOTESERVER_WASABI
+ * RemoteServerType: 
+ *
+ * @var {string}
+ */
+export const REMOTESERVER_WASABI = "wasabi";
+
+/**
+ * REMOTESERVER_CUSTOM
+ * RemoteServerType: 
+ *
+ * @var {string}
+ */
+export const REMOTESERVER_CUSTOM = "custom";
+
+/**
+ * REMOTESERVER_S3_GENERIC
+ * RemoteServerType: 
+ *
+ * @var {string}
+ */
+export const REMOTESERVER_S3_GENERIC = "s3";
+
+/**
+ * REMOTESERVER_AWS
+ * RemoteServerType: 
+ *
+ * @var {string}
+ */
+export const REMOTESERVER_AWS = "aws";
+
+/**
+ * REMOTESERVER_STORJ
+ * RemoteServerType: 
+ *
+ * @var {string}
+ */
+export const REMOTESERVER_STORJ = "storj";
+
+/**
+ * REMOTESERVER_IDRIVEE2
+ * RemoteServerType: 
+ *
+ * @var {string}
+ */
+export const REMOTESERVER_IDRIVEE2 = "idrivee2";
+
+/**
+ * REPLICADELETION_NONE
+ * ReplicaDeletionStrategy: 
+ *
+ * @var {string}
+ */
+export const REPLICADELETION_NONE = "none";
+
+/**
+ * REPLICADELETION_CIRCULAR
+ * ReplicaDeletionStrategy: 
+ *
+ * @var {string}
+ */
+export const REPLICADELETION_CIRCULAR = "circular";
+
+/**
+ * REPLICADELETION_COMPLETE
+ * ReplicaDeletionStrategy: 
+ *
+ * @var {string}
+ */
+export const REPLICADELETION_COMPLETE = "complete";
+
+/**
+ * REPLICATOR_STATE_NONE
+ * ReplicatorState: 
+ *
+ * @var {number}
+ */
+export const REPLICATOR_STATE_NONE = 0;
+
+/**
+ * REPLICATOR_STATE_FILE_LIST_WORKER_STARTED
+ * ReplicatorState: 
+ *
+ * @var {number}
+ */
+export const REPLICATOR_STATE_FILE_LIST_WORKER_STARTED = 1;
+
+/**
+ * REPLICATOR_STATE_FILE_LIST_SYNC_RUNNING
+ * ReplicatorState: 
+ *
+ * @var {number}
+ */
+export const REPLICATOR_STATE_FILE_LIST_SYNC_RUNNING = 2;
+
+/**
+ * REPLICATOR_STATE_FILE_LIST_SYNC_FINISHED
+ * ReplicatorState: 
+ *
+ * @var {number}
+ */
+export const REPLICATOR_STATE_FILE_LIST_SYNC_FINISHED = 4;
+
+/**
+ * REPLICATOR_STATE_WORKERS_STARTED
+ * ReplicatorState: 
+ *
+ * @var {number}
+ */
+export const REPLICATOR_STATE_WORKERS_STARTED = 8;
+
+/**
+ * REPLICATOR_DISPLAYCLASS_STORAGE
+ * ReplicatorDisplayClass: 
+ *
+ * @var {number}
+ */
+export const REPLICATOR_DISPLAYCLASS_STORAGE = 100;
+
+/**
+ * REPLICATOR_DISPLAYCLASS_USER
+ * ReplicatorDisplayClass: 
+ *
+ * @var {number}
+ */
+export const REPLICATOR_DISPLAYCLASS_USER = 101;
+
+/**
+ * RESTOREARCHIVEFORMAT_TAR
+ * RestoreArchiveFormat: 
+ *
+ * @var {number}
+ */
+export const RESTOREARCHIVEFORMAT_TAR = 0;
+
+/**
+ * RESTOREARCHIVEFORMAT_TARGZ
+ * RestoreArchiveFormat: 
+ *
+ * @var {number}
+ */
+export const RESTOREARCHIVEFORMAT_TARGZ = 1;
+
+/**
+ * RESTOREARCHIVEFORMAT_ZIP
+ * RestoreArchiveFormat: 
+ *
+ * @var {number}
+ */
+export const RESTOREARCHIVEFORMAT_ZIP = 2;
+
+/**
+ * RESTOREARCHIVEFORMAT_SQFS
+ * RestoreArchiveFormat: SquashFS container
+ *
+ * @var {number}
+ */
+export const RESTOREARCHIVEFORMAT_SQFS = 3;
+
+/**
+ * RESTOREARCHIVEFORMAT_TARZSTD
+ * RestoreArchiveFormat: 
+ *
+ * @var {number}
+ */
+export const RESTOREARCHIVEFORMAT_TARZSTD = 4;
 
 /**
  * RESTORETYPE_INVALID
@@ -642,46 +1374,6 @@ export const RESTORETYPE_MSSQL = 11;
  * @var {number}
  */
 export const RESTORETYPE_PROCESS_TARBALL = 3;
-
-/**
- * RESTOREARCHIVEFORMAT_TAR
- * RestoreArchiveFormat: 
- *
- * @var {number}
- */
-export const RESTOREARCHIVEFORMAT_TAR = 0;
-
-/**
- * RESTOREARCHIVEFORMAT_TARGZ
- * RestoreArchiveFormat: 
- *
- * @var {number}
- */
-export const RESTOREARCHIVEFORMAT_TARGZ = 1;
-
-/**
- * RESTOREARCHIVEFORMAT_ZIP
- * RestoreArchiveFormat: 
- *
- * @var {number}
- */
-export const RESTOREARCHIVEFORMAT_ZIP = 2;
-
-/**
- * RESTOREARCHIVEFORMAT_SQFS
- * RestoreArchiveFormat: SquashFS container
- *
- * @var {number}
- */
-export const RESTOREARCHIVEFORMAT_SQFS = 3;
-
-/**
- * RESTOREARCHIVEFORMAT_TARZSTD
- * RestoreArchiveFormat: 
- *
- * @var {number}
- */
-export const RESTOREARCHIVEFORMAT_TARZSTD = 4;
 
 /**
  * RETENTIONMODE_KEEP_EVERYTHING
@@ -803,54 +1495,6 @@ export const RETENTIONRANGE__HIGHEST = 909;
 export const RETENTIONRANGE_MAXINT = 1125899906842624;
 
 /**
- * DESTINATION_SFTP_AUTHMODE_NATIVE
- * SftpAuthMode: 
- *
- * @var {number}
- */
-export const DESTINATION_SFTP_AUTHMODE_NATIVE = 0;
-
-/**
- * DESTINATION_SFTP_AUTHMODE_PASSWORD
- * SftpAuthMode: 
- *
- * @var {number}
- */
-export const DESTINATION_SFTP_AUTHMODE_PASSWORD = 1;
-
-/**
- * DESTINATION_SFTP_AUTHMODE_PRIVATEKEY
- * SftpAuthMode: 
- *
- * @var {number}
- */
-export const DESTINATION_SFTP_AUTHMODE_PRIVATEKEY = 2;
-
-/**
- * SSHCONNECTION_AUTHMODE__INVALID
- * SSHAuthMode: 
- *
- * @var {number}
- */
-export const SSHCONNECTION_AUTHMODE__INVALID = 0;
-
-/**
- * SSHCONNECTION_AUTHMODE_PASSWORD
- * SSHAuthMode: 
- *
- * @var {number}
- */
-export const SSHCONNECTION_AUTHMODE_PASSWORD = 1;
-
-/**
- * SSHCONNECTION_AUTHMODE_PRIVATEKEY
- * SSHAuthMode: n.b. change values
- *
- * @var {number}
- */
-export const SSHCONNECTION_AUTHMODE_PRIVATEKEY = 2;
-
-/**
  * SCHEDULE_FREQUENCY_LOWEST
  *
  * @var {number}
@@ -927,775 +1571,6 @@ export const SCHEDULE_MAX_RANDOM_DELAY_SECS = 18000;
  * @var {number}
  */
 export const SCHEDULE_MAXINT = 1125899906842624;
-
-/**
- * ENGINE_BUILTIN_FILE
- *
- * @var {string}
- */
-export const ENGINE_BUILTIN_FILE = "engine1/file";
-
-/**
- * ENGINE_BUILTIN_STDOUT
- *
- * @var {string}
- */
-export const ENGINE_BUILTIN_STDOUT = "engine1/stdout";
-
-/**
- * ENGINE_BUILTIN_MYSQL
- *
- * @var {string}
- */
-export const ENGINE_BUILTIN_MYSQL = "engine1/mysql";
-
-/**
- * ENGINE_BUILTIN_SYSTEMSTATE
- *
- * @var {string}
- */
-export const ENGINE_BUILTIN_SYSTEMSTATE = "engine1/systemstate";
-
-/**
- * ENGINE_BUILTIN_MSSQL
- *
- * @var {string}
- */
-export const ENGINE_BUILTIN_MSSQL = "engine1/mssql";
-
-/**
- * ENGINE_BUILTIN_WINDOWSSYSTEM
- *
- * @var {string}
- */
-export const ENGINE_BUILTIN_WINDOWSSYSTEM = "engine1/windowssystem";
-
-/**
- * ENGINE_BUILTIN_EXCHANGEEDB
- *
- * @var {string}
- */
-export const ENGINE_BUILTIN_EXCHANGEEDB = "engine1/exchangeedb";
-
-/**
- * ENGINE_BUILTIN_VSSWRITER
- *
- * @var {string}
- */
-export const ENGINE_BUILTIN_VSSWRITER = "engine1/vsswriter";
-
-/**
- * ENGINE_BUILTIN_HYPERV
- *
- * @var {string}
- */
-export const ENGINE_BUILTIN_HYPERV = "engine1/hyperv";
-
-/**
- * ENGINE_BUILTIN_WINDISK
- *
- * @var {string}
- */
-export const ENGINE_BUILTIN_WINDISK = "engine1/windisk";
-
-/**
- * ENGINE_BUILTIN_MONGODB
- *
- * @var {string}
- */
-export const ENGINE_BUILTIN_MONGODB = "engine1/mongodb";
-
-/**
- * ENGINE_BUILTIN_MSOFFICE
- *
- * @var {string}
- */
-export const ENGINE_BUILTIN_MSOFFICE = "engine1/winmsofficemail";
-
-/**
- * ENGINE_BUILTIN_VMWARE
- *
- * @var {string}
- */
-export const ENGINE_BUILTIN_VMWARE = "engine1/vmware";
-
-/**
- * MSSQL_AUTH_WINDOWS
- * MSSQLAuthMode: 
- *
- * @var {string}
- */
-export const MSSQL_AUTH_WINDOWS = "windows";
-
-/**
- * MSSQL_AUTH_NATIVE
- * MSSQLAuthMode: 
- *
- * @var {string}
- */
-export const MSSQL_AUTH_NATIVE = "native";
-
-/**
- * MSSQL_METHOD_OLEDB_NATIVE
- * MSSQLMethod: 
- *
- * @var {string}
- */
-export const MSSQL_METHOD_OLEDB_NATIVE = "OLEDB_NATIVE";
-
-/**
- * MSSQL_METHOD_OLEDB_32
- * MSSQLMethod: 
- *
- * @var {string}
- */
-export const MSSQL_METHOD_OLEDB_32 = "OLEDB_32";
-
-/**
- * MSSQL_RESTORE_RECOVERY
- * MSSQLRestoreOpt: 
- *
- * @var {string}
- */
-export const MSSQL_RESTORE_RECOVERY = "RECOVERY";
-
-/**
- * MSSQL_RESTORE_NORECOVERY
- * MSSQLRestoreOpt: 
- *
- * @var {string}
- */
-export const MSSQL_RESTORE_NORECOVERY = "NO_RECOVERY";
-
-/**
- * STOREDOBJECTTYPE_FILE
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_FILE = "file";
-
-/**
- * STOREDOBJECTTYPE_DIRECTORY
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_DIRECTORY = "dir";
-
-/**
- * STOREDOBJECTTYPE_SYMLINK
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_SYMLINK = "symlink";
-
-/**
- * STOREDOBJECTTYPE_UNIXBLOCKDEVICE
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_UNIXBLOCKDEVICE = "dev";
-
-/**
- * STOREDOBJECTTYPE_UNIXCHARDEVICE
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_UNIXCHARDEVICE = "chardev";
-
-/**
- * STOREDOBJECTTYPE_UNIXFIFO
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_UNIXFIFO = "fifo";
-
-/**
- * STOREDOBJECTTYPE_UNIXSOCKET
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_UNIXSOCKET = "socket";
-
-/**
- * STOREDOBJECTTYPE_WINEFS
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_WINEFS = "winefs";
-
-/**
- * STOREDOBJECTTYPE_EMAILMESSAGE
- * StoredObjectType: "file"
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_EMAILMESSAGE = "emailmessage";
-
-/**
- * STOREDOBJECTTYPE_EMAILFOLDER
- * StoredObjectType: "dir"
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_EMAILFOLDER = "mailfolder";
-
-/**
- * STOREDOBJECTTYPE_OFFICECONTACT
- * StoredObjectType: "file"
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_OFFICECONTACT = "contact";
-
-/**
- * STOREDOBJECTTYPE_OFFICECONTACTFOLDER
- * StoredObjectType: "dir"
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_OFFICECONTACTFOLDER = "contactfolder";
-
-/**
- * STOREDOBJECTTYPE_OFFICECALENDAREVENT
- * StoredObjectType: "file"
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_OFFICECALENDAREVENT = "calendarevent";
-
-/**
- * STOREDOBJECTTYPE_OFFICECALENDAR
- * StoredObjectType: "dir"
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_OFFICECALENDAR = "calendar";
-
-/**
- * STOREDOBJECTTYPE_MSSITE
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_MSSITE = "mssite";
-
-/**
- * STOREDOBJECTTYPE_MSSITE_TEAM
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_MSSITE_TEAM = "mssiteteam";
-
-/**
- * STOREDOBJECTTYPE_MSSITELISTENTITY
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_MSSITELISTENTITY = "mssitelistentity";
-
-/**
- * STOREDOBJECTTYPE_MSSITEITEMENTITY
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_MSSITEITEMENTITY = "mssiteitementity";
-
-/**
- * STOREDOBJECTTYPE_MSSITELISTDRIVEENTITY
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_MSSITELISTDRIVEENTITY = "mssitelistdriveentity";
-
-/**
- * STOREDOBJECTTYPE_VMDK_FILE
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_VMDK_FILE = "vmdkfile";
-
-/**
- * STOREDOBJECTTYPE_VMDK_DIRECTORY
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_VMDK_DIRECTORY = "vmdkdir";
-
-/**
- * STOREDOBJECTTYPE_VMDK_WINEFS
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_VMDK_WINEFS = "vmdkwinefs";
-
-/**
- * STOREDOBJECTTYPE_VMDK_SYMLINK
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_VMDK_SYMLINK = "vmdksymlink";
-
-/**
- * STOREDOBJECTTYPE_VIRTUALIMAGE_DISK
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_VIRTUALIMAGE_DISK = "virtualimagedisk";
-
-/**
- * STOREDOBJECTTYPE_VHDX_GPT_PARTITION
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_VHDX_GPT_PARTITION = "vhdxpartitiongpt";
-
-/**
- * STOREDOBJECTTYPE_VHDX_MBR_PARTITION
- * StoredObjectType: 
- *
- * @var {string}
- */
-export const STOREDOBJECTTYPE_VHDX_MBR_PARTITION = "vhdxpartitionmbr";
-
-/**
- * OS_ANY
- * ExtraFileExclusionOSRestriction: 
- *
- * @var {number}
- */
-export const OS_ANY = 0;
-
-/**
- * OS_ONLY_WINDOWS
- * ExtraFileExclusionOSRestriction: 
- *
- * @var {number}
- */
-export const OS_ONLY_WINDOWS = 1;
-
-/**
- * OS_ONLY_WINDOWS_X8632
- * ExtraFileExclusionOSRestriction: 
- *
- * @var {number}
- */
-export const OS_ONLY_WINDOWS_X8632 = 2;
-
-/**
- * OS_ONLY_WINDOWS_X8664
- * ExtraFileExclusionOSRestriction: 
- *
- * @var {number}
- */
-export const OS_ONLY_WINDOWS_X8664 = 3;
-
-/**
- * OS_ONLY_MACOS
- * ExtraFileExclusionOSRestriction: 
- *
- * @var {number}
- */
-export const OS_ONLY_MACOS = 4;
-
-/**
- * OS_ONLY_LINUX
- * ExtraFileExclusionOSRestriction: 
- *
- * @var {number}
- */
-export const OS_ONLY_LINUX = 5;
-
-/**
- * SETTING_SYSTEM_DEFAULT
- * DefaultSettingMode: 
- *
- * @var {number}
- */
-export const SETTING_SYSTEM_DEFAULT = 0;
-
-/**
- * SETTING_OPTIONAL_DEFAULT_ON
- * DefaultSettingMode: 
- *
- * @var {number}
- */
-export const SETTING_OPTIONAL_DEFAULT_ON = 1;
-
-/**
- * SETTING_OPTIONAL_DEFAULT_OFF
- * DefaultSettingMode: 
- *
- * @var {number}
- */
-export const SETTING_OPTIONAL_DEFAULT_OFF = 2;
-
-/**
- * SETTING_ENFORCED_ON
- * DefaultSettingMode: 
- *
- * @var {number}
- */
-export const SETTING_ENFORCED_ON = 3;
-
-/**
- * SETTING_ENFORCED_OFF
- * DefaultSettingMode: 
- *
- * @var {number}
- */
-export const SETTING_ENFORCED_OFF = 4;
-
-/**
- * DEFAULT_LANGUAGE
- * LanguageCode: 
- *
- * @var {string}
- */
-export const DEFAULT_LANGUAGE = "en_US";
-
-/**
- * DEFAULT_TIMEZONE
- *
- * @var {string}
- */
-export const DEFAULT_TIMEZONE = "UTC";
-
-/**
- * VMWARE_CONNECTION_SSH
- * VMwareConnectionType: 
- *
- * @var {string}
- */
-export const VMWARE_CONNECTION_SSH = "ssh";
-
-/**
- * VMWARE_CONNECTION_VSPHERE
- * VMwareConnectionType: 
- *
- * @var {string}
- */
-export const VMWARE_CONNECTION_VSPHERE = "vsphere";
-
-/**
- * VMWARE_SNAPSHOT_FAST
- * VmwareSnapshotType: 
- *
- * @var {string}
- */
-export const VMWARE_SNAPSHOT_FAST = "";
-
-/**
- * VMWARE_SNAPSHOT_QUIESCE
- * VmwareSnapshotType: 
- *
- * @var {string}
- */
-export const VMWARE_SNAPSHOT_QUIESCE = "quiesce";
-
-/**
- * VMWARE_SNAPSHOT_MEMORY
- * VmwareSnapshotType: 
- *
- * @var {string}
- */
-export const VMWARE_SNAPSHOT_MEMORY = "memory";
-
-/**
- * APPLICATION_VERSION
- *
- * @var {string}
- */
-export const APPLICATION_VERSION = "23.3.1";
-
-/**
- * APPLICATION_VERSION_MAJOR
- *
- * @var {number}
- */
-export const APPLICATION_VERSION_MAJOR = 23;
-
-/**
- * APPLICATION_VERSION_MINOR
- *
- * @var {number}
- */
-export const APPLICATION_VERSION_MINOR = 3;
-
-/**
- * APPLICATION_VERSION_REVISION
- *
- * @var {number}
- */
-export const APPLICATION_VERSION_REVISION = 1;
-
-/**
- * RELEASE_CODENAME
- *
- * @var {string}
- */
-export const RELEASE_CODENAME = "Voyager";
-
-/**
- * ENCRYPTIONMETHOD_UNCONFIGURED
- *
- * @var {number}
- */
-export const ENCRYPTIONMETHOD_UNCONFIGURED = 0;
-
-/**
- * PASSWORD_FORMAT_PLAINTEXT
- *
- * @var {number}
- */
-export const PASSWORD_FORMAT_PLAINTEXT = 0;
-
-/**
- * UnknownDeviceError
- *
- * @var {string}
- */
-export const UnknownDeviceError = "ERR_UNKNOWN_DEVICE";
-
-/**
- * TOTPRequiredError
- *
- * @var {string}
- */
-export const TOTPRequiredError = "ERR_TOTP_REQUIRED";
-
-/**
- * UnsupportVmdkFileSystem
- *
- * @var {string}
- */
-export const UnsupportVmdkFileSystem = "ERR_UNSUPPORT_VMDK_FILE_SYSTEM";
-
-/**
- * UnsupportVhdxFileSystem
- *
- * @var {string}
- */
-export const UnsupportVhdxFileSystem = "ERR_UNSUPPORT_VHDX_FILE_SYSTEM";
-
-/**
- * VhdxPartitonReadErrMsg
- *
- * @var {string}
- */
-export const VhdxPartitonReadErrMsg = "ERR_VHDX_PARTITION";
-
-/**
- * EMAIL_WORKER_STATE_NOT_STARTED
- *
- * @var {number}
- */
-export const EMAIL_WORKER_STATE_NOT_STARTED = 0;
-
-/**
- * EMAIL_WORKER_STATE_STARTED
- *
- * @var {number}
- */
-export const EMAIL_WORKER_STATE_STARTED = 1;
-
-/**
- * EMAIL_WORKER_STATE_CALCULATING
- *
- * @var {number}
- */
-export const EMAIL_WORKER_STATE_CALCULATING = 2;
-
-/**
- * EMAIL_WORKER_STATE_WAITING
- *
- * @var {number}
- */
-export const EMAIL_WORKER_STATE_WAITING = 3;
-
-/**
- * EMAIL_WORKER_STATE_SENDING
- *
- * @var {number}
- */
-export const EMAIL_WORKER_STATE_SENDING = 4;
-
-/**
- * WEBAUTHN_DEVICE_TYPE__UNKNOWN
- * WebAuthnDeviceType: 
- *
- * @var {number}
- */
-export const WEBAUTHN_DEVICE_TYPE__UNKNOWN = 0;
-
-/**
- * WEBAUTHN_DEVICE_TYPE__HARDWARE_TOKEN
- * WebAuthnDeviceType: 
- *
- * @var {number}
- */
-export const WEBAUTHN_DEVICE_TYPE__HARDWARE_TOKEN = 1;
-
-/**
- * WEBAUTHN_DEVICE_TYPE__ANDROID
- * WebAuthnDeviceType: 
- *
- * @var {number}
- */
-export const WEBAUTHN_DEVICE_TYPE__ANDROID = 2;
-
-/**
- * WEBAUTHN_DEVICE_TYPE__APPLE
- * WebAuthnDeviceType: 
- *
- * @var {number}
- */
-export const WEBAUTHN_DEVICE_TYPE__APPLE = 3;
-
-/**
- * WEBAUTHN_DEVICE_TYPE__TPM_GENERIC
- * WebAuthnDeviceType: 
- *
- * @var {number}
- */
-export const WEBAUTHN_DEVICE_TYPE__TPM_GENERIC = 4;
-
-/**
- * WEBAUTHN_DEVICE_TYPE__TPM_WINDOWS
- * WebAuthnDeviceType: 
- *
- * @var {number}
- */
-export const WEBAUTHN_DEVICE_TYPE__TPM_WINDOWS = 5;
-
-/**
- * WEBAUTHN_DEVICE_TYPE__TPM_LINUX
- * WebAuthnDeviceType: 
- *
- * @var {number}
- */
-export const WEBAUTHN_DEVICE_TYPE__TPM_LINUX = 6;
-
-/**
- * UPDATESTATUS_NOT_SEEN
- * UpdateStatus: 
- *
- * @var {number}
- */
-export const UPDATESTATUS_NOT_SEEN = 0;
-
-/**
- * UPDATESTATUS_INELIGIBLE
- * UpdateStatus: 
- *
- * @var {number}
- */
-export const UPDATESTATUS_INELIGIBLE = 1;
-
-/**
- * UPDATESTATUS_PENDING
- * UpdateStatus: 
- *
- * @var {number}
- */
-export const UPDATESTATUS_PENDING = 2;
-
-/**
- * UPDATESTATUS_REQUEST_MADE
- * UpdateStatus: 
- *
- * @var {number}
- */
-export const UPDATESTATUS_REQUEST_MADE = 3;
-
-/**
- * UPDATESTATUS_UPDATE_FAILED
- * UpdateStatus: Device reconnected with bad version
- *
- * @var {number}
- */
-export const UPDATESTATUS_UPDATE_FAILED = 4;
-
-/**
- * UPDATESTATUS_UPDATE_CONFIRMED
- * UpdateStatus: 
- *
- * @var {number}
- */
-export const UPDATESTATUS_UPDATE_CONFIRMED = 5;
-
-/**
- * REPLICATOR_STATE_NONE
- * ReplicatorState: 
- *
- * @var {number}
- */
-export const REPLICATOR_STATE_NONE = 0;
-
-/**
- * REPLICATOR_STATE_FILE_LIST_WORKER_STARTED
- * ReplicatorState: 
- *
- * @var {number}
- */
-export const REPLICATOR_STATE_FILE_LIST_WORKER_STARTED = 1;
-
-/**
- * REPLICATOR_STATE_FILE_LIST_SYNC_RUNNING
- * ReplicatorState: 
- *
- * @var {number}
- */
-export const REPLICATOR_STATE_FILE_LIST_SYNC_RUNNING = 2;
-
-/**
- * REPLICATOR_STATE_FILE_LIST_SYNC_FINISHED
- * ReplicatorState: 
- *
- * @var {number}
- */
-export const REPLICATOR_STATE_FILE_LIST_SYNC_FINISHED = 4;
-
-/**
- * REPLICATOR_STATE_WORKERS_STARTED
- * ReplicatorState: 
- *
- * @var {number}
- */
-export const REPLICATOR_STATE_WORKERS_STARTED = 8;
-
-/**
- * REPLICATOR_DISPLAYCLASS_STORAGE
- * ReplicatorDisplayClass: 
- *
- * @var {number}
- */
-export const REPLICATOR_DISPLAYCLASS_STORAGE = 100;
-
-/**
- * REPLICATOR_DISPLAYCLASS_USER
- * ReplicatorDisplayClass: 
- *
- * @var {number}
- */
-export const REPLICATOR_DISPLAYCLASS_USER = 101;
 
 /**
  * SEARCHCLAUSE_RULE
@@ -1920,238 +1795,103 @@ export const SEARCHOPERATOR_BOOL_IS = "bool_is";
 export const SEARCHOPERATOR_BOOL_NIS = "bool_nis";
 
 /**
- * EMAIL_DELIVERY_INHERIT
- * EmailDeliveryType: 
- *
- * @var {string}
- */
-export const EMAIL_DELIVERY_INHERIT = "";
-
-/**
- * EMAIL_DELIVERY_MX_DIRECT
- * EmailDeliveryType: 
- *
- * @var {string}
- */
-export const EMAIL_DELIVERY_MX_DIRECT = "builtin";
-
-/**
- * EMAIL_DELIVERY_SMTP
- * EmailDeliveryType: 
- *
- * @var {string}
- */
-export const EMAIL_DELIVERY_SMTP = "smtp";
-
-/**
- * EMAIL_DELIVERY_SMTP_SSL
- * EmailDeliveryType: 
- *
- * @var {string}
- */
-export const EMAIL_DELIVERY_SMTP_SSL = "smtp-ssl";
-
-/**
- * EMAIL_DELIVERY_DISABLED
- * EmailDeliveryType: 
- *
- * @var {string}
- */
-export const EMAIL_DELIVERY_DISABLED = "disabled";
-
-/**
- * EMAIL_DELIVERY_BUILTIN
- * EmailDeliveryType: Legacy alias
- *
- * @var {string}
- */
-export const EMAIL_DELIVERY_BUILTIN = EMAIL_DELIVERY_MX_DIRECT;
-
-/**
- * EMAIL_DELIVERY_NONE
- * EmailDeliveryType: changed for clarity
- *
- * @var {string}
- * @deprecated This const has been deprecated since Comet version 22.12.1
- */
-export const EMAIL_DELIVERY_NONE = EMAIL_DELIVERY_INHERIT;
-
-/**
- * REMOTESERVER_COMET
- * RemoteServerType: 
- *
- * @var {string}
- */
-export const REMOTESERVER_COMET = "comet";
-
-/**
- * REMOTESERVER_LDAP
- * RemoteServerType: 
- *
- * @var {string}
- */
-export const REMOTESERVER_LDAP = "ldap";
-
-/**
- * REMOTESERVER_B2
- * RemoteServerType: 
- *
- * @var {string}
- */
-export const REMOTESERVER_B2 = "b2";
-
-/**
- * REMOTESERVER_WASABI
- * RemoteServerType: 
- *
- * @var {string}
- */
-export const REMOTESERVER_WASABI = "wasabi";
-
-/**
- * REMOTESERVER_CUSTOM
- * RemoteServerType: 
- *
- * @var {string}
- */
-export const REMOTESERVER_CUSTOM = "custom";
-
-/**
- * REMOTESERVER_S3_GENERIC
- * RemoteServerType: 
- *
- * @var {string}
- */
-export const REMOTESERVER_S3_GENERIC = "s3";
-
-/**
- * REMOTESERVER_AWS
- * RemoteServerType: 
- *
- * @var {string}
- */
-export const REMOTESERVER_AWS = "aws";
-
-/**
- * REMOTESERVER_STORJ
- * RemoteServerType: 
- *
- * @var {string}
- */
-export const REMOTESERVER_STORJ = "storj";
-
-/**
- * REMOTESERVER_IDRIVEE2
- * RemoteServerType: 
- *
- * @var {string}
- */
-export const REMOTESERVER_IDRIVEE2 = "idrivee2";
-
-/**
- * LDAPSECURITYMETHOD_PLAIN
- * LDAPSecurityMethod: 
- *
- * @var {string}
- */
-export const LDAPSECURITYMETHOD_PLAIN = "plain";
-
-/**
- * LDAPSECURITYMETHOD_LDAPS
- * LDAPSecurityMethod: 
- *
- * @var {string}
- */
-export const LDAPSECURITYMETHOD_LDAPS = "ldaps";
-
-/**
- * LDAPSECURITYMETHOD_STARTTLS
- * LDAPSecurityMethod: 
- *
- * @var {string}
- */
-export const LDAPSECURITYMETHOD_STARTTLS = "starttls";
-
-/**
- * WINDOWSCODESIGN_METHOD_AUTO
- * WindowsCodesignMethod: When upgrading from a version of Comet Server prior to 22.12.7, this option will be automatically converted to a more specific type..
- *
- * @var {number}
- * @deprecated This const has been deprecated since Comet version 22.12.7
- */
-export const WINDOWSCODESIGN_METHOD_AUTO = 0;
-
-/**
- * WINDOWSCODESIGN_METHOD_DISABLED
- * WindowsCodesignMethod: 
+ * SERVICE_CALENDAR
  *
  * @var {number}
  */
-export const WINDOWSCODESIGN_METHOD_DISABLED = 1;
+export const SERVICE_CALENDAR = 1;
 
 /**
- * WINDOWSCODESIGN_METHOD_PKCS12FILE
- * WindowsCodesignMethod: 
+ * SERVICE_CONTACT
  *
  * @var {number}
  */
-export const WINDOWSCODESIGN_METHOD_PKCS12FILE = 2;
+export const SERVICE_CONTACT = 2;
 
 /**
- * WINDOWSCODESIGN_METHOD_PKCS11HSM
- * WindowsCodesignMethod: 
+ * SERVICE_MAIL
  *
  * @var {number}
  */
-export const WINDOWSCODESIGN_METHOD_PKCS11HSM = 3;
+export const SERVICE_MAIL = 4;
 
 /**
- * WINDOWSCODESIGN_METHOD_AZUREKEYVAULT
- * WindowsCodesignMethod: 
+ * SERVICE_SHAREPOINT
  *
  * @var {number}
  */
-export const WINDOWSCODESIGN_METHOD_AZUREKEYVAULT = 4;
+export const SERVICE_SHAREPOINT = 8;
 
 /**
- * MACOSCODESIGN_LEVEL_SIGN
- * MacOSCodesignLevel: 
+ * SERVICE_ONEDRIVE
  *
  * @var {number}
  */
-export const MACOSCODESIGN_LEVEL_SIGN = 0;
+export const SERVICE_ONEDRIVE = 16;
 
 /**
- * MACOSCODESIGN_LEVEL_SIGN_NOTARISE
- * MacOSCodesignLevel: 
+ * SETTING_SYSTEM_DEFAULT
+ * DefaultSettingMode: 
  *
  * @var {number}
  */
-export const MACOSCODESIGN_LEVEL_SIGN_NOTARISE = 1;
+export const SETTING_SYSTEM_DEFAULT = 0;
 
 /**
- * MACOSCODESIGN_LEVEL_SIGN_NOTARISE_STAPLE
- * MacOSCodesignLevel: 
+ * SETTING_OPTIONAL_DEFAULT_ON
+ * DefaultSettingMode: 
  *
  * @var {number}
  */
-export const MACOSCODESIGN_LEVEL_SIGN_NOTARISE_STAPLE = 2;
+export const SETTING_OPTIONAL_DEFAULT_ON = 1;
 
 /**
- * CLIENTBRANDINGBUILD_CUSTOM
- * ClientBrandingBuildMode: Public-Doc: The software client will be custom-built by this Comet Server, allowing custom branding, default server URL, and codesigning.
+ * SETTING_OPTIONAL_DEFAULT_OFF
+ * DefaultSettingMode: 
  *
  * @var {number}
  */
-export const CLIENTBRANDINGBUILD_CUSTOM = 0;
+export const SETTING_OPTIONAL_DEFAULT_OFF = 2;
 
 /**
- * CLIENTBRANDINGBUILD_PREBUILT
- * ClientBrandingBuildMode: Public-Doc: A pre-built software client will be served, with Comet-branding, no server URL, and Comet codesigning.
+ * SETTING_ENFORCED_ON
+ * DefaultSettingMode: 
  *
  * @var {number}
  */
-export const CLIENTBRANDINGBUILD_PREBUILT = 1;
+export const SETTING_ENFORCED_ON = 3;
+
+/**
+ * SETTING_ENFORCED_OFF
+ * DefaultSettingMode: 
+ *
+ * @var {number}
+ */
+export const SETTING_ENFORCED_OFF = 4;
+
+/**
+ * SEVERITY_INFO
+ * Severity: 
+ *
+ * @var {string}
+ */
+export const SEVERITY_INFO = "I";
+
+/**
+ * SEVERITY_WARNING
+ * Severity: 
+ *
+ * @var {string}
+ */
+export const SEVERITY_WARNING = "W";
+
+/**
+ * SEVERITY_ERROR
+ * Severity: 
+ *
+ * @var {string}
+ */
+export const SEVERITY_ERROR = "E";
 
 /**
  * SEVT__MIN
@@ -2226,196 +1966,456 @@ export const SEVT_BUCKET_NEW = 4300;
 export const SEVT__MAX = 4999;
 
 /**
- * PSA_TYPE_GENERIC
- * PSAType: 
+ * SSHCONNECTION_AUTHMODE__INVALID
+ * SSHAuthMode: 
  *
  * @var {number}
  */
-export const PSA_TYPE_GENERIC = 0;
+export const SSHCONNECTION_AUTHMODE__INVALID = 0;
 
 /**
- * PSA_TYPE_GRADIENT
- * PSAType: 
+ * SSHCONNECTION_AUTHMODE_PASSWORD
+ * SSHAuthMode: 
  *
  * @var {number}
  */
-export const PSA_TYPE_GRADIENT = 1;
+export const SSHCONNECTION_AUTHMODE_PASSWORD = 1;
 
 /**
- * DEFAULT_BRAND_NAME
+ * SSHCONNECTION_AUTHMODE_PRIVATEKEY
+ * SSHAuthMode: n.b. change values
+ *
+ * @var {number}
+ */
+export const SSHCONNECTION_AUTHMODE_PRIVATEKEY = 2;
+
+/**
+ * STOREDOBJECTTYPE_FILE
+ * StoredObjectType: 
  *
  * @var {string}
  */
-export const DEFAULT_BRAND_NAME = "COMET";
+export const STOREDOBJECTTYPE_FILE = "file";
 
 /**
- * DEFAULT_TOPCOLOR
- * #1782D6"
+ * STOREDOBJECTTYPE_DIRECTORY
+ * StoredObjectType: 
  *
  * @var {string}
  */
-export const DEFAULT_TOPCOLOR = "#06041E";
+export const STOREDOBJECTTYPE_DIRECTORY = "dir";
 
 /**
- * MINIMUM_LOG_RETENTION_DAYS
- *
- * @var {number}
- */
-export const MINIMUM_LOG_RETENTION_DAYS = 10;
-
-/**
- * REPLICADELETION_NONE
- * ReplicaDeletionStrategy: 
+ * STOREDOBJECTTYPE_SYMLINK
+ * StoredObjectType: 
  *
  * @var {string}
  */
-export const REPLICADELETION_NONE = "none";
+export const STOREDOBJECTTYPE_SYMLINK = "symlink";
 
 /**
- * REPLICADELETION_CIRCULAR
- * ReplicaDeletionStrategy: 
+ * STOREDOBJECTTYPE_UNIXBLOCKDEVICE
+ * StoredObjectType: 
  *
  * @var {string}
  */
-export const REPLICADELETION_CIRCULAR = "circular";
+export const STOREDOBJECTTYPE_UNIXBLOCKDEVICE = "dev";
 
 /**
- * REPLICADELETION_COMPLETE
- * ReplicaDeletionStrategy: 
+ * STOREDOBJECTTYPE_UNIXCHARDEVICE
+ * StoredObjectType: 
  *
  * @var {string}
  */
-export const REPLICADELETION_COMPLETE = "complete";
+export const STOREDOBJECTTYPE_UNIXCHARDEVICE = "chardev";
 
 /**
- * LOGOIMAGE_NONE
- * LogoImageType: 
- *
- * @var {number}
- */
-export const LOGOIMAGE_NONE = 1;
-
-/**
- * LOGOIMAGE_AS_PER_FILE
- * LogoImageType: 
- *
- * @var {number}
- */
-export const LOGOIMAGE_AS_PER_FILE = 2;
-
-/**
- * LOGOIMAGE_COMETEMBEDDED
- * LogoImageType: 
- *
- * @var {number}
- */
-export const LOGOIMAGE_COMETEMBEDDED = 3;
-
-/**
- * COMPRESS_INVALID
- * CompressMode: 
- *
- * @var {number}
- */
-export const COMPRESS_INVALID = 0;
-
-/**
- * COMPRESS_LVL_1
- * CompressMode: 
- *
- * @var {number}
- */
-export const COMPRESS_LVL_1 = 1;
-
-/**
- * COMPRESS_LVL_2
- * CompressMode: 
- *
- * @var {number}
- */
-export const COMPRESS_LVL_2 = 2;
-
-/**
- * COMPRESS_LVL_3
- * CompressMode: 
- *
- * @var {number}
- */
-export const COMPRESS_LVL_3 = 3;
-
-/**
- * COMPRESS_LVL_4
- * CompressMode: 
- *
- * @var {number}
- */
-export const COMPRESS_LVL_4 = 4;
-
-/**
- * COMPRESS_LVL_5
- * CompressMode: 
- *
- * @var {number}
- */
-export const COMPRESS_LVL_5 = 5;
-
-/**
- * COMPRESS_MAX
- * CompressMode: 
- *
- * @var {number}
- */
-export const COMPRESS_MAX = COMPRESS_LVL_5;
-
-/**
- * COMPRESS_DEFAULT
- * CompressMode: 
- *
- * @var {number}
- */
-export const COMPRESS_DEFAULT = COMPRESS_LVL_4;
-
-/**
- * DEFAULT_SESSIONTIMEOUT
- *
- * @var {number}
- */
-export const DEFAULT_SESSIONTIMEOUT = 1800;
-
-/**
- * OFFICE365_REGION_PUBLIC
+ * STOREDOBJECTTYPE_UNIXFIFO
+ * StoredObjectType: 
  *
  * @var {string}
  */
-export const OFFICE365_REGION_PUBLIC = "GlobalPublicCloud";
+export const STOREDOBJECTTYPE_UNIXFIFO = "fifo";
 
 /**
- * OFFICE365_REGION_CHINA
+ * STOREDOBJECTTYPE_UNIXSOCKET
+ * StoredObjectType: 
  *
  * @var {string}
  */
-export const OFFICE365_REGION_CHINA = "ChinaCloud";
+export const STOREDOBJECTTYPE_UNIXSOCKET = "socket";
 
 /**
- * OFFICE365_REGION_GERMANY
+ * STOREDOBJECTTYPE_WINEFS
+ * StoredObjectType: 
  *
  * @var {string}
  */
-export const OFFICE365_REGION_GERMANY = "GermanCloud";
+export const STOREDOBJECTTYPE_WINEFS = "winefs";
 
 /**
- * OFFICE365_REGION_US_GOVT
+ * STOREDOBJECTTYPE_EMAILMESSAGE
+ * StoredObjectType: "file"
  *
  * @var {string}
  */
-export const OFFICE365_REGION_US_GOVT = "USGovtGccCloud";
+export const STOREDOBJECTTYPE_EMAILMESSAGE = "emailmessage";
 
 /**
- * OFFICE365_REGION_US_DOD
+ * STOREDOBJECTTYPE_EMAILFOLDER
+ * StoredObjectType: "dir"
  *
  * @var {string}
  */
-export const OFFICE365_REGION_US_DOD = "USGovtGccDoDCloud";
+export const STOREDOBJECTTYPE_EMAILFOLDER = "mailfolder";
+
+/**
+ * STOREDOBJECTTYPE_OFFICECONTACT
+ * StoredObjectType: "file"
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_OFFICECONTACT = "contact";
+
+/**
+ * STOREDOBJECTTYPE_OFFICECONTACTFOLDER
+ * StoredObjectType: "dir"
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_OFFICECONTACTFOLDER = "contactfolder";
+
+/**
+ * STOREDOBJECTTYPE_OFFICECALENDAREVENT
+ * StoredObjectType: "file"
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_OFFICECALENDAREVENT = "calendarevent";
+
+/**
+ * STOREDOBJECTTYPE_OFFICECALENDAR
+ * StoredObjectType: "dir"
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_OFFICECALENDAR = "calendar";
+
+/**
+ * STOREDOBJECTTYPE_MSSITE
+ * StoredObjectType: 
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_MSSITE = "mssite";
+
+/**
+ * STOREDOBJECTTYPE_MSSITE_TEAM
+ * StoredObjectType: 
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_MSSITE_TEAM = "mssiteteam";
+
+/**
+ * STOREDOBJECTTYPE_MSSITELISTENTITY
+ * StoredObjectType: 
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_MSSITELISTENTITY = "mssitelistentity";
+
+/**
+ * STOREDOBJECTTYPE_MSSITEITEMENTITY
+ * StoredObjectType: 
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_MSSITEITEMENTITY = "mssiteitementity";
+
+/**
+ * STOREDOBJECTTYPE_MSSITELISTDRIVEENTITY
+ * StoredObjectType: 
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_MSSITELISTDRIVEENTITY = "mssitelistdriveentity";
+
+/**
+ * STOREDOBJECTTYPE_VMDK_FILE
+ * StoredObjectType: 
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_VMDK_FILE = "vmdkfile";
+
+/**
+ * STOREDOBJECTTYPE_VMDK_DIRECTORY
+ * StoredObjectType: 
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_VMDK_DIRECTORY = "vmdkdir";
+
+/**
+ * STOREDOBJECTTYPE_VMDK_WINEFS
+ * StoredObjectType: 
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_VMDK_WINEFS = "vmdkwinefs";
+
+/**
+ * STOREDOBJECTTYPE_VMDK_SYMLINK
+ * StoredObjectType: 
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_VMDK_SYMLINK = "vmdksymlink";
+
+/**
+ * STOREDOBJECTTYPE_VIRTUALIMAGE_DISK
+ * StoredObjectType: 
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_VIRTUALIMAGE_DISK = "virtualimagedisk";
+
+/**
+ * STOREDOBJECTTYPE_VHDX_GPT_PARTITION
+ * StoredObjectType: 
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_VHDX_GPT_PARTITION = "vhdxpartitiongpt";
+
+/**
+ * STOREDOBJECTTYPE_VHDX_MBR_PARTITION
+ * StoredObjectType: 
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_VHDX_MBR_PARTITION = "vhdxpartitionmbr";
+
+/**
+ * TOTPRequiredError
+ *
+ * @var {string}
+ */
+export const TOTPRequiredError = "ERR_TOTP_REQUIRED";
+
+/**
+ * UPDATESTATUS_NOT_SEEN
+ * UpdateStatus: 
+ *
+ * @var {number}
+ */
+export const UPDATESTATUS_NOT_SEEN = 0;
+
+/**
+ * UPDATESTATUS_INELIGIBLE
+ * UpdateStatus: 
+ *
+ * @var {number}
+ */
+export const UPDATESTATUS_INELIGIBLE = 1;
+
+/**
+ * UPDATESTATUS_PENDING
+ * UpdateStatus: 
+ *
+ * @var {number}
+ */
+export const UPDATESTATUS_PENDING = 2;
+
+/**
+ * UPDATESTATUS_REQUEST_MADE
+ * UpdateStatus: 
+ *
+ * @var {number}
+ */
+export const UPDATESTATUS_REQUEST_MADE = 3;
+
+/**
+ * UPDATESTATUS_UPDATE_FAILED
+ * UpdateStatus: Device reconnected with bad version
+ *
+ * @var {number}
+ */
+export const UPDATESTATUS_UPDATE_FAILED = 4;
+
+/**
+ * UPDATESTATUS_UPDATE_CONFIRMED
+ * UpdateStatus: 
+ *
+ * @var {number}
+ */
+export const UPDATESTATUS_UPDATE_CONFIRMED = 5;
+
+/**
+ * UnknownDeviceError
+ *
+ * @var {string}
+ */
+export const UnknownDeviceError = "ERR_UNKNOWN_DEVICE";
+
+/**
+ * UnsupportVhdxFileSystem
+ *
+ * @var {string}
+ */
+export const UnsupportVhdxFileSystem = "ERR_UNSUPPORT_VHDX_FILE_SYSTEM";
+
+/**
+ * UnsupportVmdkFileSystem
+ *
+ * @var {string}
+ */
+export const UnsupportVmdkFileSystem = "ERR_UNSUPPORT_VMDK_FILE_SYSTEM";
+
+/**
+ * VMWARE_CONNECTION_SSH
+ * VMwareConnectionType: 
+ *
+ * @var {string}
+ */
+export const VMWARE_CONNECTION_SSH = "ssh";
+
+/**
+ * VMWARE_CONNECTION_VSPHERE
+ * VMwareConnectionType: 
+ *
+ * @var {string}
+ */
+export const VMWARE_CONNECTION_VSPHERE = "vsphere";
+
+/**
+ * VMWARE_SNAPSHOT_FAST
+ * VmwareSnapshotType: 
+ *
+ * @var {string}
+ */
+export const VMWARE_SNAPSHOT_FAST = "";
+
+/**
+ * VMWARE_SNAPSHOT_QUIESCE
+ * VmwareSnapshotType: 
+ *
+ * @var {string}
+ */
+export const VMWARE_SNAPSHOT_QUIESCE = "quiesce";
+
+/**
+ * VMWARE_SNAPSHOT_MEMORY
+ * VmwareSnapshotType: 
+ *
+ * @var {string}
+ */
+export const VMWARE_SNAPSHOT_MEMORY = "memory";
+
+/**
+ * VhdxPartitonReadErrMsg
+ *
+ * @var {string}
+ */
+export const VhdxPartitonReadErrMsg = "ERR_VHDX_PARTITION";
+
+/**
+ * WEBAUTHN_DEVICE_TYPE__UNKNOWN
+ * WebAuthnDeviceType: 
+ *
+ * @var {number}
+ */
+export const WEBAUTHN_DEVICE_TYPE__UNKNOWN = 0;
+
+/**
+ * WEBAUTHN_DEVICE_TYPE__HARDWARE_TOKEN
+ * WebAuthnDeviceType: 
+ *
+ * @var {number}
+ */
+export const WEBAUTHN_DEVICE_TYPE__HARDWARE_TOKEN = 1;
+
+/**
+ * WEBAUTHN_DEVICE_TYPE__ANDROID
+ * WebAuthnDeviceType: 
+ *
+ * @var {number}
+ */
+export const WEBAUTHN_DEVICE_TYPE__ANDROID = 2;
+
+/**
+ * WEBAUTHN_DEVICE_TYPE__APPLE
+ * WebAuthnDeviceType: 
+ *
+ * @var {number}
+ */
+export const WEBAUTHN_DEVICE_TYPE__APPLE = 3;
+
+/**
+ * WEBAUTHN_DEVICE_TYPE__TPM_GENERIC
+ * WebAuthnDeviceType: 
+ *
+ * @var {number}
+ */
+export const WEBAUTHN_DEVICE_TYPE__TPM_GENERIC = 4;
+
+/**
+ * WEBAUTHN_DEVICE_TYPE__TPM_WINDOWS
+ * WebAuthnDeviceType: 
+ *
+ * @var {number}
+ */
+export const WEBAUTHN_DEVICE_TYPE__TPM_WINDOWS = 5;
+
+/**
+ * WEBAUTHN_DEVICE_TYPE__TPM_LINUX
+ * WebAuthnDeviceType: 
+ *
+ * @var {number}
+ */
+export const WEBAUTHN_DEVICE_TYPE__TPM_LINUX = 6;
+
+/**
+ * WINDOWSCODESIGN_METHOD_AUTO
+ * WindowsCodesignMethod: When upgrading from a version of Comet Server prior to 22.12.7, this option will be automatically converted to a more specific type..
+ *
+ * @var {number}
+ * @deprecated This const has been deprecated since Comet version 22.12.7
+ */
+export const WINDOWSCODESIGN_METHOD_AUTO = 0;
+
+/**
+ * WINDOWSCODESIGN_METHOD_DISABLED
+ * WindowsCodesignMethod: 
+ *
+ * @var {number}
+ */
+export const WINDOWSCODESIGN_METHOD_DISABLED = 1;
+
+/**
+ * WINDOWSCODESIGN_METHOD_PKCS12FILE
+ * WindowsCodesignMethod: 
+ *
+ * @var {number}
+ */
+export const WINDOWSCODESIGN_METHOD_PKCS12FILE = 2;
+
+/**
+ * WINDOWSCODESIGN_METHOD_PKCS11HSM
+ * WindowsCodesignMethod: 
+ *
+ * @var {number}
+ */
+export const WINDOWSCODESIGN_METHOD_PKCS11HSM = 3;
+
+/**
+ * WINDOWSCODESIGN_METHOD_AZUREKEYVAULT
+ * WindowsCodesignMethod: 
+ *
+ * @var {number}
+ */
+export const WINDOWSCODESIGN_METHOD_AZUREKEYVAULT = 4;
 
 // DATA TYPES
 
