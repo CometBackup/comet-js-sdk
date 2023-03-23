@@ -1423,28 +1423,28 @@ export const VMWARE_SNAPSHOT_MEMORY = "memory";
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "22.12.8";
+export const APPLICATION_VERSION = "23.3.1";
 
 /**
  * APPLICATION_VERSION_MAJOR
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MAJOR = 22;
+export const APPLICATION_VERSION_MAJOR = 23;
 
 /**
  * APPLICATION_VERSION_MINOR
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MINOR = 12;
+export const APPLICATION_VERSION_MINOR = 3;
 
 /**
  * APPLICATION_VERSION_REVISION
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 8;
+export const APPLICATION_VERSION_REVISION = 1;
 
 /**
  * RELEASE_CODENAME
@@ -2073,6 +2073,47 @@ export const LDAPSECURITYMETHOD_LDAPS = "ldaps";
 export const LDAPSECURITYMETHOD_STARTTLS = "starttls";
 
 /**
+ * WINDOWSCODESIGN_METHOD_AUTO
+ * WindowsCodesignMethod: When upgrading from a version of Comet Server prior to 22.12.7, this option will be automatically converted to a more specific type..
+ *
+ * @var {number}
+ * @deprecated This const has been deprecated since Comet version 22.12.7
+ */
+export const WINDOWSCODESIGN_METHOD_AUTO = 0;
+
+/**
+ * WINDOWSCODESIGN_METHOD_DISABLED
+ * WindowsCodesignMethod: 
+ *
+ * @var {number}
+ */
+export const WINDOWSCODESIGN_METHOD_DISABLED = 1;
+
+/**
+ * WINDOWSCODESIGN_METHOD_PKCS12FILE
+ * WindowsCodesignMethod: 
+ *
+ * @var {number}
+ */
+export const WINDOWSCODESIGN_METHOD_PKCS12FILE = 2;
+
+/**
+ * WINDOWSCODESIGN_METHOD_PKCS11HSM
+ * WindowsCodesignMethod: 
+ *
+ * @var {number}
+ */
+export const WINDOWSCODESIGN_METHOD_PKCS11HSM = 3;
+
+/**
+ * WINDOWSCODESIGN_METHOD_AZUREKEYVAULT
+ * WindowsCodesignMethod: 
+ *
+ * @var {number}
+ */
+export const WINDOWSCODESIGN_METHOD_AZUREKEYVAULT = 4;
+
+/**
  * MACOSCODESIGN_LEVEL_SIGN
  * MacOSCodesignLevel: 
  *
@@ -2596,6 +2637,9 @@ export type libcomet_AmazonAWSVirtualStorageRoleSettings = {
 	MasterBucket: string
 	AccessKey: string
 	SecretKey: string
+	UseObjectLock: boolean
+	ObjectLockDays: number
+	RemoveDeleted: boolean
 }
 
 export function New_Zero_libcomet_AmazonAWSVirtualStorageRoleSettings(): libcomet_AmazonAWSVirtualStorageRoleSettings {
@@ -2603,6 +2647,9 @@ export function New_Zero_libcomet_AmazonAWSVirtualStorageRoleSettings(): libcome
 		"MasterBucket": "",
 		"AccessKey": "",
 		"SecretKey": "",
+		"UseObjectLock": false,
+		"ObjectLockDays": 0,
+		"RemoveDeleted": false,
 	};
 }
 
@@ -2909,15 +2956,25 @@ export type libcomet_BrandingOptions = {
 	PathHeaderImage: string
 	PathAppIconImage: string
 	PackageIdentifier: string
+	WindowsCodeSignMethod: number
 	WindowsCodeSignPKCS12FilePath: string
 	WindowsCodeSignPKCS12PasswordFormat: number
 	WindowsCodeSignPKCS12Password: string
 	WindowsCodeSignPKCS11Engine: string
 	WindowsCodeSignPKCS11Module: string
+	/**
+	 * @deprecated This member has been deprecated since Comet version 22.12.7
+	 */
 	WindowsCodeSignPKCS11Certfile: string
 	WindowsCodeSignPKCS11KeyID: string
 	WindowsCodeSignPKCS11PasswordFormat: number
 	WindowsCodeSignPKCS11Password: string
+	WindowsCodeSignAzureVaultName: string
+	WindowsCodeSignAzureCertName: string
+	WindowsCodeSignAzureAppID: string
+	WindowsCodeSignAzureAppSecretFormat: number
+	WindowsCodeSignAzureAppSecret: string
+	WindowsCodeSignAzureTenantID: string
 	MacOSCodeSign: libcomet_MacOSCodeSignProperties
 }
 
@@ -2945,6 +3002,7 @@ export function New_Zero_libcomet_BrandingOptions(): libcomet_BrandingOptions {
 		"PathHeaderImage": "",
 		"PathAppIconImage": "",
 		"PackageIdentifier": "",
+		"WindowsCodeSignMethod": 0,
 		"WindowsCodeSignPKCS12FilePath": "",
 		"WindowsCodeSignPKCS12PasswordFormat": 0,
 		"WindowsCodeSignPKCS12Password": "",
@@ -2954,6 +3012,12 @@ export function New_Zero_libcomet_BrandingOptions(): libcomet_BrandingOptions {
 		"WindowsCodeSignPKCS11KeyID": "",
 		"WindowsCodeSignPKCS11PasswordFormat": 0,
 		"WindowsCodeSignPKCS11Password": "",
+		"WindowsCodeSignAzureVaultName": "",
+		"WindowsCodeSignAzureCertName": "",
+		"WindowsCodeSignAzureAppID": "",
+		"WindowsCodeSignAzureAppSecretFormat": 0,
+		"WindowsCodeSignAzureAppSecret": "",
+		"WindowsCodeSignAzureTenantID": "",
 		"MacOSCodeSign": New_Zero_libcomet_MacOSCodeSignProperties(),
 	};
 }
@@ -2984,6 +3048,7 @@ export function libcomet_BrandingOptions_set_embedded_libcomet_BrandingPropertie
 	dest.PathHeaderImage = src.PathHeaderImage
 	dest.PathAppIconImage = src.PathAppIconImage
 	dest.PackageIdentifier = src.PackageIdentifier
+	dest.WindowsCodeSignMethod = src.WindowsCodeSignMethod
 	dest.WindowsCodeSignPKCS12FilePath = src.WindowsCodeSignPKCS12FilePath
 	dest.WindowsCodeSignPKCS12PasswordFormat = src.WindowsCodeSignPKCS12PasswordFormat
 	dest.WindowsCodeSignPKCS12Password = src.WindowsCodeSignPKCS12Password
@@ -2993,6 +3058,12 @@ export function libcomet_BrandingOptions_set_embedded_libcomet_BrandingPropertie
 	dest.WindowsCodeSignPKCS11KeyID = src.WindowsCodeSignPKCS11KeyID
 	dest.WindowsCodeSignPKCS11PasswordFormat = src.WindowsCodeSignPKCS11PasswordFormat
 	dest.WindowsCodeSignPKCS11Password = src.WindowsCodeSignPKCS11Password
+	dest.WindowsCodeSignAzureVaultName = src.WindowsCodeSignAzureVaultName
+	dest.WindowsCodeSignAzureCertName = src.WindowsCodeSignAzureCertName
+	dest.WindowsCodeSignAzureAppID = src.WindowsCodeSignAzureAppID
+	dest.WindowsCodeSignAzureAppSecretFormat = src.WindowsCodeSignAzureAppSecretFormat
+	dest.WindowsCodeSignAzureAppSecret = src.WindowsCodeSignAzureAppSecret
+	dest.WindowsCodeSignAzureTenantID = src.WindowsCodeSignAzureTenantID
 	dest.MacOSCodeSign = src.MacOSCodeSign
 }
 
@@ -3015,15 +3086,25 @@ export type libcomet_BrandingProperties = {
 	PathHeaderImage: string
 	PathAppIconImage: string
 	PackageIdentifier: string
+	WindowsCodeSignMethod: number
 	WindowsCodeSignPKCS12FilePath: string
 	WindowsCodeSignPKCS12PasswordFormat: number
 	WindowsCodeSignPKCS12Password: string
 	WindowsCodeSignPKCS11Engine: string
 	WindowsCodeSignPKCS11Module: string
+	/**
+	 * @deprecated This member has been deprecated since Comet version 22.12.7
+	 */
 	WindowsCodeSignPKCS11Certfile: string
 	WindowsCodeSignPKCS11KeyID: string
 	WindowsCodeSignPKCS11PasswordFormat: number
 	WindowsCodeSignPKCS11Password: string
+	WindowsCodeSignAzureVaultName: string
+	WindowsCodeSignAzureCertName: string
+	WindowsCodeSignAzureAppID: string
+	WindowsCodeSignAzureAppSecretFormat: number
+	WindowsCodeSignAzureAppSecret: string
+	WindowsCodeSignAzureTenantID: string
 	MacOSCodeSign: libcomet_MacOSCodeSignProperties
 }
 
@@ -3046,6 +3127,7 @@ export function New_Zero_libcomet_BrandingProperties(): libcomet_BrandingPropert
 		"PathHeaderImage": "",
 		"PathAppIconImage": "",
 		"PackageIdentifier": "",
+		"WindowsCodeSignMethod": 0,
 		"WindowsCodeSignPKCS12FilePath": "",
 		"WindowsCodeSignPKCS12PasswordFormat": 0,
 		"WindowsCodeSignPKCS12Password": "",
@@ -3055,6 +3137,12 @@ export function New_Zero_libcomet_BrandingProperties(): libcomet_BrandingPropert
 		"WindowsCodeSignPKCS11KeyID": "",
 		"WindowsCodeSignPKCS11PasswordFormat": 0,
 		"WindowsCodeSignPKCS11Password": "",
+		"WindowsCodeSignAzureVaultName": "",
+		"WindowsCodeSignAzureCertName": "",
+		"WindowsCodeSignAzureAppID": "",
+		"WindowsCodeSignAzureAppSecretFormat": 0,
+		"WindowsCodeSignAzureAppSecret": "",
+		"WindowsCodeSignAzureTenantID": "",
 		"MacOSCodeSign": New_Zero_libcomet_MacOSCodeSignProperties(),
 	};
 }
@@ -3080,6 +3168,7 @@ export function libcomet_BrandingProperties_set_embedded_libcomet_PrivateBrandin
 	dest.PathHeaderImage = src.PathHeaderImage
 	dest.PathAppIconImage = src.PathAppIconImage
 	dest.PackageIdentifier = src.PackageIdentifier
+	dest.WindowsCodeSignMethod = src.WindowsCodeSignMethod
 	dest.WindowsCodeSignPKCS12FilePath = src.WindowsCodeSignPKCS12FilePath
 	dest.WindowsCodeSignPKCS12PasswordFormat = src.WindowsCodeSignPKCS12PasswordFormat
 	dest.WindowsCodeSignPKCS12Password = src.WindowsCodeSignPKCS12Password
@@ -3089,6 +3178,12 @@ export function libcomet_BrandingProperties_set_embedded_libcomet_PrivateBrandin
 	dest.WindowsCodeSignPKCS11KeyID = src.WindowsCodeSignPKCS11KeyID
 	dest.WindowsCodeSignPKCS11PasswordFormat = src.WindowsCodeSignPKCS11PasswordFormat
 	dest.WindowsCodeSignPKCS11Password = src.WindowsCodeSignPKCS11Password
+	dest.WindowsCodeSignAzureVaultName = src.WindowsCodeSignAzureVaultName
+	dest.WindowsCodeSignAzureCertName = src.WindowsCodeSignAzureCertName
+	dest.WindowsCodeSignAzureAppID = src.WindowsCodeSignAzureAppID
+	dest.WindowsCodeSignAzureAppSecretFormat = src.WindowsCodeSignAzureAppSecretFormat
+	dest.WindowsCodeSignAzureAppSecret = src.WindowsCodeSignAzureAppSecret
+	dest.WindowsCodeSignAzureTenantID = src.WindowsCodeSignAzureTenantID
 	dest.MacOSCodeSign = src.MacOSCodeSign
 }
 
@@ -3520,6 +3615,8 @@ export type libcomet_DestinationConfig = {
 	S3Subdir: string
 	S3CustomRegion: string
 	S3UsesV2Signing: boolean
+	S3RemoveDeleted: boolean
+	S3ObjectLockDays: number
 	SFTPServer: string
 	SFTPUsername: string
 	SFTPRemotePath: string
@@ -3581,6 +3678,8 @@ export function New_Zero_libcomet_DestinationConfig(): libcomet_DestinationConfi
 		"S3Subdir": "",
 		"S3CustomRegion": "",
 		"S3UsesV2Signing": false,
+		"S3RemoveDeleted": false,
+		"S3ObjectLockDays": 0,
 		"SFTPServer": "",
 		"SFTPUsername": "",
 		"SFTPRemotePath": "",
@@ -3635,6 +3734,8 @@ export function libcomet_DestinationConfig_set_embedded_libcomet_DestinationLoca
 	dest.S3Subdir = src.S3Subdir
 	dest.S3CustomRegion = src.S3CustomRegion
 	dest.S3UsesV2Signing = src.S3UsesV2Signing
+	dest.S3RemoveDeleted = src.S3RemoveDeleted
+	dest.S3ObjectLockDays = src.S3ObjectLockDays
 	dest.SFTPServer = src.SFTPServer
 	dest.SFTPUsername = src.SFTPUsername
 	dest.SFTPRemotePath = src.SFTPRemotePath
@@ -3682,6 +3783,8 @@ export type libcomet_DestinationLocation = {
 	S3Subdir: string
 	S3CustomRegion: string
 	S3UsesV2Signing: boolean
+	S3RemoveDeleted: boolean
+	S3ObjectLockDays: number
 	SFTPServer: string
 	SFTPUsername: string
 	SFTPRemotePath: string
@@ -3729,6 +3832,8 @@ export function New_Zero_libcomet_DestinationLocation(): libcomet_DestinationLoc
 		"S3Subdir": "",
 		"S3CustomRegion": "",
 		"S3UsesV2Signing": false,
+		"S3RemoveDeleted": false,
+		"S3ObjectLockDays": 0,
 		"SFTPServer": "",
 		"SFTPUsername": "",
 		"SFTPRemotePath": "",
@@ -3778,6 +3883,8 @@ export function libcomet_DestinationLocation_set_embedded_libcomet_S3Destination
 	dest.S3Subdir = src.S3Subdir
 	dest.S3CustomRegion = src.S3CustomRegion
 	dest.S3UsesV2Signing = src.S3UsesV2Signing
+	dest.S3RemoveDeleted = src.S3RemoveDeleted
+	dest.S3ObjectLockDays = src.S3ObjectLockDays
 }
 
 export function libcomet_DestinationLocation_set_embedded_libcomet_SFTPDestinationLocation(dest: libcomet_DestinationLocation, src: libcomet_SFTPDestinationLocation): void {
@@ -4914,15 +5021,25 @@ export type libcomet_PrivateBrandingProperties = {
 	PathHeaderImage: string
 	PathAppIconImage: string
 	PackageIdentifier: string
+	WindowsCodeSignMethod: number
 	WindowsCodeSignPKCS12FilePath: string
 	WindowsCodeSignPKCS12PasswordFormat: number
 	WindowsCodeSignPKCS12Password: string
 	WindowsCodeSignPKCS11Engine: string
 	WindowsCodeSignPKCS11Module: string
+	/**
+	 * @deprecated This member has been deprecated since Comet version 22.12.7
+	 */
 	WindowsCodeSignPKCS11Certfile: string
 	WindowsCodeSignPKCS11KeyID: string
 	WindowsCodeSignPKCS11PasswordFormat: number
 	WindowsCodeSignPKCS11Password: string
+	WindowsCodeSignAzureVaultName: string
+	WindowsCodeSignAzureCertName: string
+	WindowsCodeSignAzureAppID: string
+	WindowsCodeSignAzureAppSecretFormat: number
+	WindowsCodeSignAzureAppSecret: string
+	WindowsCodeSignAzureTenantID: string
 	MacOSCodeSign: libcomet_MacOSCodeSignProperties
 }
 
@@ -4937,6 +5054,7 @@ export function New_Zero_libcomet_PrivateBrandingProperties(): libcomet_PrivateB
 		"PathHeaderImage": "",
 		"PathAppIconImage": "",
 		"PackageIdentifier": "",
+		"WindowsCodeSignMethod": 0,
 		"WindowsCodeSignPKCS12FilePath": "",
 		"WindowsCodeSignPKCS12PasswordFormat": 0,
 		"WindowsCodeSignPKCS12Password": "",
@@ -4946,11 +5064,18 @@ export function New_Zero_libcomet_PrivateBrandingProperties(): libcomet_PrivateB
 		"WindowsCodeSignPKCS11KeyID": "",
 		"WindowsCodeSignPKCS11PasswordFormat": 0,
 		"WindowsCodeSignPKCS11Password": "",
+		"WindowsCodeSignAzureVaultName": "",
+		"WindowsCodeSignAzureCertName": "",
+		"WindowsCodeSignAzureAppID": "",
+		"WindowsCodeSignAzureAppSecretFormat": 0,
+		"WindowsCodeSignAzureAppSecret": "",
+		"WindowsCodeSignAzureTenantID": "",
 		"MacOSCodeSign": New_Zero_libcomet_MacOSCodeSignProperties(),
 	};
 }
 
 export function libcomet_PrivateBrandingProperties_set_embedded_libcomet_WindowsCodeSignProperties(dest: libcomet_PrivateBrandingProperties, src: libcomet_WindowsCodeSignProperties): void {
+	dest.WindowsCodeSignMethod = src.WindowsCodeSignMethod
 	dest.WindowsCodeSignPKCS12FilePath = src.WindowsCodeSignPKCS12FilePath
 	dest.WindowsCodeSignPKCS12PasswordFormat = src.WindowsCodeSignPKCS12PasswordFormat
 	dest.WindowsCodeSignPKCS12Password = src.WindowsCodeSignPKCS12Password
@@ -4960,6 +5085,12 @@ export function libcomet_PrivateBrandingProperties_set_embedded_libcomet_Windows
 	dest.WindowsCodeSignPKCS11KeyID = src.WindowsCodeSignPKCS11KeyID
 	dest.WindowsCodeSignPKCS11PasswordFormat = src.WindowsCodeSignPKCS11PasswordFormat
 	dest.WindowsCodeSignPKCS11Password = src.WindowsCodeSignPKCS11Password
+	dest.WindowsCodeSignAzureVaultName = src.WindowsCodeSignAzureVaultName
+	dest.WindowsCodeSignAzureCertName = src.WindowsCodeSignAzureCertName
+	dest.WindowsCodeSignAzureAppID = src.WindowsCodeSignAzureAppID
+	dest.WindowsCodeSignAzureAppSecretFormat = src.WindowsCodeSignAzureAppSecretFormat
+	dest.WindowsCodeSignAzureAppSecret = src.WindowsCodeSignAzureAppSecret
+	dest.WindowsCodeSignAzureTenantID = src.WindowsCodeSignAzureTenantID
 }
 
 
@@ -5313,6 +5444,8 @@ export type libcomet_S3DestinationLocation = {
 	S3Subdir: string
 	S3CustomRegion: string
 	S3UsesV2Signing: boolean
+	S3RemoveDeleted: boolean
+	S3ObjectLockDays: number
 }
 
 export function New_Zero_libcomet_S3DestinationLocation(): libcomet_S3DestinationLocation {
@@ -5325,6 +5458,8 @@ export function New_Zero_libcomet_S3DestinationLocation(): libcomet_S3Destinatio
 		"S3Subdir": "",
 		"S3CustomRegion": "",
 		"S3UsesV2Signing": false,
+		"S3RemoveDeleted": false,
+		"S3ObjectLockDays": 0,
 	};
 }
 
@@ -5335,6 +5470,9 @@ export type libcomet_S3GenericVirtualStorageRole = {
 	MasterBucket: string
 	AccessKey: string
 	SecretKey: string
+	UseObjectLock: boolean
+	ObjectLockDays: number
+	RemoveDeleted: boolean
 }
 
 export function New_Zero_libcomet_S3GenericVirtualStorageRole(): libcomet_S3GenericVirtualStorageRole {
@@ -5344,6 +5482,9 @@ export function New_Zero_libcomet_S3GenericVirtualStorageRole(): libcomet_S3Gene
 		"MasterBucket": "",
 		"AccessKey": "",
 		"SecretKey": "",
+		"UseObjectLock": false,
+		"ObjectLockDays": 0,
+		"RemoveDeleted": false,
 	};
 }
 
@@ -6670,6 +6811,9 @@ export type libcomet_WasabiVirtualStorageRoleSettings = {
 	MasterBucket: string
 	AccessKey: string
 	SecretKey: string
+	UseObjectLock: boolean
+	ObjectLockDays: number
+	RemoveDeleted: boolean
 }
 
 export function New_Zero_libcomet_WasabiVirtualStorageRoleSettings(): libcomet_WasabiVirtualStorageRoleSettings {
@@ -6677,6 +6821,9 @@ export function New_Zero_libcomet_WasabiVirtualStorageRoleSettings(): libcomet_W
 		"MasterBucket": "",
 		"AccessKey": "",
 		"SecretKey": "",
+		"UseObjectLock": false,
+		"ObjectLockDays": 0,
+		"RemoveDeleted": false,
 	};
 }
 
@@ -6939,19 +7086,30 @@ export function New_Zero_libcomet_WinSMBAuth(): libcomet_WinSMBAuth {
 
 
 export type libcomet_WindowsCodeSignProperties = {
+	WindowsCodeSignMethod: number
 	WindowsCodeSignPKCS12FilePath: string
 	WindowsCodeSignPKCS12PasswordFormat: number
 	WindowsCodeSignPKCS12Password: string
 	WindowsCodeSignPKCS11Engine: string
 	WindowsCodeSignPKCS11Module: string
+	/**
+	 * @deprecated This member has been deprecated since Comet version 22.12.7
+	 */
 	WindowsCodeSignPKCS11Certfile: string
 	WindowsCodeSignPKCS11KeyID: string
 	WindowsCodeSignPKCS11PasswordFormat: number
 	WindowsCodeSignPKCS11Password: string
+	WindowsCodeSignAzureVaultName: string
+	WindowsCodeSignAzureCertName: string
+	WindowsCodeSignAzureAppID: string
+	WindowsCodeSignAzureAppSecretFormat: number
+	WindowsCodeSignAzureAppSecret: string
+	WindowsCodeSignAzureTenantID: string
 }
 
 export function New_Zero_libcomet_WindowsCodeSignProperties(): libcomet_WindowsCodeSignProperties {
 	return {
+		"WindowsCodeSignMethod": 0,
 		"WindowsCodeSignPKCS12FilePath": "",
 		"WindowsCodeSignPKCS12PasswordFormat": 0,
 		"WindowsCodeSignPKCS12Password": "",
@@ -6961,6 +7119,12 @@ export function New_Zero_libcomet_WindowsCodeSignProperties(): libcomet_WindowsC
 		"WindowsCodeSignPKCS11KeyID": "",
 		"WindowsCodeSignPKCS11PasswordFormat": 0,
 		"WindowsCodeSignPKCS11Password": "",
+		"WindowsCodeSignAzureVaultName": "",
+		"WindowsCodeSignAzureCertName": "",
+		"WindowsCodeSignAzureAppID": "",
+		"WindowsCodeSignAzureAppSecretFormat": 0,
+		"WindowsCodeSignAzureAppSecret": "",
+		"WindowsCodeSignAzureTenantID": "",
 	};
 }
 
@@ -8267,11 +8431,19 @@ export default class CometServerAPIBase {
 	 * This API requires the Auth Role to be enabled.
 	 * 
 	 * @param {string} JobID Selected job ID
+	 * @param {string|null} MinSeverity Return only job log entries with equal or higher severity
+	 * @param {string|null} MessageContains Return only job log entries that contain exact string
 	 * @return {Promise<libcomet_JobEntry[]>} 
 	 */
-	async AdminGetJobLogEntriesP(JobID: string): Promise<libcomet_JobEntry[]> {
+	async AdminGetJobLogEntriesP(JobID: string, MinSeverity: string|null = null, MessageContains: string|null = null): Promise<libcomet_JobEntry[]> {
 		let params: { [s: string]: string; } = {};
 		params["JobID"] = JobID;
+		if (MinSeverity !== null) {
+			params["MinSeverity"] = MinSeverity;
+		}
+		if (MessageContains !== null) {
+			params["MessageContains"] = MessageContains;
+		}
 		return await this._requestP("api/v1/admin/get-job-log-entries", params);
 	}
 
@@ -10034,11 +10206,19 @@ export default class CometServerAPIBase {
 	 * This API requires the Auth Role to be enabled.
 	 * 
 	 * @param {string} JobID Selected job GUID
+	 * @param {string|null} MinSeverity Return only job log entries with equal or higher severity
+	 * @param {string|null} MessageContains Return only job log entries that contain exact string
 	 * @return {Promise<libcomet_JobEntry[]>} 
 	 */
-	async UserWebGetJobLogEntriesP(JobID: string): Promise<libcomet_JobEntry[]> {
+	async UserWebGetJobLogEntriesP(JobID: string, MinSeverity: string|null = null, MessageContains: string|null = null): Promise<libcomet_JobEntry[]> {
 		let params: { [s: string]: string; } = {};
 		params["JobID"] = JobID;
+		if (MinSeverity !== null) {
+			params["MinSeverity"] = MinSeverity;
+		}
+		if (MessageContains !== null) {
+			params["MessageContains"] = MessageContains;
+		}
 		return await this._requestP("api/v1/user/web/get-job-log-entries", params);
 	}
 
