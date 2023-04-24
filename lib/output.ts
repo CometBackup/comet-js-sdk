@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "23.3.1";
+export const APPLICATION_VERSION = "23.3.5";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -28,7 +28,7 @@ export const APPLICATION_VERSION_MINOR = 3;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 1;
+export const APPLICATION_VERSION_REVISION = 5;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -61,6 +61,34 @@ export const BACKUPJOBAUTORETENTION_MORE_OFTEN = 2;
  * @var {number}
  */
 export const BACKUPJOBAUTORETENTION_LESS_OFTEN = 3;
+
+/**
+ * BRANDINGSTYLETYPE_AUTO_LEGACY
+ *
+ * @var {number}
+ */
+export const BRANDINGSTYLETYPE_AUTO_LEGACY = 0;
+
+/**
+ * BRANDINGSTYLETYPE_DEFAULT
+ *
+ * @var {number}
+ */
+export const BRANDINGSTYLETYPE_DEFAULT = 1;
+
+/**
+ * BRANDINGSTYLETYPE_CUSTOM_TEXT
+ *
+ * @var {number}
+ */
+export const BRANDINGSTYLETYPE_CUSTOM_TEXT = 2;
+
+/**
+ * BRANDINGSTYLETYPE_CUSTOM_LOGO
+ *
+ * @var {number}
+ */
+export const BRANDINGSTYLETYPE_CUSTOM_LOGO = 3;
 
 /**
  * CLIENTBRANDINGBUILD_CUSTOM
@@ -166,11 +194,18 @@ export const DEFAULT_BRAND_NAME = "COMET";
 
 /**
  * DEFAULT_TOPCOLOR
- * #1782D6"
+ * #191F33"
  *
  * @var {string}
  */
-export const DEFAULT_TOPCOLOR = "#06041E";
+export const DEFAULT_TOPCOLOR = "#191F33";
+
+/**
+ * DEFAULT_ACCENTCOLOR
+ *
+ * @var {string}
+ */
+export const DEFAULT_ACCENTCOLOR = "#D88463";
 
 /**
  * DEFAULT_SESSIONTIMEOUT
@@ -510,13 +545,6 @@ export const ENGINE_BUILTIN_MONGODB = "engine1/mongodb";
 export const ENGINE_BUILTIN_MSOFFICE = "engine1/winmsofficemail";
 
 /**
- * ENGINE_BUILTIN_VMWARE
- *
- * @var {string}
- */
-export const ENGINE_BUILTIN_VMWARE = "engine1/vmware";
-
-/**
  * FTPS_MODE_PLAINTEXT
  * FtpsModeType: 
  *
@@ -819,6 +847,14 @@ export const LDAPSECURITYMETHOD_LDAPS = "ldaps";
  * @var {string}
  */
 export const LDAPSECURITYMETHOD_STARTTLS = "starttls";
+
+/**
+ * LEGACY_TOPCOLOR
+ * #1782D6"
+ *
+ * @var {string}
+ */
+export const LEGACY_TOPCOLOR = "#1782D6";
 
 /**
  * LOGOIMAGE_NONE
@@ -2274,46 +2310,6 @@ export const UnsupportVhdxFileSystem = "ERR_UNSUPPORT_VHDX_FILE_SYSTEM";
 export const UnsupportVmdkFileSystem = "ERR_UNSUPPORT_VMDK_FILE_SYSTEM";
 
 /**
- * VMWARE_CONNECTION_SSH
- * VMwareConnectionType: 
- *
- * @var {string}
- */
-export const VMWARE_CONNECTION_SSH = "ssh";
-
-/**
- * VMWARE_CONNECTION_VSPHERE
- * VMwareConnectionType: 
- *
- * @var {string}
- */
-export const VMWARE_CONNECTION_VSPHERE = "vsphere";
-
-/**
- * VMWARE_SNAPSHOT_FAST
- * VmwareSnapshotType: 
- *
- * @var {string}
- */
-export const VMWARE_SNAPSHOT_FAST = "";
-
-/**
- * VMWARE_SNAPSHOT_QUIESCE
- * VmwareSnapshotType: 
- *
- * @var {string}
- */
-export const VMWARE_SNAPSHOT_QUIESCE = "quiesce";
-
-/**
- * VMWARE_SNAPSHOT_MEMORY
- * VmwareSnapshotType: 
- *
- * @var {string}
- */
-export const VMWARE_SNAPSHOT_MEMORY = "memory";
-
-/**
  * VhdxPartitonReadErrMsg
  *
  * @var {string}
@@ -2934,9 +2930,11 @@ export function New_Zero_libcomet_BackupRuleEventTriggers(): libcomet_BackupRule
 
 
 export type libcomet_BrandingOptions = {
+	BrandingStyleType: number
 	BrandName: string
 	LogoImage: string
 	TopColor: string
+	AccentColor: string
 	Favicon: string
 	HideNewsArea: boolean
 	ProductName: string
@@ -2980,9 +2978,11 @@ export type libcomet_BrandingOptions = {
 
 export function New_Zero_libcomet_BrandingOptions(): libcomet_BrandingOptions {
 	return {
+		"BrandingStyleType": 0,
 		"BrandName": "",
 		"LogoImage": "",
 		"TopColor": "",
+		"AccentColor": "",
 		"Favicon": "",
 		"HideNewsArea": false,
 		"ProductName": "",
@@ -3023,9 +3023,11 @@ export function New_Zero_libcomet_BrandingOptions(): libcomet_BrandingOptions {
 }
 
 export function libcomet_BrandingOptions_set_embedded_libcomet_WebInterfaceBrandingProperties(dest: libcomet_BrandingOptions, src: libcomet_WebInterfaceBrandingProperties): void {
+	dest.BrandingStyleType = src.BrandingStyleType
 	dest.BrandName = src.BrandName
 	dest.LogoImage = src.LogoImage
 	dest.TopColor = src.TopColor
+	dest.AccentColor = src.AccentColor
 	dest.Favicon = src.Favicon
 	dest.HideNewsArea = src.HideNewsArea
 }
@@ -3303,26 +3305,6 @@ export function New_Zero_libcomet_BrowseSQLServerResponse(): libcomet_BrowseSQLS
 }
 
 export function libcomet_BrowseSQLServerResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_BrowseSQLServerResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
-}
-
-
-export type libcomet_BrowseVMwareResponse = {
-	Status: number
-	Message: string
-	VirtualMachines: libcomet_VMwareMachineInfo[]
-}
-
-export function New_Zero_libcomet_BrowseVMwareResponse(): libcomet_BrowseVMwareResponse {
-	return {
-		"Status": 0,
-		"Message": "",
-		"VirtualMachines": [],
-	};
-}
-
-export function libcomet_BrowseVMwareResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_BrowseVMwareResponse, src: libcomet_CometAPIResponseMessage): void {
 	dest.Status = src.Status
 	dest.Message = src.Message
 }
@@ -4395,6 +4377,8 @@ export type libcomet_GroupPolicy = {
 	OrganizationID: string
 	Policy: libcomet_UserPolicy
 	DefaultUserPolicy: boolean
+	CreatedDate: number
+	ModifiedDate: number
 }
 
 export function New_Zero_libcomet_GroupPolicy(): libcomet_GroupPolicy {
@@ -4403,6 +4387,8 @@ export function New_Zero_libcomet_GroupPolicy(): libcomet_GroupPolicy {
 		"OrganizationID": "",
 		"Policy": New_Zero_libcomet_UserPolicy(),
 		"DefaultUserPolicy": false,
+		"CreatedDate": 0,
+		"ModifiedDate": 0,
 	};
 }
 
@@ -5580,12 +5566,58 @@ export function New_Zero_libcomet_SearchClause(): libcomet_SearchClause {
 }
 
 
+export type libcomet_SearchResultFileInfo = {
+	path: string // Path
+	name: string // Name
+	type: string // Type
+	mode: string // Mode
+	mtime: string // Mtime
+	atime: string // Atime
+	ctime: string // Ctime
+	size: number // Size
+}
+
+export function New_Zero_libcomet_SearchResultFileInfo(): libcomet_SearchResultFileInfo {
+	return {
+		"path": "",
+		"name": "",
+		"type": "",
+		"mode": "",
+		"mtime": "",
+		"atime": "",
+		"ctime": "",
+		"size": 0,
+	};
+}
+
+
+export type libcomet_SearchSnapshotsResponse = {
+	Status: number
+	Message: string
+	SnapshotFiles: {[k: string]: libcomet_SearchResultFileInfo[]}
+}
+
+export function New_Zero_libcomet_SearchSnapshotsResponse(): libcomet_SearchSnapshotsResponse {
+	return {
+		"Status": 0,
+		"Message": "",
+		"SnapshotFiles": {},
+	};
+}
+
+export function libcomet_SearchSnapshotsResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_SearchSnapshotsResponse, src: libcomet_CometAPIResponseMessage): void {
+	dest.Status = src.Status
+	dest.Message = src.Message
+}
+
+
 export type libcomet_SelfBackupExportOptions = {
 	Location: libcomet_DestinationLocation
 	EncryptionKey: string
 	EncryptionKeyFormat: number
 	Compression: number
 	ExcludeJobsDB: boolean
+	IncludeServerLogs: boolean
 	RestrictToSingleOrgID?: string // Omission from JSON will be interpreted as empty-string
 	Index: number
 }
@@ -5597,6 +5629,7 @@ export function New_Zero_libcomet_SelfBackupExportOptions(): libcomet_SelfBackup
 		"EncryptionKeyFormat": 0,
 		"Compression": 0,
 		"ExcludeJobsDB": false,
+		"IncludeServerLogs": false,
 		"Index": 0,
 	};
 }
@@ -5641,6 +5674,7 @@ export type libcomet_SelfBackupTarget = {
 	EncryptionKeyFormat: number
 	Compression: number
 	ExcludeJobsDB: boolean
+	IncludeServerLogs: boolean
 	RestrictToSingleOrgID?: string // Omission from JSON will be interpreted as empty-string
 	Index: number
 }
@@ -5655,6 +5689,7 @@ export function New_Zero_libcomet_SelfBackupTarget(): libcomet_SelfBackupTarget 
 		"EncryptionKeyFormat": 0,
 		"Compression": 0,
 		"ExcludeJobsDB": false,
+		"IncludeServerLogs": false,
 		"Index": 0,
 	};
 }
@@ -5665,6 +5700,7 @@ export function libcomet_SelfBackupTarget_set_embedded_libcomet_SelfBackupExport
 	dest.EncryptionKeyFormat = src.EncryptionKeyFormat
 	dest.Compression = src.Compression
 	dest.ExcludeJobsDB = src.ExcludeJobsDB
+	dest.IncludeServerLogs = src.IncludeServerLogs
 	dest.RestrictToSingleOrgID = src.RestrictToSingleOrgID
 	dest.Index = src.Index
 }
@@ -5743,6 +5779,7 @@ export type libcomet_ServerMetaBrandingProperties = {
 	HasImage: boolean
 	ImageEtag: string
 	TopColor: string
+	AccentColor: string
 	HideNewsArea: boolean
 	AllowUnauthenticatedDownloads: boolean
 	AllowAuthenticatedDownloads: boolean
@@ -5757,6 +5794,7 @@ export function New_Zero_libcomet_ServerMetaBrandingProperties(): libcomet_Serve
 		"HasImage": false,
 		"ImageEtag": "",
 		"TopColor": "",
+		"AccentColor": "",
 		"HideNewsArea": false,
 		"AllowUnauthenticatedDownloads": false,
 		"AllowAuthenticatedDownloads": false,
@@ -6715,32 +6753,6 @@ export function New_Zero_libcomet_VMDKSnapshotViewOptions(): libcomet_VMDKSnapsh
 }
 
 
-export type libcomet_VMwareConnection = {
-	ConnectionType: string
-	SSH: libcomet_SSHConnection
-	VSphere: libcomet_VSphereConnection
-}
-
-export function New_Zero_libcomet_VMwareConnection(): libcomet_VMwareConnection {
-	return {
-		"ConnectionType": "",
-		"SSH": New_Zero_libcomet_SSHConnection(),
-		"VSphere": New_Zero_libcomet_VSphereConnection(),
-	};
-}
-
-
-export type libcomet_VMwareMachineInfo = {
-	Name: string
-}
-
-export function New_Zero_libcomet_VMwareMachineInfo(): libcomet_VMwareMachineInfo {
-	return {
-		"Name": "",
-	};
-}
-
-
 export type libcomet_VSSComponent = {
 	Path: string
 	Name: string
@@ -6767,25 +6779,6 @@ export function New_Zero_libcomet_VSSWriterInfo(): libcomet_VSSWriterInfo {
 	return {
 		"DisplayName": "",
 		"Components": [],
-	};
-}
-
-
-export type libcomet_VSphereConnection = {
-	Hostname: string
-	Https: boolean
-	AllowInvalidCertificate: boolean
-	Username: string
-	Password: string
-}
-
-export function New_Zero_libcomet_VSphereConnection(): libcomet_VSphereConnection {
-	return {
-		"Hostname": "",
-		"Https": false,
-		"AllowInvalidCertificate": false,
-		"Username": "",
-		"Password": "",
 	};
 }
 
@@ -7035,18 +7028,22 @@ export function libcomet_WebAuthnUserEntity_set_embedded_libcomet_WebAuthnCreden
 
 
 export type libcomet_WebInterfaceBrandingProperties = {
+	BrandingStyleType: number
 	BrandName: string
 	LogoImage: string
 	TopColor: string
+	AccentColor: string
 	Favicon: string
 	HideNewsArea: boolean
 }
 
 export function New_Zero_libcomet_WebInterfaceBrandingProperties(): libcomet_WebInterfaceBrandingProperties {
 	return {
+		"BrandingStyleType": 0,
 		"BrandName": "",
 		"LogoImage": "",
 		"TopColor": "",
+		"AccentColor": "",
 		"Favicon": "",
 		"HideNewsArea": false,
 	};
@@ -8042,25 +8039,6 @@ export default class CometServerAPIBase {
 	}
 
 	/**
-	 * AdminDispatcherRequestBrowseVmware
-	 * Request a list of VMware ESXi virtual machines
-	 * The remote device must have given consent for an MSP to browse their files.
-	 * 
-	 * You must supply administrator authentication credentials to use this API.
-	 * This API requires the Auth Role to be enabled.
-	 * 
-	 * @param {string} TargetID The live connection GUID
-	 * @param {libcomet_VMwareConnection} Credentials The VMware ESXi connection settings
-	 * @return {Promise<libcomet_BrowseVMwareResponse>} 
-	 */
-	async AdminDispatcherRequestBrowseVmwareP(TargetID: string, Credentials: libcomet_VMwareConnection): Promise<libcomet_BrowseVMwareResponse> {
-		let params: { [s: string]: string; } = {};
-		params["TargetID"] = TargetID;
-		params["Credentials"] = JSON.stringify(Credentials);
-		return await this._requestP("api/v1/admin/dispatcher/request-browse-vmware", params);
-	}
-
-	/**
 	 * AdminDispatcherRequestBrowseVssAaw
 	 * Request a list of installed VSS Writers (Application-Aware Writers) from a live connected device
 	 * 
@@ -8321,6 +8299,28 @@ export default class CometServerAPIBase {
 			params["Paths"] = JSON.stringify(Paths);
 		}
 		return await this._requestP("api/v1/admin/dispatcher/run-restore-custom", params);
+	}
+
+	/**
+	 * AdminDispatcherSearchSnapshots
+	 * Search storage vault snapshots
+	 * 
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 * 
+	 * @param {string} TargetID The live connection GUID
+	 * @param {string} DestinationID The Storage Vault GUID
+	 * @param {string[]} SnapshotIDs Snapshots to search
+	 * @param {libcomet_SearchClause} Filter The search filter
+	 * @return {Promise<libcomet_SearchSnapshotsResponse>} 
+	 */
+	async AdminDispatcherSearchSnapshotsP(TargetID: string, DestinationID: string, SnapshotIDs: string[], Filter: libcomet_SearchClause): Promise<libcomet_SearchSnapshotsResponse> {
+		let params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["DestinationID"] = DestinationID;
+		params["SnapshotIDs"] = JSON.stringify(SnapshotIDs);
+		params["Filter"] = JSON.stringify(Filter);
+		return await this._requestP("api/v1/admin/dispatcher/search-snapshots", params);
 	}
 
 	/**
@@ -8867,6 +8867,22 @@ export default class CometServerAPIBase {
 		let params: { [s: string]: string; } = {};
 		params["RemoteStorageOptions"] = JSON.stringify(RemoteStorageOptions);
 		return await this._requestP("api/v1/admin/meta/remote-storage-vault/set", params);
+	}
+
+	/**
+	 * AdminMetaRemoteStorageVaultTest
+	 * Test the connection to the storage template
+	 * 
+	 * You must supply administrator authentication credentials to use this API.
+	 * Access to this API may be prevented on a per-administrator basis.
+	 * 
+	 * @param {libcomet_RemoteStorageOption} TemplateOptions Storage Template Vault Options
+	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 */
+	async AdminMetaRemoteStorageVaultTestP(TemplateOptions: libcomet_RemoteStorageOption): Promise<libcomet_CometAPIResponseMessage> {
+		let params: { [s: string]: string; } = {};
+		params["TemplateOptions"] = JSON.stringify(TemplateOptions);
+		return await this._requestP("api/v1/admin/meta/remote-storage-vault/test", params);
 	}
 
 	/**
@@ -9943,24 +9959,6 @@ export default class CometServerAPIBase {
 	}
 
 	/**
-	 * UserWebDispatcherRequestBrowseVmware
-	 * Request a list of VMware ESXi virtual machines
-	 * 
-	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
-	 * This API requires the Auth Role to be enabled.
-	 * 
-	 * @param {string} TargetID The live connection GUID
-	 * @param {libcomet_VMwareConnection} Credentials The VMWare ESXi connection settings
-	 * @return {Promise<libcomet_BrowseVMwareResponse>} 
-	 */
-	async UserWebDispatcherRequestBrowseVmwareP(TargetID: string, Credentials: libcomet_VMwareConnection): Promise<libcomet_BrowseVMwareResponse> {
-		let params: { [s: string]: string; } = {};
-		params["TargetID"] = TargetID;
-		params["Credentials"] = JSON.stringify(Credentials);
-		return await this._requestP("api/v1/user/web/dispatcher/request-browse-vmware", params);
-	}
-
-	/**
 	 * UserWebDispatcherRequestBrowseVssAaw
 	 * Request a list of installed VSS Writers (Application-Aware Writers) from a live connected device
 	 * 
@@ -10180,6 +10178,28 @@ export default class CometServerAPIBase {
 			params["Paths"] = JSON.stringify(Paths);
 		}
 		return await this._requestP("api/v1/user/web/dispatcher/run-restore-custom", params);
+	}
+
+	/**
+	 * UserWebDispatcherSearchSnapshots
+	 * Search storage vault snapshots
+	 * 
+	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
+	 * This API requires the Auth Role to be enabled.
+	 * 
+	 * @param {string} TargetID The live connection GUID
+	 * @param {string} DestinationID The Storage Vault GUID
+	 * @param {string[]} SnapshotIDs Snapshots to search
+	 * @param {libcomet_SearchClause} Filter The search filter
+	 * @return {Promise<libcomet_SearchSnapshotsResponse>} 
+	 */
+	async UserWebDispatcherSearchSnapshotsP(TargetID: string, DestinationID: string, SnapshotIDs: string[], Filter: libcomet_SearchClause): Promise<libcomet_SearchSnapshotsResponse> {
+		let params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["DestinationID"] = DestinationID;
+		params["SnapshotIDs"] = JSON.stringify(SnapshotIDs);
+		params["Filter"] = JSON.stringify(Filter);
+		return await this._requestP("api/v1/user/web/dispatcher/search-snapshots", params);
 	}
 
 	/**
