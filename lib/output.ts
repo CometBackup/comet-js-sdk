@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "23.3.5";
+export const APPLICATION_VERSION = "23.3.7";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -28,7 +28,7 @@ export const APPLICATION_VERSION_MINOR = 3;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 5;
+export const APPLICATION_VERSION_REVISION = 7;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -92,7 +92,7 @@ export const BRANDINGSTYLETYPE_CUSTOM_LOGO = 3;
 
 /**
  * CLIENTBRANDINGBUILD_CUSTOM
- * ClientBrandingBuildMode: Public-Doc: The software client will be custom-built by this Comet Server, allowing custom branding, default server URL, and codesigning.
+ * ClientBrandingBuildMode: The software client will be custom-built by this Comet Server, allowing custom branding, default server URL, and codesigning.
  *
  * @var {number}
  */
@@ -100,7 +100,7 @@ export const CLIENTBRANDINGBUILD_CUSTOM = 0;
 
 /**
  * CLIENTBRANDINGBUILD_PREBUILT
- * ClientBrandingBuildMode: Public-Doc: A pre-built software client will be served, with Comet-branding, no server URL, and Comet codesigning.
+ * ClientBrandingBuildMode: A pre-built software client will be served, with Comet-branding, no server URL, and Comet codesigning.
  *
  * @var {number}
  */
@@ -108,7 +108,7 @@ export const CLIENTBRANDINGBUILD_PREBUILT = 1;
 
 /**
  * COMPRESS_INVALID
- * CompressMode: 
+ * CompressMode
  *
  * @var {number}
  */
@@ -116,7 +116,7 @@ export const COMPRESS_INVALID = 0;
 
 /**
  * COMPRESS_LVL_1
- * CompressMode: 
+ * CompressMode
  *
  * @var {number}
  */
@@ -124,7 +124,7 @@ export const COMPRESS_LVL_1 = 1;
 
 /**
  * COMPRESS_LVL_2
- * CompressMode: 
+ * CompressMode
  *
  * @var {number}
  */
@@ -132,7 +132,7 @@ export const COMPRESS_LVL_2 = 2;
 
 /**
  * COMPRESS_LVL_3
- * CompressMode: 
+ * CompressMode
  *
  * @var {number}
  */
@@ -140,7 +140,7 @@ export const COMPRESS_LVL_3 = 3;
 
 /**
  * COMPRESS_LVL_4
- * CompressMode: 
+ * CompressMode
  *
  * @var {number}
  */
@@ -148,7 +148,7 @@ export const COMPRESS_LVL_4 = 4;
 
 /**
  * COMPRESS_LVL_5
- * CompressMode: 
+ * CompressMode
  *
  * @var {number}
  */
@@ -156,7 +156,7 @@ export const COMPRESS_LVL_5 = 5;
 
 /**
  * COMPRESS_MAX
- * CompressMode: 
+ * CompressMode
  *
  * @var {number}
  */
@@ -164,7 +164,7 @@ export const COMPRESS_MAX = COMPRESS_LVL_5;
 
 /**
  * COMPRESS_DEFAULT
- * CompressMode: 
+ * CompressMode
  *
  * @var {number}
  */
@@ -172,7 +172,7 @@ export const COMPRESS_DEFAULT = COMPRESS_LVL_4;
 
 /**
  * DEFAULT_LANGUAGE
- * LanguageCode: 
+ * LanguageCode
  *
  * @var {string}
  */
@@ -194,7 +194,6 @@ export const DEFAULT_BRAND_NAME = "COMET";
 
 /**
  * DEFAULT_TOPCOLOR
- * #191F33"
  *
  * @var {string}
  */
@@ -216,7 +215,7 @@ export const DEFAULT_SESSIONTIMEOUT = 1800;
 
 /**
  * DESTINATION_SFTP_AUTHMODE_NATIVE
- * SftpAuthMode: 
+ * SftpAuthMode
  *
  * @var {number}
  */
@@ -224,7 +223,7 @@ export const DESTINATION_SFTP_AUTHMODE_NATIVE = 0;
 
 /**
  * DESTINATION_SFTP_AUTHMODE_PASSWORD
- * SftpAuthMode: 
+ * SftpAuthMode
  *
  * @var {number}
  */
@@ -232,7 +231,7 @@ export const DESTINATION_SFTP_AUTHMODE_PASSWORD = 1;
 
 /**
  * DESTINATION_SFTP_AUTHMODE_PRIVATEKEY
- * SftpAuthMode: 
+ * SftpAuthMode
  *
  * @var {number}
  */
@@ -331,6 +330,7 @@ export const DESTINATIONTYPE_ALL = 1101;
 
 /**
  * EMAIL_WORKER_STATE_NOT_STARTED
+ * The Comet Server is still starting up and has not yet checked whether any email reports are due to be sent.
  *
  * @var {number}
  */
@@ -338,6 +338,7 @@ export const EMAIL_WORKER_STATE_NOT_STARTED = 0;
 
 /**
  * EMAIL_WORKER_STATE_STARTED
+ * The Comet Server is still starting up and has not yet checked whether any email reports are due to be sent.
  *
  * @var {number}
  */
@@ -345,6 +346,7 @@ export const EMAIL_WORKER_STATE_STARTED = 1;
 
 /**
  * EMAIL_WORKER_STATE_CALCULATING
+ * The Comet Server is currently searching through email report configuration, to determine when the next email report is due to be sent.
  *
  * @var {number}
  */
@@ -352,6 +354,7 @@ export const EMAIL_WORKER_STATE_CALCULATING = 2;
 
 /**
  * EMAIL_WORKER_STATE_WAITING
+ * The Comet Server knows when the next scheduled email report is due to be sent, and is waiting until that time.
  *
  * @var {number}
  */
@@ -359,6 +362,7 @@ export const EMAIL_WORKER_STATE_WAITING = 3;
 
 /**
  * EMAIL_WORKER_STATE_SENDING
+ * The Comet Server is currently sending a scheduled email report.
  *
  * @var {number}
  */
@@ -366,7 +370,7 @@ export const EMAIL_WORKER_STATE_SENDING = 4;
 
 /**
  * EMAIL_DELIVERY_INHERIT
- * EmailDeliveryType: 
+ * EmailDeliveryType: If this is for the top-level Organization, email is disabled. If this is for an Organization, use the parent's email settings.
  *
  * @var {string}
  */
@@ -374,7 +378,7 @@ export const EMAIL_DELIVERY_INHERIT = "";
 
 /**
  * EMAIL_DELIVERY_MX_DIRECT
- * EmailDeliveryType: 
+ * EmailDeliveryType
  *
  * @var {string}
  */
@@ -382,7 +386,7 @@ export const EMAIL_DELIVERY_MX_DIRECT = "builtin";
 
 /**
  * EMAIL_DELIVERY_SMTP
- * EmailDeliveryType: 
+ * EmailDeliveryType
  *
  * @var {string}
  */
@@ -390,7 +394,7 @@ export const EMAIL_DELIVERY_SMTP = "smtp";
 
 /**
  * EMAIL_DELIVERY_SMTP_SSL
- * EmailDeliveryType: 
+ * EmailDeliveryType
  *
  * @var {string}
  */
@@ -398,7 +402,7 @@ export const EMAIL_DELIVERY_SMTP_SSL = "smtp-ssl";
 
 /**
  * EMAIL_DELIVERY_DISABLED
- * EmailDeliveryType: 
+ * EmailDeliveryType
  *
  * @var {string}
  */
@@ -406,7 +410,7 @@ export const EMAIL_DELIVERY_DISABLED = "disabled";
 
 /**
  * EMAIL_DELIVERY_BUILTIN
- * EmailDeliveryType: Legacy alias
+ * EmailDeliveryType: Legacy alias for EMAIL_DELIVERY_MX_DIRECT
  *
  * @var {string}
  */
@@ -414,7 +418,7 @@ export const EMAIL_DELIVERY_BUILTIN = EMAIL_DELIVERY_MX_DIRECT;
 
 /**
  * EMAIL_DELIVERY_NONE
- * EmailDeliveryType: changed for clarity
+ * EmailDeliveryType: Legacy alias for EMAIL_DELIVERY_INHERIT
  *
  * @var {string}
  * @deprecated This const has been deprecated since Comet version 22.12.1
@@ -423,7 +427,7 @@ export const EMAIL_DELIVERY_NONE = EMAIL_DELIVERY_INHERIT;
 
 /**
  * EMAILREPORTTYPE_IMMEDIATE
- * EmailReportType: 
+ * EmailReportType
  *
  * @var {number}
  */
@@ -431,7 +435,7 @@ export const EMAILREPORTTYPE_IMMEDIATE = 0;
 
 /**
  * EMAILREPORTTYPE_SUMMARY
- * EmailReportType: 
+ * EmailReportType
  *
  * @var {number}
  */
@@ -439,7 +443,7 @@ export const EMAILREPORTTYPE_SUMMARY = 1;
 
 /**
  * EMAILREPORTTYPE_GROUPED_STATUS
- * EmailReportType: 
+ * EmailReportType
  *
  * @var {number}
  */
@@ -447,7 +451,7 @@ export const EMAILREPORTTYPE_GROUPED_STATUS = 2;
 
 /**
  * EMAILREPORTTYPE_RECENT_ACTIVITY
- * EmailReportType: 
+ * EmailReportType
  *
  * @var {number}
  */
@@ -462,6 +466,7 @@ export const ENCRYPTIONMETHOD_UNCONFIGURED = 0;
 
 /**
  * ENGINE_BUILTIN_FILE
+ * Files and Folders
  *
  * @var {string}
  */
@@ -469,6 +474,7 @@ export const ENGINE_BUILTIN_FILE = "engine1/file";
 
 /**
  * ENGINE_BUILTIN_STDOUT
+ * Program Output
  *
  * @var {string}
  */
@@ -476,6 +482,7 @@ export const ENGINE_BUILTIN_STDOUT = "engine1/stdout";
 
 /**
  * ENGINE_BUILTIN_MYSQL
+ * MySQL
  *
  * @var {string}
  */
@@ -483,6 +490,7 @@ export const ENGINE_BUILTIN_MYSQL = "engine1/mysql";
 
 /**
  * ENGINE_BUILTIN_SYSTEMSTATE
+ * Windows Server System State
  *
  * @var {string}
  */
@@ -490,6 +498,7 @@ export const ENGINE_BUILTIN_SYSTEMSTATE = "engine1/systemstate";
 
 /**
  * ENGINE_BUILTIN_MSSQL
+ * Microsoft SQL Server
  *
  * @var {string}
  */
@@ -497,6 +506,7 @@ export const ENGINE_BUILTIN_MSSQL = "engine1/mssql";
 
 /**
  * ENGINE_BUILTIN_WINDOWSSYSTEM
+ * Windows System Backup
  *
  * @var {string}
  */
@@ -504,6 +514,7 @@ export const ENGINE_BUILTIN_WINDOWSSYSTEM = "engine1/windowssystem";
 
 /**
  * ENGINE_BUILTIN_EXCHANGEEDB
+ * Microsoft Exchange Server
  *
  * @var {string}
  */
@@ -511,6 +522,7 @@ export const ENGINE_BUILTIN_EXCHANGEEDB = "engine1/exchangeedb";
 
 /**
  * ENGINE_BUILTIN_VSSWRITER
+ * Application-Aware Writer
  *
  * @var {string}
  */
@@ -518,6 +530,7 @@ export const ENGINE_BUILTIN_VSSWRITER = "engine1/vsswriter";
 
 /**
  * ENGINE_BUILTIN_HYPERV
+ * Microsoft Hyper-V
  *
  * @var {string}
  */
@@ -525,6 +538,7 @@ export const ENGINE_BUILTIN_HYPERV = "engine1/hyperv";
 
 /**
  * ENGINE_BUILTIN_WINDISK
+ * Disk Image
  *
  * @var {string}
  */
@@ -532,6 +546,7 @@ export const ENGINE_BUILTIN_WINDISK = "engine1/windisk";
 
 /**
  * ENGINE_BUILTIN_MONGODB
+ * MongoDB
  *
  * @var {string}
  */
@@ -539,6 +554,7 @@ export const ENGINE_BUILTIN_MONGODB = "engine1/mongodb";
 
 /**
  * ENGINE_BUILTIN_MSOFFICE
+ * Office 365
  *
  * @var {string}
  */
@@ -546,7 +562,7 @@ export const ENGINE_BUILTIN_MSOFFICE = "engine1/winmsofficemail";
 
 /**
  * FTPS_MODE_PLAINTEXT
- * FtpsModeType: 
+ * FtpsModeType
  *
  * @var {number}
  */
@@ -554,7 +570,7 @@ export const FTPS_MODE_PLAINTEXT = 0;
 
 /**
  * FTPS_MODE_IMPLICIT
- * FtpsModeType: 
+ * FtpsModeType
  *
  * @var {number}
  */
@@ -562,7 +578,7 @@ export const FTPS_MODE_IMPLICIT = 1;
 
 /**
  * FTPS_MODE_EXPLICIT
- * FtpsModeType: 
+ * FtpsModeType
  *
  * @var {number}
  */
@@ -570,7 +586,7 @@ export const FTPS_MODE_EXPLICIT = 2;
 
 /**
  * JOB_CLASSIFICATION__MIN
- * JobClassification: 
+ * JobClassification
  *
  * @var {number}
  */
@@ -578,7 +594,7 @@ export const JOB_CLASSIFICATION__MIN = 4000;
 
 /**
  * JOB_CLASSIFICATION_UNKNOWN
- * JobClassification: 
+ * JobClassification
  *
  * @var {number}
  */
@@ -586,7 +602,7 @@ export const JOB_CLASSIFICATION_UNKNOWN = 4000;
 
 /**
  * JOB_CLASSIFICATION_BACKUP
- * JobClassification: 
+ * JobClassification
  *
  * @var {number}
  */
@@ -594,7 +610,7 @@ export const JOB_CLASSIFICATION_BACKUP = 4001;
 
 /**
  * JOB_CLASSIFICATION_RESTORE
- * JobClassification: 
+ * JobClassification
  *
  * @var {number}
  */
@@ -642,7 +658,7 @@ export const JOB_CLASSIFICATION_UPDATE = 4007;
 
 /**
  * JOB_CLASSIFICATION_IMPORT
- * JobClassification: 
+ * JobClassification
  *
  * @var {number}
  */
@@ -658,7 +674,7 @@ export const JOB_CLASSIFICATION_REINDEX = 4009;
 
 /**
  * JOB_CLASSIFICATION_DEEPVERIFY
- * JobClassification: 
+ * JobClassification
  *
  * @var {number}
  */
@@ -674,7 +690,7 @@ export const JOB_CLASSIFICATION_UNINSTALL = 4011;
 
 /**
  * JOB_CLASSIFICATION__MAX
- * JobClassification: 
+ * JobClassification
  *
  * @var {number}
  */
@@ -682,7 +698,7 @@ export const JOB_CLASSIFICATION__MAX = 4999;
 
 /**
  * JOB_STATUS_STOP_SUCCESS__MIN
- * JobStatus: 
+ * JobStatus
  *
  * @var {number}
  */
@@ -690,7 +706,7 @@ export const JOB_STATUS_STOP_SUCCESS__MIN = 5000;
 
 /**
  * JOB_STATUS_STOP_SUCCESS
- * JobStatus: 
+ * JobStatus
  *
  * @var {number}
  */
@@ -698,7 +714,7 @@ export const JOB_STATUS_STOP_SUCCESS = 5000;
 
 /**
  * JOB_STATUS_STOP_SUCCESS__MAX
- * JobStatus: 
+ * JobStatus
  *
  * @var {number}
  */
@@ -706,7 +722,7 @@ export const JOB_STATUS_STOP_SUCCESS__MAX = 5999;
 
 /**
  * JOB_STATUS_RUNNING__MIN
- * JobStatus: 
+ * JobStatus
  *
  * @var {number}
  */
@@ -722,7 +738,7 @@ export const JOB_STATUS_RUNNING_INDETERMINATE = 6000;
 
 /**
  * JOB_STATUS_RUNNING_ACTIVE
- * JobStatus: 
+ * JobStatus
  *
  * @var {number}
  */
@@ -738,7 +754,7 @@ export const JOB_STATUS_RUNNING_REVIVED = 6002;
 
 /**
  * JOB_STATUS_RUNNING__MAX
- * JobStatus: 
+ * JobStatus
  *
  * @var {number}
  */
@@ -746,7 +762,7 @@ export const JOB_STATUS_RUNNING__MAX = 6999;
 
 /**
  * JOB_STATUS_FAILED__MIN
- * JobStatus: 
+ * JobStatus
  *
  * @var {number}
  */
@@ -754,7 +770,7 @@ export const JOB_STATUS_FAILED__MIN = 7000;
 
 /**
  * JOB_STATUS_FAILED_TIMEOUT
- * JobStatus: 
+ * JobStatus
  *
  * @var {number}
  */
@@ -762,7 +778,7 @@ export const JOB_STATUS_FAILED_TIMEOUT = 7000;
 
 /**
  * JOB_STATUS_FAILED_WARNING
- * JobStatus: 
+ * JobStatus
  *
  * @var {number}
  */
@@ -770,7 +786,7 @@ export const JOB_STATUS_FAILED_WARNING = 7001;
 
 /**
  * JOB_STATUS_FAILED_ERROR
- * JobStatus: 
+ * JobStatus
  *
  * @var {number}
  */
@@ -778,7 +794,7 @@ export const JOB_STATUS_FAILED_ERROR = 7002;
 
 /**
  * JOB_STATUS_FAILED_QUOTA
- * JobStatus: 
+ * JobStatus
  *
  * @var {number}
  */
@@ -786,7 +802,7 @@ export const JOB_STATUS_FAILED_QUOTA = 7003;
 
 /**
  * JOB_STATUS_FAILED_SCHEDULEMISSED
- * JobStatus: 
+ * JobStatus
  *
  * @var {number}
  */
@@ -794,7 +810,7 @@ export const JOB_STATUS_FAILED_SCHEDULEMISSED = 7004;
 
 /**
  * JOB_STATUS_FAILED_CANCELLED
- * JobStatus: 
+ * JobStatus
  *
  * @var {number}
  */
@@ -802,7 +818,7 @@ export const JOB_STATUS_FAILED_CANCELLED = 7005;
 
 /**
  * JOB_STATUS_FAILED_SKIPALREADYRUNNING
- * JobStatus: 
+ * JobStatus
  *
  * @var {number}
  */
@@ -810,7 +826,7 @@ export const JOB_STATUS_FAILED_SKIPALREADYRUNNING = 7006;
 
 /**
  * JOB_STATUS_FAILED_ABANDONED
- * JobStatus: 
+ * JobStatus
  *
  * @var {number}
  */
@@ -818,7 +834,7 @@ export const JOB_STATUS_FAILED_ABANDONED = 7007;
 
 /**
  * JOB_STATUS_FAILED__MAX
- * JobStatus: 
+ * JobStatus
  *
  * @var {number}
  */
@@ -826,7 +842,7 @@ export const JOB_STATUS_FAILED__MAX = 7999;
 
 /**
  * LDAPSECURITYMETHOD_PLAIN
- * LDAPSecurityMethod: 
+ * LDAPSecurityMethod
  *
  * @var {string}
  */
@@ -834,7 +850,7 @@ export const LDAPSECURITYMETHOD_PLAIN = "plain";
 
 /**
  * LDAPSECURITYMETHOD_LDAPS
- * LDAPSecurityMethod: 
+ * LDAPSecurityMethod
  *
  * @var {string}
  */
@@ -842,7 +858,7 @@ export const LDAPSECURITYMETHOD_LDAPS = "ldaps";
 
 /**
  * LDAPSECURITYMETHOD_STARTTLS
- * LDAPSecurityMethod: 
+ * LDAPSecurityMethod
  *
  * @var {string}
  */
@@ -850,7 +866,6 @@ export const LDAPSECURITYMETHOD_STARTTLS = "starttls";
 
 /**
  * LEGACY_TOPCOLOR
- * #1782D6"
  *
  * @var {string}
  */
@@ -858,7 +873,7 @@ export const LEGACY_TOPCOLOR = "#1782D6";
 
 /**
  * LOGOIMAGE_NONE
- * LogoImageType: 
+ * LogoImageType
  *
  * @var {number}
  */
@@ -866,7 +881,7 @@ export const LOGOIMAGE_NONE = 1;
 
 /**
  * LOGOIMAGE_AS_PER_FILE
- * LogoImageType: 
+ * LogoImageType
  *
  * @var {number}
  */
@@ -874,7 +889,7 @@ export const LOGOIMAGE_AS_PER_FILE = 2;
 
 /**
  * LOGOIMAGE_COMETEMBEDDED
- * LogoImageType: 
+ * LogoImageType
  *
  * @var {number}
  */
@@ -882,7 +897,7 @@ export const LOGOIMAGE_COMETEMBEDDED = 3;
 
 /**
  * MACOSCODESIGN_LEVEL_SIGN
- * MacOSCodesignLevel: 
+ * MacOSCodesignLevel
  *
  * @var {number}
  */
@@ -890,7 +905,7 @@ export const MACOSCODESIGN_LEVEL_SIGN = 0;
 
 /**
  * MACOSCODESIGN_LEVEL_SIGN_NOTARISE
- * MacOSCodesignLevel: 
+ * MacOSCodesignLevel
  *
  * @var {number}
  */
@@ -898,7 +913,7 @@ export const MACOSCODESIGN_LEVEL_SIGN_NOTARISE = 1;
 
 /**
  * MACOSCODESIGN_LEVEL_SIGN_NOTARISE_STAPLE
- * MacOSCodesignLevel: 
+ * MacOSCodesignLevel
  *
  * @var {number}
  */
@@ -948,7 +963,7 @@ export const MONGODB_DEFAULT_PORT = 27017;
 
 /**
  * MSSQL_AUTH_WINDOWS
- * MSSQLAuthMode: 
+ * MSSQLAuthMode
  *
  * @var {string}
  */
@@ -956,7 +971,7 @@ export const MSSQL_AUTH_WINDOWS = "windows";
 
 /**
  * MSSQL_AUTH_NATIVE
- * MSSQLAuthMode: 
+ * MSSQLAuthMode
  *
  * @var {string}
  */
@@ -964,7 +979,7 @@ export const MSSQL_AUTH_NATIVE = "native";
 
 /**
  * MSSQL_METHOD_OLEDB_NATIVE
- * MSSQLMethod: 
+ * MSSQLMethod: On Windows x86_64, use the native x86_64 driver.
  *
  * @var {string}
  */
@@ -972,7 +987,7 @@ export const MSSQL_METHOD_OLEDB_NATIVE = "OLEDB_NATIVE";
 
 /**
  * MSSQL_METHOD_OLEDB_32
- * MSSQLMethod: 
+ * MSSQLMethod: On Windows x86_64, use an x86_32 OLEDB driver.
  *
  * @var {string}
  */
@@ -980,7 +995,7 @@ export const MSSQL_METHOD_OLEDB_32 = "OLEDB_32";
 
 /**
  * MSSQL_RESTORE_RECOVERY
- * MSSQLRestoreOpt: 
+ * MSSQLRestoreOpt
  *
  * @var {string}
  */
@@ -988,7 +1003,7 @@ export const MSSQL_RESTORE_RECOVERY = "RECOVERY";
 
 /**
  * MSSQL_RESTORE_NORECOVERY
- * MSSQLRestoreOpt: 
+ * MSSQLRestoreOpt
  *
  * @var {string}
  */
@@ -1031,7 +1046,7 @@ export const OFFICE365_REGION_US_DOD = "USGovtGccDoDCloud";
 
 /**
  * OS_ANY
- * ExtraFileExclusionOSRestriction: 
+ * ExtraFileExclusionOSRestriction: Applies to any device
  *
  * @var {number}
  */
@@ -1039,7 +1054,7 @@ export const OS_ANY = 0;
 
 /**
  * OS_ONLY_WINDOWS
- * ExtraFileExclusionOSRestriction: 
+ * ExtraFileExclusionOSRestriction: Applies to all Windows devices, regardless of CPU type
  *
  * @var {number}
  */
@@ -1047,7 +1062,7 @@ export const OS_ONLY_WINDOWS = 1;
 
 /**
  * OS_ONLY_WINDOWS_X8632
- * ExtraFileExclusionOSRestriction: 
+ * ExtraFileExclusionOSRestriction: Applies to Windows devices with x86_32 CPU
  *
  * @var {number}
  */
@@ -1055,7 +1070,7 @@ export const OS_ONLY_WINDOWS_X8632 = 2;
 
 /**
  * OS_ONLY_WINDOWS_X8664
- * ExtraFileExclusionOSRestriction: 
+ * ExtraFileExclusionOSRestriction: Applies to Windows devices with x86_64 CPU
  *
  * @var {number}
  */
@@ -1063,7 +1078,7 @@ export const OS_ONLY_WINDOWS_X8664 = 3;
 
 /**
  * OS_ONLY_MACOS
- * ExtraFileExclusionOSRestriction: 
+ * ExtraFileExclusionOSRestriction: Applies to macOS devices, regardless of CPU type
  *
  * @var {number}
  */
@@ -1071,7 +1086,7 @@ export const OS_ONLY_MACOS = 4;
 
 /**
  * OS_ONLY_LINUX
- * ExtraFileExclusionOSRestriction: 
+ * ExtraFileExclusionOSRestriction: Applies to Linux devices (including Synology DSM), regardless of CPU type
  *
  * @var {number}
  */
@@ -1079,6 +1094,7 @@ export const OS_ONLY_LINUX = 5;
 
 /**
  * PASSWORD_FORMAT_PLAINTEXT
+ * When resetting a password with the API, set the PasswordFormat to this value. The Comet Server will re-hash the credential automatically.
  *
  * @var {number}
  */
@@ -1086,7 +1102,7 @@ export const PASSWORD_FORMAT_PLAINTEXT = 0;
 
 /**
  * PSA_TYPE_GENERIC
- * PSAType: 
+ * PSAType
  *
  * @var {number}
  */
@@ -1094,7 +1110,7 @@ export const PSA_TYPE_GENERIC = 0;
 
 /**
  * PSA_TYPE_GRADIENT
- * PSAType: 
+ * PSAType
  *
  * @var {number}
  */
@@ -1109,7 +1125,7 @@ export const RELEASE_CODENAME = "Voyager";
 
 /**
  * REMOTESERVER_COMET
- * RemoteServerType: 
+ * RemoteServerType
  *
  * @var {string}
  */
@@ -1117,7 +1133,7 @@ export const REMOTESERVER_COMET = "comet";
 
 /**
  * REMOTESERVER_LDAP
- * RemoteServerType: 
+ * RemoteServerType
  *
  * @var {string}
  */
@@ -1125,7 +1141,7 @@ export const REMOTESERVER_LDAP = "ldap";
 
 /**
  * REMOTESERVER_B2
- * RemoteServerType: 
+ * RemoteServerType
  *
  * @var {string}
  */
@@ -1133,7 +1149,7 @@ export const REMOTESERVER_B2 = "b2";
 
 /**
  * REMOTESERVER_WASABI
- * RemoteServerType: 
+ * RemoteServerType
  *
  * @var {string}
  */
@@ -1141,7 +1157,7 @@ export const REMOTESERVER_WASABI = "wasabi";
 
 /**
  * REMOTESERVER_CUSTOM
- * RemoteServerType: 
+ * RemoteServerType
  *
  * @var {string}
  */
@@ -1149,7 +1165,7 @@ export const REMOTESERVER_CUSTOM = "custom";
 
 /**
  * REMOTESERVER_S3_GENERIC
- * RemoteServerType: 
+ * RemoteServerType
  *
  * @var {string}
  */
@@ -1157,7 +1173,7 @@ export const REMOTESERVER_S3_GENERIC = "s3";
 
 /**
  * REMOTESERVER_AWS
- * RemoteServerType: 
+ * RemoteServerType
  *
  * @var {string}
  */
@@ -1165,7 +1181,7 @@ export const REMOTESERVER_AWS = "aws";
 
 /**
  * REMOTESERVER_STORJ
- * RemoteServerType: 
+ * RemoteServerType
  *
  * @var {string}
  */
@@ -1173,7 +1189,7 @@ export const REMOTESERVER_STORJ = "storj";
 
 /**
  * REMOTESERVER_IDRIVEE2
- * RemoteServerType: 
+ * RemoteServerType
  *
  * @var {string}
  */
@@ -1181,7 +1197,7 @@ export const REMOTESERVER_IDRIVEE2 = "idrivee2";
 
 /**
  * REPLICADELETION_NONE
- * ReplicaDeletionStrategy: 
+ * ReplicaDeletionStrategy
  *
  * @var {string}
  */
@@ -1189,7 +1205,7 @@ export const REPLICADELETION_NONE = "none";
 
 /**
  * REPLICADELETION_CIRCULAR
- * ReplicaDeletionStrategy: 
+ * ReplicaDeletionStrategy
  *
  * @var {string}
  */
@@ -1197,7 +1213,7 @@ export const REPLICADELETION_CIRCULAR = "circular";
 
 /**
  * REPLICADELETION_COMPLETE
- * ReplicaDeletionStrategy: 
+ * ReplicaDeletionStrategy
  *
  * @var {string}
  */
@@ -1205,7 +1221,7 @@ export const REPLICADELETION_COMPLETE = "complete";
 
 /**
  * REPLICATOR_STATE_NONE
- * ReplicatorState: 
+ * ReplicatorState
  *
  * @var {number}
  */
@@ -1213,7 +1229,7 @@ export const REPLICATOR_STATE_NONE = 0;
 
 /**
  * REPLICATOR_STATE_FILE_LIST_WORKER_STARTED
- * ReplicatorState: 
+ * ReplicatorState
  *
  * @var {number}
  */
@@ -1221,7 +1237,7 @@ export const REPLICATOR_STATE_FILE_LIST_WORKER_STARTED = 1;
 
 /**
  * REPLICATOR_STATE_FILE_LIST_SYNC_RUNNING
- * ReplicatorState: 
+ * ReplicatorState
  *
  * @var {number}
  */
@@ -1229,7 +1245,7 @@ export const REPLICATOR_STATE_FILE_LIST_SYNC_RUNNING = 2;
 
 /**
  * REPLICATOR_STATE_FILE_LIST_SYNC_FINISHED
- * ReplicatorState: 
+ * ReplicatorState
  *
  * @var {number}
  */
@@ -1237,7 +1253,7 @@ export const REPLICATOR_STATE_FILE_LIST_SYNC_FINISHED = 4;
 
 /**
  * REPLICATOR_STATE_WORKERS_STARTED
- * ReplicatorState: 
+ * ReplicatorState
  *
  * @var {number}
  */
@@ -1245,7 +1261,7 @@ export const REPLICATOR_STATE_WORKERS_STARTED = 8;
 
 /**
  * REPLICATOR_DISPLAYCLASS_STORAGE
- * ReplicatorDisplayClass: 
+ * ReplicatorDisplayClass
  *
  * @var {number}
  */
@@ -1253,7 +1269,7 @@ export const REPLICATOR_DISPLAYCLASS_STORAGE = 100;
 
 /**
  * REPLICATOR_DISPLAYCLASS_USER
- * ReplicatorDisplayClass: 
+ * ReplicatorDisplayClass
  *
  * @var {number}
  */
@@ -1261,7 +1277,7 @@ export const REPLICATOR_DISPLAYCLASS_USER = 101;
 
 /**
  * RESTOREARCHIVEFORMAT_TAR
- * RestoreArchiveFormat: 
+ * RestoreArchiveFormat
  *
  * @var {number}
  */
@@ -1269,7 +1285,7 @@ export const RESTOREARCHIVEFORMAT_TAR = 0;
 
 /**
  * RESTOREARCHIVEFORMAT_TARGZ
- * RestoreArchiveFormat: 
+ * RestoreArchiveFormat
  *
  * @var {number}
  */
@@ -1277,7 +1293,7 @@ export const RESTOREARCHIVEFORMAT_TARGZ = 1;
 
 /**
  * RESTOREARCHIVEFORMAT_ZIP
- * RestoreArchiveFormat: 
+ * RestoreArchiveFormat
  *
  * @var {number}
  */
@@ -1293,7 +1309,7 @@ export const RESTOREARCHIVEFORMAT_SQFS = 3;
 
 /**
  * RESTOREARCHIVEFORMAT_TARZSTD
- * RestoreArchiveFormat: 
+ * RestoreArchiveFormat
  *
  * @var {number}
  */
@@ -1301,7 +1317,7 @@ export const RESTOREARCHIVEFORMAT_TARZSTD = 4;
 
 /**
  * RESTORETYPE_INVALID
- * RestoreType: 
+ * RestoreType
  *
  * @var {number}
  */
@@ -1309,7 +1325,7 @@ export const RESTORETYPE_INVALID = -1;
 
 /**
  * RESTORETYPE_FILE
- * RestoreType: 
+ * RestoreType
  *
  * @var {number}
  */
@@ -1317,7 +1333,7 @@ export const RESTORETYPE_FILE = 0;
 
 /**
  * RESTORETYPE_NULL
- * RestoreType: 
+ * RestoreType
  *
  * @var {number}
  */
@@ -1325,7 +1341,7 @@ export const RESTORETYPE_NULL = 1;
 
 /**
  * RESTORETYPE_PROCESS_PERFILE
- * RestoreType: 
+ * RestoreType
  *
  * @var {number}
  */
@@ -1333,7 +1349,7 @@ export const RESTORETYPE_PROCESS_PERFILE = 2;
 
 /**
  * RESTORETYPE_PROCESS_ARCHIVE
- * RestoreType: 
+ * RestoreType
  *
  * @var {number}
  */
@@ -1341,7 +1357,7 @@ export const RESTORETYPE_PROCESS_ARCHIVE = 3;
 
 /**
  * RESTORETYPE_WINDISK
- * RestoreType: 
+ * RestoreType
  *
  * @var {number}
  */
@@ -1349,7 +1365,7 @@ export const RESTORETYPE_WINDISK = 4;
 
 /**
  * RESTORETYPE_FILE_ARCHIVE
- * RestoreType: 
+ * RestoreType
  *
  * @var {number}
  */
@@ -1357,7 +1373,7 @@ export const RESTORETYPE_FILE_ARCHIVE = 5;
 
 /**
  * RESTORETYPE_OFFICE365_CLOUD
- * RestoreType: 
+ * RestoreType
  *
  * @var {number}
  */
@@ -1365,7 +1381,7 @@ export const RESTORETYPE_OFFICE365_CLOUD = 6;
 
 /**
  * RESTORETYPE_VMDK_FILE
- * RestoreType: 
+ * RestoreType
  *
  * @var {number}
  */
@@ -1373,7 +1389,7 @@ export const RESTORETYPE_VMDK_FILE = 7;
 
 /**
  * RESTORETYPE_VMDK_FILE_NULL
- * RestoreType: 
+ * RestoreType
  *
  * @var {number}
  */
@@ -1381,7 +1397,7 @@ export const RESTORETYPE_VMDK_FILE_NULL = 8;
 
 /**
  * RESTORETYPE_VMDK_FILE_ARCHIVE
- * RestoreType: 
+ * RestoreType
  *
  * @var {number}
  */
@@ -1389,7 +1405,7 @@ export const RESTORETYPE_VMDK_FILE_ARCHIVE = 9;
 
 /**
  * RESTORETYPE_MYSQL
- * RestoreType: 
+ * RestoreType
  *
  * @var {number}
  */
@@ -1397,7 +1413,7 @@ export const RESTORETYPE_MYSQL = 10;
 
 /**
  * RESTORETYPE_MSSQL
- * RestoreType: 
+ * RestoreType
  *
  * @var {number}
  */
@@ -1405,7 +1421,7 @@ export const RESTORETYPE_MSSQL = 11;
 
 /**
  * RESTORETYPE_PROCESS_TARBALL
- * RestoreType: RESTORETYPE_PROCESS_ARCHIVE
+ * RestoreType: Legacy name alias - Prefer to use RESTORETYPE_PROCESS_ARCHIVE since multiple archive file formats are supported within this single RESTORETYPE_
  *
  * @var {number}
  */
@@ -1429,7 +1445,7 @@ export const RETENTIONMODE_DELETE_EXCEPT = 802;
 
 /**
  * RETENTIONRANGE__LOWEST
- * RetentionRangeType: 
+ * RetentionRangeType
  *
  * @var {number}
  */
@@ -1469,9 +1485,10 @@ export const RETENTIONRANGE_FIRST_JOB_FOR_EACH_LAST_X_DAYS = 903;
 
 /**
  * RETENTIONRANGE__RESERVED904
- * RetentionRangeType: Removed
+ * RetentionRangeType
  *
  * @var {number}
+ * @deprecated This const has been deprecated since Comet version 17.2.0
  */
 export const RETENTIONRANGE__RESERVED904 = 904;
 
@@ -1517,7 +1534,7 @@ export const RETENTIONRANGE_LAST_X_BACKUPS_ONE_FOR_EACH_MONTH = 909;
 
 /**
  * RETENTIONRANGE__HIGHEST
- * RetentionRangeType: 
+ * RetentionRangeType
  *
  * @var {number}
  */
@@ -1539,7 +1556,7 @@ export const SCHEDULE_FREQUENCY_LOWEST = 8010;
 
 /**
  * SCHEDULE_FREQUENCY_ONCEONLY
- * epoch time
+ * SecondsPast should be a Unix timestamp, in seconds
  *
  * @var {number}
  */
@@ -1547,7 +1564,7 @@ export const SCHEDULE_FREQUENCY_ONCEONLY = 8010;
 
 /**
  * SCHEDULE_FREQUENCY_DAILY
- * seconds past 00:00 local time
+ * SecondsPast is the number of seconds past 00:00, in the device's local timezone.
  *
  * @var {number}
  */
@@ -1555,7 +1572,7 @@ export const SCHEDULE_FREQUENCY_DAILY = 8011;
 
 /**
  * SCHEDULE_FREQUENCY_HOURLY
- * seconds past *:00 local time
+ * SecondsPast is the number of seconds past *:00, in the device's local timezone.
  *
  * @var {number}
  */
@@ -1563,7 +1580,7 @@ export const SCHEDULE_FREQUENCY_HOURLY = 8012;
 
 /**
  * SCHEDULE_FREQUENCY_WEEKLY
- * seconds past 00:00 Sunday, local time
+ * SecondsPast is the number of seconds past 00:00 Sunday, in the device's local timezone.
  *
  * @var {number}
  */
@@ -1571,7 +1588,7 @@ export const SCHEDULE_FREQUENCY_WEEKLY = 8013;
 
 /**
  * SCHEDULE_FREQUENCY_MONTHLY
- * seconds past 00:00 1st, local time
+ * SecondsPast is the number of seconds past 00:00 1st, in the device's local timezone.
  *
  * @var {number}
  */
@@ -1579,7 +1596,7 @@ export const SCHEDULE_FREQUENCY_MONTHLY = 8014;
 
 /**
  * SCHEDULE_FREQUENCY_PERIODIC
- * SecondsPast: number of seconds per period. Offset: Shunt seconds after unix epoch
+ * SecondsPast is the number of seconds per period. Offset: Shunt seconds after unix epoch
  *
  * @var {number}
  */
@@ -1602,7 +1619,6 @@ export const SCHEDULE_MAX_RANDOM_DELAY_SECS = 18000;
 
 /**
  * SCHEDULE_MAXINT
- * 2^50 (1 << 50)
  *
  * @var {number}
  */
@@ -1610,7 +1626,7 @@ export const SCHEDULE_MAXINT = 1125899906842624;
 
 /**
  * SEARCHCLAUSE_RULE
- * SearchClauseType: 
+ * SearchClauseType
  *
  * @var {string}
  */
@@ -1618,7 +1634,7 @@ export const SEARCHCLAUSE_RULE = "";
 
 /**
  * SEARCHCLAUSE_AND
- * SearchClauseType: 
+ * SearchClauseType
  *
  * @var {string}
  */
@@ -1626,7 +1642,7 @@ export const SEARCHCLAUSE_AND = "and";
 
 /**
  * SEARCHCLAUSE_OR
- * SearchClauseType: 
+ * SearchClauseType
  *
  * @var {string}
  */
@@ -1634,7 +1650,7 @@ export const SEARCHCLAUSE_OR = "or";
 
 /**
  * SEARCHCLAUSE_NOT_AND
- * SearchClauseType: 
+ * SearchClauseType
  *
  * @var {string}
  */
@@ -1642,7 +1658,7 @@ export const SEARCHCLAUSE_NOT_AND = "not_and";
 
 /**
  * SEARCHCLAUSE_NOT_OR
- * SearchClauseType: 
+ * SearchClauseType
  *
  * @var {string}
  */
@@ -1867,7 +1883,7 @@ export const SERVICE_ONEDRIVE = 16;
 
 /**
  * SETTING_SYSTEM_DEFAULT
- * DefaultSettingMode: 
+ * DefaultSettingMode
  *
  * @var {number}
  */
@@ -1875,7 +1891,7 @@ export const SETTING_SYSTEM_DEFAULT = 0;
 
 /**
  * SETTING_OPTIONAL_DEFAULT_ON
- * DefaultSettingMode: 
+ * DefaultSettingMode
  *
  * @var {number}
  */
@@ -1883,7 +1899,7 @@ export const SETTING_OPTIONAL_DEFAULT_ON = 1;
 
 /**
  * SETTING_OPTIONAL_DEFAULT_OFF
- * DefaultSettingMode: 
+ * DefaultSettingMode
  *
  * @var {number}
  */
@@ -1891,7 +1907,7 @@ export const SETTING_OPTIONAL_DEFAULT_OFF = 2;
 
 /**
  * SETTING_ENFORCED_ON
- * DefaultSettingMode: 
+ * DefaultSettingMode
  *
  * @var {number}
  */
@@ -1899,7 +1915,7 @@ export const SETTING_ENFORCED_ON = 3;
 
 /**
  * SETTING_ENFORCED_OFF
- * DefaultSettingMode: 
+ * DefaultSettingMode
  *
  * @var {number}
  */
@@ -1907,7 +1923,7 @@ export const SETTING_ENFORCED_OFF = 4;
 
 /**
  * SEVERITY_INFO
- * Severity: 
+ * Severity
  *
  * @var {string}
  */
@@ -1915,7 +1931,7 @@ export const SEVERITY_INFO = "I";
 
 /**
  * SEVERITY_WARNING
- * Severity: 
+ * Severity
  *
  * @var {string}
  */
@@ -1923,7 +1939,7 @@ export const SEVERITY_WARNING = "W";
 
 /**
  * SEVERITY_ERROR
- * Severity: 
+ * Severity
  *
  * @var {string}
  */
@@ -1931,7 +1947,7 @@ export const SEVERITY_ERROR = "E";
 
 /**
  * SEVT__MIN
- * StreamableEventType: 
+ * StreamableEventType
  *
  * @var {number}
  */
@@ -1939,7 +1955,7 @@ export const SEVT__MIN = 4000;
 
 /**
  * SEVT_META_HELLO
- * StreamableEventType: Event is emitted when the webhook is registered, or when the server starts up. The Data associated is ServerMetaVersionInfo
+ * StreamableEventType: This event is emitted when the webhook is registered, or when the server starts up. The Data associated is ServerMetaVersionInfo
  *
  * @var {number}
  */
@@ -1971,7 +1987,7 @@ export const SEVT_ACCOUNT_UPDATED = 4102;
 
 /**
  * SEVT_JOB_NEW
- * StreamableEventType: 
+ * StreamableEventType
  *
  * @var {number}
  */
@@ -1979,7 +1995,7 @@ export const SEVT_JOB_NEW = 4200;
 
 /**
  * SEVT_JOB_COMPLETED
- * StreamableEventType: 
+ * StreamableEventType
  *
  * @var {number}
  */
@@ -1995,7 +2011,7 @@ export const SEVT_BUCKET_NEW = 4300;
 
 /**
  * SEVT__MAX
- * StreamableEventType: 
+ * StreamableEventType
  *
  * @var {number}
  */
@@ -2003,7 +2019,7 @@ export const SEVT__MAX = 4999;
 
 /**
  * SSHCONNECTION_AUTHMODE__INVALID
- * SSHAuthMode: 
+ * SSHAuthMode
  *
  * @var {number}
  */
@@ -2011,7 +2027,7 @@ export const SSHCONNECTION_AUTHMODE__INVALID = 0;
 
 /**
  * SSHCONNECTION_AUTHMODE_PASSWORD
- * SSHAuthMode: 
+ * SSHAuthMode
  *
  * @var {number}
  */
@@ -2019,7 +2035,7 @@ export const SSHCONNECTION_AUTHMODE_PASSWORD = 1;
 
 /**
  * SSHCONNECTION_AUTHMODE_PRIVATEKEY
- * SSHAuthMode: n.b. change values
+ * SSHAuthMode
  *
  * @var {number}
  */
@@ -2027,7 +2043,7 @@ export const SSHCONNECTION_AUTHMODE_PRIVATEKEY = 2;
 
 /**
  * STOREDOBJECTTYPE_FILE
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2035,7 +2051,7 @@ export const STOREDOBJECTTYPE_FILE = "file";
 
 /**
  * STOREDOBJECTTYPE_DIRECTORY
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2043,7 +2059,7 @@ export const STOREDOBJECTTYPE_DIRECTORY = "dir";
 
 /**
  * STOREDOBJECTTYPE_SYMLINK
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2051,7 +2067,7 @@ export const STOREDOBJECTTYPE_SYMLINK = "symlink";
 
 /**
  * STOREDOBJECTTYPE_UNIXBLOCKDEVICE
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2059,7 +2075,7 @@ export const STOREDOBJECTTYPE_UNIXBLOCKDEVICE = "dev";
 
 /**
  * STOREDOBJECTTYPE_UNIXCHARDEVICE
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2067,7 +2083,7 @@ export const STOREDOBJECTTYPE_UNIXCHARDEVICE = "chardev";
 
 /**
  * STOREDOBJECTTYPE_UNIXFIFO
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2075,7 +2091,7 @@ export const STOREDOBJECTTYPE_UNIXFIFO = "fifo";
 
 /**
  * STOREDOBJECTTYPE_UNIXSOCKET
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2083,7 +2099,7 @@ export const STOREDOBJECTTYPE_UNIXSOCKET = "socket";
 
 /**
  * STOREDOBJECTTYPE_WINEFS
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2091,7 +2107,7 @@ export const STOREDOBJECTTYPE_WINEFS = "winefs";
 
 /**
  * STOREDOBJECTTYPE_EMAILMESSAGE
- * StoredObjectType: "file"
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2099,7 +2115,7 @@ export const STOREDOBJECTTYPE_EMAILMESSAGE = "emailmessage";
 
 /**
  * STOREDOBJECTTYPE_EMAILFOLDER
- * StoredObjectType: "dir"
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2107,7 +2123,7 @@ export const STOREDOBJECTTYPE_EMAILFOLDER = "mailfolder";
 
 /**
  * STOREDOBJECTTYPE_OFFICECONTACT
- * StoredObjectType: "file"
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2115,7 +2131,7 @@ export const STOREDOBJECTTYPE_OFFICECONTACT = "contact";
 
 /**
  * STOREDOBJECTTYPE_OFFICECONTACTFOLDER
- * StoredObjectType: "dir"
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2123,7 +2139,7 @@ export const STOREDOBJECTTYPE_OFFICECONTACTFOLDER = "contactfolder";
 
 /**
  * STOREDOBJECTTYPE_OFFICECALENDAREVENT
- * StoredObjectType: "file"
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2131,7 +2147,7 @@ export const STOREDOBJECTTYPE_OFFICECALENDAREVENT = "calendarevent";
 
 /**
  * STOREDOBJECTTYPE_OFFICECALENDAR
- * StoredObjectType: "dir"
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2139,7 +2155,7 @@ export const STOREDOBJECTTYPE_OFFICECALENDAR = "calendar";
 
 /**
  * STOREDOBJECTTYPE_MSSITE
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2147,7 +2163,7 @@ export const STOREDOBJECTTYPE_MSSITE = "mssite";
 
 /**
  * STOREDOBJECTTYPE_MSSITE_TEAM
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2155,7 +2171,7 @@ export const STOREDOBJECTTYPE_MSSITE_TEAM = "mssiteteam";
 
 /**
  * STOREDOBJECTTYPE_MSSITELISTENTITY
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2163,7 +2179,7 @@ export const STOREDOBJECTTYPE_MSSITELISTENTITY = "mssitelistentity";
 
 /**
  * STOREDOBJECTTYPE_MSSITEITEMENTITY
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2171,7 +2187,7 @@ export const STOREDOBJECTTYPE_MSSITEITEMENTITY = "mssiteitementity";
 
 /**
  * STOREDOBJECTTYPE_MSSITELISTDRIVEENTITY
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2179,7 +2195,7 @@ export const STOREDOBJECTTYPE_MSSITELISTDRIVEENTITY = "mssitelistdriveentity";
 
 /**
  * STOREDOBJECTTYPE_VMDK_FILE
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2187,7 +2203,7 @@ export const STOREDOBJECTTYPE_VMDK_FILE = "vmdkfile";
 
 /**
  * STOREDOBJECTTYPE_VMDK_DIRECTORY
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2195,7 +2211,7 @@ export const STOREDOBJECTTYPE_VMDK_DIRECTORY = "vmdkdir";
 
 /**
  * STOREDOBJECTTYPE_VMDK_WINEFS
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2203,7 +2219,7 @@ export const STOREDOBJECTTYPE_VMDK_WINEFS = "vmdkwinefs";
 
 /**
  * STOREDOBJECTTYPE_VMDK_SYMLINK
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2211,7 +2227,7 @@ export const STOREDOBJECTTYPE_VMDK_SYMLINK = "vmdksymlink";
 
 /**
  * STOREDOBJECTTYPE_VIRTUALIMAGE_DISK
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2219,7 +2235,7 @@ export const STOREDOBJECTTYPE_VIRTUALIMAGE_DISK = "virtualimagedisk";
 
 /**
  * STOREDOBJECTTYPE_VHDX_GPT_PARTITION
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2227,7 +2243,7 @@ export const STOREDOBJECTTYPE_VHDX_GPT_PARTITION = "vhdxpartitiongpt";
 
 /**
  * STOREDOBJECTTYPE_VHDX_MBR_PARTITION
- * StoredObjectType: 
+ * StoredObjectType
  *
  * @var {string}
  */
@@ -2235,6 +2251,7 @@ export const STOREDOBJECTTYPE_VHDX_MBR_PARTITION = "vhdxpartitionmbr";
 
 /**
  * TOTPRequiredError
+ * If an API response returns in failure, but it includes this value in the CometAPIResponseMessage->Message parameter, it indicates that your supplied authentication was insufficient, and you must supply additional two-factor authentication credentials.
  *
  * @var {string}
  */
@@ -2242,7 +2259,7 @@ export const TOTPRequiredError = "ERR_TOTP_REQUIRED";
 
 /**
  * UPDATESTATUS_NOT_SEEN
- * UpdateStatus: 
+ * UpdateStatus
  *
  * @var {number}
  */
@@ -2250,7 +2267,7 @@ export const UPDATESTATUS_NOT_SEEN = 0;
 
 /**
  * UPDATESTATUS_INELIGIBLE
- * UpdateStatus: 
+ * UpdateStatus: The selected device does not meet the filter criteria from the Bulk Update Campaign's configuration.
  *
  * @var {number}
  */
@@ -2258,7 +2275,7 @@ export const UPDATESTATUS_INELIGIBLE = 1;
 
 /**
  * UPDATESTATUS_PENDING
- * UpdateStatus: 
+ * UpdateStatus
  *
  * @var {number}
  */
@@ -2266,7 +2283,7 @@ export const UPDATESTATUS_PENDING = 2;
 
 /**
  * UPDATESTATUS_REQUEST_MADE
- * UpdateStatus: 
+ * UpdateStatus: The device has made a live connection and it meets the filter criteria. A live connection message has been sent asking it to perform the software upgrade.
  *
  * @var {number}
  */
@@ -2274,7 +2291,7 @@ export const UPDATESTATUS_REQUEST_MADE = 3;
 
 /**
  * UPDATESTATUS_UPDATE_FAILED
- * UpdateStatus: Device reconnected with bad version
+ * UpdateStatus: An update signal was sent to the device, but when it reconnected, it did not advertise the target software version. It's likely that the update failed - please check the device's Update log for more information.
  *
  * @var {number}
  */
@@ -2282,7 +2299,7 @@ export const UPDATESTATUS_UPDATE_FAILED = 4;
 
 /**
  * UPDATESTATUS_UPDATE_CONFIRMED
- * UpdateStatus: 
+ * UpdateStatus: The device has successfully updated to the target version.
  *
  * @var {number}
  */
@@ -2290,6 +2307,7 @@ export const UPDATESTATUS_UPDATE_CONFIRMED = 5;
 
 /**
  * UnknownDeviceError
+ * If an API response returns in failure, but it includes this value in the CometAPIResponseMessage->Message parameter, it indicates that the specified Device ID was invalid or not found.
  *
  * @var {string}
  */
@@ -2318,7 +2336,7 @@ export const VhdxPartitonReadErrMsg = "ERR_VHDX_PARTITION";
 
 /**
  * WEBAUTHN_DEVICE_TYPE__UNKNOWN
- * WebAuthnDeviceType: 
+ * WebAuthnDeviceType
  *
  * @var {number}
  */
@@ -2326,7 +2344,7 @@ export const WEBAUTHN_DEVICE_TYPE__UNKNOWN = 0;
 
 /**
  * WEBAUTHN_DEVICE_TYPE__HARDWARE_TOKEN
- * WebAuthnDeviceType: 
+ * WebAuthnDeviceType
  *
  * @var {number}
  */
@@ -2334,7 +2352,7 @@ export const WEBAUTHN_DEVICE_TYPE__HARDWARE_TOKEN = 1;
 
 /**
  * WEBAUTHN_DEVICE_TYPE__ANDROID
- * WebAuthnDeviceType: 
+ * WebAuthnDeviceType
  *
  * @var {number}
  */
@@ -2342,7 +2360,7 @@ export const WEBAUTHN_DEVICE_TYPE__ANDROID = 2;
 
 /**
  * WEBAUTHN_DEVICE_TYPE__APPLE
- * WebAuthnDeviceType: 
+ * WebAuthnDeviceType
  *
  * @var {number}
  */
@@ -2350,7 +2368,7 @@ export const WEBAUTHN_DEVICE_TYPE__APPLE = 3;
 
 /**
  * WEBAUTHN_DEVICE_TYPE__TPM_GENERIC
- * WebAuthnDeviceType: 
+ * WebAuthnDeviceType
  *
  * @var {number}
  */
@@ -2358,7 +2376,7 @@ export const WEBAUTHN_DEVICE_TYPE__TPM_GENERIC = 4;
 
 /**
  * WEBAUTHN_DEVICE_TYPE__TPM_WINDOWS
- * WebAuthnDeviceType: 
+ * WebAuthnDeviceType
  *
  * @var {number}
  */
@@ -2366,7 +2384,7 @@ export const WEBAUTHN_DEVICE_TYPE__TPM_WINDOWS = 5;
 
 /**
  * WEBAUTHN_DEVICE_TYPE__TPM_LINUX
- * WebAuthnDeviceType: 
+ * WebAuthnDeviceType
  *
  * @var {number}
  */
@@ -2383,7 +2401,7 @@ export const WINDOWSCODESIGN_METHOD_AUTO = 0;
 
 /**
  * WINDOWSCODESIGN_METHOD_DISABLED
- * WindowsCodesignMethod: 
+ * WindowsCodesignMethod: Do not perform Authenticode codesigning
  *
  * @var {number}
  */
@@ -2391,7 +2409,7 @@ export const WINDOWSCODESIGN_METHOD_DISABLED = 1;
 
 /**
  * WINDOWSCODESIGN_METHOD_PKCS12FILE
- * WindowsCodesignMethod: 
+ * WindowsCodesignMethod: Use a configured PKCS#12 key file for Authenticode codesigning
  *
  * @var {number}
  */
@@ -2399,7 +2417,7 @@ export const WINDOWSCODESIGN_METHOD_PKCS12FILE = 2;
 
 /**
  * WINDOWSCODESIGN_METHOD_PKCS11HSM
- * WindowsCodesignMethod: 
+ * WindowsCodesignMethod: Use a configured PKCS#11 hardware security module (HSM) for Authenticode codesigning
  *
  * @var {number}
  */
@@ -2407,7 +2425,7 @@ export const WINDOWSCODESIGN_METHOD_PKCS11HSM = 3;
 
 /**
  * WINDOWSCODESIGN_METHOD_AZUREKEYVAULT
- * WindowsCodesignMethod: 
+ * WindowsCodesignMethod: Use a configured Azure Key Vault for Authenticode codesigning
  *
  * @var {number}
  */
@@ -2417,6 +2435,9 @@ export const WINDOWSCODESIGN_METHOD_AZUREKEYVAULT = 4;
 
 
 export type libcomet_AddBucketResponseMessage = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	NewBucketID: string
@@ -2472,6 +2493,9 @@ export function New_Zero_libcomet_AdminEmailOptions(): libcomet_AdminEmailOption
 
 
 export type libcomet_AdminResourceResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	ResourceHash: string
@@ -2502,13 +2526,26 @@ export type libcomet_AdminSecurityOptions = {
 	AllowPasswordAndU2FLogin: boolean
 	AllowPasswordAndWebAuthnLogin: boolean
 	/**
+	 * Omission from JSON will be interpreted as an empty array
 	 * @deprecated This member has been deprecated since Comet version 21.12.0
 	 */
-	U2FRegistrations?: libcomet_AdminU2FRegistration[] // Omission from JSON will be interpreted as an empty array
-	WebAuthnRegistrations?: libcomet_AdminWebAuthnRegistration[] // Omission from JSON will be interpreted as an empty array
-	TOTPKeyEncryptionFormat?: number // Omission from JSON will be interpreted as 0 (zero)
-	TOTPKey?: string // Omission from JSON will be interpreted as empty-string
-	IPWhitelist?: string // Omission from JSON will be interpreted as empty-string
+	U2FRegistrations?: libcomet_AdminU2FRegistration[]
+	/**
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	WebAuthnRegistrations?: libcomet_AdminWebAuthnRegistration[]
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	TOTPKeyEncryptionFormat?: number
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	TOTPKey?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	IPWhitelist?: string
 }
 
 export function New_Zero_libcomet_AdminSecurityOptions(): libcomet_AdminSecurityOptions {
@@ -2542,14 +2579,38 @@ export function New_Zero_libcomet_AdminU2FRegistration(): libcomet_AdminU2FRegis
 
 
 export type libcomet_AdminUserPermissions = {
-	PreventEditServerSettings?: boolean // Omission from JSON will be interpreted as false
-	PreventServerShutdown?: boolean // Omission from JSON will be interpreted as false
-	PreventChangePassword?: boolean // Omission from JSON will be interpreted as false
-	AllowEditBranding?: boolean // Omission from JSON will be interpreted as false
-	AllowEditEmailOptions?: boolean // Omission from JSON will be interpreted as false
-	AllowEditRemoteStorage?: boolean // Omission from JSON will be interpreted as false
-	AllowEditWebhooks?: boolean // Omission from JSON will be interpreted as false
-	DenyConstellationRole?: boolean // Omission from JSON will be interpreted as false
+	/**
+	 * Omission from JSON will be interpreted as false
+	 */
+	PreventEditServerSettings?: boolean
+	/**
+	 * Omission from JSON will be interpreted as false
+	 */
+	PreventServerShutdown?: boolean
+	/**
+	 * Omission from JSON will be interpreted as false
+	 */
+	PreventChangePassword?: boolean
+	/**
+	 * Omission from JSON will be interpreted as false
+	 */
+	AllowEditBranding?: boolean
+	/**
+	 * Omission from JSON will be interpreted as false
+	 */
+	AllowEditEmailOptions?: boolean
+	/**
+	 * Omission from JSON will be interpreted as false
+	 */
+	AllowEditRemoteStorage?: boolean
+	/**
+	 * Omission from JSON will be interpreted as false
+	 */
+	AllowEditWebhooks?: boolean
+	/**
+	 * Omission from JSON will be interpreted as false
+	 */
+	DenyConstellationRole?: boolean
 }
 
 export function New_Zero_libcomet_AdminUserPermissions(): libcomet_AdminUserPermissions {
@@ -2562,9 +2623,18 @@ export type libcomet_AdminWebAuthnRegistration = {
 	Description: string
 	RegisterTime: number
 	Type: number
-	IsLegacyU2F?: boolean // Omission from JSON will be interpreted as false
-	ID?: string // Omission from JSON will be interpreted as an empty array
-	Credential?: libcomet_WebAuthnCredential // Omission from JSON will be interpreted as the zero value for this field type
+	/**
+	 * Omission from JSON will be interpreted as false
+	 */
+	IsLegacyU2F?: boolean
+	/**
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	ID?: string
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Credential?: libcomet_WebAuthnCredential
 }
 
 export function New_Zero_libcomet_AdminWebAuthnRegistration(): libcomet_AdminWebAuthnRegistration {
@@ -2579,7 +2649,10 @@ export function New_Zero_libcomet_AdminWebAuthnRegistration(): libcomet_AdminWeb
 export type libcomet_AllowedAdminUser = {
 	Username: string
 	OrganizationID: string
-	ExternalAuthenticationSource?: string // Omission from JSON will be interpreted as empty-string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	ExternalAuthenticationSource?: string
 	PasswordFormat: number
 	Password: string
 	AllowPasswordLogin: boolean
@@ -2590,13 +2663,26 @@ export type libcomet_AllowedAdminUser = {
 	AllowPasswordAndU2FLogin: boolean
 	AllowPasswordAndWebAuthnLogin: boolean
 	/**
+	 * Omission from JSON will be interpreted as an empty array
 	 * @deprecated This member has been deprecated since Comet version 21.12.0
 	 */
-	U2FRegistrations?: libcomet_AdminU2FRegistration[] // Omission from JSON will be interpreted as an empty array
-	WebAuthnRegistrations?: libcomet_AdminWebAuthnRegistration[] // Omission from JSON will be interpreted as an empty array
-	TOTPKeyEncryptionFormat?: number // Omission from JSON will be interpreted as 0 (zero)
-	TOTPKey?: string // Omission from JSON will be interpreted as empty-string
-	IPWhitelist?: string // Omission from JSON will be interpreted as empty-string
+	U2FRegistrations?: libcomet_AdminU2FRegistration[]
+	/**
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	WebAuthnRegistrations?: libcomet_AdminWebAuthnRegistration[]
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	TOTPKeyEncryptionFormat?: number
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	TOTPKey?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	IPWhitelist?: string
 	Permissions: libcomet_AdminUserPermissions
 }
 
@@ -2659,7 +2745,10 @@ export type libcomet_AuthenticationRoleOptions = {
 	PruneLogsAfterDays: number
 	RemoteStorage: libcomet_RemoteStorageOption[]
 	ReplicateTo: libcomet_ReplicaServer[]
-	GlobalOverrides?: libcomet_GlobalOverrideOptions // Omission from JSON will be interpreted as the zero value for this field type
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	GlobalOverrides?: libcomet_GlobalOverrideOptions
 }
 
 export function New_Zero_libcomet_AuthenticationRoleOptions(): libcomet_AuthenticationRoleOptions {
@@ -2695,6 +2784,9 @@ export type libcomet_AzureDestinationLocation = {
 	AZBAccountName: string
 	AZBAccountKey: string
 	AZBContainer: string
+	/**
+	 * The base URL for the Azure Blob Storage service. Leave blank to use the global default URL.
+	 */
 	AZBRealm: string
 	AZBPrefix: string
 }
@@ -2711,15 +2803,36 @@ export function New_Zero_libcomet_AzureDestinationLocation(): libcomet_AzureDest
 
 
 export type libcomet_B2DestinationLocation = {
-	AccountID?: string // Omission from JSON will be interpreted as empty-string
-	Key?: string // Omission from JSON will be interpreted as empty-string
-	Bucket?: string // Omission from JSON will be interpreted as empty-string
-	Prefix?: string // Omission from JSON will be interpreted as empty-string
 	/**
+	 * Key ID
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	AccountID?: string
+	/**
+	 * Application Key
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Key?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Bucket?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Prefix?: string
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
 	 * @deprecated This member has been deprecated since Comet version 21.9.7
 	 */
-	MaxConnections?: number // Omission from JSON will be interpreted as 0 (zero)
-	HideDeletedFiles?: boolean // Omission from JSON will be interpreted as false
+	MaxConnections?: number
+	/**
+	 * Hide files instead of deleting them. This can be used for ransomware protection if (A) the B2
+	 * credentials have the hideFile permission but not the deleteFile permission, and (B) you use the
+	 * Backblaze B2 server-side lifecycle policies to clean up old hidden files.
+	 * Omission from JSON will be interpreted as false
+	 */
+	HideDeletedFiles?: boolean
 }
 
 export function New_Zero_libcomet_B2DestinationLocation(): libcomet_B2DestinationLocation {
@@ -2773,11 +2886,29 @@ export function New_Zero_libcomet_B2VirtualStorageRoleSettings(): libcomet_B2Vir
 
 export type libcomet_BackupJobAdvancedOptions = {
 	SkipAlreadyRunning: boolean
+	/**
+	 * If Zero: disabled
+	 */
 	StopAfter: number
+	/**
+	 * If Zero: disabled
+	 */
 	LimitVaultSpeedBps: number
+	/**
+	 * Default disabled
+	 */
 	ReduceDiskConcurrency: boolean
+	/**
+	 * Default disabled
+	 */
 	UseOnDiskIndexes: boolean
+	/**
+	 * Default disabled
+	 */
 	AllowZeroFilesSuccess: boolean
+	/**
+	 * If Zero: default Automatic (BACKUPJOBAUTORETENTION_AUTOMATIC)
+	 */
 	AutoRetentionLevel: number
 }
 
@@ -2799,12 +2930,27 @@ export type libcomet_BackupJobDetail = {
 	Username: string
 	Classification: number
 	Status: number
+	/**
+	 * Unix timestamp in seconds
+	 */
 	StartTime: number
+	/**
+	 * Unix timestamp in seconds. Will be zero if the job is still running.
+	 */
 	EndTime: number
+	/**
+	 * The Protected Item that this job is for
+	 */
 	SourceGUID: string
+	/**
+	 * The Storage Vault that this job is for
+	 */
 	DestinationGUID: string
 	DeviceID: string
-	SnapshotID?: string // Omission from JSON will be interpreted as empty-string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	SnapshotID?: string
 	ClientVersion: string
 	TotalDirectories: number
 	TotalFiles: number
@@ -2812,16 +2958,56 @@ export type libcomet_BackupJobDetail = {
 	TotalChunks: number
 	UploadSize: number
 	DownloadSize: number
-	TotalVmCount?: number // Omission from JSON will be interpreted as 0 (zero)
-	TotalMailsCount?: number // Omission from JSON will be interpreted as 0 (zero)
-	TotalSitesCount?: number // Omission from JSON will be interpreted as 0 (zero)
-	TotalAccountsCount?: number // Omission from JSON will be interpreted as 0 (zero)
-	TotalLicensedMailsCount?: number // Omission from JSON will be interpreted as 0 (zero)
-	TotalUnlicensedMailsCount?: number // Omission from JSON will be interpreted as 0 (zero)
-	CancellationID?: string // Omission from JSON will be interpreted as empty-string
-	Progress?: libcomet_BackupJobProgress // Omission from JSON will be interpreted as the zero value for this field type
-	DestinationSizeStart?: libcomet_SizeMeasurement // Omission from JSON will be interpreted as the zero value for this field type
-	DestinationSizeEnd?: libcomet_SizeMeasurement // Omission from JSON will be interpreted as the zero value for this field type
+	/**
+	 * For Hyper-V and VMware backup jobs, the total number of virtual machines.
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	TotalVmCount?: number
+	/**
+	 * For Office 365 backup jobs, the total number of mailboxes.
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	TotalMailsCount?: number
+	/**
+	 * For Office 365 backup jobs, the total number of SharePoint sites.
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	TotalSitesCount?: number
+	/**
+	 * For Office 365 backup jobs, the calculated effective number of protected accounts.
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	TotalAccountsCount?: number
+	/**
+	 * For Office 365 backup jobs, the number of licensed mailboxes.
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	TotalLicensedMailsCount?: number
+	/**
+	 * For Office 365 backup jobs, the number of unlicensed mailboxes.
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	TotalUnlicensedMailsCount?: number
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	CancellationID?: string
+	/**
+	 * If this backup job is still running, additional partial-progress information may be present in
+	 * this field.
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Progress?: libcomet_BackupJobProgress
+	/**
+	 * The size of the Storage Vault, as measured at the start of the job.
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	DestinationSizeStart?: libcomet_SizeMeasurement
+	/**
+	 * The size of the Storage Vault, as measured at the end of the job.
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	DestinationSizeEnd?: libcomet_SizeMeasurement
 }
 
 export function New_Zero_libcomet_BackupJobDetail(): libcomet_BackupJobDetail {
@@ -2849,6 +3035,9 @@ export function New_Zero_libcomet_BackupJobDetail(): libcomet_BackupJobDetail {
 export type libcomet_BackupJobProgress = {
 	Counter: number
 	SentTime: number
+	/**
+	 * The typo is preserved for backwards-compatibility reasons.
+	 */
 	RecievedTime: number
 	BytesDone: number
 	ItemsDone: number
@@ -2865,21 +3054,58 @@ export function New_Zero_libcomet_BackupJobProgress(): libcomet_BackupJobProgres
 }
 
 
+/**
+ * A backup rule connects one source Protected Item and one destination Storage Vault, with multiple
+ * time schedules or event triggers
+ */
 export type libcomet_BackupRuleConfig = {
 	Description: string
+	/**
+	 * Unix timestamp in seconds
+	 */
 	CreateTime: number
+	/**
+	 * Unix timestamp in seconds. The caller is responsible for updating this themselves.
+	 */
 	ModifyTime: number
+	/**
+	 * Custom commands to run before the job
+	 */
 	PreExec: string[]
+	/**
+	 * Custom commands to run after taking a disk snapshot
+	 */
 	ThawExec: string[]
+	/**
+	 * Custom commands to run after the job
+	 */
 	PostExec: string[]
 	Source: string
 	Destination: string
 	SkipAlreadyRunning: boolean
+	/**
+	 * If Zero: disabled
+	 */
 	StopAfter: number
+	/**
+	 * If Zero: disabled
+	 */
 	LimitVaultSpeedBps: number
+	/**
+	 * Default disabled
+	 */
 	ReduceDiskConcurrency: boolean
+	/**
+	 * Default disabled
+	 */
 	UseOnDiskIndexes: boolean
+	/**
+	 * Default disabled
+	 */
 	AllowZeroFilesSuccess: boolean
+	/**
+	 * If Zero: default Automatic (BACKUPJOBAUTORETENTION_AUTOMATIC)
+	 */
 	AutoRetentionLevel: number
 	Schedules: libcomet_ScheduleConfig[]
 	EventTriggers: libcomet_BackupRuleEventTriggers
@@ -2919,8 +3145,17 @@ export function libcomet_BackupRuleConfig_set_embedded_libcomet_BackupJobAdvance
 
 
 export type libcomet_BackupRuleEventTriggers = {
-	OnPCBoot?: boolean // Omission from JSON will be interpreted as false
-	OnPCBootIfLastJobMissed?: boolean // Omission from JSON will be interpreted as false
+	/**
+	 * The "When PC Starts" option
+	 * Omission from JSON will be interpreted as false
+	 */
+	OnPCBoot?: boolean
+	/**
+	 * The "If the last job was Missed" option. In Comet 23.12.3 and later, this condition is evaluated
+	 * when the PC starts and/or when the live connection is resumed.
+	 * Omission from JSON will be interpreted as false
+	 */
+	OnPCBootIfLastJobMissed?: boolean
 }
 
 export function New_Zero_libcomet_BackupRuleEventTriggers(): libcomet_BackupRuleEventTriggers {
@@ -3191,6 +3426,9 @@ export function libcomet_BrandingProperties_set_embedded_libcomet_PrivateBrandin
 
 
 export type libcomet_BrowseDiskDrivesResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	Disks: libcomet_DiskDrive[]
@@ -3211,6 +3449,9 @@ export function libcomet_BrowseDiskDrivesResponse_set_embedded_libcomet_CometAPI
 
 
 export type libcomet_BrowseEDBResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	Databases: libcomet_EDBFileInfo[]
@@ -3231,6 +3472,9 @@ export function libcomet_BrowseEDBResponse_set_embedded_libcomet_CometAPIRespons
 
 
 export type libcomet_BrowseHVResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	VirtualMachines: libcomet_HyperVMachineInfo[]
@@ -3251,6 +3495,9 @@ export function libcomet_BrowseHVResponse_set_embedded_libcomet_CometAPIResponse
 
 
 export type libcomet_BrowseOffice365ListVirtualAccountsResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	Objects: libcomet_Office365MixedVirtualAccount[]
@@ -3271,6 +3518,9 @@ export function libcomet_BrowseOffice365ListVirtualAccountsResponse_set_embedded
 
 
 export type libcomet_BrowseOffice365ObjectsResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	Objects: libcomet_Office365ObjectInfo[]
@@ -3291,6 +3541,9 @@ export function libcomet_BrowseOffice365ObjectsResponse_set_embedded_libcomet_Co
 
 
 export type libcomet_BrowseSQLServerResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	Objects: {[k: string]: string}
@@ -3311,6 +3564,9 @@ export function libcomet_BrowseSQLServerResponse_set_embedded_libcomet_CometAPIR
 
 
 export type libcomet_BrowseVSSResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	VSSWriters: {[k: string]: libcomet_VSSWriterInfo}
@@ -3351,6 +3607,10 @@ export function New_Zero_libcomet_BucketProperties(): libcomet_BucketProperties 
 
 export type libcomet_BucketUsageInfo = {
 	AccessKey: string
+	/**
+	 * The servers where this bucket was found. The 0-based indexes here correspond to the entries
+	 * inside ConstellationRoleOptions->Servers.
+	 */
 	ExistsOnServers: number[]
 	InUseBy: libcomet_UserOnServer[]
 }
@@ -3365,6 +3625,9 @@ export function New_Zero_libcomet_BucketUsageInfo(): libcomet_BucketUsageInfo {
 
 
 export type libcomet_CometAPIResponseMessage = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 }
@@ -3442,7 +3705,11 @@ export function New_Zero_libcomet_ConstellationStats(): libcomet_ConstellationSt
 export type libcomet_ConstellationStatusAPIResponse = {
 	DeletionEnabled: boolean
 	Targets: string[]
-	TargetNames?: string[] // Omission from JSON will be interpreted as an empty array
+	/**
+	 * This field is available in Comet 18.6.2 and later.
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	TargetNames?: string[]
 	Stats: libcomet_ConstellationStats
 }
 
@@ -3495,6 +3762,9 @@ export function New_Zero_libcomet_CountJobsResponse(): libcomet_CountJobsRespons
 
 
 export type libcomet_CreateGroupPolicyResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	PolicyHash: string
@@ -3582,8 +3852,17 @@ export type libcomet_DestinationConfig = {
 	Description: string
 	CreateTime: number
 	ModifyTime: number
+	/**
+	 * Custom commands to run before the job
+	 */
 	PreExec: string[]
+	/**
+	 * Custom commands to run after taking a disk snapshot
+	 */
 	ThawExec: string[]
+	/**
+	 * Custom commands to run after the job
+	 */
 	PostExec: string[]
 	DestinationType: number
 	CometServer: string
@@ -3596,12 +3875,18 @@ export type libcomet_DestinationConfig = {
 	S3BucketName: string
 	S3Subdir: string
 	S3CustomRegion: string
+	/**
+	 * If true, use legacy v2 signing. If false (default), use modern v4 signing
+	 */
 	S3UsesV2Signing: boolean
 	S3RemoveDeleted: boolean
 	S3ObjectLockDays: number
 	SFTPServer: string
 	SFTPUsername: string
 	SFTPRemotePath: string
+	/**
+	 * One of the DESTINATION_SFTP_AUTHMODE_ constants
+	 */
 	SFTPAuthMode: number
 	SFTPPassword: string
 	SFTPPrivateKey: string
@@ -3612,6 +3897,9 @@ export type libcomet_DestinationConfig = {
 	FTPPassword: string
 	FTPBaseUseHomeDirectory: boolean
 	FTPCustomBaseDirectory: string
+	/**
+	 * One of the FTPS_MODE_ constants.
+	 */
 	FTPSMode: number
 	FTPPort: number
 	FTPMaxConnections: number
@@ -3619,6 +3907,9 @@ export type libcomet_DestinationConfig = {
 	AZBAccountName: string
 	AZBAccountKey: string
 	AZBContainer: string
+	/**
+	 * The base URL for the Azure Blob Storage service. Leave blank to use the global default URL.
+	 */
 	AZBRealm: string
 	AZBPrefix: string
 	LocalcopyPath: string
@@ -3630,13 +3921,32 @@ export type libcomet_DestinationConfig = {
 	Storj: libcomet_StorjDestinationLocation
 	SpanTargets: libcomet_DestinationLocation[]
 	SpanUseStaticSlots: boolean
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
 	EncryptionKeyEncryptionMethod: number
 	EncryptedEncryptionKey: string
+	/**
+	 * Unix timestamp in seconds. If zero, the Storage Vault has not yet been initialized for the first
+	 * time.
+	 */
 	RepoInitTimestamp: number
+	/**
+	 * Storage Vault quota
+	 */
 	StorageLimitEnabled: boolean
+	/**
+	 * Storage Vault quota
+	 */
 	StorageLimitBytes: number
-	Statistics?: libcomet_DestinationStatistics // Omission from JSON will be interpreted as the zero value for this field type
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Statistics?: libcomet_DestinationStatistics
 	DefaultRetention: libcomet_RetentionPolicy
+	/**
+	 * The "Prevent users from viewing the actual storage type" option
+	 */
 	RebrandStorage: boolean
 }
 
@@ -3764,12 +4074,18 @@ export type libcomet_DestinationLocation = {
 	S3BucketName: string
 	S3Subdir: string
 	S3CustomRegion: string
+	/**
+	 * If true, use legacy v2 signing. If false (default), use modern v4 signing
+	 */
 	S3UsesV2Signing: boolean
 	S3RemoveDeleted: boolean
 	S3ObjectLockDays: number
 	SFTPServer: string
 	SFTPUsername: string
 	SFTPRemotePath: string
+	/**
+	 * One of the DESTINATION_SFTP_AUTHMODE_ constants
+	 */
 	SFTPAuthMode: number
 	SFTPPassword: string
 	SFTPPrivateKey: string
@@ -3780,6 +4096,9 @@ export type libcomet_DestinationLocation = {
 	FTPPassword: string
 	FTPBaseUseHomeDirectory: boolean
 	FTPCustomBaseDirectory: string
+	/**
+	 * One of the FTPS_MODE_ constants.
+	 */
 	FTPSMode: number
 	FTPPort: number
 	FTPMaxConnections: number
@@ -3787,6 +4106,9 @@ export type libcomet_DestinationLocation = {
 	AZBAccountName: string
 	AZBAccountKey: string
 	AZBContainer: string
+	/**
+	 * The base URL for the Azure Blob Storage service. Leave blank to use the global default URL.
+	 */
 	AZBRealm: string
 	AZBPrefix: string
 	LocalcopyPath: string
@@ -3916,9 +4238,18 @@ export function libcomet_DestinationLocation_set_embedded_libcomet_SpannedDestin
 export type libcomet_DestinationStatistics = {
 	ClientProvidedSize: libcomet_SizeMeasurement
 	ClientProvidedContent: libcomet_ContentMeasurement
-	LastSuccessfulDeepVerify_GUID?: string // Omission from JSON will be interpreted as empty-string
-	LastSuccessfulDeepVerify_StartTime?: number // Omission from JSON will be interpreted as 0 (zero)
-	LastSuccessfulDeepVerify_EndTime?: number // Omission from JSON will be interpreted as 0 (zero)
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	LastSuccessfulDeepVerify_GUID?: string
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	LastSuccessfulDeepVerify_StartTime?: number
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	LastSuccessfulDeepVerify_EndTime?: number
 }
 
 export function New_Zero_libcomet_DestinationStatistics(): libcomet_DestinationStatistics {
@@ -3931,10 +4262,26 @@ export function New_Zero_libcomet_DestinationStatistics(): libcomet_DestinationS
 
 export type libcomet_DeviceConfig = {
 	FriendlyName: string
-	RegistrationTime?: number // Omission from JSON will be interpreted as 0 (zero)
-	PlatformVersion?: libcomet_OSInfo // Omission from JSON will be interpreted as the zero value for this field type
-	Sources?: {[k: string]: libcomet_SourceBasicInfo} // Omission from JSON will be interpreted as an empty map
-	DeviceTimezone?: string // Omission from JSON will be interpreted as empty-string
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	RegistrationTime?: number
+	/**
+	 * The operating system that the device uses.
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	PlatformVersion?: libcomet_OSInfo
+	/**
+	 * Minimal information about the device's private Protected Items, so that other devices can safely
+	 * run retention passes on a shared Storage Vault.
+	 * Omission from JSON will be interpreted as an empty map
+	 */
+	Sources?: {[k: string]: libcomet_SourceBasicInfo}
+	/**
+	 * The device's reported timezone in IANA format.
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	DeviceTimezone?: string
 }
 
 export function New_Zero_libcomet_DeviceConfig(): libcomet_DeviceConfig {
@@ -3978,6 +4325,9 @@ export function New_Zero_libcomet_DiskDrive(): libcomet_DiskDrive {
 
 
 export type libcomet_DispatcherAdminSourcesResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	ImportSources: {[k: string]: string}
@@ -3998,6 +4348,9 @@ export function libcomet_DispatcherAdminSourcesResponse_set_embedded_libcomet_Co
 
 
 export type libcomet_DispatcherStoredObjectsResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	StoredObjects: libcomet_StoredObject[]
@@ -4018,6 +4371,9 @@ export function libcomet_DispatcherStoredObjectsResponse_set_embedded_libcomet_C
 
 
 export type libcomet_DispatcherVaultSnapshotsResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	Snapshots: libcomet_VaultSnapshot[]
@@ -4038,6 +4394,9 @@ export function libcomet_DispatcherVaultSnapshotsResponse_set_embedded_libcomet_
 
 
 export type libcomet_DispatcherWindiskSnapshotResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	WindiskSnapshot: libcomet_DiskDrive[]
@@ -4059,7 +4418,10 @@ export function libcomet_DispatcherWindiskSnapshotResponse_set_embedded_libcomet
 
 export type libcomet_EDBFileInfo = {
 	Name: string
-	Guid: string // GUID
+	/**
+	 * GUID
+	 */
+	Guid: string
 	ServerName: string
 	CircularLoggingEnabled: boolean
 }
@@ -4077,14 +4439,38 @@ export function New_Zero_libcomet_EDBFileInfo(): libcomet_EDBFileInfo {
 export type libcomet_EmailOptions = {
 	FromEmail: string
 	FromName: string
+	/**
+	 * One of the EMAIL_DELIVERY_ constants
+	 */
 	Mode: string
-	EmailReportingOptions?: libcomet_EmailReportingOption[] // Omission from JSON will be interpreted as an empty array
-	SMTPHost?: string // Omission from JSON will be interpreted as empty-string
-	SMTPPort?: number // Omission from JSON will be interpreted as 0 (zero)
-	SMTPUsername?: string // Omission from JSON will be interpreted as empty-string
-	SMTPPassword?: string // Omission from JSON will be interpreted as empty-string
-	SMTPAllowInvalidCertificate?: boolean // Omission from JSON will be interpreted as false
-	SMTPAllowUnencrypted?: boolean // Omission from JSON will be interpreted as false
+	/**
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	EmailReportingOptions?: libcomet_EmailReportingOption[]
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	SMTPHost?: string
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	SMTPPort?: number
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	SMTPUsername?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	SMTPPassword?: string
+	/**
+	 * Omission from JSON will be interpreted as false
+	 */
+	SMTPAllowInvalidCertificate?: boolean
+	/**
+	 * Omission from JSON will be interpreted as false
+	 */
+	SMTPAllowUnencrypted?: boolean
 }
 
 export function New_Zero_libcomet_EmailOptions(): libcomet_EmailOptions {
@@ -4102,9 +4488,19 @@ export function libcomet_EmailOptions_set_embedded_libcomet_AdminEmailOptions(de
 
 
 export type libcomet_EmailReportConfig = {
+	/**
+	 * One of the EMAILREPORTTYPE_ constants
+	 */
 	ReportType: number
+	/**
+	 * Used as a list of scheduled times to send
+	 */
 	SummaryFrequency: libcomet_ScheduleConfig[]
-	TimeSpan?: libcomet_TimeSpan // Omission from JSON will be interpreted as the zero value for this field type
+	/**
+	 * Used to the determine the time bounds of a report
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	TimeSpan?: libcomet_TimeSpan
 	Filter: libcomet_SearchClause
 }
 
@@ -4118,6 +4514,9 @@ export function New_Zero_libcomet_EmailReportConfig(): libcomet_EmailReportConfi
 
 
 export type libcomet_EmailReportGeneratedPreview = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	From: string
@@ -4165,19 +4564,47 @@ export function New_Zero_libcomet_EmailReportingOption(): libcomet_EmailReportin
 export type libcomet_ExternalAuthenticationSource = {
 	Type: string
 	Description: string
-	RemoteAddress?: string // Omission from JSON will be interpreted as empty-string
-	Username?: string // Omission from JSON will be interpreted as empty-string
-	Password?: string // Omission from JSON will be interpreted as empty-string
-	LDAP?: libcomet_ExternalLDAPAuthenticationSourceSettings // Omission from JSON will be interpreted as the zero value for this field type
-	B2?: libcomet_B2VirtualStorageRoleSettings // Omission from JSON will be interpreted as the zero value for this field type
-	Wasabi?: libcomet_WasabiVirtualStorageRoleSettings // Omission from JSON will be interpreted as the zero value for this field type
-	Custom?: libcomet_CustomRemoteBucketSettings // Omission from JSON will be interpreted as the zero value for this field type
-	S3?: libcomet_S3GenericVirtualStorageRole // Omission from JSON will be interpreted as the zero value for this field type
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	RemoteAddress?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Username?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Password?: string
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	LDAP?: libcomet_ExternalLDAPAuthenticationSourceSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	B2?: libcomet_B2VirtualStorageRoleSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Wasabi?: libcomet_WasabiVirtualStorageRoleSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Custom?: libcomet_CustomRemoteBucketSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	S3?: libcomet_S3GenericVirtualStorageRole
 	/**
 	 * Amazon AWS - Virtual Storage Role
+	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
-	AWS?: libcomet_AmazonAWSVirtualStorageRoleSettings // Omission from JSON will be interpreted as the zero value for this field type
-	Storj?: libcomet_StorjVirtualStorageRoleSetting // Omission from JSON will be interpreted as the zero value for this field type
+	AWS?: libcomet_AmazonAWSVirtualStorageRoleSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Storj?: libcomet_StorjVirtualStorageRoleSetting
 	NewUserPermissions: libcomet_AdminUserPermissions
 }
 
@@ -4257,8 +4684,18 @@ export function libcomet_ExternalLDAPAuthenticationSourceSettings_set_embedded_l
 
 
 export type libcomet_ExtraFileExclusion = {
+	/**
+	 * The glob or regular expression to exclude from backup jobs
+	 */
 	Exclude: string
+	/**
+	 * Choose whether the 'Exclude' parameter will be treated as a regular expression (true) or a glob
+	 * (false)
+	 */
 	Regex: boolean
+	/**
+	 * Either OS_ANY or one of the OS_ONLY constants
+	 */
 	RestrictOS: number
 }
 
@@ -4277,6 +4714,9 @@ export type libcomet_FTPDestinationLocation = {
 	FTPPassword: string
 	FTPBaseUseHomeDirectory: boolean
 	FTPCustomBaseDirectory: string
+	/**
+	 * One of the FTPS_MODE_ constants.
+	 */
 	FTPSMode: number
 	FTPPort: number
 	FTPMaxConnections: number
@@ -4299,6 +4739,9 @@ export function New_Zero_libcomet_FTPDestinationLocation(): libcomet_FTPDestinat
 
 
 export type libcomet_GetGroupPolicyResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	Policy: libcomet_GroupPolicy
@@ -4321,8 +4764,16 @@ export function libcomet_GetGroupPolicyResponse_set_embedded_libcomet_CometAPIRe
 
 
 export type libcomet_GetProfileAndHashResponseMessage = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
+	/**
+	 * A hash identifier for the current state of the user's profile. If you supply this in the
+	 * AdminSetUserProfileHash API, the server can safely reject your change if another change has
+	 * happened concurrently. This allows you to retry the request.
+	 */
 	ProfileHash: string
 	Profile: libcomet_UserProfileConfig
 }
@@ -4343,6 +4794,9 @@ export function libcomet_GetProfileAndHashResponseMessage_set_embedded_libcomet_
 
 
 export type libcomet_GetProfileHashResponseMessage = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	ProfileHash: string
@@ -4363,7 +4817,10 @@ export function libcomet_GetProfileHashResponseMessage_set_embedded_libcomet_Com
 
 
 export type libcomet_GlobalOverrideOptions = {
-	RandomDelaySecs?: number // Omission from JSON will be interpreted as 0 (zero)
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	RandomDelaySecs?: number
 }
 
 export function New_Zero_libcomet_GlobalOverrideOptions(): libcomet_GlobalOverrideOptions {
@@ -4376,8 +4833,18 @@ export type libcomet_GroupPolicy = {
 	Description: string
 	OrganizationID: string
 	Policy: libcomet_UserPolicy
+	/**
+	 * DefaultUserPolicy marks that this UserPolicy should be applied to all new users. The Comet
+	 * Server will ensure that only one policy can be set as default.
+	 */
 	DefaultUserPolicy: boolean
+	/**
+	 * Unix timestamp in seconds. May be zero for Policies created prior to Comet 23.3.3.
+	 */
 	CreatedDate: number
+	/**
+	 * Unix timestamp in seconds. May be zero for Policies created prior to Comet 23.3.3.
+	 */
 	ModifiedDate: number
 }
 
@@ -4394,13 +4861,34 @@ export function New_Zero_libcomet_GroupPolicy(): libcomet_GroupPolicy {
 
 
 export type libcomet_HTTPConnectorOptions = {
-	ListenAddress: string // ListenAddress__DONOTUSEDIRECTLY
-	SSLCertPath?: string // Omission from JSON will be interpreted as empty-string
-	SSLIntermediate?: string // Omission from JSON will be interpreted as empty-string
-	SSLCertKey?: string // Omission from JSON will be interpreted as empty-string
-	AutoSSLDomains?: string // Omission from JSON will be interpreted as empty-string
-	SSLPfxPath?: string // Omission from JSON will be interpreted as empty-string
-	SSLPfxPassword?: string // Omission from JSON will be interpreted as empty-string
+	/**
+	 * ListenAddress__DONOTUSEDIRECTLY
+	 */
+	ListenAddress: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	SSLCertPath?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	SSLIntermediate?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	SSLCertKey?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	AutoSSLDomains?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	SSLPfxPath?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	SSLPfxPassword?: string
 }
 
 export function New_Zero_libcomet_HTTPConnectorOptions(): libcomet_HTTPConnectorOptions {
@@ -4425,7 +4913,10 @@ export function New_Zero_libcomet_HourSchedConfig(): libcomet_HourSchedConfig {
 
 export type libcomet_HyperVMachineInfo = {
 	ID: string
-	Name: string // DisplayName
+	/**
+	 * DisplayName
+	 */
+	Name: string
 }
 
 export function New_Zero_libcomet_HyperVMachineInfo(): libcomet_HyperVMachineInfo {
@@ -4475,6 +4966,9 @@ export function New_Zero_libcomet_InstallToken(): libcomet_InstallToken {
 
 
 export type libcomet_InstallTokenResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	InstallToken: libcomet_InstallToken
@@ -4498,7 +4992,13 @@ export function libcomet_InstallTokenResponse_set_embedded_libcomet_CometAPIResp
  * JobEntry is a single entry within a job report.
  */
 export type libcomet_JobEntry = {
+	/**
+	 * Unix timestamp in seconds
+	 */
 	Time: number
+	/**
+	 * One of the SEVERITY_ constants.
+	 */
 	Severity: string
 	Message: string
 }
@@ -4513,7 +5013,10 @@ export function New_Zero_libcomet_JobEntry(): libcomet_JobEntry {
 
 
 export type libcomet_LicenseOptions = {
-	Email?: string // Omission from JSON will be interpreted as empty-string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Email?: string
 	SerialNumber: string
 }
 
@@ -4527,12 +5030,40 @@ export function New_Zero_libcomet_LicenseOptions(): libcomet_LicenseOptions {
 export type libcomet_LiveUserConnection = {
 	Username: string
 	DeviceID: string
+	/**
+	 * The Comet Backup software version that this live-connected device reports that it is running. It
+	 * takes the format "MAJOR.MINOR.PATCH", such as "23.2.0". See the APPLICATION_VERSION constant for
+	 * more information.
+	 */
 	ReportedVersion: string
+	/**
+	 * The operating system of the device. It is one of the PLATFORM_ constants; then a forwardslash
+	 * (/); then the device's GOARCH.
+	 */
 	ReportedPlatform: string
-	ReportedPlatformVersion?: libcomet_OSInfo // Omission from JSON will be interpreted as the zero value for this field type
-	DeviceTimeZone?: string // Omission from JSON will be interpreted as empty-string
-	IPAddress?: string // Omission from JSON will be interpreted as empty-string
+	/**
+	 * The operating system of the device, in extended detail.
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	ReportedPlatformVersion?: libcomet_OSInfo
+	/**
+	 * The reported timezone of the device, in IANA format.
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	DeviceTimeZone?: string
+	/**
+	 * The live-connected device's remote IP address, as seen from the Comet Server.
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	IPAddress?: string
+	/**
+	 * Unix timestamp, in seconds.
+	 */
 	ConnectionTime: number
+	/**
+	 * The current state of the "Allow administrator to view my files" client-side option. If this
+	 * option is refused, some live-connected actions will be refused by the device.
+	 */
 	AllowsFilenames: boolean
 }
 
@@ -4664,6 +5195,8 @@ export type libcomet_MongoDBConnection = {
 	Password: string
 	AuthenticationDB: string
 	/**
+	 * Prior to Comet 22.12.3, must be a filesystem path to `mongo` (n.b. not `mongosh`). In Comet >=
+	 * 22.12.3, not used.
 	 * @deprecated This member has been deprecated since Comet version 22.12.3
 	 */
 	MongoShellPath: string
@@ -4679,7 +5212,10 @@ export type libcomet_MongoDBConnection = {
 	AllowInvalidCertificate: boolean
 	AllowInvalidHostname: boolean
 	UseSSH: boolean
-	SSHConnection?: libcomet_SSHConnection // Omission from JSON will be interpreted as the zero value for this field type
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	SSHConnection?: libcomet_SSHConnection
 }
 
 export function New_Zero_libcomet_MongoDBConnection(): libcomet_MongoDBConnection {
@@ -4762,9 +5298,21 @@ export function New_Zero_libcomet_NewsEntry(): libcomet_NewsEntry {
 
 
 export type libcomet_OSInfo = {
-	version?: string // Version. Omission from JSON will be interpreted as empty-string
-	distribution?: string // Distribution. Omission from JSON will be interpreted as empty-string
-	build?: string // Build. Omission from JSON will be interpreted as empty-string
+	/**
+	 * Version
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	version?: string
+	/**
+	 * Distribution
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	distribution?: string
+	/**
+	 * Build
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	build?: string
 }
 
 export function New_Zero_libcomet_OSInfo(): libcomet_OSInfo {
@@ -4837,8 +5385,14 @@ export function New_Zero_libcomet_Office365CustomSetting(): libcomet_Office365Cu
 
 export type libcomet_Office365CustomSettingV2 = {
 	Organization: boolean
-	BackupOptions?: {[k: string]: number} // Omission from JSON will be interpreted as an empty map
-	MemberBackupOptions?: {[k: string]: number} // Omission from JSON will be interpreted as an empty map
+	/**
+	 * Omission from JSON will be interpreted as an empty map
+	 */
+	BackupOptions?: {[k: string]: number}
+	/**
+	 * Omission from JSON will be interpreted as an empty map
+	 */
+	MemberBackupOptions?: {[k: string]: number}
 }
 
 export function New_Zero_libcomet_Office365CustomSettingV2(): libcomet_Office365CustomSettingV2 {
@@ -4849,20 +5403,63 @@ export function New_Zero_libcomet_Office365CustomSettingV2(): libcomet_Office365
 
 
 export type libcomet_Office365MixedVirtualAccount = {
-	id: string // ID
-	Type?: number // Omission from JSON will be interpreted as 0 (zero)
-	DisplayName?: string // Omission from JSON will be interpreted as empty-string
-	Mail?: string // Omission from JSON will be interpreted as empty-string
-	JobTitle?: string // Omission from JSON will be interpreted as empty-string
-	SiteID?: string // Omission from JSON will be interpreted as empty-string
-	WebID?: string // Omission from JSON will be interpreted as empty-string
-	WebURL?: string // Omission from JSON will be interpreted as empty-string
-	UserPrincipalName?: string // Omission from JSON will be interpreted as empty-string
-	EnabledServiceOption?: number // Omission from JSON will be interpreted as 0 (zero)
-	Members?: string[] // Omission from JSON will be interpreted as an empty array
-	ServiceOptions?: number // Omission from JSON will be interpreted as 0 (zero)
-	MemberServiceOptions?: number // Omission from JSON will be interpreted as 0 (zero)
-	hasLicense?: boolean // HasLicense. Omission from JSON will be interpreted as false
+	/**
+	 * ID
+	 */
+	id: string
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	Type?: number
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	DisplayName?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Mail?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	JobTitle?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	SiteID?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	WebID?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	WebURL?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	UserPrincipalName?: string
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	EnabledServiceOption?: number
+	/**
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	Members?: string[]
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	ServiceOptions?: number
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	MemberServiceOptions?: number
+	/**
+	 * HasLicense
+	 * Omission from JSON will be interpreted as false
+	 */
+	hasLicense?: boolean
 }
 
 export function New_Zero_libcomet_Office365MixedVirtualAccount(): libcomet_Office365MixedVirtualAccount {
@@ -4876,6 +5473,9 @@ export type libcomet_Office365ObjectInfo = {
 	GUID: string
 	Name: string
 	Type: string
+	/**
+	 * May be an email address or a SharePoint site URL
+	 */
 	Value: string
 	Members: string[]
 }
@@ -4902,7 +5502,10 @@ export type libcomet_Organization = {
 	PSAConfigs: libcomet_PSAConfig[]
 	Email: libcomet_EmailOptions
 	IsSuspended: boolean
-	ExperimentalOptions?: string[] // Omission from JSON will be interpreted as an empty array
+	/**
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	ExperimentalOptions?: string[]
 }
 
 export function New_Zero_libcomet_Organization(): libcomet_Organization {
@@ -4951,8 +5554,14 @@ export function New_Zero_libcomet_OrganizationResponse(): libcomet_OrganizationR
 
 export type libcomet_PSAConfig = {
 	AlertsDisabled: boolean
-	CustomHeaders?: {[k: string]: string} // Omission from JSON will be interpreted as an empty map
-	PartnerKey?: string // Omission from JSON will be interpreted as empty-string
+	/**
+	 * Omission from JSON will be interpreted as an empty map
+	 */
+	CustomHeaders?: {[k: string]: string}
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	PartnerKey?: string
 	Type: number
 	URL: string
 }
@@ -5119,7 +5728,10 @@ export function New_Zero_libcomet_PublicBrandingProperties(): libcomet_PublicBra
 
 
 export type libcomet_RatelimitOptions = {
-	Rules?: libcomet_RatelimitRule[] // Omission from JSON will be interpreted as an empty array
+	/**
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	Rules?: libcomet_RatelimitRule[]
 }
 
 export function New_Zero_libcomet_RatelimitOptions(): libcomet_RatelimitOptions {
@@ -5160,7 +5772,10 @@ export type libcomet_RegisterOfficeApplicationCheckResponse = {
 	Continuation: string
 	Completed: boolean
 	Error: string
-	Result?: libcomet_Office365Credential // Omission from JSON will be interpreted as the zero value for this field type
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Result?: libcomet_Office365Credential
 }
 
 export function New_Zero_libcomet_RegisterOfficeApplicationCheckResponse(): libcomet_RegisterOfficeApplicationCheckResponse {
@@ -5175,19 +5790,47 @@ export function New_Zero_libcomet_RegisterOfficeApplicationCheckResponse(): libc
 export type libcomet_RemoteServerAddress = {
 	Type: string
 	Description: string
-	RemoteAddress?: string // Omission from JSON will be interpreted as empty-string
-	Username?: string // Omission from JSON will be interpreted as empty-string
-	Password?: string // Omission from JSON will be interpreted as empty-string
-	LDAP?: libcomet_ExternalLDAPAuthenticationSourceSettings // Omission from JSON will be interpreted as the zero value for this field type
-	B2?: libcomet_B2VirtualStorageRoleSettings // Omission from JSON will be interpreted as the zero value for this field type
-	Wasabi?: libcomet_WasabiVirtualStorageRoleSettings // Omission from JSON will be interpreted as the zero value for this field type
-	Custom?: libcomet_CustomRemoteBucketSettings // Omission from JSON will be interpreted as the zero value for this field type
-	S3?: libcomet_S3GenericVirtualStorageRole // Omission from JSON will be interpreted as the zero value for this field type
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	RemoteAddress?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Username?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Password?: string
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	LDAP?: libcomet_ExternalLDAPAuthenticationSourceSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	B2?: libcomet_B2VirtualStorageRoleSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Wasabi?: libcomet_WasabiVirtualStorageRoleSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Custom?: libcomet_CustomRemoteBucketSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	S3?: libcomet_S3GenericVirtualStorageRole
 	/**
 	 * Amazon AWS - Virtual Storage Role
+	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
-	AWS?: libcomet_AmazonAWSVirtualStorageRoleSettings // Omission from JSON will be interpreted as the zero value for this field type
-	Storj?: libcomet_StorjVirtualStorageRoleSetting // Omission from JSON will be interpreted as the zero value for this field type
+	AWS?: libcomet_AmazonAWSVirtualStorageRoleSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Storj?: libcomet_StorjVirtualStorageRoleSetting
 }
 
 export function New_Zero_libcomet_RemoteServerAddress(): libcomet_RemoteServerAddress {
@@ -5201,19 +5844,47 @@ export function New_Zero_libcomet_RemoteServerAddress(): libcomet_RemoteServerAd
 export type libcomet_RemoteStorageOption = {
 	Type: string
 	Description: string
-	RemoteAddress?: string // Omission from JSON will be interpreted as empty-string
-	Username?: string // Omission from JSON will be interpreted as empty-string
-	Password?: string // Omission from JSON will be interpreted as empty-string
-	LDAP?: libcomet_ExternalLDAPAuthenticationSourceSettings // Omission from JSON will be interpreted as the zero value for this field type
-	B2?: libcomet_B2VirtualStorageRoleSettings // Omission from JSON will be interpreted as the zero value for this field type
-	Wasabi?: libcomet_WasabiVirtualStorageRoleSettings // Omission from JSON will be interpreted as the zero value for this field type
-	Custom?: libcomet_CustomRemoteBucketSettings // Omission from JSON will be interpreted as the zero value for this field type
-	S3?: libcomet_S3GenericVirtualStorageRole // Omission from JSON will be interpreted as the zero value for this field type
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	RemoteAddress?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Username?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Password?: string
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	LDAP?: libcomet_ExternalLDAPAuthenticationSourceSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	B2?: libcomet_B2VirtualStorageRoleSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Wasabi?: libcomet_WasabiVirtualStorageRoleSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Custom?: libcomet_CustomRemoteBucketSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	S3?: libcomet_S3GenericVirtualStorageRole
 	/**
 	 * Amazon AWS - Virtual Storage Role
+	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
-	AWS?: libcomet_AmazonAWSVirtualStorageRoleSettings // Omission from JSON will be interpreted as the zero value for this field type
-	Storj?: libcomet_StorjVirtualStorageRoleSetting // Omission from JSON will be interpreted as the zero value for this field type
+	AWS?: libcomet_AmazonAWSVirtualStorageRoleSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Storj?: libcomet_StorjVirtualStorageRoleSetting
 	StorageLimitEnabled: boolean
 	StorageLimitBytes: number
 	RebrandStorage: boolean
@@ -5248,20 +5919,51 @@ export function libcomet_RemoteStorageOption_set_embedded_libcomet_RemoteServerA
 export type libcomet_ReplicaServer = {
 	Type: string
 	Description: string
-	RemoteAddress?: string // Omission from JSON will be interpreted as empty-string
-	Username?: string // Omission from JSON will be interpreted as empty-string
-	Password?: string // Omission from JSON will be interpreted as empty-string
-	LDAP?: libcomet_ExternalLDAPAuthenticationSourceSettings // Omission from JSON will be interpreted as the zero value for this field type
-	B2?: libcomet_B2VirtualStorageRoleSettings // Omission from JSON will be interpreted as the zero value for this field type
-	Wasabi?: libcomet_WasabiVirtualStorageRoleSettings // Omission from JSON will be interpreted as the zero value for this field type
-	Custom?: libcomet_CustomRemoteBucketSettings // Omission from JSON will be interpreted as the zero value for this field type
-	S3?: libcomet_S3GenericVirtualStorageRole // Omission from JSON will be interpreted as the zero value for this field type
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	RemoteAddress?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Username?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Password?: string
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	LDAP?: libcomet_ExternalLDAPAuthenticationSourceSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	B2?: libcomet_B2VirtualStorageRoleSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Wasabi?: libcomet_WasabiVirtualStorageRoleSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Custom?: libcomet_CustomRemoteBucketSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	S3?: libcomet_S3GenericVirtualStorageRole
 	/**
 	 * Amazon AWS - Virtual Storage Role
+	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
-	AWS?: libcomet_AmazonAWSVirtualStorageRoleSettings // Omission from JSON will be interpreted as the zero value for this field type
-	Storj?: libcomet_StorjVirtualStorageRoleSetting // Omission from JSON will be interpreted as the zero value for this field type
-	ReplicaDeletionStrategy?: string // Omission from JSON will be interpreted as empty-string
+	AWS?: libcomet_AmazonAWSVirtualStorageRoleSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Storj?: libcomet_StorjVirtualStorageRoleSetting
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	ReplicaDeletionStrategy?: string
 }
 
 export function New_Zero_libcomet_ReplicaServer(): libcomet_ReplicaServer {
@@ -5321,6 +6023,9 @@ export function New_Zero_libcomet_ReplicatorStateAPIResponse(): libcomet_Replica
 
 
 export type libcomet_RequestStorageVaultResponseMessage = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	DestinationID: string
@@ -5342,23 +6047,77 @@ export function libcomet_RequestStorageVaultResponseMessage_set_embedded_libcome
 
 export type libcomet_RestoreJobAdvancedOptions = {
 	Type: number
+	/**
+	 * For RESTORETYPE_FILE
+	 */
 	OverwriteExistingFiles: boolean
+	/**
+	 * For RESTORETYPE_FILE. If set, OverwriteExistingFiles must be true
+	 */
 	OverwriteIfNewer: boolean
+	/**
+	 * For RESTORETYPE_FILE. If set, DestPath must be blank
+	 */
 	DestIsOriginalLocation: boolean
+	/**
+	 * For RESTORETYPE_FILE or RESTORETYPE_PROCESS_xxx
+	 */
 	DestPath: string
+	/**
+	 * For RESTORETYPE_WINDISK only. Must have one entry for each selected restore path
+	 */
 	ExactDestPaths: string[]
+	/**
+	 * For RESTORETYPE_FILE_ARCHIVE or RESTORETYPE_PROCESS_ARCHIVE. Default 0 is *.tar, for backward
+	 * compatibility
+	 */
 	ArchiveFormat: number
-	Office365Credential?: libcomet_Office365Credential // Omission from JSON will be interpreted as the zero value for this field type
+	/**
+	 * For RESTORETYPE_OFFICE365_CLOUD.
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Office365Credential?: libcomet_Office365Credential
+	/**
+	 * For RESTORETYPE_MYSQL
+	 */
 	Username: string
+	/**
+	 * For RESTORETYPE_MYSQL
+	 */
 	Password: string
+	/**
+	 * For RESTORETYPE_MYSQL
+	 */
 	Host: string
+	/**
+	 * For RESTORETYPE_MYSQL
+	 */
 	Port: string
+	/**
+	 * For RESTORETYPE_MYSQL
+	 */
 	UseSsl: boolean
+	/**
+	 * For RESTORETYPE_MYSQL i.e.: Self signed certs
+	 */
 	SslAllowInvalid: boolean
+	/**
+	 * For RESTORETYPE_MYSQL
+	 */
 	SslCaFile: string
+	/**
+	 * For RESTORETYPE_MYSQL
+	 */
 	SslCrtFile: string
+	/**
+	 * For RESTORETYPE_MYSQL
+	 */
 	SslKeyFile: string
-	MsSqlConnection?: libcomet_MSSQLLoginArgs // Omission from JSON will be interpreted as the zero value for this field type
+	/**
+	 * For RESTORETYPE_MSSQL.
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	MsSqlConnection?: libcomet_MSSQLLoginArgs
 }
 
 export function New_Zero_libcomet_RestoreJobAdvancedOptions(): libcomet_RestoreJobAdvancedOptions {
@@ -5384,6 +6143,9 @@ export function New_Zero_libcomet_RestoreJobAdvancedOptions(): libcomet_RestoreJ
 
 
 export type libcomet_RetentionPolicy = {
+	/**
+	 * One of the RETENTIONMODE_ constants
+	 */
 	Mode: number
 	Ranges: libcomet_RetentionRange[]
 }
@@ -5403,6 +6165,9 @@ export type libcomet_RetentionRange = {
 	Days: number
 	Weeks: number
 	Months: number
+	/**
+	 * 0: Sunday, 6: Saturday
+	 */
 	WeekOffset: number
 	MonthOffset: number
 }
@@ -5429,6 +6194,9 @@ export type libcomet_S3DestinationLocation = {
 	S3BucketName: string
 	S3Subdir: string
 	S3CustomRegion: string
+	/**
+	 * If true, use legacy v2 signing. If false (default), use modern v4 signing
+	 */
 	S3UsesV2Signing: boolean
 	S3RemoveDeleted: boolean
 	S3ObjectLockDays: number
@@ -5479,6 +6247,9 @@ export type libcomet_SFTPDestinationLocation = {
 	SFTPServer: string
 	SFTPUsername: string
 	SFTPRemotePath: string
+	/**
+	 * One of the DESTINATION_SFTP_AUTHMODE_ constants
+	 */
 	SFTPAuthMode: number
 	SFTPPassword: string
 	SFTPPrivateKey: string
@@ -5503,6 +6274,9 @@ export function New_Zero_libcomet_SFTPDestinationLocation(): libcomet_SFTPDestin
 export type libcomet_SSHConnection = {
 	SSHServer: string
 	SSHUsername: string
+	/**
+	 * One of the SSHCONNECTION_AUTHMODE_ constants
+	 */
 	SSHAuthMode: number
 	SSHPassword: string
 	SSHPrivateKey: string
@@ -5526,13 +6300,19 @@ export function New_Zero_libcomet_SSHConnection(): libcomet_SSHConnection {
 export type libcomet_ScheduleConfig = {
 	FrequencyType: number
 	SecondsPast: number
-	Offset?: number // Omission from JSON will be interpreted as 0 (zero)
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	Offset?: number
 	RestrictRuntime: boolean
 	FromTime: libcomet_HourSchedConfig
 	ToTime: libcomet_HourSchedConfig
 	RestrictDays: boolean
 	DaysSelect: libcomet_DaysOfWeekConfig
-	RandomDelaySecs?: number // Omission from JSON will be interpreted as 0 (zero)
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	RandomDelaySecs?: number
 }
 
 export function New_Zero_libcomet_ScheduleConfig(): libcomet_ScheduleConfig {
@@ -5553,7 +6333,10 @@ export type libcomet_SearchClause = {
 	RuleField: string
 	RuleOperator: string
 	RuleValue: string
-	ClauseChildren?: libcomet_SearchClause[] // Omission from JSON will be interpreted as an empty array
+	/**
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	ClauseChildren?: libcomet_SearchClause[]
 }
 
 export function New_Zero_libcomet_SearchClause(): libcomet_SearchClause {
@@ -5567,14 +6350,38 @@ export function New_Zero_libcomet_SearchClause(): libcomet_SearchClause {
 
 
 export type libcomet_SearchResultFileInfo = {
-	path: string // Path
-	name: string // Name
-	type: string // Type
-	mode: string // Mode
-	mtime: string // Mtime
-	atime: string // Atime
-	ctime: string // Ctime
-	size: number // Size
+	/**
+	 * Path
+	 */
+	path: string
+	/**
+	 * Name
+	 */
+	name: string
+	/**
+	 * Type
+	 */
+	type: string
+	/**
+	 * Mode
+	 */
+	mode: string
+	/**
+	 * Mtime
+	 */
+	mtime: string
+	/**
+	 * Atime
+	 */
+	atime: string
+	/**
+	 * Ctime
+	 */
+	ctime: string
+	/**
+	 * Size
+	 */
+	size: number
 }
 
 export function New_Zero_libcomet_SearchResultFileInfo(): libcomet_SearchResultFileInfo {
@@ -5592,6 +6399,9 @@ export function New_Zero_libcomet_SearchResultFileInfo(): libcomet_SearchResultF
 
 
 export type libcomet_SearchSnapshotsResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	SnapshotFiles: {[k: string]: libcomet_SearchResultFileInfo[]}
@@ -5618,7 +6428,10 @@ export type libcomet_SelfBackupExportOptions = {
 	Compression: number
 	ExcludeJobsDB: boolean
 	IncludeServerLogs: boolean
-	RestrictToSingleOrgID?: string // Omission from JSON will be interpreted as empty-string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	RestrictToSingleOrgID?: string
 	Index: number
 }
 
@@ -5675,7 +6488,10 @@ export type libcomet_SelfBackupTarget = {
 	Compression: number
 	ExcludeJobsDB: boolean
 	IncludeServerLogs: boolean
-	RestrictToSingleOrgID?: string // Omission from JSON will be interpreted as empty-string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	RestrictToSingleOrgID?: string
 	Index: number
 }
 
@@ -5711,9 +6527,21 @@ export type libcomet_ServerConfigOptions = {
 	AuthenticationRole: libcomet_AuthenticationRoleOptions
 	Branding: libcomet_BrandingOptions
 	ConstellationRole: libcomet_ConstellationRoleOptions
-	OverseerRole?: libcomet_ConstellationRoleOptions // ConstellationRole_Legacy. Omission from JSON will be interpreted as the zero value for this field type
+	/**
+	 * This field is defined for compatibility with 17.x.x versions of Comet Server. Do not rely on
+	 * this field. In Comet 23.2.x, if this field is defined, it is imported into the replacement
+	 * 'ConstellationRole' field under the assumption that you are upgrading this Comet Server from a
+	 * 17.x.x version. In Comet 23.3.x and later, this field is ignored and will not be respected
+	 * during the import process.
+	 * ConstellationRole_Legacy
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	OverseerRole?: libcomet_ConstellationRoleOptions
 	Email: libcomet_EmailOptions
-	ExperimentalOptions?: string[] // Omission from JSON will be interpreted as an empty array
+	/**
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	ExperimentalOptions?: string[]
 	ExternalAdminUserSources: {[k: string]: libcomet_ExternalAuthenticationSource}
 	IPRateLimit: libcomet_RatelimitOptions
 	License: libcomet_LicenseOptions
@@ -5776,7 +6604,15 @@ export function New_Zero_libcomet_ServerConfigOptionsSoftwareBuildRoleFragment()
 export type libcomet_ServerMetaBrandingProperties = {
 	BrandName: string
 	ProductName: string
+	/**
+	 * If true, this Comet Server has an image configured for its main logo. You can access it from the
+	 * /gen/logo.img endpoint. If false, this Comet Server has text configured for its main logo.
+	 */
 	HasImage: boolean
+	/**
+	 * A value that will change if the branding image (/gen/logo.img) changes. You can use this as a
+	 * cache key.
+	 */
 	ImageEtag: string
 	TopColor: string
 	AccentColor: string
@@ -5810,12 +6646,34 @@ export type libcomet_ServerMetaVersionInfo = {
 	StorageRole: boolean
 	AuthenticationRole: boolean
 	SoftwareBuildRole: boolean
-	OverseerRole: boolean // ConstellationRole_Legacy
+	/**
+	 * ConstellationRole_Legacy
+	 * @deprecated This member has been deprecated since Comet version 18.2.0 "Overseer Role" was the old name for the Constellation Role. This field is a duplicate of ConstellationRole for backward compatibility with earlier API consumers.
+	 */
+	OverseerRole: boolean
 	ConstellationRole: boolean
-	ExperimentalOptions?: string[] // Omission from JSON will be interpreted as an empty array
+	/**
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	ExperimentalOptions?: string[]
+	/**
+	 * Unix timestamp, in seconds.
+	 */
 	ServerStartTime: number
+	/**
+	 * A GUID that was randomly generated when this Comet Server started up. You can check this value
+	 * to see if the Comet Server has restarted.
+	 */
 	ServerStartHash: string
+	/**
+	 * The current time on the Comet Server host machine. Unix timestamp, in seconds. You can check
+	 * this value to see if clock drift is occuring.
+	 */
 	CurrentTime: number
+	/**
+	 * A hash derived from the Comet Server's serial number. You can check this value to see if two
+	 * Comet Server endpoints point to an identical server.
+	 */
 	ServerLicenseHash: string
 	ServerLicenseFeaturesAll: boolean
 	ServerLicenseFeatureSet: number
@@ -5861,6 +6719,9 @@ export function New_Zero_libcomet_ServerMetaVersionInfo(): libcomet_ServerMetaVe
 
 
 export type libcomet_SessionKeyRegeneratedResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	SessionKey: string
@@ -5941,10 +6802,22 @@ export function New_Zero_libcomet_SoftwareBuildRoleOptions(): libcomet_SoftwareB
 
 
 export type libcomet_SoftwareUpdateNewsResponse = {
-	latest_stable: string // LatestStable
-	latest_prerelease: string // LatestPrerelease
-	downloads_url: string // DownloadsURL
-	updates_info: string[] // WhatsNew
+	/**
+	 * LatestStable
+	 */
+	latest_stable: string
+	/**
+	 * LatestPrerelease
+	 */
+	latest_prerelease: string
+	/**
+	 * DownloadsURL
+	 */
+	downloads_url: string
+	/**
+	 * WhatsNew
+	 */
+	updates_info: string[]
 }
 
 export function New_Zero_libcomet_SoftwareUpdateNewsResponse(): libcomet_SoftwareUpdateNewsResponse {
@@ -5961,7 +6834,10 @@ export type libcomet_SourceBasicInfo = {
 	Description: string
 	O365AccountCount: number
 	Size: number
-	OverrideDestinationRetention?: {[k: string]: libcomet_RetentionPolicy} // Omission from JSON will be interpreted as an empty map
+	/**
+	 * Omission from JSON will be interpreted as an empty map
+	 */
+	OverrideDestinationRetention?: {[k: string]: libcomet_RetentionPolicy}
 }
 
 export function New_Zero_libcomet_SourceBasicInfo(): libcomet_SourceBasicInfo {
@@ -5974,17 +6850,84 @@ export function New_Zero_libcomet_SourceBasicInfo(): libcomet_SourceBasicInfo {
 
 
 export type libcomet_SourceConfig = {
+	/**
+	 * One of the ENGINE_BUILTIN_ constants
+	 */
 	Engine: string
 	Description: string
 	OwnerDevice: string
 	CreateTime: number
 	ModifyTime: number
+	/**
+	 * Custom commands to run before the job
+	 */
 	PreExec: string[]
+	/**
+	 * Custom commands to run after taking a disk snapshot
+	 */
 	ThawExec: string[]
+	/**
+	 * Custom commands to run after the job
+	 */
 	PostExec: string[]
+	/**
+	 * Configuration for the selected Protected Item type. Each "Engine" supports
+	 * different configuration options for the EngineProps values.
+	 * 
+	 * For engine1/file, Comet understands the following EngineProp keys:
+	 * 
+	 * - Any key starting with INCLUDE: A path that is included
+	 * - Any key starting with EXCLUDE: An exclusion (glob format)
+	 * - Any key starting with REXCLUDE: An exclusion (regular expression format)
+	 * - Any key starting with PINCLUDE: A JSON string {"TopDirectory": "", "Value": ""}. TopDirectory
+	 * is the path where starts to match the value; Value is an inclusion (glob format)
+	 * - Any key starting with RINCLUDE: A JSON string {"TopDirectory": "", "Value": ""}. TopDirectory
+	 * is the path where starts to match the value; Value is an inclusion (regular expression format)
+	 * - Any key starting with SMBAUTH: A set of Windows network share credentials in WinSMBAuth JSON
+	 * format
+	 * - USE_WIN_VSS: If present, the 'Take filesystem snapshot' checkbox is checked
+	 * - CONFIRM_EFS: If present, the 'Dismiss EFS warning' checkbox is checked
+	 * - RESCAN_UNCHANGED: If present, the 'Rescan unchanged files' checkbox is checked
+	 * 
+	 * For engine1/mssql, Comet understands the following EngineProp keys:
+	 * 
+	 * - ALL_DATABASES: If present, include all databases with specified exclusions. If not present,
+	 * only back up the specified inclusions
+	 * - Any key starting with DATABASE- : A database that is included. Only valid if ALL_DATABASES is
+	 * not present.
+	 * - Any key starting with EXCEPT-DATABASE- : A database that is excluded. Only valid if
+	 * ALL_DATABASES is present.
+	 * - INSTANCE: The Microsoft SQL Server instance name
+	 * - USERNAME: The username to connect to Microsoft SQL Server
+	 * - PASSWORD: The password to connect to Microsoft SQL Server
+	 * - AUTHMODE: Either "windows" or "native" (corresponding to the declared MSSQL_AUTH_WINDOWS and
+	 * MSSQL_AUTH_NATIVE constant values). If not present, use native authentication if the USERNAME
+	 * and/or PASSWORD fields are filled in, use windows authentication if they are blank
+	 * - METHOD: Either "OLEDB_NATIVE" or "OLEDB_32" (corresponding to the declared
+	 * MSSQL_METHOD_OLEDB_NATIVE and MSSQL_METHOD_OLEDB_32 constant values). If not present, defaults
+	 * to Native
+	 * - DIFFBASE: If present, take a "Full (base image)" backup job. Otherwise, take a "Full (copy
+	 * only)" backup job.
+	 * - DIFFERENTIAL: If present, take a "Differential increment" backup job. Otherwise, take a "Full
+	 * (copy only)" backup job.
+	 * - LOGTRUNC: If present, take a "Log (truncating)" backup job. Otherwise, take a "Full (copy
+	 * only)" backup job.
+	 * - LOGNOTRUNC: If present, take a "Log (no truncation)" backup job. Otherwise, take a "Full (copy
+	 * only)" backup job.
+	 * 
+	 */
 	EngineProps: {[k: string]: string}
-	OverrideDestinationRetention?: {[k: string]: libcomet_RetentionPolicy} // Omission from JSON will be interpreted as an empty map
-	Statistics?: libcomet_SourceStatistics // Omission from JSON will be interpreted as the zero value for this field type
+	/**
+	 * By default, backup jobs from this Protected Item will be subject
+	 * to the overall retention policy for the Storage Vault. You can override the policy
+	 * for specific Storage Vaults by putting their destination ID as a key here.
+	 * Omission from JSON will be interpreted as an empty map
+	 */
+	OverrideDestinationRetention?: {[k: string]: libcomet_RetentionPolicy}
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Statistics?: libcomet_SourceStatistics
 }
 
 export function New_Zero_libcomet_SourceConfig(): libcomet_SourceConfig {
@@ -6075,8 +7018,14 @@ export type libcomet_StorageFreeSpaceInfo = {
 	Unlimited: boolean
 	UsedPercent: number
 	AvailableBytes: number
-	Spanned?: libcomet_SpannedStorageExtraInfo // Omission from JSON will be interpreted as the zero value for this field type
-	B2?: libcomet_B2StorageExtraInfo // Omission from JSON will be interpreted as the zero value for this field type
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Spanned?: libcomet_SpannedStorageExtraInfo
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	B2?: libcomet_B2StorageExtraInfo
 }
 
 export function New_Zero_libcomet_StorageFreeSpaceInfo(): libcomet_StorageFreeSpaceInfo {
@@ -6091,7 +7040,11 @@ export function New_Zero_libcomet_StorageFreeSpaceInfo(): libcomet_StorageFreeSp
 export type libcomet_StorageRoleOptions = {
 	RoleEnabled: boolean
 	Storage: libcomet_DestinationLocation
-	LocalStorage?: libcomet_LocalStorageDirectory[] // LocalStorage_Legacy. Omission from JSON will be interpreted as an empty array
+	/**
+	 * LocalStorage_Legacy
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	LocalStorage?: libcomet_LocalStorageDirectory[]
 	ReplicateTo: libcomet_ReplicaServer[]
 }
 
@@ -6118,26 +7071,87 @@ export function New_Zero_libcomet_StorageVaultProviderPolicy(): libcomet_Storage
 
 
 export type libcomet_StoredObject = {
-	name: string // Name
-	mtime: number // ModifyTime
+	/**
+	 * Name
+	 */
+	name: string
+	/**
+	 * ModifyTime
+	 */
+	mtime: number
 	/**
 	 * One of the STOREDOBJECTTYPE_... constant values
+	 * Type
 	 */
-	type: string // Type
-	subtree: string // Subtree
-	size: number // Size
-	dname?: string // DisplayName. Omission from JSON will be interpreted as empty-string
-	itemClass?: string // ItemClass. Omission from JSON will be interpreted as empty-string
-	from?: string // From. Omission from JSON will be interpreted as empty-string
-	to?: string // To. Omission from JSON will be interpreted as empty-string
-	rtime?: number // ReceivedDateTime. Omission from JSON will be interpreted as 0 (zero)
-	has_attachments?: boolean // HasAttachments. Omission from JSON will be interpreted as false
-	stime?: number // StartTime. Omission from JSON will be interpreted as 0 (zero)
-	etime?: number // EndTime. Omission from JSON will be interpreted as 0 (zero)
-	r?: boolean // RecursiveCountKnown. Omission from JSON will be interpreted as false
-	f?: number // RecursiveFiles. Omission from JSON will be interpreted as 0 (zero)
-	b?: number // RecursiveBytes. Omission from JSON will be interpreted as 0 (zero)
-	d?: number // RecursiveFolders. Omission from JSON will be interpreted as 0 (zero)
+	type: string
+	/**
+	 * Subtree
+	 */
+	subtree: string
+	/**
+	 * Size
+	 */
+	size: number
+	/**
+	 * DisplayName
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	dname?: string
+	/**
+	 * ItemClass
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	itemClass?: string
+	/**
+	 * From
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	from?: string
+	/**
+	 * To
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	to?: string
+	/**
+	 * ReceivedDateTime
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	rtime?: number
+	/**
+	 * HasAttachments
+	 * Omission from JSON will be interpreted as false
+	 */
+	has_attachments?: boolean
+	/**
+	 * StartTime
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	stime?: number
+	/**
+	 * EndTime
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	etime?: number
+	/**
+	 * RecursiveCountKnown
+	 * Omission from JSON will be interpreted as false
+	 */
+	r?: boolean
+	/**
+	 * RecursiveFiles
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	f?: number
+	/**
+	 * RecursiveBytes
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	b?: number
+	/**
+	 * RecursiveFolders
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	d?: number
 }
 
 export function New_Zero_libcomet_StoredObject(): libcomet_StoredObject {
@@ -6156,7 +7170,10 @@ export type libcomet_StorjDestinationLocation = {
 	APIKey: string
 	Passphrase: string
 	StorjBucket: string
-	StorjBucketPrefix?: string // Omission from JSON will be interpreted as empty-string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	StorjBucketPrefix?: string
 }
 
 export function New_Zero_libcomet_StorjDestinationLocation(): libcomet_StorjDestinationLocation {
@@ -6189,7 +7206,10 @@ export function New_Zero_libcomet_StorjVirtualStorageRoleSetting(): libcomet_Sto
 export type libcomet_StreamableEvent = {
 	OwnerOrganizationID: string
 	Type: number
-	Data?: any // Omission from JSON will be interpreted as the zero value for this field type
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	Data?: any
 }
 
 export function New_Zero_libcomet_StreamableEvent(): libcomet_StreamableEvent {
@@ -6201,19 +7221,65 @@ export function New_Zero_libcomet_StreamableEvent(): libcomet_StreamableEvent {
 
 
 export type libcomet_SwiftDestinationLocation = {
-	Username?: string // Omission from JSON will be interpreted as empty-string
-	APIKey?: string // Omission from JSON will be interpreted as empty-string
-	Region?: string // Omission from JSON will be interpreted as empty-string
-	AuthURL?: string // Omission from JSON will be interpreted as empty-string
-	Domain?: string // Omission from JSON will be interpreted as empty-string
-	Tenant?: string // Omission from JSON will be interpreted as empty-string
-	TenantDomain?: string // Omission from JSON will be interpreted as empty-string
-	TenantID?: string // Omission from JSON will be interpreted as empty-string
-	TrustID?: string // Omission from JSON will be interpreted as empty-string
-	AuthToken?: string // Omission from JSON will be interpreted as empty-string
-	Prefix?: string // Omission from JSON will be interpreted as empty-string
-	Container?: string // Omission from JSON will be interpreted as empty-string
-	DefaultContainerPolicy?: string // Omission from JSON will be interpreted as empty-string
+	/**
+	 * Username or UserID or Application Credential name or Application Credential ID, or blank for
+	 * token authentication
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Username?: string
+	/**
+	 * User Password, or Application Credential Key, or token if the Username field is blank
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	APIKey?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Region?: string
+	/**
+	 * Mandatory
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	AuthURL?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Domain?: string
+	/**
+	 * Tenant name (v2) or Project name (v3)
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Tenant?: string
+	/**
+	 * Project domain name (v3)
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	TenantDomain?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	TenantID?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	TrustID?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 * @deprecated This member has been deprecated since Comet version 17.8.0
+	 */
+	AuthToken?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Prefix?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Container?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	DefaultContainerPolicy?: string
 }
 
 export function New_Zero_libcomet_SwiftDestinationLocation(): libcomet_SwiftDestinationLocation {
@@ -6223,6 +7289,9 @@ export function New_Zero_libcomet_SwiftDestinationLocation(): libcomet_SwiftDest
 
 
 export type libcomet_TestResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	Exists: boolean
@@ -6243,7 +7312,13 @@ export function libcomet_TestResponse_set_embedded_libcomet_CometAPIResponseMess
 
 
 export type libcomet_TimeSpan = {
+	/**
+	 * SCHEDULE_FREQUENCY_<TYPE>
+	 */
 	FrequencyType: number
+	/**
+	 * Used for Periodic and Once Only
+	 */
 	Seconds: number
 }
 
@@ -6256,6 +7331,9 @@ export function New_Zero_libcomet_TimeSpan(): libcomet_TimeSpan {
 
 
 export type libcomet_TotpRegeneratedResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	Image: string
@@ -6317,6 +7395,9 @@ export function New_Zero_libcomet_U2FRegisteredKey(): libcomet_U2FRegisteredKey 
  * @deprecated This type has been deprecated since Comet version 21.12.0
  */
 export type libcomet_U2FRegistrationChallengeResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	ChallengeID: string
@@ -6382,8 +7463,18 @@ export function New_Zero_libcomet_U2FSignResponse(): libcomet_U2FSignResponse {
 }
 
 
+/**
+ * UninstallConfig allows configuring whether the target device will be uninstalled or not.
+ */
 export type libcomet_UninstallConfig = {
+	/**
+	 * If this option is true, the target device will receive a message asking it to uninstall the
+	 * Comet Backup app.
+	 */
 	UninstallFlag: boolean
+	/**
+	 * This controls the "Remove all user settings from this device" option.
+	 */
 	RemoveConfigFile: boolean
 }
 
@@ -6417,7 +7508,15 @@ export type libcomet_UpdateCampaignOptions = {
 	UpgradeOlder: boolean
 	ReinstallCurrentVer: boolean
 	DowngradeNewer: boolean
+	/**
+	 * Choose whether this bulk upgrade campaign is allowed to interrupt a running backup job.
+	 */
 	ForceUpgradeRunning: boolean
+	/**
+	 * If true, then the UserFilter will be used to restrict which accounts and devices will be
+	 * eligible for the software update. If false, all users and devices will be eligible for the
+	 * software update.
+	 */
 	ApplyDeviceFilter: boolean
 	DeviceFilter: libcomet_SearchClause
 }
@@ -6440,7 +7539,15 @@ export type libcomet_UpdateCampaignProperties = {
 	UpgradeOlder: boolean
 	ReinstallCurrentVer: boolean
 	DowngradeNewer: boolean
+	/**
+	 * Choose whether this bulk upgrade campaign is allowed to interrupt a running backup job.
+	 */
 	ForceUpgradeRunning: boolean
+	/**
+	 * If true, then the UserFilter will be used to restrict which accounts and devices will be
+	 * eligible for the software update. If false, all users and devices will be eligible for the
+	 * software update.
+	 */
 	ApplyDeviceFilter: boolean
 	DeviceFilter: libcomet_SearchClause
 	StartTime: number
@@ -6477,7 +7584,15 @@ export type libcomet_UpdateCampaignStatus = {
 	UpgradeOlder: boolean
 	ReinstallCurrentVer: boolean
 	DowngradeNewer: boolean
+	/**
+	 * Choose whether this bulk upgrade campaign is allowed to interrupt a running backup job.
+	 */
 	ForceUpgradeRunning: boolean
+	/**
+	 * If true, then the UserFilter will be used to restrict which accounts and devices will be
+	 * eligible for the software update. If false, all users and devices will be eligible for the
+	 * software update.
+	 */
 	ApplyDeviceFilter: boolean
 	DeviceFilter: libcomet_SearchClause
 	StartTime: number
@@ -6544,6 +7659,10 @@ export function New_Zero_libcomet_UserCustomEmailSettings(): libcomet_UserCustom
 
 
 export type libcomet_UserOnServer = {
+	/**
+	 * The server where this user was found. The 0-based indexes here correspond to the entries inside
+	 * ConstellationRoleOptions->Servers.
+	 */
 	ServerID: number
 	Username: string
 }
@@ -6567,11 +7686,26 @@ export type libcomet_UserPolicy = {
 	PreventEditProtectedItem: boolean
 	PreventDeleteProtectedItem: boolean
 	ProtectedItemEngineTypes: libcomet_ProtectedItemEngineTypePolicy
-	FileAndFolderMandatoryExclusions?: libcomet_ExtraFileExclusion[] // Omission from JSON will be interpreted as an empty array
-	ModeScheduleSkipAlreadyRunning?: number // Omission from JSON will be interpreted as 0 (zero)
-	ModeAdminResetPassword?: number // Omission from JSON will be interpreted as 0 (zero)
-	ModeAdminViewFilenames?: number // Omission from JSON will be interpreted as 0 (zero)
-	ModeRequireUserResetPassword?: number // Omission from JSON will be interpreted as 0 (zero)
+	/**
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	FileAndFolderMandatoryExclusions?: libcomet_ExtraFileExclusion[]
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	ModeScheduleSkipAlreadyRunning?: number
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	ModeAdminResetPassword?: number
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	ModeAdminViewFilenames?: number
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	ModeRequireUserResetPassword?: number
 	PreventDeleteSingleSnapshots: boolean
 	PreventChangeAccountPassword: boolean
 	PreventChangeEmailSettings: boolean
@@ -6590,7 +7724,10 @@ export type libcomet_UserPolicy = {
 	DefaultSourcesBackupRules: {[k: string]: libcomet_BackupRuleConfig}
 	DefaultSourcesWithOSRestriction: {[k: string]: libcomet_DefaultSourceWithOSRestriction}
 	DefaultBackupRules: {[k: string]: libcomet_BackupRuleConfig}
-	RandomDelaySecs?: number // Omission from JSON will be interpreted as 0 (zero)
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	RandomDelaySecs?: number
 }
 
 export function New_Zero_libcomet_UserPolicy(): libcomet_UserPolicy {
@@ -6631,16 +7768,43 @@ export function New_Zero_libcomet_UserPolicy(): libcomet_UserPolicy {
  * This is the main data structure for a user's profile.
  */
 export type libcomet_UserProfileConfig = {
+	/**
+	 * The name for this account. It uniquely identifies this UserProfileConfig across the entire Comet
+	 * Server. It cannot be changed directly.
+	 */
 	Username: string
+	/**
+	 * A longer descriptive name for this account. It is not necessarily unique to the Comet Server.
+	 * The end-user might be able to change it inside the Comet Backup desktop app.
+	 */
 	AccountName: string
+	/**
+	 * Timezone in IANA format. Individual devices may declare a more specific timezone in the Devices
+	 * field.
+	 */
 	LocalTimezone: string
+	/**
+	 * One of the supported languages, such as en_US (DEFAULT_LANGUAGE).
+	 */
 	LanguageCode: string
 	/**
 	 * Tenant
+	 * Omission from JSON will be interpreted as empty-string
 	 */
-	OrganizationID?: string // Omission from JSON will be interpreted as empty-string
+	OrganizationID?: string
+	/**
+	 * A list of email addresses to send reports to.
+	 */
 	Emails: string[]
+	/**
+	 * By default, all the email addresses in the Emails field will receieve the policy-default or
+	 * server-wide-default style of email report. Add an override for a specific email address in here
+	 * to allow customizing the email report that will be received.
+	 */
 	OverrideEmailSettings: {[k: string]: libcomet_UserCustomEmailSettings}
+	/**
+	 * This option can be used to control whether any email reports are sent.
+	 */
 	SendEmailReports: boolean
 	/**
 	 * Storage Vaults
@@ -6650,13 +7814,42 @@ export type libcomet_UserProfileConfig = {
 	 * Protected Items
 	 */
 	Sources: {[k: string]: libcomet_SourceConfig}
+	/**
+	 * Schedules
+	 */
 	BackupRules: {[k: string]: libcomet_BackupRuleConfig}
+	/**
+	 * Devices
+	 * To revoke a device, use the AdminRevokeDevice API instead of accessing these fields directly.
+	 * This API can also remove associated Protected Items, uninstall the remote device, and disconnect
+	 * its live connection.
+	 */
 	Devices: {[k: string]: libcomet_DeviceConfig}
 	IsSuspended: boolean
-	LastSuspended?: number // Omission from JSON will be interpreted as 0 (zero)
+	/**
+	 * Unix timestamp in seconds. Zero if the device is not suspended.
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	LastSuspended?: number
+	/**
+	 * A limit on the total Size of all Protected Items in this account. The number of bytes should be
+	 * configured in AllProtectedItemsQuotaBytes.
+	 */
 	AllProtectedItemsQuotaEnabled: boolean
+	/**
+	 * A limit on the total Size of all Protected Items in this account. It is enforced if
+	 * AllProtectedItemsQuotaEnabled is true.
+	 */
 	AllProtectedItemsQuotaBytes: number
+	/**
+	 * A limit on the total number of devices registered in this account. Set to zero to allow
+	 * unlimited devices.
+	 */
 	MaximumDevices: number
+	/**
+	 * A limit on the total number of Office 365 Protected Accounts across all Office 365 Protected
+	 * Items in this account. Set to zero to allow unlimited Office 365 Protected Accounts.
+	 */
 	QuotaOffice365ProtectedAccounts: number
 	/**
 	 * If the PolicyID field is set to a non-empty string, the Comet Server will enforce the contents
@@ -6664,6 +7857,10 @@ export type libcomet_UserProfileConfig = {
 	 * set to an empty string, the administrator may configure any custom values in the Policy field.
 	 */
 	PolicyID: string
+	/**
+	 * The Policy field contains a read-only copy of the effective Policy that is applied to this user
+	 * account.
+	 */
 	Policy: libcomet_UserPolicy
 	/**
 	 * To change the user's password, use the AdminResetUserPassword API instead of accessing these
@@ -6671,15 +7868,35 @@ export type libcomet_UserProfileConfig = {
 	 */
 	PasswordFormat: number
 	PasswordHash: string
-	PasswordRecovery?: string // Omission from JSON will be interpreted as empty-string
+	/**
+	 * If this field is empty, the "Allow administrator to reset my password" feature is turned off. If
+	 * this field is filled, it contains a cryptographic root of trust that can decrypt and re-encrypt
+	 * other secrets in this profile.
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	PasswordRecovery?: string
 	AllowPasswordLogin: boolean
 	AllowPasswordAndTOTPLogin: boolean
 	TOTPKeyEncryptionFormat: number
 	TOTPKey: string
+	/**
+	 * This field is available in Comet 20.3.4 and later.
+	 */
 	RequirePasswordChange: boolean
+	/**
+	 * Unix timestamp in seconds
+	 */
 	CreateTime: number
+	/**
+	 * A random GUID that is allocated when the user profile is created for the first time. You can use
+	 * this to help disambiguate users with the same username across multiple Comet Servers.
+	 */
 	CreationGUID: string
-	ServerConfig?: libcomet_UserServerConfig // Omission from JSON will be interpreted as the zero value for this field type
+	/**
+	 * Additional server-wide settings that are enforced for this user profile
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	ServerConfig?: libcomet_UserServerConfig
 }
 
 export function New_Zero_libcomet_UserProfileConfig(): libcomet_UserProfileConfig {
@@ -6727,7 +7944,10 @@ export function New_Zero_libcomet_UserProfileFragment(): libcomet_UserProfileFra
 
 
 export type libcomet_UserServerConfig = {
-	RandomDelaySecs?: number // Omission from JSON will be interpreted as 0 (zero)
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	RandomDelaySecs?: number
 }
 
 export function New_Zero_libcomet_UserServerConfig(): libcomet_UserServerConfig {
@@ -6737,8 +7957,18 @@ export function New_Zero_libcomet_UserServerConfig(): libcomet_UserServerConfig 
 
 
 export type libcomet_VMDKSnapshotViewOptions = {
+	/**
+	 * Request a list of stored objects in vmdk file. It should be always true for restoring single
+	 * files from vmdk file
+	 */
 	Enabled: boolean
+	/**
+	 * The vmdk filename inside subdirectory of disk image, should be end with .vmdk
+	 */
 	PartitionGUID: string
+	/**
+	 * Browse objects' paths inside vmdk file
+	 */
 	ListPath: string
 	PartitionName: string
 }
@@ -6822,10 +8052,26 @@ export function New_Zero_libcomet_WasabiVirtualStorageRoleSettings(): libcomet_W
 
 
 export type libcomet_WebAuthnAuthenticatorSelection = {
-	authenticatorAttachment?: string // AuthenticatorAttachment. Omission from JSON will be interpreted as empty-string
-	requireResidentKey?: boolean // RequireResidentKey. Omission from JSON will be interpreted as false
-	residentKey?: string // ResidentKey. Omission from JSON will be interpreted as empty-string
-	userVerification?: string // UserVerification. Omission from JSON will be interpreted as empty-string
+	/**
+	 * AuthenticatorAttachment
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	authenticatorAttachment?: string
+	/**
+	 * RequireResidentKey
+	 * Omission from JSON will be interpreted as false
+	 */
+	requireResidentKey?: boolean
+	/**
+	 * ResidentKey
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	residentKey?: string
+	/**
+	 * UserVerification
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	userVerification?: string
 }
 
 export function New_Zero_libcomet_WebAuthnAuthenticatorSelection(): libcomet_WebAuthnAuthenticatorSelection {
@@ -6854,7 +8100,10 @@ export function New_Zero_libcomet_WebAuthnCredential(): libcomet_WebAuthnCredent
 
 
 export type libcomet_WebAuthnCredentialAssertion = {
-	publicKey: libcomet_WebAuthnPublicKeyCredentialRequestOptions // Response
+	/**
+	 * Response
+	 */
+	publicKey: libcomet_WebAuthnPublicKeyCredentialRequestOptions
 }
 
 export function New_Zero_libcomet_WebAuthnCredentialAssertion(): libcomet_WebAuthnCredentialAssertion {
@@ -6865,9 +8114,19 @@ export function New_Zero_libcomet_WebAuthnCredentialAssertion(): libcomet_WebAut
 
 
 export type libcomet_WebAuthnCredentialDescriptor = {
-	type: string // Type
-	id: string // CredentialID
-	transports?: string[] // Transport. Omission from JSON will be interpreted as an empty array
+	/**
+	 * Type
+	 */
+	type: string
+	/**
+	 * CredentialID
+	 */
+	id: string
+	/**
+	 * Transport
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	transports?: string[]
 }
 
 export function New_Zero_libcomet_WebAuthnCredentialDescriptor(): libcomet_WebAuthnCredentialDescriptor {
@@ -6879,8 +8138,15 @@ export function New_Zero_libcomet_WebAuthnCredentialDescriptor(): libcomet_WebAu
 
 
 export type libcomet_WebAuthnCredentialEntity = {
-	name: string // Name
-	icon?: string // Icon. Omission from JSON will be interpreted as empty-string
+	/**
+	 * Name
+	 */
+	name: string
+	/**
+	 * Icon
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	icon?: string
 }
 
 export function New_Zero_libcomet_WebAuthnCredentialEntity(): libcomet_WebAuthnCredentialEntity {
@@ -6891,8 +8157,14 @@ export function New_Zero_libcomet_WebAuthnCredentialEntity(): libcomet_WebAuthnC
 
 
 export type libcomet_WebAuthnCredentialParameter = {
-	type: string // Type
-	alg: number // Algorithm
+	/**
+	 * Type
+	 */
+	type: string
+	/**
+	 * Algorithm
+	 */
+	alg: number
 }
 
 export function New_Zero_libcomet_WebAuthnCredentialParameter(): libcomet_WebAuthnCredentialParameter {
@@ -6904,15 +8176,48 @@ export function New_Zero_libcomet_WebAuthnCredentialParameter(): libcomet_WebAut
 
 
 export type libcomet_WebAuthnPublicKeyCredentialCreationOptions = {
-	challenge: string // Challenge
-	rp: libcomet_WebAuthnRelyingPartyEntity // RelyingParty
-	user: libcomet_WebAuthnUserEntity // User
-	pubKeyCredParams?: libcomet_WebAuthnCredentialParameter[] // Parameters. Omission from JSON will be interpreted as an empty array
-	authenticatorSelection?: libcomet_WebAuthnAuthenticatorSelection // AuthenticatorSelection. Omission from JSON will be interpreted as the zero value for this field type
-	timeout?: number // Timeout. Omission from JSON will be interpreted as 0 (zero)
-	excludeCredentials?: libcomet_WebAuthnCredentialDescriptor[] // CredentialExcludeList. Omission from JSON will be interpreted as an empty array
-	extensions?: {[k: string]: any} // Extensions. Omission from JSON will be interpreted as an empty map
-	attestation?: string // Attestation. Omission from JSON will be interpreted as empty-string
+	/**
+	 * Challenge
+	 */
+	challenge: string
+	/**
+	 * RelyingParty
+	 */
+	rp: libcomet_WebAuthnRelyingPartyEntity
+	/**
+	 * User
+	 */
+	user: libcomet_WebAuthnUserEntity
+	/**
+	 * Parameters
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	pubKeyCredParams?: libcomet_WebAuthnCredentialParameter[]
+	/**
+	 * AuthenticatorSelection
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	authenticatorSelection?: libcomet_WebAuthnAuthenticatorSelection
+	/**
+	 * Timeout
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	timeout?: number
+	/**
+	 * CredentialExcludeList
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	excludeCredentials?: libcomet_WebAuthnCredentialDescriptor[]
+	/**
+	 * Extensions
+	 * Omission from JSON will be interpreted as an empty map
+	 */
+	extensions?: {[k: string]: any}
+	/**
+	 * Attestation
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	attestation?: string
 }
 
 export function New_Zero_libcomet_WebAuthnPublicKeyCredentialCreationOptions(): libcomet_WebAuthnPublicKeyCredentialCreationOptions {
@@ -6925,12 +8230,35 @@ export function New_Zero_libcomet_WebAuthnPublicKeyCredentialCreationOptions(): 
 
 
 export type libcomet_WebAuthnPublicKeyCredentialRequestOptions = {
-	challenge: string // Challenge
-	timeout?: number // Timeout. Omission from JSON will be interpreted as 0 (zero)
-	rpId?: string // RelyingPartyID. Omission from JSON will be interpreted as empty-string
-	allowCredentials?: libcomet_WebAuthnCredentialDescriptor[] // AllowedCredentials. Omission from JSON will be interpreted as an empty array
-	userVerification?: string // UserVerification. Omission from JSON will be interpreted as empty-string
-	extensions?: {[k: string]: any} // Extensions. Omission from JSON will be interpreted as an empty map
+	/**
+	 * Challenge
+	 */
+	challenge: string
+	/**
+	 * Timeout
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	timeout?: number
+	/**
+	 * RelyingPartyID
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	rpId?: string
+	/**
+	 * AllowedCredentials
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	allowCredentials?: libcomet_WebAuthnCredentialDescriptor[]
+	/**
+	 * UserVerification
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	userVerification?: string
+	/**
+	 * Extensions
+	 * Omission from JSON will be interpreted as an empty map
+	 */
+	extensions?: {[k: string]: any}
 }
 
 export function New_Zero_libcomet_WebAuthnPublicKeyCredentialRequestOptions(): libcomet_WebAuthnPublicKeyCredentialRequestOptions {
@@ -6941,6 +8269,9 @@ export function New_Zero_libcomet_WebAuthnPublicKeyCredentialRequestOptions(): l
 
 
 export type libcomet_WebAuthnRegistrationChallengeResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
 	Status: number
 	Message: string
 	ChallengeID: string
@@ -6963,9 +8294,19 @@ export function libcomet_WebAuthnRegistrationChallengeResponse_set_embedded_libc
 
 
 export type libcomet_WebAuthnRelyingPartyEntity = {
-	name: string // Name
-	icon?: string // Icon. Omission from JSON will be interpreted as empty-string
-	id: string // ID
+	/**
+	 * Name
+	 */
+	name: string
+	/**
+	 * Icon
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	icon?: string
+	/**
+	 * ID
+	 */
+	id: string
 }
 
 export function New_Zero_libcomet_WebAuthnRelyingPartyEntity(): libcomet_WebAuthnRelyingPartyEntity {
@@ -7008,10 +8349,24 @@ export function New_Zero_libcomet_WebAuthnSignResponse(): libcomet_WebAuthnSignR
 
 
 export type libcomet_WebAuthnUserEntity = {
-	name: string // Name
-	icon?: string // Icon. Omission from JSON will be interpreted as empty-string
-	displayName?: string // DisplayName. Omission from JSON will be interpreted as empty-string
-	id: string // ID
+	/**
+	 * Name
+	 */
+	name: string
+	/**
+	 * Icon
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	icon?: string
+	/**
+	 * DisplayName
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	displayName?: string
+	/**
+	 * ID
+	 */
+	id: string
 }
 
 export function New_Zero_libcomet_WebAuthnUserEntity(): libcomet_WebAuthnUserEntity {
@@ -7066,9 +8421,23 @@ export function New_Zero_libcomet_WebhookOption(): libcomet_WebhookOption {
 
 
 export type libcomet_WinSMBAuth = {
+	/**
+	 * The UNC path for the Windows network share (SMB).
+	 */
 	SharePath: string
+	/**
+	 * The username to log in to the Windows network share (SMB).
+	 */
 	Username: string
+	/**
+	 * The password might be hashed. To set this in cleartext, set PasswordFormat to 0
+	 * (PASSWORD_FORMAT_PLAINTEXT).
+	 */
 	Password: string
+	/**
+	 * The hash algorithm that is used for the Password field. It is one of the PASSWORD_FORMAT_
+	 * constants.
+	 */
 	PasswordFormat: number
 }
 
