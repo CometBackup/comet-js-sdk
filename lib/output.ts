@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "23.3.7";
+export const APPLICATION_VERSION = "23.5.0";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -21,14 +21,14 @@ export const APPLICATION_VERSION_MAJOR = 23;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MINOR = 3;
+export const APPLICATION_VERSION_MINOR = 5;
 
 /**
  * APPLICATION_VERSION_REVISION
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 7;
+export const APPLICATION_VERSION_REVISION = 0;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -64,6 +64,7 @@ export const BACKUPJOBAUTORETENTION_LESS_OFTEN = 3;
 
 /**
  * BRANDINGSTYLETYPE_AUTO_LEGACY
+ * If set, will be automatically replaced with one of the other BRANDINGSTYLETYPE_ constants after next server upgrade.
  *
  * @var {number}
  */
@@ -71,6 +72,7 @@ export const BRANDINGSTYLETYPE_AUTO_LEGACY = 0;
 
 /**
  * BRANDINGSTYLETYPE_DEFAULT
+ * Use Comet company branding and colours for all web interface branding
  *
  * @var {number}
  */
@@ -78,6 +80,7 @@ export const BRANDINGSTYLETYPE_DEFAULT = 1;
 
 /**
  * BRANDINGSTYLETYPE_CUSTOM_TEXT
+ * Use custom branding and colours, with text in the main logo area.
  *
  * @var {number}
  */
@@ -85,6 +88,7 @@ export const BRANDINGSTYLETYPE_CUSTOM_TEXT = 2;
 
 /**
  * BRANDINGSTYLETYPE_CUSTOM_LOGO
+ * Use custom branding and colours, with a supplied image in the main logo area.
  *
  * @var {number}
  */
@@ -208,6 +212,7 @@ export const DEFAULT_ACCENTCOLOR = "#D88463";
 
 /**
  * DEFAULT_SESSIONTIMEOUT
+ * The default number of seconds for the SessionOptions.ExpiredInSeconds field (30 minutes).
  *
  * @var {number}
  */
@@ -246,6 +251,7 @@ export const DESTINATIONTYPE___INVALID = 0;
 
 /**
  * DESTINATIONTYPE_S3
+ * S3-compatible, or a specific S3 service such as AWS S3, Wasabi, or iDrive e2
  *
  * @var {number}
  */
@@ -253,6 +259,7 @@ export const DESTINATIONTYPE_S3 = 1000;
 
 /**
  * DESTINATIONTYPE_SFTP
+ * SFTP protocol
  *
  * @var {number}
  */
@@ -260,6 +267,7 @@ export const DESTINATIONTYPE_SFTP = 1001;
 
 /**
  * DESTINATIONTYPE_LOCALCOPY
+ * Local Path
  *
  * @var {number}
  */
@@ -267,6 +275,7 @@ export const DESTINATIONTYPE_LOCALCOPY = 1002;
 
 /**
  * DESTINATIONTYPE_COMET
+ * The Comet Server Storage Role protocol
  *
  * @var {number}
  */
@@ -274,6 +283,7 @@ export const DESTINATIONTYPE_COMET = 1003;
 
 /**
  * DESTINATIONTYPE_FTP
+ * FTP protocol
  *
  * @var {number}
  */
@@ -281,6 +291,7 @@ export const DESTINATIONTYPE_FTP = 1004;
 
 /**
  * DESTINATIONTYPE_AZUREBLOB
+ * Azure Blob Storage
  *
  * @var {number}
  */
@@ -288,6 +299,7 @@ export const DESTINATIONTYPE_AZUREBLOB = 1005;
 
 /**
  * DESTINATIONTYPE_SPANNED
+ * Spanned
  *
  * @var {number}
  */
@@ -295,6 +307,7 @@ export const DESTINATIONTYPE_SPANNED = 1006;
 
 /**
  * DESTINATIONTYPE_SWIFT
+ * Openstack Swift
  *
  * @var {number}
  */
@@ -302,6 +315,7 @@ export const DESTINATIONTYPE_SWIFT = 1007;
 
 /**
  * DESTINATIONTYPE_B2
+ * Backblaze B2 (Native API)
  *
  * @var {number}
  */
@@ -309,6 +323,7 @@ export const DESTINATIONTYPE_B2 = 1008;
 
 /**
  * DESTINATIONTYPE_STORJ
+ * Storj
  *
  * @var {number}
  */
@@ -316,6 +331,7 @@ export const DESTINATIONTYPE_STORJ = 1009;
 
 /**
  * DESTINATIONTYPE_LATEST
+ * When defining a schedule via policy, use this option to dynamically select the Storage Vault that was created most recently.
  *
  * @var {number}
  */
@@ -323,6 +339,7 @@ export const DESTINATIONTYPE_LATEST = 1100;
 
 /**
  * DESTINATIONTYPE_ALL
+ * When defining a schedule via policy, use this option to create a schedule for each Storage Vault in the user's profile.
  *
  * @var {number}
  */
@@ -562,7 +579,7 @@ export const ENGINE_BUILTIN_MSOFFICE = "engine1/winmsofficemail";
 
 /**
  * FTPS_MODE_PLAINTEXT
- * FtpsModeType
+ * FtpsModeType: Use plain FTP, do not use FTPS.
  *
  * @var {number}
  */
@@ -570,7 +587,7 @@ export const FTPS_MODE_PLAINTEXT = 0;
 
 /**
  * FTPS_MODE_IMPLICIT
- * FtpsModeType
+ * FtpsModeType: Use implicit FTPS, immediately creating a secure SSL/TLS channel before any data is sent. This usually requires a different port on the FTP server. It is generally advised to use explicit mode instead.
  *
  * @var {number}
  */
@@ -578,7 +595,7 @@ export const FTPS_MODE_IMPLICIT = 1;
 
 /**
  * FTPS_MODE_EXPLICIT
- * FtpsModeType
+ * FtpsModeType: Use explicit FTPS, first creating an insecure connection and then upgrading to SSL/TLS using AUTH TLS (like STARTTLS).
  *
  * @var {number}
  */
@@ -586,7 +603,7 @@ export const FTPS_MODE_EXPLICIT = 2;
 
 /**
  * JOB_CLASSIFICATION__MIN
- * JobClassification
+ * JobClassification: All BackupJobDetail.Classification fields will fall in the 4xxx range.
  *
  * @var {number}
  */
@@ -602,7 +619,7 @@ export const JOB_CLASSIFICATION_UNKNOWN = 4000;
 
 /**
  * JOB_CLASSIFICATION_BACKUP
- * JobClassification
+ * JobClassification: This is a backup job.
  *
  * @var {number}
  */
@@ -610,7 +627,7 @@ export const JOB_CLASSIFICATION_BACKUP = 4001;
 
 /**
  * JOB_CLASSIFICATION_RESTORE
- * JobClassification
+ * JobClassification: This is a restore job.
  *
  * @var {number}
  */
@@ -658,7 +675,7 @@ export const JOB_CLASSIFICATION_UPDATE = 4007;
 
 /**
  * JOB_CLASSIFICATION_IMPORT
- * JobClassification
+ * JobClassification: Importing settings from another installed product
  *
  * @var {number}
  */
@@ -674,7 +691,7 @@ export const JOB_CLASSIFICATION_REINDEX = 4009;
 
 /**
  * JOB_CLASSIFICATION_DEEPVERIFY
- * JobClassification
+ * JobClassification: Deep Verify
  *
  * @var {number}
  */
@@ -698,7 +715,7 @@ export const JOB_CLASSIFICATION__MAX = 4999;
 
 /**
  * JOB_STATUS_STOP_SUCCESS__MIN
- * JobStatus
+ * JobStatus: If the BackupJobDetail.Status field is a 5xxx code, the job has stopped for a successful reason.
  *
  * @var {number}
  */
@@ -722,7 +739,7 @@ export const JOB_STATUS_STOP_SUCCESS__MAX = 5999;
 
 /**
  * JOB_STATUS_RUNNING__MIN
- * JobStatus
+ * JobStatus: If the BackupJobDetail.Status field is a 6xxx code, the job is still running.
  *
  * @var {number}
  */
@@ -762,7 +779,7 @@ export const JOB_STATUS_RUNNING__MAX = 6999;
 
 /**
  * JOB_STATUS_FAILED__MIN
- * JobStatus
+ * JobStatus: If the BackupJobDetail.Status field is a 7xxx code, the job has stopped for an unsuccessful reason.
  *
  * @var {number}
  */
@@ -869,7 +886,7 @@ export const LDAPSECURITYMETHOD_STARTTLS = "starttls";
  *
  * @var {string}
  */
-export const LEGACY_TOPCOLOR = "#1782D6";
+export const LEGACY_TOPCOLOR = "#06041E";
 
 /**
  * LOGOIMAGE_NONE
@@ -897,7 +914,7 @@ export const LOGOIMAGE_COMETEMBEDDED = 3;
 
 /**
  * MACOSCODESIGN_LEVEL_SIGN
- * MacOSCodesignLevel
+ * MacOSCodesignLevel: Sign only
  *
  * @var {number}
  */
@@ -905,7 +922,7 @@ export const MACOSCODESIGN_LEVEL_SIGN = 0;
 
 /**
  * MACOSCODESIGN_LEVEL_SIGN_NOTARISE
- * MacOSCodesignLevel
+ * MacOSCodesignLevel: Sign and notarize
  *
  * @var {number}
  */
@@ -913,7 +930,7 @@ export const MACOSCODESIGN_LEVEL_SIGN_NOTARISE = 1;
 
 /**
  * MACOSCODESIGN_LEVEL_SIGN_NOTARISE_STAPLE
- * MacOSCodesignLevel
+ * MacOSCodesignLevel: Sign, notarize, and staple
  *
  * @var {number}
  */
@@ -1121,7 +1138,7 @@ export const PSA_TYPE_GRADIENT = 1;
  *
  * @var {string}
  */
-export const RELEASE_CODENAME = "Voyager";
+export const RELEASE_CODENAME = "Thebe";
 
 /**
  * REMOTESERVER_COMET
@@ -1277,7 +1294,7 @@ export const REPLICATOR_DISPLAYCLASS_USER = 101;
 
 /**
  * RESTOREARCHIVEFORMAT_TAR
- * RestoreArchiveFormat
+ * RestoreArchiveFormat: Tar file format
  *
  * @var {number}
  */
@@ -1285,7 +1302,7 @@ export const RESTOREARCHIVEFORMAT_TAR = 0;
 
 /**
  * RESTOREARCHIVEFORMAT_TARGZ
- * RestoreArchiveFormat
+ * RestoreArchiveFormat: Compressed Tar.gz (.tgz) file format
  *
  * @var {number}
  */
@@ -1293,7 +1310,7 @@ export const RESTOREARCHIVEFORMAT_TARGZ = 1;
 
 /**
  * RESTOREARCHIVEFORMAT_ZIP
- * RestoreArchiveFormat
+ * RestoreArchiveFormat: Zip file format
  *
  * @var {number}
  */
@@ -1309,7 +1326,7 @@ export const RESTOREARCHIVEFORMAT_SQFS = 3;
 
 /**
  * RESTOREARCHIVEFORMAT_TARZSTD
- * RestoreArchiveFormat
+ * RestoreArchiveFormat: Compressed Tar.zstd (.tzst) file format
  *
  * @var {number}
  */
@@ -1325,7 +1342,7 @@ export const RESTORETYPE_INVALID = -1;
 
 /**
  * RESTORETYPE_FILE
- * RestoreType
+ * RestoreType: Restore as files and folders
  *
  * @var {number}
  */
@@ -1333,7 +1350,7 @@ export const RESTORETYPE_FILE = 0;
 
 /**
  * RESTORETYPE_NULL
- * RestoreType
+ * RestoreType: Download and reconstruct files, but do not save them (for test purposes)
  *
  * @var {number}
  */
@@ -1341,7 +1358,7 @@ export const RESTORETYPE_NULL = 1;
 
 /**
  * RESTORETYPE_PROCESS_PERFILE
- * RestoreType
+ * RestoreType: Stream each restored file into the target command stdin. The target command may be executed multiple times, once for each restored file.
  *
  * @var {number}
  */
@@ -1349,7 +1366,7 @@ export const RESTORETYPE_PROCESS_PERFILE = 2;
 
 /**
  * RESTORETYPE_PROCESS_ARCHIVE
- * RestoreType
+ * RestoreType: Stream an archive of each restored file into the target command stdin. The target command will be executed only once.
  *
  * @var {number}
  */
@@ -1357,7 +1374,7 @@ export const RESTORETYPE_PROCESS_ARCHIVE = 3;
 
 /**
  * RESTORETYPE_WINDISK
- * RestoreType
+ * RestoreType: Restore partitions back to the physical disk
  *
  * @var {number}
  */
@@ -1365,7 +1382,7 @@ export const RESTORETYPE_WINDISK = 4;
 
 /**
  * RESTORETYPE_FILE_ARCHIVE
- * RestoreType
+ * RestoreType: Restore selected files and folders as a single compressed archive
  *
  * @var {number}
  */
@@ -1373,7 +1390,7 @@ export const RESTORETYPE_FILE_ARCHIVE = 5;
 
 /**
  * RESTORETYPE_OFFICE365_CLOUD
- * RestoreType
+ * RestoreType: Restore selected Office 365 emails, contacts, calendars, and SharePoint/OneDrive data directly to the Office 365 cloud service
  *
  * @var {number}
  */
@@ -1381,7 +1398,7 @@ export const RESTORETYPE_OFFICE365_CLOUD = 6;
 
 /**
  * RESTORETYPE_VMDK_FILE
- * RestoreType
+ * RestoreType: Granular restore of single files from within a Disk Image or Hyper-V backup
  *
  * @var {number}
  */
@@ -1389,7 +1406,7 @@ export const RESTORETYPE_VMDK_FILE = 7;
 
 /**
  * RESTORETYPE_VMDK_FILE_NULL
- * RestoreType
+ * RestoreType: Granular restore of single files from within a Disk Image or Hyper-V backup, downloading and reconstructing files, but without saving them (for test purposes)
  *
  * @var {number}
  */
@@ -1397,7 +1414,7 @@ export const RESTORETYPE_VMDK_FILE_NULL = 8;
 
 /**
  * RESTORETYPE_VMDK_FILE_ARCHIVE
- * RestoreType
+ * RestoreType: Granular restore of single files from within a Disk Image or Hyper-V backup, creating an archive file of all selected files
  *
  * @var {number}
  */
@@ -1405,7 +1422,7 @@ export const RESTORETYPE_VMDK_FILE_ARCHIVE = 9;
 
 /**
  * RESTORETYPE_MYSQL
- * RestoreType
+ * RestoreType: Stream restore as SQL statements into a target MySQL server
  *
  * @var {number}
  */
@@ -1413,7 +1430,7 @@ export const RESTORETYPE_MYSQL = 10;
 
 /**
  * RESTORETYPE_MSSQL
- * RestoreType
+ * RestoreType: Stream restore as T-SQL BACKUP output into a target Microsoft SQL Server
  *
  * @var {number}
  */
@@ -1848,6 +1865,7 @@ export const SEARCHOPERATOR_BOOL_NIS = "bool_nis";
 
 /**
  * SERVICE_CALENDAR
+ * 0000 0001. If this value is present in the bitset, then the Calendar service is selected for backup.
  *
  * @var {number}
  */
@@ -1855,6 +1873,7 @@ export const SERVICE_CALENDAR = 1;
 
 /**
  * SERVICE_CONTACT
+ * 0000 0010. If this value is present in the bitset, then the Contact service is selected for backup.
  *
  * @var {number}
  */
@@ -1862,6 +1881,7 @@ export const SERVICE_CONTACT = 2;
 
 /**
  * SERVICE_MAIL
+ * 0000 0100. If this value is present in the bitset, then the Mail service is selected for backup.
  *
  * @var {number}
  */
@@ -1869,6 +1889,7 @@ export const SERVICE_MAIL = 4;
 
 /**
  * SERVICE_SHAREPOINT
+ * 0000 1000. If this value is present in the bitset, then the SharePoint service is selected for backup.
  *
  * @var {number}
  */
@@ -1876,6 +1897,7 @@ export const SERVICE_SHAREPOINT = 8;
 
 /**
  * SERVICE_ONEDRIVE
+ * 0001 0000. If this value is present in the bitset, then the OneDrive service is selected for backup.
  *
  * @var {number}
  */
@@ -1955,7 +1977,7 @@ export const SEVT__MIN = 4000;
 
 /**
  * SEVT_META_HELLO
- * StreamableEventType: This event is emitted when the webhook is registered, or when the server starts up. The Data associated is ServerMetaVersionInfo
+ * StreamableEventType: New websocket connection. Data is typically ServerMetaVersionInfo
  *
  * @var {number}
  */
@@ -1963,7 +1985,7 @@ export const SEVT_META_HELLO = 4000;
 
 /**
  * SEVT_ACCOUNT_NEW
- * StreamableEventType: Data is the profile object
+ * StreamableEventType: User created. Data is the profile object
  *
  * @var {number}
  */
@@ -1971,7 +1993,7 @@ export const SEVT_ACCOUNT_NEW = 4100;
 
 /**
  * SEVT_ACCOUNT_REMOVED
- * StreamableEventType: Data is the username
+ * StreamableEventType: User deleted
  *
  * @var {number}
  */
@@ -1979,15 +2001,119 @@ export const SEVT_ACCOUNT_REMOVED = 4101;
 
 /**
  * SEVT_ACCOUNT_UPDATED
- * StreamableEventType: Data is the profile object
+ * StreamableEventType: User updated. Data is the profile object
  *
  * @var {number}
  */
 export const SEVT_ACCOUNT_UPDATED = 4102;
 
 /**
+ * SEVT_ACCOUNT_LOGIN
+ * StreamableEventType: User authentication succeeded. Only emitted for non-session requests. Resource is the requested path
+ *
+ * @var {number}
+ */
+export const SEVT_ACCOUNT_LOGIN = 4103;
+
+/**
+ * SEVT_ACCOUNT_LOGIN_FAILED
+ * StreamableEventType: User authentication failed. Only emitted if the user exists. Resource is the requested path
+ *
+ * @var {number}
+ */
+export const SEVT_ACCOUNT_LOGIN_FAILED = 4104;
+
+/**
+ * SEVT_ACCOUNT_SESSION_START
+ * StreamableEventType: User session token created. Data is the session object
+ *
+ * @var {number}
+ */
+export const SEVT_ACCOUNT_SESSION_START = 4105;
+
+/**
+ * SEVT_ACCOUNT_SESSION_REVOKE
+ * StreamableEventType: User session token deleted
+ *
+ * @var {number}
+ */
+export const SEVT_ACCOUNT_SESSION_REVOKE = 4106;
+
+/**
+ * SEVT_ACCOUNT_SESSION_EXPIRE
+ * StreamableEventType: User session token expired
+ *
+ * @var {number}
+ */
+export const SEVT_ACCOUNT_SESSION_EXPIRE = 4107;
+
+/**
+ * SEVT_ACCOUNT_ADMIN_NEW
+ * StreamableEventType: Admin created. Data is the profile object
+ *
+ * @var {number}
+ */
+export const SEVT_ACCOUNT_ADMIN_NEW = 4150;
+
+/**
+ * SEVT_ACCOUNT_ADMIN_REMOVED
+ * StreamableEventType: Admin deleted
+ *
+ * @var {number}
+ */
+export const SEVT_ACCOUNT_ADMIN_REMOVED = 4151;
+
+/**
+ * SEVT_ACCOUNT_ADMIN_UPDATED
+ * StreamableEventType: Admin updated
+ *
+ * @var {number}
+ */
+export const SEVT_ACCOUNT_ADMIN_UPDATED = 4152;
+
+/**
+ * SEVT_ACCOUNT_ADMIN_LOGIN
+ * StreamableEventType: Admin authentication suceeded. Only emitted for non-session requests. Resource is the requested path
+ *
+ * @var {number}
+ */
+export const SEVT_ACCOUNT_ADMIN_LOGIN = 4153;
+
+/**
+ * SEVT_ACCOUNT_ADMIN_LOGIN_FAILED
+ * StreamableEventType: Admin authentication failed. Only emitted if the admin exists. Resource is the request path
+ *
+ * @var {number}
+ */
+export const SEVT_ACCOUNT_ADMIN_LOGIN_FAILED = 4154;
+
+/**
+ * SEVT_ACCOUNT_ADMIN_SESSION_START
+ * StreamableEventType: Admin session token created. Data is the session object
+ *
+ * @var {number}
+ */
+export const SEVT_ACCOUNT_ADMIN_SESSION_START = 4155;
+
+/**
+ * SEVT_ACCOUNT_ADMIN_SESSION_REVOKE
+ * StreamableEventType: Admin session token deleted
+ *
+ * @var {number}
+ */
+export const SEVT_ACCOUNT_ADMIN_SESSION_REVOKE = 4156;
+
+/**
+ * SEVT_ACCOUNT_ADMIN_SESSION_EXPIRE
+ * StreamableEventType: Admin session token expired
+ *
+ * @var {number}
+ */
+export const SEVT_ACCOUNT_ADMIN_SESSION_EXPIRE = 4157;
+
+/**
  * SEVT_JOB_NEW
- * StreamableEventType
+ * StreamableEventType: New backup job started. Data is the job object
  *
  * @var {number}
  */
@@ -1995,7 +2121,7 @@ export const SEVT_JOB_NEW = 4200;
 
 /**
  * SEVT_JOB_COMPLETED
- * StreamableEventType
+ * StreamableEventType: Backup job completed. Data is the job object
  *
  * @var {number}
  */
@@ -2003,11 +2129,131 @@ export const SEVT_JOB_COMPLETED = 4201;
 
 /**
  * SEVT_BUCKET_NEW
- * StreamableEventType: Data is the string bucket ref
+ * StreamableEventType: New bucket created
  *
  * @var {number}
  */
 export const SEVT_BUCKET_NEW = 4300;
+
+/**
+ * SEVT_BUCKET_REMOVED
+ * StreamableEventType: Bucket deleted
+ *
+ * @var {number}
+ */
+export const SEVT_BUCKET_REMOVED = 4301;
+
+/**
+ * SEVT_SERVER_STARTED
+ * StreamableEventType: Server started
+ *
+ * @var {number}
+ */
+export const SEVT_SERVER_STARTED = 4400;
+
+/**
+ * SEVT_SERVER_RESTARTED
+ * StreamableEventType: Server restarting (pending)
+ *
+ * @var {number}
+ */
+export const SEVT_SERVER_RESTARTED = 4401;
+
+/**
+ * SEVT_SERVER_SHUTDOWN
+ * StreamableEventType: Server shutting down (pending)
+ *
+ * @var {number}
+ */
+export const SEVT_SERVER_SHUTDOWN = 4402;
+
+/**
+ * SEVT_SERVER_UPDATED
+ * StreamableEventType: Server configuration has been updated. Data is the server config object
+ *
+ * @var {number}
+ */
+export const SEVT_SERVER_UPDATED = 4403;
+
+/**
+ * SEVT_TENANT_NEW
+ * StreamableEventType: Tenant created. Data is the tenant object
+ *
+ * @var {number}
+ */
+export const SEVT_TENANT_NEW = 4500;
+
+/**
+ * SEVT_TENANT_REMOVED
+ * StreamableEventType: Tenant deleted
+ *
+ * @var {number}
+ */
+export const SEVT_TENANT_REMOVED = 4501;
+
+/**
+ * SEVT_TENANT_UPDATED
+ * StreamableEventType: Tenant updated. Data is the tenant object
+ *
+ * @var {number}
+ */
+export const SEVT_TENANT_UPDATED = 4502;
+
+/**
+ * SEVT_POLICY_NEW
+ * StreamableEventType: Policy created. Data is the policy object
+ *
+ * @var {number}
+ */
+export const SEVT_POLICY_NEW = 4600;
+
+/**
+ * SEVT_POLICY_REMOVED
+ * StreamableEventType: Policy deleted
+ *
+ * @var {number}
+ */
+export const SEVT_POLICY_REMOVED = 4601;
+
+/**
+ * SEVT_POLICY_UPDATED
+ * StreamableEventType: Policy updated. Data is the policy object
+ *
+ * @var {number}
+ */
+export const SEVT_POLICY_UPDATED = 4602;
+
+/**
+ * SEVT_DEVICE_NEW
+ * StreamableEventType: Device created. Data is device object
+ *
+ * @var {number}
+ */
+export const SEVT_DEVICE_NEW = 4700;
+
+/**
+ * SEVT_DEVICE_REMOVED
+ * StreamableEventType: Device deleted
+ *
+ * @var {number}
+ */
+export const SEVT_DEVICE_REMOVED = 4701;
+
+/**
+ * SEVT_DEVICE_LIVE_CONNECT
+ * StreamableEventType: Device live connection started
+ *
+ * @var {number}
+ */
+export const SEVT_DEVICE_LIVE_CONNECT = 4702;
+
+/**
+ * SEVT_DEVICE_LIVE_DISCONNECT
+ * StreamableEventType: Device live connection ended
+ *
+ * @var {number}
+ */
+export const SEVT_DEVICE_LIVE_DISCONNECT = 4703;
 
 /**
  * SEVT__MAX
@@ -2250,6 +2496,54 @@ export const STOREDOBJECTTYPE_VHDX_GPT_PARTITION = "vhdxpartitiongpt";
 export const STOREDOBJECTTYPE_VHDX_MBR_PARTITION = "vhdxpartitionmbr";
 
 /**
+ * STREAM_LEVEL_FULL
+ * StreamLevel: Event data contains full data types
+ *
+ * @var {string}
+ */
+export const STREAM_LEVEL_FULL = "full";
+
+/**
+ * STREAM_LEVEL_NONE
+ * StreamLevel: Event data contains nothing
+ *
+ * @var {string}
+ */
+export const STREAM_LEVEL_NONE = "none";
+
+/**
+ * STREAMER_TYPE_INTERNAL
+ * StreamerType
+ *
+ * @var {string}
+ */
+export const STREAMER_TYPE_INTERNAL = "internal";
+
+/**
+ * STREAMER_TYPE_WEBHOOK
+ * StreamerType
+ *
+ * @var {string}
+ */
+export const STREAMER_TYPE_WEBHOOK = "webhook";
+
+/**
+ * STREAMER_TYPE_WEBSOCKET
+ * StreamerType
+ *
+ * @var {string}
+ */
+export const STREAMER_TYPE_WEBSOCKET = "websocket";
+
+/**
+ * STREAMER_TYPE_FILE
+ * StreamerType
+ *
+ * @var {string}
+ */
+export const STREAMER_TYPE_FILE = "file";
+
+/**
  * TOTPRequiredError
  * If an API response returns in failure, but it includes this value in the CometAPIResponseMessage->Message parameter, it indicates that your supplied authentication was insufficient, and you must supply additional two-factor authentication credentials.
  *
@@ -2392,7 +2686,7 @@ export const WEBAUTHN_DEVICE_TYPE__TPM_LINUX = 6;
 
 /**
  * WINDOWSCODESIGN_METHOD_AUTO
- * WindowsCodesignMethod: When upgrading from a version of Comet Server prior to 22.12.7, this option will be automatically converted to a more specific type..
+ * WindowsCodesignMethod: When upgrading from a version of Comet Server prior to 22.12.7, this option will be automatically converted to a more specific type.
  *
  * @var {number}
  * @deprecated This const has been deprecated since Comet version 22.12.7
@@ -2454,13 +2748,13 @@ export function New_Zero_libcomet_AddBucketResponseMessage(): libcomet_AddBucket
 }
 
 export function libcomet_AddBucketResponseMessage_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_AddBucketResponseMessage, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 export function libcomet_AddBucketResponseMessage_set_embedded_libcomet_NewBucketDetail(dest: libcomet_AddBucketResponseMessage, src: libcomet_NewBucketDetail): void {
-	dest.NewBucketID = src.NewBucketID
-	dest.NewBucketKey = src.NewBucketKey
+	dest.NewBucketID = src.NewBucketID;
+	dest.NewBucketKey = src.NewBucketKey;
 }
 
 
@@ -2510,8 +2804,8 @@ export function New_Zero_libcomet_AdminResourceResponse(): libcomet_AdminResourc
 }
 
 export function libcomet_AdminResourceResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_AdminResourceResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -2701,17 +2995,17 @@ export function New_Zero_libcomet_AllowedAdminUser(): libcomet_AllowedAdminUser 
 }
 
 export function libcomet_AllowedAdminUser_set_embedded_libcomet_AdminSecurityOptions(dest: libcomet_AllowedAdminUser, src: libcomet_AdminSecurityOptions): void {
-	dest.PasswordFormat = src.PasswordFormat
-	dest.Password = src.Password
-	dest.AllowPasswordLogin = src.AllowPasswordLogin
-	dest.AllowPasswordAndTOTPLogin = src.AllowPasswordAndTOTPLogin
-	dest.AllowPasswordAndU2FLogin = src.AllowPasswordAndU2FLogin
-	dest.AllowPasswordAndWebAuthnLogin = src.AllowPasswordAndWebAuthnLogin
-	dest.U2FRegistrations = src.U2FRegistrations
-	dest.WebAuthnRegistrations = src.WebAuthnRegistrations
-	dest.TOTPKeyEncryptionFormat = src.TOTPKeyEncryptionFormat
-	dest.TOTPKey = src.TOTPKey
-	dest.IPWhitelist = src.IPWhitelist
+	dest.PasswordFormat = src.PasswordFormat;
+	dest.Password = src.Password;
+	dest.AllowPasswordLogin = src.AllowPasswordLogin;
+	dest.AllowPasswordAndTOTPLogin = src.AllowPasswordAndTOTPLogin;
+	dest.AllowPasswordAndU2FLogin = src.AllowPasswordAndU2FLogin;
+	dest.AllowPasswordAndWebAuthnLogin = src.AllowPasswordAndWebAuthnLogin;
+	dest.U2FRegistrations = src.U2FRegistrations;
+	dest.WebAuthnRegistrations = src.WebAuthnRegistrations;
+	dest.TOTPKeyEncryptionFormat = src.TOTPKeyEncryptionFormat;
+	dest.TOTPKey = src.TOTPKey;
+	dest.IPWhitelist = src.IPWhitelist;
 }
 
 
@@ -2780,6 +3074,10 @@ export function New_Zero_libcomet_AvailableDownload(): libcomet_AvailableDownloa
 }
 
 
+/**
+ * AzureDestinationLocation allows configuring connection settings for storage locations using the
+ * Azure Blob Storage API (DESTINATIONTYPE_AZURE).
+ */
 export type libcomet_AzureDestinationLocation = {
 	AZBAccountName: string
 	AZBAccountKey: string
@@ -2802,6 +3100,10 @@ export function New_Zero_libcomet_AzureDestinationLocation(): libcomet_AzureDest
 }
 
 
+/**
+ * B2DestinationLocation allows configuring connection settings for storage locations using the
+ * Backblaze B2 native API (DESTINATIONTYPE_B2).
+ */
 export type libcomet_B2DestinationLocation = {
 	/**
 	 * Key ID
@@ -2884,6 +3186,11 @@ export function New_Zero_libcomet_B2VirtualStorageRoleSettings(): libcomet_B2Vir
 }
 
 
+/**
+ * BackupJobAdvancedOptions control additional advanced options for running a backup job. They can
+ * be specified as part of a schedule in the BackupRuleConfig type, or supplied immediately when
+ * running a job.
+ */
 export type libcomet_BackupJobAdvancedOptions = {
 	SkipAlreadyRunning: boolean
 	/**
@@ -2989,6 +3296,7 @@ export type libcomet_BackupJobDetail = {
 	 */
 	TotalUnlicensedMailsCount?: number
 	/**
+	 * If this field is present, it is possible to request cancellation of this job via the API.
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	CancellationID?: string
@@ -3033,10 +3341,17 @@ export function New_Zero_libcomet_BackupJobDetail(): libcomet_BackupJobDetail {
 
 
 export type libcomet_BackupJobProgress = {
+	/**
+	 * This field will always increase monotonically, exactly once, for every change to the
+	 * BackupJobProgress for a given backup job.
+	 */
 	Counter: number
+	/**
+	 * Unix timestamp in seconds
+	 */
 	SentTime: number
 	/**
-	 * The typo is preserved for backwards-compatibility reasons.
+	 * Unix timestamp in seconds. The typo is preserved for backwards-compatibility reasons.
 	 */
 	RecievedTime: number
 	BytesDone: number
@@ -3080,7 +3395,13 @@ export type libcomet_BackupRuleConfig = {
 	 * Custom commands to run after the job
 	 */
 	PostExec: string[]
+	/**
+	 * The source Protected Item ID to back up from, during this schedule
+	 */
 	Source: string
+	/**
+	 * The destination Storage Vault ID to back up to, during this schedule
+	 */
 	Destination: string
 	SkipAlreadyRunning: boolean
 	/**
@@ -3107,7 +3428,13 @@ export type libcomet_BackupRuleConfig = {
 	 * If Zero: default Automatic (BACKUPJOBAUTORETENTION_AUTOMATIC)
 	 */
 	AutoRetentionLevel: number
+	/**
+	 * Scheduled start times
+	 */
 	Schedules: libcomet_ScheduleConfig[]
+	/**
+	 * Other events that will cause this scheduled job to start
+	 */
 	EventTriggers: libcomet_BackupRuleEventTriggers
 }
 
@@ -3134,13 +3461,13 @@ export function New_Zero_libcomet_BackupRuleConfig(): libcomet_BackupRuleConfig 
 }
 
 export function libcomet_BackupRuleConfig_set_embedded_libcomet_BackupJobAdvancedOptions(dest: libcomet_BackupRuleConfig, src: libcomet_BackupJobAdvancedOptions): void {
-	dest.SkipAlreadyRunning = src.SkipAlreadyRunning
-	dest.StopAfter = src.StopAfter
-	dest.LimitVaultSpeedBps = src.LimitVaultSpeedBps
-	dest.ReduceDiskConcurrency = src.ReduceDiskConcurrency
-	dest.UseOnDiskIndexes = src.UseOnDiskIndexes
-	dest.AllowZeroFilesSuccess = src.AllowZeroFilesSuccess
-	dest.AutoRetentionLevel = src.AutoRetentionLevel
+	dest.SkipAlreadyRunning = src.SkipAlreadyRunning;
+	dest.StopAfter = src.StopAfter;
+	dest.LimitVaultSpeedBps = src.LimitVaultSpeedBps;
+	dest.ReduceDiskConcurrency = src.ReduceDiskConcurrency;
+	dest.UseOnDiskIndexes = src.UseOnDiskIndexes;
+	dest.AllowZeroFilesSuccess = src.AllowZeroFilesSuccess;
+	dest.AutoRetentionLevel = src.AutoRetentionLevel;
 }
 
 
@@ -3165,6 +3492,10 @@ export function New_Zero_libcomet_BackupRuleEventTriggers(): libcomet_BackupRule
 
 
 export type libcomet_BrandingOptions = {
+	/**
+	 * One of the BRANDINGSTYLETYPE_ constants
+	 * This field is available in Comet 23.3.3 and later.
+	 */
 	BrandingStyleType: number
 	BrandName: string
 	LogoImage: string
@@ -3258,50 +3589,50 @@ export function New_Zero_libcomet_BrandingOptions(): libcomet_BrandingOptions {
 }
 
 export function libcomet_BrandingOptions_set_embedded_libcomet_WebInterfaceBrandingProperties(dest: libcomet_BrandingOptions, src: libcomet_WebInterfaceBrandingProperties): void {
-	dest.BrandingStyleType = src.BrandingStyleType
-	dest.BrandName = src.BrandName
-	dest.LogoImage = src.LogoImage
-	dest.TopColor = src.TopColor
-	dest.AccentColor = src.AccentColor
-	dest.Favicon = src.Favicon
-	dest.HideNewsArea = src.HideNewsArea
+	dest.BrandingStyleType = src.BrandingStyleType;
+	dest.BrandName = src.BrandName;
+	dest.LogoImage = src.LogoImage;
+	dest.TopColor = src.TopColor;
+	dest.AccentColor = src.AccentColor;
+	dest.Favicon = src.Favicon;
+	dest.HideNewsArea = src.HideNewsArea;
 }
 
 export function libcomet_BrandingOptions_set_embedded_libcomet_BrandingProperties(dest: libcomet_BrandingOptions, src: libcomet_BrandingProperties): void {
-	dest.ProductName = src.ProductName
-	dest.CompanyName = src.CompanyName
-	dest.HelpURL = src.HelpURL
-	dest.HelpIsPopup = src.HelpIsPopup
-	dest.DefaultLoginServerURL = src.DefaultLoginServerURL
-	dest.TileBackgroundColor = src.TileBackgroundColor
-	dest.AccountRegisterURL = src.AccountRegisterURL
-	dest.HideBackgroundLogo = src.HideBackgroundLogo
-	dest.BuildMode = src.BuildMode
-	dest.PathIcoFile = src.PathIcoFile
-	dest.PathIcnsFile = src.PathIcnsFile
-	dest.PathMenuBarIcnsFile = src.PathMenuBarIcnsFile
-	dest.PathEulaRtf = src.PathEulaRtf
-	dest.PathTilePng = src.PathTilePng
-	dest.PathHeaderImage = src.PathHeaderImage
-	dest.PathAppIconImage = src.PathAppIconImage
-	dest.PackageIdentifier = src.PackageIdentifier
-	dest.WindowsCodeSignMethod = src.WindowsCodeSignMethod
-	dest.WindowsCodeSignPKCS12FilePath = src.WindowsCodeSignPKCS12FilePath
-	dest.WindowsCodeSignPKCS12PasswordFormat = src.WindowsCodeSignPKCS12PasswordFormat
-	dest.WindowsCodeSignPKCS12Password = src.WindowsCodeSignPKCS12Password
-	dest.WindowsCodeSignPKCS11Engine = src.WindowsCodeSignPKCS11Engine
-	dest.WindowsCodeSignPKCS11Module = src.WindowsCodeSignPKCS11Module
-	dest.WindowsCodeSignPKCS11Certfile = src.WindowsCodeSignPKCS11Certfile
-	dest.WindowsCodeSignPKCS11KeyID = src.WindowsCodeSignPKCS11KeyID
-	dest.WindowsCodeSignPKCS11PasswordFormat = src.WindowsCodeSignPKCS11PasswordFormat
-	dest.WindowsCodeSignPKCS11Password = src.WindowsCodeSignPKCS11Password
-	dest.WindowsCodeSignAzureVaultName = src.WindowsCodeSignAzureVaultName
-	dest.WindowsCodeSignAzureCertName = src.WindowsCodeSignAzureCertName
-	dest.WindowsCodeSignAzureAppID = src.WindowsCodeSignAzureAppID
-	dest.WindowsCodeSignAzureAppSecretFormat = src.WindowsCodeSignAzureAppSecretFormat
-	dest.WindowsCodeSignAzureAppSecret = src.WindowsCodeSignAzureAppSecret
-	dest.WindowsCodeSignAzureTenantID = src.WindowsCodeSignAzureTenantID
-	dest.MacOSCodeSign = src.MacOSCodeSign
+	dest.ProductName = src.ProductName;
+	dest.CompanyName = src.CompanyName;
+	dest.HelpURL = src.HelpURL;
+	dest.HelpIsPopup = src.HelpIsPopup;
+	dest.DefaultLoginServerURL = src.DefaultLoginServerURL;
+	dest.TileBackgroundColor = src.TileBackgroundColor;
+	dest.AccountRegisterURL = src.AccountRegisterURL;
+	dest.HideBackgroundLogo = src.HideBackgroundLogo;
+	dest.BuildMode = src.BuildMode;
+	dest.PathIcoFile = src.PathIcoFile;
+	dest.PathIcnsFile = src.PathIcnsFile;
+	dest.PathMenuBarIcnsFile = src.PathMenuBarIcnsFile;
+	dest.PathEulaRtf = src.PathEulaRtf;
+	dest.PathTilePng = src.PathTilePng;
+	dest.PathHeaderImage = src.PathHeaderImage;
+	dest.PathAppIconImage = src.PathAppIconImage;
+	dest.PackageIdentifier = src.PackageIdentifier;
+	dest.WindowsCodeSignMethod = src.WindowsCodeSignMethod;
+	dest.WindowsCodeSignPKCS12FilePath = src.WindowsCodeSignPKCS12FilePath;
+	dest.WindowsCodeSignPKCS12PasswordFormat = src.WindowsCodeSignPKCS12PasswordFormat;
+	dest.WindowsCodeSignPKCS12Password = src.WindowsCodeSignPKCS12Password;
+	dest.WindowsCodeSignPKCS11Engine = src.WindowsCodeSignPKCS11Engine;
+	dest.WindowsCodeSignPKCS11Module = src.WindowsCodeSignPKCS11Module;
+	dest.WindowsCodeSignPKCS11Certfile = src.WindowsCodeSignPKCS11Certfile;
+	dest.WindowsCodeSignPKCS11KeyID = src.WindowsCodeSignPKCS11KeyID;
+	dest.WindowsCodeSignPKCS11PasswordFormat = src.WindowsCodeSignPKCS11PasswordFormat;
+	dest.WindowsCodeSignPKCS11Password = src.WindowsCodeSignPKCS11Password;
+	dest.WindowsCodeSignAzureVaultName = src.WindowsCodeSignAzureVaultName;
+	dest.WindowsCodeSignAzureCertName = src.WindowsCodeSignAzureCertName;
+	dest.WindowsCodeSignAzureAppID = src.WindowsCodeSignAzureAppID;
+	dest.WindowsCodeSignAzureAppSecretFormat = src.WindowsCodeSignAzureAppSecretFormat;
+	dest.WindowsCodeSignAzureAppSecret = src.WindowsCodeSignAzureAppSecret;
+	dest.WindowsCodeSignAzureTenantID = src.WindowsCodeSignAzureTenantID;
+	dest.MacOSCodeSign = src.MacOSCodeSign;
 }
 
 
@@ -3385,43 +3716,43 @@ export function New_Zero_libcomet_BrandingProperties(): libcomet_BrandingPropert
 }
 
 export function libcomet_BrandingProperties_set_embedded_libcomet_PublicBrandingProperties(dest: libcomet_BrandingProperties, src: libcomet_PublicBrandingProperties): void {
-	dest.ProductName = src.ProductName
-	dest.CompanyName = src.CompanyName
-	dest.HelpURL = src.HelpURL
-	dest.HelpIsPopup = src.HelpIsPopup
-	dest.DefaultLoginServerURL = src.DefaultLoginServerURL
-	dest.TileBackgroundColor = src.TileBackgroundColor
-	dest.AccountRegisterURL = src.AccountRegisterURL
-	dest.HideBackgroundLogo = src.HideBackgroundLogo
+	dest.ProductName = src.ProductName;
+	dest.CompanyName = src.CompanyName;
+	dest.HelpURL = src.HelpURL;
+	dest.HelpIsPopup = src.HelpIsPopup;
+	dest.DefaultLoginServerURL = src.DefaultLoginServerURL;
+	dest.TileBackgroundColor = src.TileBackgroundColor;
+	dest.AccountRegisterURL = src.AccountRegisterURL;
+	dest.HideBackgroundLogo = src.HideBackgroundLogo;
 }
 
 export function libcomet_BrandingProperties_set_embedded_libcomet_PrivateBrandingProperties(dest: libcomet_BrandingProperties, src: libcomet_PrivateBrandingProperties): void {
-	dest.BuildMode = src.BuildMode
-	dest.PathIcoFile = src.PathIcoFile
-	dest.PathIcnsFile = src.PathIcnsFile
-	dest.PathMenuBarIcnsFile = src.PathMenuBarIcnsFile
-	dest.PathEulaRtf = src.PathEulaRtf
-	dest.PathTilePng = src.PathTilePng
-	dest.PathHeaderImage = src.PathHeaderImage
-	dest.PathAppIconImage = src.PathAppIconImage
-	dest.PackageIdentifier = src.PackageIdentifier
-	dest.WindowsCodeSignMethod = src.WindowsCodeSignMethod
-	dest.WindowsCodeSignPKCS12FilePath = src.WindowsCodeSignPKCS12FilePath
-	dest.WindowsCodeSignPKCS12PasswordFormat = src.WindowsCodeSignPKCS12PasswordFormat
-	dest.WindowsCodeSignPKCS12Password = src.WindowsCodeSignPKCS12Password
-	dest.WindowsCodeSignPKCS11Engine = src.WindowsCodeSignPKCS11Engine
-	dest.WindowsCodeSignPKCS11Module = src.WindowsCodeSignPKCS11Module
-	dest.WindowsCodeSignPKCS11Certfile = src.WindowsCodeSignPKCS11Certfile
-	dest.WindowsCodeSignPKCS11KeyID = src.WindowsCodeSignPKCS11KeyID
-	dest.WindowsCodeSignPKCS11PasswordFormat = src.WindowsCodeSignPKCS11PasswordFormat
-	dest.WindowsCodeSignPKCS11Password = src.WindowsCodeSignPKCS11Password
-	dest.WindowsCodeSignAzureVaultName = src.WindowsCodeSignAzureVaultName
-	dest.WindowsCodeSignAzureCertName = src.WindowsCodeSignAzureCertName
-	dest.WindowsCodeSignAzureAppID = src.WindowsCodeSignAzureAppID
-	dest.WindowsCodeSignAzureAppSecretFormat = src.WindowsCodeSignAzureAppSecretFormat
-	dest.WindowsCodeSignAzureAppSecret = src.WindowsCodeSignAzureAppSecret
-	dest.WindowsCodeSignAzureTenantID = src.WindowsCodeSignAzureTenantID
-	dest.MacOSCodeSign = src.MacOSCodeSign
+	dest.BuildMode = src.BuildMode;
+	dest.PathIcoFile = src.PathIcoFile;
+	dest.PathIcnsFile = src.PathIcnsFile;
+	dest.PathMenuBarIcnsFile = src.PathMenuBarIcnsFile;
+	dest.PathEulaRtf = src.PathEulaRtf;
+	dest.PathTilePng = src.PathTilePng;
+	dest.PathHeaderImage = src.PathHeaderImage;
+	dest.PathAppIconImage = src.PathAppIconImage;
+	dest.PackageIdentifier = src.PackageIdentifier;
+	dest.WindowsCodeSignMethod = src.WindowsCodeSignMethod;
+	dest.WindowsCodeSignPKCS12FilePath = src.WindowsCodeSignPKCS12FilePath;
+	dest.WindowsCodeSignPKCS12PasswordFormat = src.WindowsCodeSignPKCS12PasswordFormat;
+	dest.WindowsCodeSignPKCS12Password = src.WindowsCodeSignPKCS12Password;
+	dest.WindowsCodeSignPKCS11Engine = src.WindowsCodeSignPKCS11Engine;
+	dest.WindowsCodeSignPKCS11Module = src.WindowsCodeSignPKCS11Module;
+	dest.WindowsCodeSignPKCS11Certfile = src.WindowsCodeSignPKCS11Certfile;
+	dest.WindowsCodeSignPKCS11KeyID = src.WindowsCodeSignPKCS11KeyID;
+	dest.WindowsCodeSignPKCS11PasswordFormat = src.WindowsCodeSignPKCS11PasswordFormat;
+	dest.WindowsCodeSignPKCS11Password = src.WindowsCodeSignPKCS11Password;
+	dest.WindowsCodeSignAzureVaultName = src.WindowsCodeSignAzureVaultName;
+	dest.WindowsCodeSignAzureCertName = src.WindowsCodeSignAzureCertName;
+	dest.WindowsCodeSignAzureAppID = src.WindowsCodeSignAzureAppID;
+	dest.WindowsCodeSignAzureAppSecretFormat = src.WindowsCodeSignAzureAppSecretFormat;
+	dest.WindowsCodeSignAzureAppSecret = src.WindowsCodeSignAzureAppSecret;
+	dest.WindowsCodeSignAzureTenantID = src.WindowsCodeSignAzureTenantID;
+	dest.MacOSCodeSign = src.MacOSCodeSign;
 }
 
 
@@ -3443,8 +3774,8 @@ export function New_Zero_libcomet_BrowseDiskDrivesResponse(): libcomet_BrowseDis
 }
 
 export function libcomet_BrowseDiskDrivesResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_BrowseDiskDrivesResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -3466,8 +3797,8 @@ export function New_Zero_libcomet_BrowseEDBResponse(): libcomet_BrowseEDBRespons
 }
 
 export function libcomet_BrowseEDBResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_BrowseEDBResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -3489,8 +3820,8 @@ export function New_Zero_libcomet_BrowseHVResponse(): libcomet_BrowseHVResponse 
 }
 
 export function libcomet_BrowseHVResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_BrowseHVResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -3512,8 +3843,8 @@ export function New_Zero_libcomet_BrowseOffice365ListVirtualAccountsResponse(): 
 }
 
 export function libcomet_BrowseOffice365ListVirtualAccountsResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_BrowseOffice365ListVirtualAccountsResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -3535,8 +3866,8 @@ export function New_Zero_libcomet_BrowseOffice365ObjectsResponse(): libcomet_Bro
 }
 
 export function libcomet_BrowseOffice365ObjectsResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_BrowseOffice365ObjectsResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -3558,8 +3889,8 @@ export function New_Zero_libcomet_BrowseSQLServerResponse(): libcomet_BrowseSQLS
 }
 
 export function libcomet_BrowseSQLServerResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_BrowseSQLServerResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -3581,8 +3912,8 @@ export function New_Zero_libcomet_BrowseVSSResponse(): libcomet_BrowseVSSRespons
 }
 
 export function libcomet_BrowseVSSResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_BrowseVSSResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -3641,6 +3972,9 @@ export function New_Zero_libcomet_CometAPIResponseMessage(): libcomet_CometAPIRe
 
 
 export type libcomet_CometDestinationLocation = {
+	/**
+	 * The URL for the target Comet Server Storage Role, including http/https and trailing slash
+	 */
 	CometServer: string
 	CometBucket: string
 	CometBucketKey: string
@@ -3656,7 +3990,13 @@ export function New_Zero_libcomet_CometDestinationLocation(): libcomet_CometDest
 
 
 export type libcomet_ConstellationCheckReport = {
+	/**
+	 * Unix timestamp in seconds
+	 */
 	CheckStarted: number
+	/**
+	 * Unix timestamp in seconds
+	 */
 	CheckCompleted: number
 	Usage: {[k: string]: libcomet_BucketUsageInfo}
 }
@@ -3723,7 +4063,13 @@ export function New_Zero_libcomet_ConstellationStatusAPIResponse(): libcomet_Con
 
 
 export type libcomet_ContentMeasurement = {
+	/**
+	 * Unix timestamp in seconds
+	 */
 	MeasureStarted: number
+	/**
+	 * Unix timestamp in seconds
+	 */
 	MeasureCompleted: number
 	Components: libcomet_ContentMeasurementComponent[]
 }
@@ -3739,6 +4085,20 @@ export function New_Zero_libcomet_ContentMeasurement(): libcomet_ContentMeasurem
 
 export type libcomet_ContentMeasurementComponent = {
 	Bytes: number
+	/**
+	 * A list of strings describing which groups of snapshots rely on reaching this component of data.
+	 * The strings may take the following formats:
+	 * - source_id/CURRENT - this data is required by the most recent backup job snapshot for the
+	 * listed Protected Item source.
+	 * - source_id/HISTORIC - this data is required by an older backup job snapshot for the listed
+	 * Protected Item source.
+	 * - TRUNCATED/* - there are too many separate components to show, and this component represents
+	 * data that is used by some other combination of components. If present, it will be the only entry
+	 * in the UsedBy array.
+	 * - the empty string - this amount of data is not currently referenced by any backup job
+	 * snapshots. If that remains the case by the next retention pass, this much data will be deleted
+	 * to free up space. If present, it will be the only entry in the UsedBy array.
+	 */
 	UsedBy: string[]
 }
 
@@ -3779,8 +4139,8 @@ export function New_Zero_libcomet_CreateGroupPolicyResponse(): libcomet_CreateGr
 }
 
 export function libcomet_CreateGroupPolicyResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_CreateGroupPolicyResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -3819,6 +4179,12 @@ export function New_Zero_libcomet_DaysOfWeekConfig(): libcomet_DaysOfWeekConfig 
 
 
 export type libcomet_DefaultEmailReportPolicy = {
+	/**
+	 * If true, the email reports will use the custom configuration that is defined in
+	 * UserCustomEmailSettings / Reports fields.
+	 * If false, the email reports will use configuration from the policy setting if present, or else
+	 * from the built-in system default email report configuration.
+	 */
 	ShouldOverrideDefaultReports: boolean
 	Reports: libcomet_EmailReportConfig[]
 }
@@ -3831,7 +4197,7 @@ export function New_Zero_libcomet_DefaultEmailReportPolicy(): libcomet_DefaultEm
 }
 
 export function libcomet_DefaultEmailReportPolicy_set_embedded_libcomet_UserCustomEmailSettings(dest: libcomet_DefaultEmailReportPolicy, src: libcomet_UserCustomEmailSettings): void {
-	dest.Reports = src.Reports
+	dest.Reports = src.Reports;
 }
 
 
@@ -3850,7 +4216,13 @@ export function New_Zero_libcomet_DefaultSourceWithOSRestriction(): libcomet_Def
 
 export type libcomet_DestinationConfig = {
 	Description: string
+	/**
+	 * Unix timestamp in seconds
+	 */
 	CreateTime: number
+	/**
+	 * Unix timestamp in seconds
+	 */
 	ModifyTime: number
 	/**
 	 * Custom commands to run before the job
@@ -3864,7 +4236,13 @@ export type libcomet_DestinationConfig = {
 	 * Custom commands to run after the job
 	 */
 	PostExec: string[]
+	/**
+	 * One of the DESTINATIONTYPE_ constants
+	 */
 	DestinationType: number
+	/**
+	 * The URL for the target Comet Server Storage Role, including http/https and trailing slash
+	 */
 	CometServer: string
 	CometBucket: string
 	CometBucketKey: string
@@ -3883,25 +4261,52 @@ export type libcomet_DestinationConfig = {
 	S3ObjectLockDays: number
 	SFTPServer: string
 	SFTPUsername: string
+	/**
+	 * The directory on the SFTP server in which data is stored.
+	 */
 	SFTPRemotePath: string
 	/**
 	 * One of the DESTINATION_SFTP_AUTHMODE_ constants
 	 */
 	SFTPAuthMode: number
+	/**
+	 * For use with DESTINATION_SFTP_AUTHMODE_PASSWORD only: the SSH password to connect with
+	 */
 	SFTPPassword: string
+	/**
+	 * For use with DESTINATION_SFTP_AUTHMODE_PRIVATEKEY only: the SSH private key to connect with, in
+	 * OpenSSH format.
+	 */
 	SFTPPrivateKey: string
+	/**
+	 * If true, then the SFTPCustomAuth_KnownHostsFile will be used to verify the remote SSH server's
+	 * host key, using Trust On First Use (TOFU).
+	 */
 	SFTPCustomAuth_UseKnownHostsFile: boolean
+	/**
+	 * If SFTPCustomAuth_UseKnownHostFile is true, the path to the SSH known_hosts file.
+	 */
 	SFTPCustomAuth_KnownHostsFile: string
 	FTPServer: string
 	FTPUsername: string
 	FTPPassword: string
+	/**
+	 * If true, store data in the default home directory given by the FTP server. If false, store data
+	 * in the FTPCustomBaseDirectory path.
+	 */
 	FTPBaseUseHomeDirectory: boolean
+	/**
+	 * If FTPBaseUseHomeDirectory is false, this field controls the path where data is stored.
+	 */
 	FTPCustomBaseDirectory: string
 	/**
-	 * One of the FTPS_MODE_ constants.
+	 * Control whether this is plaintext FTP or secure FTPS by using one of the FTPS_MODE_ constants.
 	 */
 	FTPSMode: number
 	FTPPort: number
+	/**
+	 * If set to zero, uses a system default value that is not unlimited.
+	 */
 	FTPMaxConnections: number
 	FTPAcceptInvalidSSL: boolean
 	AZBAccountName: string
@@ -3913,13 +4318,39 @@ export type libcomet_DestinationConfig = {
 	AZBRealm: string
 	AZBPrefix: string
 	LocalcopyPath: string
+	/**
+	 * If logging in to a Windows network share (SMB/CIFS) is required, enter the username here.
+	 */
 	LocalcopyWinSMBUsername: string
+	/**
+	 * If logging in to a Windows network share (SMB/CIFS) is required, enter the password here. The
+	 * password may be hashed as per the LocalcopyWinSMBPasswordFormat field.
+	 */
 	LocalcopyWinSMBPassword: string
+	/**
+	 * One of the PASSWORD_FORMAT_ constants. It controls the hash format of the
+	 * LocalcopyWinSMBPassword field.
+	 */
 	LocalcopyWinSMBPasswordFormat: number
 	Swift: libcomet_SwiftDestinationLocation
 	B2: libcomet_B2DestinationLocation
 	Storj: libcomet_StorjDestinationLocation
+	/**
+	 * A list of underlying destinations, that will be combined and presented as one.
+	 */
 	SpanTargets: libcomet_DestinationLocation[]
+	/**
+	 * If true, this Spanned destination will use a consistent hashing scheme
+	 * to immediately find specific files on exactly one of the target destinations.
+	 * In the Static Slots mode, the span targets cannot be moved or merged, and
+	 * the files must always remain in their original location.
+	 *
+	 * If false, the Spanned destination system will search all targets to find
+	 * the requested file. This is slightly slower, but allows you to freely merge,
+	 * split, and reorder the underlying destination locations.
+	 *
+	 * The default option is false.
+	 */
 	SpanUseStaticSlots: boolean
 	/**
 	 * One of the ENCRYPTIONMETHOD_ constants
@@ -3943,6 +4374,11 @@ export type libcomet_DestinationConfig = {
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	Statistics?: libcomet_DestinationStatistics
+	/**
+	 * Configure the retention policy for this Storage Vault. The rules will be applied to any snapshot
+	 * inside this Storage Vault, unless that snapshot belongs to a Protected Item source that has an
+	 * overriding retention policy.
+	 */
 	DefaultRetention: libcomet_RetentionPolicy
 	/**
 	 * The "Prevent users from viewing the actual storage type" option
@@ -4014,56 +4450,67 @@ export function New_Zero_libcomet_DestinationConfig(): libcomet_DestinationConfi
 }
 
 export function libcomet_DestinationConfig_set_embedded_libcomet_DestinationLocation(dest: libcomet_DestinationConfig, src: libcomet_DestinationLocation): void {
-	dest.DestinationType = src.DestinationType
-	dest.CometServer = src.CometServer
-	dest.CometBucket = src.CometBucket
-	dest.CometBucketKey = src.CometBucketKey
-	dest.S3Server = src.S3Server
-	dest.S3UsesTLS = src.S3UsesTLS
-	dest.S3AccessKey = src.S3AccessKey
-	dest.S3SecretKey = src.S3SecretKey
-	dest.S3BucketName = src.S3BucketName
-	dest.S3Subdir = src.S3Subdir
-	dest.S3CustomRegion = src.S3CustomRegion
-	dest.S3UsesV2Signing = src.S3UsesV2Signing
-	dest.S3RemoveDeleted = src.S3RemoveDeleted
-	dest.S3ObjectLockDays = src.S3ObjectLockDays
-	dest.SFTPServer = src.SFTPServer
-	dest.SFTPUsername = src.SFTPUsername
-	dest.SFTPRemotePath = src.SFTPRemotePath
-	dest.SFTPAuthMode = src.SFTPAuthMode
-	dest.SFTPPassword = src.SFTPPassword
-	dest.SFTPPrivateKey = src.SFTPPrivateKey
-	dest.SFTPCustomAuth_UseKnownHostsFile = src.SFTPCustomAuth_UseKnownHostsFile
-	dest.SFTPCustomAuth_KnownHostsFile = src.SFTPCustomAuth_KnownHostsFile
-	dest.FTPServer = src.FTPServer
-	dest.FTPUsername = src.FTPUsername
-	dest.FTPPassword = src.FTPPassword
-	dest.FTPBaseUseHomeDirectory = src.FTPBaseUseHomeDirectory
-	dest.FTPCustomBaseDirectory = src.FTPCustomBaseDirectory
-	dest.FTPSMode = src.FTPSMode
-	dest.FTPPort = src.FTPPort
-	dest.FTPMaxConnections = src.FTPMaxConnections
-	dest.FTPAcceptInvalidSSL = src.FTPAcceptInvalidSSL
-	dest.AZBAccountName = src.AZBAccountName
-	dest.AZBAccountKey = src.AZBAccountKey
-	dest.AZBContainer = src.AZBContainer
-	dest.AZBRealm = src.AZBRealm
-	dest.AZBPrefix = src.AZBPrefix
-	dest.LocalcopyPath = src.LocalcopyPath
-	dest.LocalcopyWinSMBUsername = src.LocalcopyWinSMBUsername
-	dest.LocalcopyWinSMBPassword = src.LocalcopyWinSMBPassword
-	dest.LocalcopyWinSMBPasswordFormat = src.LocalcopyWinSMBPasswordFormat
-	dest.Swift = src.Swift
-	dest.B2 = src.B2
-	dest.Storj = src.Storj
-	dest.SpanTargets = src.SpanTargets
-	dest.SpanUseStaticSlots = src.SpanUseStaticSlots
+	dest.DestinationType = src.DestinationType;
+	dest.CometServer = src.CometServer;
+	dest.CometBucket = src.CometBucket;
+	dest.CometBucketKey = src.CometBucketKey;
+	dest.S3Server = src.S3Server;
+	dest.S3UsesTLS = src.S3UsesTLS;
+	dest.S3AccessKey = src.S3AccessKey;
+	dest.S3SecretKey = src.S3SecretKey;
+	dest.S3BucketName = src.S3BucketName;
+	dest.S3Subdir = src.S3Subdir;
+	dest.S3CustomRegion = src.S3CustomRegion;
+	dest.S3UsesV2Signing = src.S3UsesV2Signing;
+	dest.S3RemoveDeleted = src.S3RemoveDeleted;
+	dest.S3ObjectLockDays = src.S3ObjectLockDays;
+	dest.SFTPServer = src.SFTPServer;
+	dest.SFTPUsername = src.SFTPUsername;
+	dest.SFTPRemotePath = src.SFTPRemotePath;
+	dest.SFTPAuthMode = src.SFTPAuthMode;
+	dest.SFTPPassword = src.SFTPPassword;
+	dest.SFTPPrivateKey = src.SFTPPrivateKey;
+	dest.SFTPCustomAuth_UseKnownHostsFile = src.SFTPCustomAuth_UseKnownHostsFile;
+	dest.SFTPCustomAuth_KnownHostsFile = src.SFTPCustomAuth_KnownHostsFile;
+	dest.FTPServer = src.FTPServer;
+	dest.FTPUsername = src.FTPUsername;
+	dest.FTPPassword = src.FTPPassword;
+	dest.FTPBaseUseHomeDirectory = src.FTPBaseUseHomeDirectory;
+	dest.FTPCustomBaseDirectory = src.FTPCustomBaseDirectory;
+	dest.FTPSMode = src.FTPSMode;
+	dest.FTPPort = src.FTPPort;
+	dest.FTPMaxConnections = src.FTPMaxConnections;
+	dest.FTPAcceptInvalidSSL = src.FTPAcceptInvalidSSL;
+	dest.AZBAccountName = src.AZBAccountName;
+	dest.AZBAccountKey = src.AZBAccountKey;
+	dest.AZBContainer = src.AZBContainer;
+	dest.AZBRealm = src.AZBRealm;
+	dest.AZBPrefix = src.AZBPrefix;
+	dest.LocalcopyPath = src.LocalcopyPath;
+	dest.LocalcopyWinSMBUsername = src.LocalcopyWinSMBUsername;
+	dest.LocalcopyWinSMBPassword = src.LocalcopyWinSMBPassword;
+	dest.LocalcopyWinSMBPasswordFormat = src.LocalcopyWinSMBPasswordFormat;
+	dest.Swift = src.Swift;
+	dest.B2 = src.B2;
+	dest.Storj = src.Storj;
+	dest.SpanTargets = src.SpanTargets;
+	dest.SpanUseStaticSlots = src.SpanUseStaticSlots;
 }
 
 
+/**
+ * DestinationLocation describes the underlying storage location for a Storage Vault.
+ * Prior to Comet 17.3.3 this was an embedded part of the DestinationConfig type.
+ * This type is available in Comet 17.3.3 and later.
+ */
 export type libcomet_DestinationLocation = {
+	/**
+	 * One of the DESTINATIONTYPE_ constants
+	 */
 	DestinationType: number
+	/**
+	 * The URL for the target Comet Server Storage Role, including http/https and trailing slash
+	 */
 	CometServer: string
 	CometBucket: string
 	CometBucketKey: string
@@ -4082,25 +4529,52 @@ export type libcomet_DestinationLocation = {
 	S3ObjectLockDays: number
 	SFTPServer: string
 	SFTPUsername: string
+	/**
+	 * The directory on the SFTP server in which data is stored.
+	 */
 	SFTPRemotePath: string
 	/**
 	 * One of the DESTINATION_SFTP_AUTHMODE_ constants
 	 */
 	SFTPAuthMode: number
+	/**
+	 * For use with DESTINATION_SFTP_AUTHMODE_PASSWORD only: the SSH password to connect with
+	 */
 	SFTPPassword: string
+	/**
+	 * For use with DESTINATION_SFTP_AUTHMODE_PRIVATEKEY only: the SSH private key to connect with, in
+	 * OpenSSH format.
+	 */
 	SFTPPrivateKey: string
+	/**
+	 * If true, then the SFTPCustomAuth_KnownHostsFile will be used to verify the remote SSH server's
+	 * host key, using Trust On First Use (TOFU).
+	 */
 	SFTPCustomAuth_UseKnownHostsFile: boolean
+	/**
+	 * If SFTPCustomAuth_UseKnownHostFile is true, the path to the SSH known_hosts file.
+	 */
 	SFTPCustomAuth_KnownHostsFile: string
 	FTPServer: string
 	FTPUsername: string
 	FTPPassword: string
+	/**
+	 * If true, store data in the default home directory given by the FTP server. If false, store data
+	 * in the FTPCustomBaseDirectory path.
+	 */
 	FTPBaseUseHomeDirectory: boolean
+	/**
+	 * If FTPBaseUseHomeDirectory is false, this field controls the path where data is stored.
+	 */
 	FTPCustomBaseDirectory: string
 	/**
-	 * One of the FTPS_MODE_ constants.
+	 * Control whether this is plaintext FTP or secure FTPS by using one of the FTPS_MODE_ constants.
 	 */
 	FTPSMode: number
 	FTPPort: number
+	/**
+	 * If set to zero, uses a system default value that is not unlimited.
+	 */
 	FTPMaxConnections: number
 	FTPAcceptInvalidSSL: boolean
 	AZBAccountName: string
@@ -4112,13 +4586,39 @@ export type libcomet_DestinationLocation = {
 	AZBRealm: string
 	AZBPrefix: string
 	LocalcopyPath: string
+	/**
+	 * If logging in to a Windows network share (SMB/CIFS) is required, enter the username here.
+	 */
 	LocalcopyWinSMBUsername: string
+	/**
+	 * If logging in to a Windows network share (SMB/CIFS) is required, enter the password here. The
+	 * password may be hashed as per the LocalcopyWinSMBPasswordFormat field.
+	 */
 	LocalcopyWinSMBPassword: string
+	/**
+	 * One of the PASSWORD_FORMAT_ constants. It controls the hash format of the
+	 * LocalcopyWinSMBPassword field.
+	 */
 	LocalcopyWinSMBPasswordFormat: number
 	Swift: libcomet_SwiftDestinationLocation
 	B2: libcomet_B2DestinationLocation
 	Storj: libcomet_StorjDestinationLocation
+	/**
+	 * A list of underlying destinations, that will be combined and presented as one.
+	 */
 	SpanTargets: libcomet_DestinationLocation[]
+	/**
+	 * If true, this Spanned destination will use a consistent hashing scheme
+	 * to immediately find specific files on exactly one of the target destinations.
+	 * In the Static Slots mode, the span targets cannot be moved or merged, and
+	 * the files must always remain in their original location.
+	 *
+	 * If false, the Spanned destination system will search all targets to find
+	 * the requested file. This is slightly slower, but allows you to freely merge,
+	 * split, and reorder the underlying destination locations.
+	 *
+	 * The default option is false.
+	 */
 	SpanUseStaticSlots: boolean
 }
 
@@ -4173,65 +4673,65 @@ export function New_Zero_libcomet_DestinationLocation(): libcomet_DestinationLoc
 }
 
 export function libcomet_DestinationLocation_set_embedded_libcomet_CometDestinationLocation(dest: libcomet_DestinationLocation, src: libcomet_CometDestinationLocation): void {
-	dest.CometServer = src.CometServer
-	dest.CometBucket = src.CometBucket
-	dest.CometBucketKey = src.CometBucketKey
+	dest.CometServer = src.CometServer;
+	dest.CometBucket = src.CometBucket;
+	dest.CometBucketKey = src.CometBucketKey;
 }
 
 export function libcomet_DestinationLocation_set_embedded_libcomet_S3DestinationLocation(dest: libcomet_DestinationLocation, src: libcomet_S3DestinationLocation): void {
-	dest.S3Server = src.S3Server
-	dest.S3UsesTLS = src.S3UsesTLS
-	dest.S3AccessKey = src.S3AccessKey
-	dest.S3SecretKey = src.S3SecretKey
-	dest.S3BucketName = src.S3BucketName
-	dest.S3Subdir = src.S3Subdir
-	dest.S3CustomRegion = src.S3CustomRegion
-	dest.S3UsesV2Signing = src.S3UsesV2Signing
-	dest.S3RemoveDeleted = src.S3RemoveDeleted
-	dest.S3ObjectLockDays = src.S3ObjectLockDays
+	dest.S3Server = src.S3Server;
+	dest.S3UsesTLS = src.S3UsesTLS;
+	dest.S3AccessKey = src.S3AccessKey;
+	dest.S3SecretKey = src.S3SecretKey;
+	dest.S3BucketName = src.S3BucketName;
+	dest.S3Subdir = src.S3Subdir;
+	dest.S3CustomRegion = src.S3CustomRegion;
+	dest.S3UsesV2Signing = src.S3UsesV2Signing;
+	dest.S3RemoveDeleted = src.S3RemoveDeleted;
+	dest.S3ObjectLockDays = src.S3ObjectLockDays;
 }
 
 export function libcomet_DestinationLocation_set_embedded_libcomet_SFTPDestinationLocation(dest: libcomet_DestinationLocation, src: libcomet_SFTPDestinationLocation): void {
-	dest.SFTPServer = src.SFTPServer
-	dest.SFTPUsername = src.SFTPUsername
-	dest.SFTPRemotePath = src.SFTPRemotePath
-	dest.SFTPAuthMode = src.SFTPAuthMode
-	dest.SFTPPassword = src.SFTPPassword
-	dest.SFTPPrivateKey = src.SFTPPrivateKey
-	dest.SFTPCustomAuth_UseKnownHostsFile = src.SFTPCustomAuth_UseKnownHostsFile
-	dest.SFTPCustomAuth_KnownHostsFile = src.SFTPCustomAuth_KnownHostsFile
+	dest.SFTPServer = src.SFTPServer;
+	dest.SFTPUsername = src.SFTPUsername;
+	dest.SFTPRemotePath = src.SFTPRemotePath;
+	dest.SFTPAuthMode = src.SFTPAuthMode;
+	dest.SFTPPassword = src.SFTPPassword;
+	dest.SFTPPrivateKey = src.SFTPPrivateKey;
+	dest.SFTPCustomAuth_UseKnownHostsFile = src.SFTPCustomAuth_UseKnownHostsFile;
+	dest.SFTPCustomAuth_KnownHostsFile = src.SFTPCustomAuth_KnownHostsFile;
 }
 
 export function libcomet_DestinationLocation_set_embedded_libcomet_FTPDestinationLocation(dest: libcomet_DestinationLocation, src: libcomet_FTPDestinationLocation): void {
-	dest.FTPServer = src.FTPServer
-	dest.FTPUsername = src.FTPUsername
-	dest.FTPPassword = src.FTPPassword
-	dest.FTPBaseUseHomeDirectory = src.FTPBaseUseHomeDirectory
-	dest.FTPCustomBaseDirectory = src.FTPCustomBaseDirectory
-	dest.FTPSMode = src.FTPSMode
-	dest.FTPPort = src.FTPPort
-	dest.FTPMaxConnections = src.FTPMaxConnections
-	dest.FTPAcceptInvalidSSL = src.FTPAcceptInvalidSSL
+	dest.FTPServer = src.FTPServer;
+	dest.FTPUsername = src.FTPUsername;
+	dest.FTPPassword = src.FTPPassword;
+	dest.FTPBaseUseHomeDirectory = src.FTPBaseUseHomeDirectory;
+	dest.FTPCustomBaseDirectory = src.FTPCustomBaseDirectory;
+	dest.FTPSMode = src.FTPSMode;
+	dest.FTPPort = src.FTPPort;
+	dest.FTPMaxConnections = src.FTPMaxConnections;
+	dest.FTPAcceptInvalidSSL = src.FTPAcceptInvalidSSL;
 }
 
 export function libcomet_DestinationLocation_set_embedded_libcomet_AzureDestinationLocation(dest: libcomet_DestinationLocation, src: libcomet_AzureDestinationLocation): void {
-	dest.AZBAccountName = src.AZBAccountName
-	dest.AZBAccountKey = src.AZBAccountKey
-	dest.AZBContainer = src.AZBContainer
-	dest.AZBRealm = src.AZBRealm
-	dest.AZBPrefix = src.AZBPrefix
+	dest.AZBAccountName = src.AZBAccountName;
+	dest.AZBAccountKey = src.AZBAccountKey;
+	dest.AZBContainer = src.AZBContainer;
+	dest.AZBRealm = src.AZBRealm;
+	dest.AZBPrefix = src.AZBPrefix;
 }
 
 export function libcomet_DestinationLocation_set_embedded_libcomet_LocalDestinationLocation(dest: libcomet_DestinationLocation, src: libcomet_LocalDestinationLocation): void {
-	dest.LocalcopyPath = src.LocalcopyPath
-	dest.LocalcopyWinSMBUsername = src.LocalcopyWinSMBUsername
-	dest.LocalcopyWinSMBPassword = src.LocalcopyWinSMBPassword
-	dest.LocalcopyWinSMBPasswordFormat = src.LocalcopyWinSMBPasswordFormat
+	dest.LocalcopyPath = src.LocalcopyPath;
+	dest.LocalcopyWinSMBUsername = src.LocalcopyWinSMBUsername;
+	dest.LocalcopyWinSMBPassword = src.LocalcopyWinSMBPassword;
+	dest.LocalcopyWinSMBPasswordFormat = src.LocalcopyWinSMBPasswordFormat;
 }
 
 export function libcomet_DestinationLocation_set_embedded_libcomet_SpannedDestinationLocation(dest: libcomet_DestinationLocation, src: libcomet_SpannedDestinationLocation): void {
-	dest.SpanTargets = src.SpanTargets
-	dest.SpanUseStaticSlots = src.SpanUseStaticSlots
+	dest.SpanTargets = src.SpanTargets;
+	dest.SpanUseStaticSlots = src.SpanUseStaticSlots;
 }
 
 
@@ -4243,10 +4743,12 @@ export type libcomet_DestinationStatistics = {
 	 */
 	LastSuccessfulDeepVerify_GUID?: string
 	/**
+	 * Unix timestamp in seconds
 	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
 	LastSuccessfulDeepVerify_StartTime?: number
 	/**
+	 * Unix timestamp in seconds
 	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
 	LastSuccessfulDeepVerify_EndTime?: number
@@ -4263,6 +4765,7 @@ export function New_Zero_libcomet_DestinationStatistics(): libcomet_DestinationS
 export type libcomet_DeviceConfig = {
 	FriendlyName: string
 	/**
+	 * Unix timestamp in seconds
 	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
 	RegistrationTime?: number
@@ -4342,8 +4845,8 @@ export function New_Zero_libcomet_DispatcherAdminSourcesResponse(): libcomet_Dis
 }
 
 export function libcomet_DispatcherAdminSourcesResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_DispatcherAdminSourcesResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -4365,8 +4868,8 @@ export function New_Zero_libcomet_DispatcherStoredObjectsResponse(): libcomet_Di
 }
 
 export function libcomet_DispatcherStoredObjectsResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_DispatcherStoredObjectsResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -4388,8 +4891,8 @@ export function New_Zero_libcomet_DispatcherVaultSnapshotsResponse(): libcomet_D
 }
 
 export function libcomet_DispatcherVaultSnapshotsResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_DispatcherVaultSnapshotsResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -4411,8 +4914,8 @@ export function New_Zero_libcomet_DispatcherWindiskSnapshotResponse(): libcomet_
 }
 
 export function libcomet_DispatcherWindiskSnapshotResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_DispatcherWindiskSnapshotResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -4482,8 +4985,8 @@ export function New_Zero_libcomet_EmailOptions(): libcomet_EmailOptions {
 }
 
 export function libcomet_EmailOptions_set_embedded_libcomet_AdminEmailOptions(dest: libcomet_EmailOptions, src: libcomet_AdminEmailOptions): void {
-	dest.FromEmail = src.FromEmail
-	dest.FromName = src.FromName
+	dest.FromEmail = src.FromEmail;
+	dest.FromName = src.FromName;
 }
 
 
@@ -4539,8 +5042,8 @@ export function New_Zero_libcomet_EmailReportGeneratedPreview(): libcomet_EmailR
 }
 
 export function libcomet_EmailReportGeneratedPreview_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_EmailReportGeneratedPreview, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -4617,18 +5120,18 @@ export function New_Zero_libcomet_ExternalAuthenticationSource(): libcomet_Exter
 }
 
 export function libcomet_ExternalAuthenticationSource_set_embedded_libcomet_RemoteServerAddress(dest: libcomet_ExternalAuthenticationSource, src: libcomet_RemoteServerAddress): void {
-	dest.Type = src.Type
-	dest.Description = src.Description
-	dest.RemoteAddress = src.RemoteAddress
-	dest.Username = src.Username
-	dest.Password = src.Password
-	dest.LDAP = src.LDAP
-	dest.B2 = src.B2
-	dest.Wasabi = src.Wasabi
-	dest.Custom = src.Custom
-	dest.S3 = src.S3
-	dest.AWS = src.AWS
-	dest.Storj = src.Storj
+	dest.Type = src.Type;
+	dest.Description = src.Description;
+	dest.RemoteAddress = src.RemoteAddress;
+	dest.Username = src.Username;
+	dest.Password = src.Password;
+	dest.LDAP = src.LDAP;
+	dest.B2 = src.B2;
+	dest.Wasabi = src.Wasabi;
+	dest.Custom = src.Custom;
+	dest.S3 = src.S3;
+	dest.AWS = src.AWS;
+	dest.Storj = src.Storj;
 }
 
 
@@ -4676,10 +5179,10 @@ export function New_Zero_libcomet_ExternalLDAPAuthenticationSourceSettings(): li
 }
 
 export function libcomet_ExternalLDAPAuthenticationSourceSettings_set_embedded_libcomet_ExternalLDAPAuthenticationSourceServer(dest: libcomet_ExternalLDAPAuthenticationSourceSettings, src: libcomet_ExternalLDAPAuthenticationSourceServer): void {
-	dest.Hostname = src.Hostname
-	dest.Port = src.Port
-	dest.SecurityMethod = src.SecurityMethod
-	dest.AcceptInvalidSSL = src.AcceptInvalidSSL
+	dest.Hostname = src.Hostname;
+	dest.Port = src.Port;
+	dest.SecurityMethod = src.SecurityMethod;
+	dest.AcceptInvalidSSL = src.AcceptInvalidSSL;
 }
 
 
@@ -4712,13 +5215,23 @@ export type libcomet_FTPDestinationLocation = {
 	FTPServer: string
 	FTPUsername: string
 	FTPPassword: string
+	/**
+	 * If true, store data in the default home directory given by the FTP server. If false, store data
+	 * in the FTPCustomBaseDirectory path.
+	 */
 	FTPBaseUseHomeDirectory: boolean
+	/**
+	 * If FTPBaseUseHomeDirectory is false, this field controls the path where data is stored.
+	 */
 	FTPCustomBaseDirectory: string
 	/**
-	 * One of the FTPS_MODE_ constants.
+	 * Control whether this is plaintext FTP or secure FTPS by using one of the FTPS_MODE_ constants.
 	 */
 	FTPSMode: number
 	FTPPort: number
+	/**
+	 * If set to zero, uses a system default value that is not unlimited.
+	 */
 	FTPMaxConnections: number
 	FTPAcceptInvalidSSL: boolean
 }
@@ -4734,6 +5247,48 @@ export function New_Zero_libcomet_FTPDestinationLocation(): libcomet_FTPDestinat
 		"FTPPort": 0,
 		"FTPMaxConnections": 0,
 		"FTPAcceptInvalidSSL": false,
+	};
+}
+
+
+/**
+ * FileOption defines the configuration for Comet Server to log live events to a file. See the SEVT_
+ * constants for more information.
+ * This type is available in Comet 23.3.7 and later.
+ */
+export type libcomet_FileOption = {
+	/**
+	 * The prefix for the log filename. It will be stored in the same file location as the Comet Server
+	 * log files
+	 */
+	Filename: string
+	/**
+	 * Configure a subset of allowed event types (see SEVT_ constants). If the array is empty, all
+	 * events will be sent
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	AllowEventTypes?: number[]
+	/**
+	 * One of the STREAM_LEVEL_ constants. This controls how much data is logged into the file
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Level?: string
+	/**
+	 * Enables pruning of log files
+	 * Omission from JSON will be interpreted as false
+	 */
+	PruningEnabled?: boolean
+	/**
+	 * Limit in days to keep log files when PruningEnabled is set to true. If not set or 0, uses
+	 * server's PruneLogsAfterDays
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	PruningLimit?: number
+}
+
+export function New_Zero_libcomet_FileOption(): libcomet_FileOption {
+	return {
+		"Filename": "",
 	};
 }
 
@@ -4758,8 +5313,8 @@ export function New_Zero_libcomet_GetGroupPolicyResponse(): libcomet_GetGroupPol
 }
 
 export function libcomet_GetGroupPolicyResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_GetGroupPolicyResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -4788,8 +5343,8 @@ export function New_Zero_libcomet_GetProfileAndHashResponseMessage(): libcomet_G
 }
 
 export function libcomet_GetProfileAndHashResponseMessage_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_GetProfileAndHashResponseMessage, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -4811,8 +5366,8 @@ export function New_Zero_libcomet_GetProfileHashResponseMessage(): libcomet_GetP
 }
 
 export function libcomet_GetProfileHashResponseMessage_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_GetProfileHashResponseMessage, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -4983,8 +5538,8 @@ export function New_Zero_libcomet_InstallTokenResponse(): libcomet_InstallTokenR
 }
 
 export function libcomet_InstallTokenResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_InstallTokenResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -5081,8 +5636,19 @@ export function New_Zero_libcomet_LiveUserConnection(): libcomet_LiveUserConnect
 
 export type libcomet_LocalDestinationLocation = {
 	LocalcopyPath: string
+	/**
+	 * If logging in to a Windows network share (SMB/CIFS) is required, enter the username here.
+	 */
 	LocalcopyWinSMBUsername: string
+	/**
+	 * If logging in to a Windows network share (SMB/CIFS) is required, enter the password here. The
+	 * password may be hashed as per the LocalcopyWinSMBPasswordFormat field.
+	 */
 	LocalcopyWinSMBPassword: string
+	/**
+	 * One of the PASSWORD_FORMAT_ constants. It controls the hash format of the
+	 * LocalcopyWinSMBPassword field.
+	 */
 	LocalcopyWinSMBPasswordFormat: number
 }
 
@@ -5134,6 +5700,10 @@ export type libcomet_MSSQLLoginArgs = {
 	Username: string
 	Password: string
 	MethodIsOledb32Bit: boolean
+	/**
+	 * If this MSSQLLoginArgs structure is used for a restore job (RestoreJobAdvancedOptions) using
+	 * RESTORETYPE_MSSQL, then, this field controls the RECOVERY / NO RECOVERY option state.
+	 */
 	RestoreNoRecovery: boolean
 }
 
@@ -5150,6 +5720,9 @@ export function New_Zero_libcomet_MSSQLLoginArgs(): libcomet_MSSQLLoginArgs {
 
 
 export type libcomet_MacOSCodeSignProperties = {
+	/**
+	 * One of the MACOSCODESIGN_LEVEL_ constants
+	 */
 	Level: number
 	SignLocally: boolean
 	SSHServer: libcomet_SSHConnection
@@ -5245,7 +5818,13 @@ export function New_Zero_libcomet_MongoDBConnection(): libcomet_MongoDBConnectio
 export type libcomet_MySQLConnection = {
 	Host: string
 	Port: string
+	/**
+	 * Optional
+	 */
 	Username: string
+	/**
+	 * Optional
+	 */
 	Password: string
 	UseTLS: boolean
 	TLSSkipVerify: boolean
@@ -5362,6 +5941,9 @@ export function New_Zero_libcomet_Office365Credential(): libcomet_Office365Crede
 
 
 /**
+ * Office365CustomSetting is used in the EngineProps for an Office 365 Protected Item (see
+ * ENGINE_BUILTIN_MSOFFICE).
+ * If present, it will be automatically converted to the replacement Office365CustomSettingV2 type.
  * @deprecated This type has been deprecated since Comet version 21.9.xx
  */
 export type libcomet_Office365CustomSetting = {
@@ -5383,13 +5965,28 @@ export function New_Zero_libcomet_Office365CustomSetting(): libcomet_Office365Cu
 }
 
 
+/**
+ * Office365CustomSettingV2 is used in the EngineProps for an Office 365 Protected Item (see
+ * ENGINE_BUILTIN_MSOFFICE).
+ * This type is available in Comet 21.9.xx and later.
+ */
 export type libcomet_Office365CustomSettingV2 = {
+	/**
+	 * If true, then backup the entire Office 365 Tenant except the selected members. If false, backup
+	 * the selected members only.
+	 */
 	Organization: boolean
 	/**
+	 * Key can be the ID of user, group or SharePoint
+	 * Value is a bitset of the SERVICE_ constants, to select which services to back up for this
+	 * member.
 	 * Omission from JSON will be interpreted as an empty map
 	 */
 	BackupOptions?: {[k: string]: number}
 	/**
+	 * Key must be a group ID
+	 * Value is a bitset of the SERVICE_ constants, to select which services to back up for this
+	 * member.
 	 * Omission from JSON will be interpreted as an empty map
 	 */
 	MemberBackupOptions?: {[k: string]: number}
@@ -5492,34 +6089,36 @@ export function New_Zero_libcomet_Office365ObjectInfo(): libcomet_Office365Objec
 
 
 export type libcomet_Organization = {
-	Name: string
-	Hosts: string[]
-	SoftwareBuildRole: libcomet_SoftwareBuildRoleOptions
+	AuditFileOptions: {[k: string]: libcomet_FileOption}
 	Branding: libcomet_BrandingOptions
-	RemoteStorage: libcomet_RemoteStorageOption[]
 	ConstellationRole: libcomet_ConstellationRoleOptions
-	WebhookOptions: {[k: string]: libcomet_WebhookOption}
-	PSAConfigs: libcomet_PSAConfig[]
 	Email: libcomet_EmailOptions
-	IsSuspended: boolean
 	/**
 	 * Omission from JSON will be interpreted as an empty array
 	 */
 	ExperimentalOptions?: string[]
+	Hosts: string[]
+	Name: string
+	IsSuspended: boolean
+	PSAConfigs: libcomet_PSAConfig[]
+	RemoteStorage: libcomet_RemoteStorageOption[]
+	SoftwareBuildRole: libcomet_SoftwareBuildRoleOptions
+	WebhookOptions: {[k: string]: libcomet_WebhookOption}
 }
 
 export function New_Zero_libcomet_Organization(): libcomet_Organization {
 	return {
-		"Name": "",
-		"Hosts": [],
-		"SoftwareBuildRole": New_Zero_libcomet_SoftwareBuildRoleOptions(),
+		"AuditFileOptions": {},
 		"Branding": New_Zero_libcomet_BrandingOptions(),
-		"RemoteStorage": [],
 		"ConstellationRole": New_Zero_libcomet_ConstellationRoleOptions(),
-		"WebhookOptions": {},
-		"PSAConfigs": [],
 		"Email": New_Zero_libcomet_EmailOptions(),
+		"Hosts": [],
+		"Name": "",
 		"IsSuspended": false,
+		"PSAConfigs": [],
+		"RemoteStorage": [],
+		"SoftwareBuildRole": New_Zero_libcomet_SoftwareBuildRoleOptions(),
+		"WebhookOptions": {},
 	};
 }
 
@@ -5670,22 +6269,22 @@ export function New_Zero_libcomet_PrivateBrandingProperties(): libcomet_PrivateB
 }
 
 export function libcomet_PrivateBrandingProperties_set_embedded_libcomet_WindowsCodeSignProperties(dest: libcomet_PrivateBrandingProperties, src: libcomet_WindowsCodeSignProperties): void {
-	dest.WindowsCodeSignMethod = src.WindowsCodeSignMethod
-	dest.WindowsCodeSignPKCS12FilePath = src.WindowsCodeSignPKCS12FilePath
-	dest.WindowsCodeSignPKCS12PasswordFormat = src.WindowsCodeSignPKCS12PasswordFormat
-	dest.WindowsCodeSignPKCS12Password = src.WindowsCodeSignPKCS12Password
-	dest.WindowsCodeSignPKCS11Engine = src.WindowsCodeSignPKCS11Engine
-	dest.WindowsCodeSignPKCS11Module = src.WindowsCodeSignPKCS11Module
-	dest.WindowsCodeSignPKCS11Certfile = src.WindowsCodeSignPKCS11Certfile
-	dest.WindowsCodeSignPKCS11KeyID = src.WindowsCodeSignPKCS11KeyID
-	dest.WindowsCodeSignPKCS11PasswordFormat = src.WindowsCodeSignPKCS11PasswordFormat
-	dest.WindowsCodeSignPKCS11Password = src.WindowsCodeSignPKCS11Password
-	dest.WindowsCodeSignAzureVaultName = src.WindowsCodeSignAzureVaultName
-	dest.WindowsCodeSignAzureCertName = src.WindowsCodeSignAzureCertName
-	dest.WindowsCodeSignAzureAppID = src.WindowsCodeSignAzureAppID
-	dest.WindowsCodeSignAzureAppSecretFormat = src.WindowsCodeSignAzureAppSecretFormat
-	dest.WindowsCodeSignAzureAppSecret = src.WindowsCodeSignAzureAppSecret
-	dest.WindowsCodeSignAzureTenantID = src.WindowsCodeSignAzureTenantID
+	dest.WindowsCodeSignMethod = src.WindowsCodeSignMethod;
+	dest.WindowsCodeSignPKCS12FilePath = src.WindowsCodeSignPKCS12FilePath;
+	dest.WindowsCodeSignPKCS12PasswordFormat = src.WindowsCodeSignPKCS12PasswordFormat;
+	dest.WindowsCodeSignPKCS12Password = src.WindowsCodeSignPKCS12Password;
+	dest.WindowsCodeSignPKCS11Engine = src.WindowsCodeSignPKCS11Engine;
+	dest.WindowsCodeSignPKCS11Module = src.WindowsCodeSignPKCS11Module;
+	dest.WindowsCodeSignPKCS11Certfile = src.WindowsCodeSignPKCS11Certfile;
+	dest.WindowsCodeSignPKCS11KeyID = src.WindowsCodeSignPKCS11KeyID;
+	dest.WindowsCodeSignPKCS11PasswordFormat = src.WindowsCodeSignPKCS11PasswordFormat;
+	dest.WindowsCodeSignPKCS11Password = src.WindowsCodeSignPKCS11Password;
+	dest.WindowsCodeSignAzureVaultName = src.WindowsCodeSignAzureVaultName;
+	dest.WindowsCodeSignAzureCertName = src.WindowsCodeSignAzureCertName;
+	dest.WindowsCodeSignAzureAppID = src.WindowsCodeSignAzureAppID;
+	dest.WindowsCodeSignAzureAppSecretFormat = src.WindowsCodeSignAzureAppSecretFormat;
+	dest.WindowsCodeSignAzureAppSecret = src.WindowsCodeSignAzureAppSecret;
+	dest.WindowsCodeSignAzureTenantID = src.WindowsCodeSignAzureTenantID;
 }
 
 
@@ -5901,18 +6500,18 @@ export function New_Zero_libcomet_RemoteStorageOption(): libcomet_RemoteStorageO
 }
 
 export function libcomet_RemoteStorageOption_set_embedded_libcomet_RemoteServerAddress(dest: libcomet_RemoteStorageOption, src: libcomet_RemoteServerAddress): void {
-	dest.Type = src.Type
-	dest.Description = src.Description
-	dest.RemoteAddress = src.RemoteAddress
-	dest.Username = src.Username
-	dest.Password = src.Password
-	dest.LDAP = src.LDAP
-	dest.B2 = src.B2
-	dest.Wasabi = src.Wasabi
-	dest.Custom = src.Custom
-	dest.S3 = src.S3
-	dest.AWS = src.AWS
-	dest.Storj = src.Storj
+	dest.Type = src.Type;
+	dest.Description = src.Description;
+	dest.RemoteAddress = src.RemoteAddress;
+	dest.Username = src.Username;
+	dest.Password = src.Password;
+	dest.LDAP = src.LDAP;
+	dest.B2 = src.B2;
+	dest.Wasabi = src.Wasabi;
+	dest.Custom = src.Custom;
+	dest.S3 = src.S3;
+	dest.AWS = src.AWS;
+	dest.Storj = src.Storj;
 }
 
 
@@ -5974,18 +6573,18 @@ export function New_Zero_libcomet_ReplicaServer(): libcomet_ReplicaServer {
 }
 
 export function libcomet_ReplicaServer_set_embedded_libcomet_RemoteServerAddress(dest: libcomet_ReplicaServer, src: libcomet_RemoteServerAddress): void {
-	dest.Type = src.Type
-	dest.Description = src.Description
-	dest.RemoteAddress = src.RemoteAddress
-	dest.Username = src.Username
-	dest.Password = src.Password
-	dest.LDAP = src.LDAP
-	dest.B2 = src.B2
-	dest.Wasabi = src.Wasabi
-	dest.Custom = src.Custom
-	dest.S3 = src.S3
-	dest.AWS = src.AWS
-	dest.Storj = src.Storj
+	dest.Type = src.Type;
+	dest.Description = src.Description;
+	dest.RemoteAddress = src.RemoteAddress;
+	dest.Username = src.Username;
+	dest.Password = src.Password;
+	dest.LDAP = src.LDAP;
+	dest.B2 = src.B2;
+	dest.Wasabi = src.Wasabi;
+	dest.Custom = src.Custom;
+	dest.S3 = src.S3;
+	dest.AWS = src.AWS;
+	dest.Storj = src.Storj;
 }
 
 
@@ -6040,12 +6639,15 @@ export function New_Zero_libcomet_RequestStorageVaultResponseMessage(): libcomet
 }
 
 export function libcomet_RequestStorageVaultResponseMessage_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_RequestStorageVaultResponseMessage, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
 export type libcomet_RestoreJobAdvancedOptions = {
+	/**
+	 * One of the RESTORETYPE_ constants
+	 */
 	Type: number
 	/**
 	 * For RESTORETYPE_FILE
@@ -6246,14 +6848,31 @@ export function New_Zero_libcomet_S3GenericVirtualStorageRole(): libcomet_S3Gene
 export type libcomet_SFTPDestinationLocation = {
 	SFTPServer: string
 	SFTPUsername: string
+	/**
+	 * The directory on the SFTP server in which data is stored.
+	 */
 	SFTPRemotePath: string
 	/**
 	 * One of the DESTINATION_SFTP_AUTHMODE_ constants
 	 */
 	SFTPAuthMode: number
+	/**
+	 * For use with DESTINATION_SFTP_AUTHMODE_PASSWORD only: the SSH password to connect with
+	 */
 	SFTPPassword: string
+	/**
+	 * For use with DESTINATION_SFTP_AUTHMODE_PRIVATEKEY only: the SSH private key to connect with, in
+	 * OpenSSH format.
+	 */
 	SFTPPrivateKey: string
+	/**
+	 * If true, then the SFTPCustomAuth_KnownHostsFile will be used to verify the remote SSH server's
+	 * host key, using Trust On First Use (TOFU).
+	 */
 	SFTPCustomAuth_UseKnownHostsFile: boolean
+	/**
+	 * If SFTPCustomAuth_UseKnownHostFile is true, the path to the SSH known_hosts file.
+	 */
 	SFTPCustomAuth_KnownHostsFile: string
 }
 
@@ -6278,9 +6897,23 @@ export type libcomet_SSHConnection = {
 	 * One of the SSHCONNECTION_AUTHMODE_ constants
 	 */
 	SSHAuthMode: number
+	/**
+	 * For use with SSHCONNECTION_AUTHMODE_PASSWORD only: the SSH password to connect with
+	 */
 	SSHPassword: string
+	/**
+	 * For use with SSHCONNECTION_AUTHMODE_PRIVATEKEY only: the SSH private key to connect with, in
+	 * OpenSSH format.
+	 */
 	SSHPrivateKey: string
+	/**
+	 * If true, then the SSHCustomAuth_KnownHostsFile will be used to verify the remote SSH server's
+	 * host key, using Trust On First Use (TOFU).
+	 */
 	SSHCustomAuth_UseKnownHostsFile: boolean
+	/**
+	 * If SSHCustomAuth_UseKnownHostsFile is true, the path to the SSH known_hosts file.
+	 */
 	SSHCustomAuth_KnownHostsFile: string
 }
 
@@ -6349,39 +6982,58 @@ export function New_Zero_libcomet_SearchClause(): libcomet_SearchClause {
 }
 
 
+/**
+ * SearchResultFileInfo describes a single result entry when searching for files within a Storage
+ * Vault snapshot.
+ */
 export type libcomet_SearchResultFileInfo = {
 	/**
+	 * Path to the file within the selected snapshot, using forwardslash (/) separators
 	 * Path
 	 */
 	path: string
 	/**
+	 * Filename
 	 * Name
 	 */
 	name: string
 	/**
+	 * One of the STOREDOBJECTTYPE_ constants
 	 * Type
 	 */
 	type: string
 	/**
 	 * Mode
+	 * Omission from JSON will be interpreted as empty-string
 	 */
-	mode: string
+	mode?: string
 	/**
-	 * Mtime
+	 * Timestamp in RFC3339 format with subsecond precision and time zone offset. See the Golang
+	 * time.RFC3339Nano for more information.
+	 * ModTime
+	 * Omission from JSON will be interpreted as empty-string
 	 */
-	mtime: string
+	mtime?: string
 	/**
-	 * Atime
+	 * Timestamp in RFC3339 format with subsecond precision and time zone offset. See the Golang
+	 * time.RFC3339Nano for more information.
+	 * AccessTime
+	 * Omission from JSON will be interpreted as empty-string
 	 */
-	atime: string
+	atime?: string
 	/**
-	 * Ctime
+	 * Timestamp in RFC3339 format with subsecond precision and time zone offset. See the Golang
+	 * time.RFC3339Nano for more information.
+	 * ChangeTime
+	 * Omission from JSON will be interpreted as empty-string
 	 */
-	ctime: string
+	ctime?: string
 	/**
+	 * Bytes
 	 * Size
+	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
-	size: number
+	size?: number
 }
 
 export function New_Zero_libcomet_SearchResultFileInfo(): libcomet_SearchResultFileInfo {
@@ -6389,11 +7041,6 @@ export function New_Zero_libcomet_SearchResultFileInfo(): libcomet_SearchResultF
 		"path": "",
 		"name": "",
 		"type": "",
-		"mode": "",
-		"mtime": "",
-		"atime": "",
-		"ctime": "",
-		"size": 0,
 	};
 }
 
@@ -6416,8 +7063,8 @@ export function New_Zero_libcomet_SearchSnapshotsResponse(): libcomet_SearchSnap
 }
 
 export function libcomet_SearchSnapshotsResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_SearchSnapshotsResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -6425,7 +7072,14 @@ export type libcomet_SelfBackupExportOptions = {
 	Location: libcomet_DestinationLocation
 	EncryptionKey: string
 	EncryptionKeyFormat: number
+	/**
+	 * One of the COMPRESS_LVL_ constants
+	 */
 	Compression: number
+	/**
+	 * The jobs database is often the largest component of the Server Self-Backup archive. By excluding
+	 * it, you could run the Server Self-Backup more often.
+	 */
 	ExcludeJobsDB: boolean
 	IncludeServerLogs: boolean
 	/**
@@ -6480,12 +7134,22 @@ export function New_Zero_libcomet_SelfBackupStatistics(): libcomet_SelfBackupSta
 
 export type libcomet_SelfBackupTarget = {
 	Schedule: libcomet_ScheduleConfig[]
+	/**
+	 * Timezone in IANA format
+	 */
 	ScheduleTimezone: string
 	RetentionPolicy: libcomet_RetentionPolicy
 	Location: libcomet_DestinationLocation
 	EncryptionKey: string
 	EncryptionKeyFormat: number
+	/**
+	 * One of the COMPRESS_LVL_ constants
+	 */
 	Compression: number
+	/**
+	 * The jobs database is often the largest component of the Server Self-Backup archive. By excluding
+	 * it, you could run the Server Self-Backup more often.
+	 */
 	ExcludeJobsDB: boolean
 	IncludeServerLogs: boolean
 	/**
@@ -6511,14 +7175,14 @@ export function New_Zero_libcomet_SelfBackupTarget(): libcomet_SelfBackupTarget 
 }
 
 export function libcomet_SelfBackupTarget_set_embedded_libcomet_SelfBackupExportOptions(dest: libcomet_SelfBackupTarget, src: libcomet_SelfBackupExportOptions): void {
-	dest.Location = src.Location
-	dest.EncryptionKey = src.EncryptionKey
-	dest.EncryptionKeyFormat = src.EncryptionKeyFormat
-	dest.Compression = src.Compression
-	dest.ExcludeJobsDB = src.ExcludeJobsDB
-	dest.IncludeServerLogs = src.IncludeServerLogs
-	dest.RestrictToSingleOrgID = src.RestrictToSingleOrgID
-	dest.Index = src.Index
+	dest.Location = src.Location;
+	dest.EncryptionKey = src.EncryptionKey;
+	dest.EncryptionKeyFormat = src.EncryptionKeyFormat;
+	dest.Compression = src.Compression;
+	dest.ExcludeJobsDB = src.ExcludeJobsDB;
+	dest.IncludeServerLogs = src.IncludeServerLogs;
+	dest.RestrictToSingleOrgID = src.RestrictToSingleOrgID;
+	dest.Index = src.Index;
 }
 
 
@@ -6539,21 +7203,40 @@ export type libcomet_ServerConfigOptions = {
 	OverseerRole?: libcomet_ConstellationRoleOptions
 	Email: libcomet_EmailOptions
 	/**
+	 * An array of GUIDs that can enable additional early-access functionality
 	 * Omission from JSON will be interpreted as an empty array
 	 */
 	ExperimentalOptions?: string[]
 	ExternalAdminUserSources: {[k: string]: libcomet_ExternalAuthenticationSource}
 	IPRateLimit: libcomet_RatelimitOptions
 	License: libcomet_LicenseOptions
+	/**
+	 * Configure ip, port, and SSL settings for this self-hosted Comet Server.
+	 */
 	ListenAddresses: libcomet_HTTPConnectorOptions[]
+	/**
+	 * Tenants
+	 */
 	Organizations: {[k: string]: libcomet_Organization}
 	PSAConfigs: libcomet_PSAConfig[]
+	/**
+	 * Automatically create backup zip files of this Comet Server's configuration
+	 */
 	SelfBackup: libcomet_SelfBackupOptions
+	/**
+	 * Control how long admin accounts can remain logged in to the Comet Server web interface
+	 */
 	SessionSettings: libcomet_SessionOptions
 	SoftwareBuildRole: libcomet_SoftwareBuildRoleOptions
 	StorageRole: libcomet_StorageRoleOptions
+	/**
+	 * If true, the X-Forwarded-For header will be trusted for the purposes of IP allowlisting. This
+	 * should only be enabled when you explicitly configure Comet Server behind a reverse proxy,
+	 * otherwise it could allow malicious users to bypass the IP allowlist.
+	 */
 	TrustXForwardedFor: boolean
 	WebhookOptions: {[k: string]: libcomet_WebhookOption}
+	AuditFileOptions: {[k: string]: libcomet_FileOption}
 }
 
 export function New_Zero_libcomet_ServerConfigOptions(): libcomet_ServerConfigOptions {
@@ -6575,6 +7258,7 @@ export function New_Zero_libcomet_ServerConfigOptions(): libcomet_ServerConfigOp
 		"StorageRole": New_Zero_libcomet_StorageRoleOptions(),
 		"TrustXForwardedFor": false,
 		"WebhookOptions": {},
+		"AuditFileOptions": {},
 	};
 }
 
@@ -6738,12 +7422,16 @@ export function New_Zero_libcomet_SessionKeyRegeneratedResponse(): libcomet_Sess
 }
 
 export function libcomet_SessionKeyRegeneratedResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_SessionKeyRegeneratedResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
 export type libcomet_SessionOptions = {
+	/**
+	 * The number of seconds, after which an administrator should be automatically logged out of the
+	 * Comet Server web interface. If zero, will be replaced with DEFAULT_SESSIONTIMEOUT.
+	 */
 	ExpiredInSeconds: number
 }
 
@@ -6774,8 +7462,17 @@ export function New_Zero_libcomet_SingleFieldSource(): libcomet_SingleFieldSourc
 
 
 export type libcomet_SizeMeasurement = {
+	/**
+	 * Bytes
+	 */
 	Size: number
+	/**
+	 * Unix timestamp in seconds
+	 */
 	MeasureStarted: number
+	/**
+	 * Unix timestamp in seconds
+	 */
 	MeasureCompleted: number
 }
 
@@ -6833,6 +7530,9 @@ export function New_Zero_libcomet_SoftwareUpdateNewsResponse(): libcomet_Softwar
 export type libcomet_SourceBasicInfo = {
 	Description: string
 	O365AccountCount: number
+	/**
+	 * Bytes
+	 */
 	Size: number
 	/**
 	 * Omission from JSON will be interpreted as an empty map
@@ -6856,7 +7556,13 @@ export type libcomet_SourceConfig = {
 	Engine: string
 	Description: string
 	OwnerDevice: string
+	/**
+	 * Unix timestamp in seconds
+	 */
 	CreateTime: number
+	/**
+	 * Unix timestamp in seconds
+	 */
 	ModifyTime: number
 	/**
 	 * Custom commands to run before the job
@@ -6873,24 +7579,24 @@ export type libcomet_SourceConfig = {
 	/**
 	 * Configuration for the selected Protected Item type. Each "Engine" supports
 	 * different configuration options for the EngineProps values.
-	 * 
+	 *
 	 * For engine1/file, Comet understands the following EngineProp keys:
-	 * 
+	 *
 	 * - Any key starting with INCLUDE: A path that is included
 	 * - Any key starting with EXCLUDE: An exclusion (glob format)
 	 * - Any key starting with REXCLUDE: An exclusion (regular expression format)
-	 * - Any key starting with PINCLUDE: A JSON string {"TopDirectory": "", "Value": ""}. TopDirectory
-	 * is the path where starts to match the value; Value is an inclusion (glob format)
-	 * - Any key starting with RINCLUDE: A JSON string {"TopDirectory": "", "Value": ""}. TopDirectory
-	 * is the path where starts to match the value; Value is an inclusion (regular expression format)
+	 * - Any key starting with PINCLUDE: A SourceIncludePattern type encoded in JSON format, describing
+	 * an advanced inclusion in glob format
+	 * - Any key starting with RINCLUDE: A SourceIncludePattern type encoded in JSON format, describing
+	 * an advanced inclusion in regular expression format
 	 * - Any key starting with SMBAUTH: A set of Windows network share credentials in WinSMBAuth JSON
 	 * format
 	 * - USE_WIN_VSS: If present, the 'Take filesystem snapshot' checkbox is checked
 	 * - CONFIRM_EFS: If present, the 'Dismiss EFS warning' checkbox is checked
 	 * - RESCAN_UNCHANGED: If present, the 'Rescan unchanged files' checkbox is checked
-	 * 
+	 *
 	 * For engine1/mssql, Comet understands the following EngineProp keys:
-	 * 
+	 *
 	 * - ALL_DATABASES: If present, include all databases with specified exclusions. If not present,
 	 * only back up the specified inclusions
 	 * - Any key starting with DATABASE- : A database that is included. Only valid if ALL_DATABASES is
@@ -6914,7 +7620,7 @@ export type libcomet_SourceConfig = {
 	 * only)" backup job.
 	 * - LOGNOTRUNC: If present, take a "Log (no truncation)" backup job. Otherwise, take a "Full (copy
 	 * only)" backup job.
-	 * 
+	 *
 	 */
 	EngineProps: {[k: string]: string}
 	/**
@@ -6945,8 +7651,19 @@ export function New_Zero_libcomet_SourceConfig(): libcomet_SourceConfig {
 }
 
 
+/**
+ * SourceIncludePattern is used for pattern inclusions for File and Folder Protected Items
+ * (ENGINE_BUILTIN_FILE).
+ * It should be marshalled as JSON and then stored in the PINCLUDE / RINCLUDE EngineProp keys.
+ */
 export type libcomet_SourceIncludePattern = {
+	/**
+	 * The filesystem path to search within, for matches
+	 */
 	TopDirectory: string
+	/**
+	 * The pattern (glob or regex format) to match
+	 */
 	Value: string
 }
 
@@ -6972,7 +7689,22 @@ export function New_Zero_libcomet_SourceStatistics(): libcomet_SourceStatistics 
 
 
 export type libcomet_SpannedDestinationLocation = {
+	/**
+	 * A list of underlying destinations, that will be combined and presented as one.
+	 */
 	SpanTargets: libcomet_DestinationLocation[]
+	/**
+	 * If true, this Spanned destination will use a consistent hashing scheme
+	 * to immediately find specific files on exactly one of the target destinations.
+	 * In the Static Slots mode, the span targets cannot be moved or merged, and
+	 * the files must always remain in their original location.
+	 *
+	 * If false, the Spanned destination system will search all targets to find
+	 * the requested file. This is slightly slower, but allows you to freely merge,
+	 * split, and reorder the underlying destination locations.
+	 *
+	 * The default option is false.
+	 */
 	SpanUseStaticSlots: boolean
 }
 
@@ -7072,10 +7804,12 @@ export function New_Zero_libcomet_StorageVaultProviderPolicy(): libcomet_Storage
 
 export type libcomet_StoredObject = {
 	/**
+	 * The name of the stored object. It is unique within this directory tree.
 	 * Name
 	 */
 	name: string
 	/**
+	 * Unix timestamp in seconds
 	 * ModifyTime
 	 */
 	mtime: number
@@ -7085,10 +7819,13 @@ export type libcomet_StoredObject = {
 	 */
 	type: string
 	/**
+	 * If this StoredObject represents a directory, this value can be used to recursively select the
+	 * directory contents.
 	 * Subtree
 	 */
 	subtree: string
 	/**
+	 * Bytes
 	 * Size
 	 */
 	size: number
@@ -7123,11 +7860,13 @@ export type libcomet_StoredObject = {
 	 */
 	has_attachments?: boolean
 	/**
+	 * Unix timestamp in seconds
 	 * StartTime
 	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
 	stime?: number
 	/**
+	 * Unix timestamp in seconds
 	 * EndTime
 	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
@@ -7204,8 +7943,21 @@ export function New_Zero_libcomet_StorjVirtualStorageRoleSetting(): libcomet_Sto
 
 
 export type libcomet_StreamableEvent = {
+	Actor: string
 	OwnerOrganizationID: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	ResourceID?: string
 	Type: number
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	Timestamp?: number
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	TypeString?: string
 	/**
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
@@ -7214,6 +7966,7 @@ export type libcomet_StreamableEvent = {
 
 export function New_Zero_libcomet_StreamableEvent(): libcomet_StreamableEvent {
 	return {
+		"Actor": "",
 		"OwnerOrganizationID": "",
 		"Type": 0,
 	};
@@ -7306,8 +8059,8 @@ export function New_Zero_libcomet_TestResponse(): libcomet_TestResponse {
 }
 
 export function libcomet_TestResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_TestResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -7352,8 +8105,8 @@ export function New_Zero_libcomet_TotpRegeneratedResponse(): libcomet_TotpRegene
 }
 
 export function libcomet_TotpRegeneratedResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_TotpRegeneratedResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -7418,8 +8171,8 @@ export function New_Zero_libcomet_U2FRegistrationChallengeResponse(): libcomet_U
 }
 
 export function libcomet_U2FRegistrationChallengeResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_U2FRegistrationChallengeResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -7569,13 +8322,13 @@ export function New_Zero_libcomet_UpdateCampaignProperties(): libcomet_UpdateCam
 }
 
 export function libcomet_UpdateCampaignProperties_set_embedded_libcomet_UpdateCampaignOptions(dest: libcomet_UpdateCampaignProperties, src: libcomet_UpdateCampaignOptions): void {
-	dest.Active = src.Active
-	dest.UpgradeOlder = src.UpgradeOlder
-	dest.ReinstallCurrentVer = src.ReinstallCurrentVer
-	dest.DowngradeNewer = src.DowngradeNewer
-	dest.ForceUpgradeRunning = src.ForceUpgradeRunning
-	dest.ApplyDeviceFilter = src.ApplyDeviceFilter
-	dest.DeviceFilter = src.DeviceFilter
+	dest.Active = src.Active;
+	dest.UpgradeOlder = src.UpgradeOlder;
+	dest.ReinstallCurrentVer = src.ReinstallCurrentVer;
+	dest.DowngradeNewer = src.DowngradeNewer;
+	dest.ForceUpgradeRunning = src.ForceUpgradeRunning;
+	dest.ApplyDeviceFilter = src.ApplyDeviceFilter;
+	dest.DeviceFilter = src.DeviceFilter;
 }
 
 
@@ -7616,15 +8369,15 @@ export function New_Zero_libcomet_UpdateCampaignStatus(): libcomet_UpdateCampaig
 }
 
 export function libcomet_UpdateCampaignStatus_set_embedded_libcomet_UpdateCampaignProperties(dest: libcomet_UpdateCampaignStatus, src: libcomet_UpdateCampaignProperties): void {
-	dest.Active = src.Active
-	dest.UpgradeOlder = src.UpgradeOlder
-	dest.ReinstallCurrentVer = src.ReinstallCurrentVer
-	dest.DowngradeNewer = src.DowngradeNewer
-	dest.ForceUpgradeRunning = src.ForceUpgradeRunning
-	dest.ApplyDeviceFilter = src.ApplyDeviceFilter
-	dest.DeviceFilter = src.DeviceFilter
-	dest.StartTime = src.StartTime
-	dest.TargetVersion = src.TargetVersion
+	dest.Active = src.Active;
+	dest.UpgradeOlder = src.UpgradeOlder;
+	dest.ReinstallCurrentVer = src.ReinstallCurrentVer;
+	dest.DowngradeNewer = src.DowngradeNewer;
+	dest.ForceUpgradeRunning = src.ForceUpgradeRunning;
+	dest.ApplyDeviceFilter = src.ApplyDeviceFilter;
+	dest.DeviceFilter = src.DeviceFilter;
+	dest.StartTime = src.StartTime;
+	dest.TargetVersion = src.TargetVersion;
 }
 
 
@@ -7643,7 +8396,7 @@ export function New_Zero_libcomet_UpdateCampaignStatusDeviceEntry(): libcomet_Up
 }
 
 export function libcomet_UpdateCampaignStatusDeviceEntry_set_embedded_libcomet_UpdateCampaignDeviceStatus(dest: libcomet_UpdateCampaignStatusDeviceEntry, src: libcomet_UpdateCampaignDeviceStatus): void {
-	dest.Status = src.Status
+	dest.Status = src.Status;
 }
 
 
@@ -7808,18 +8561,23 @@ export type libcomet_UserProfileConfig = {
 	SendEmailReports: boolean
 	/**
 	 * Storage Vaults
+	 * The string keys can be any unique key. Using a GUID is recommended, but optional.
 	 */
 	Destinations: {[k: string]: libcomet_DestinationConfig}
 	/**
 	 * Protected Items
+	 * The string keys can be any unique key. Using a GUID is recommended, but optional.
 	 */
 	Sources: {[k: string]: libcomet_SourceConfig}
 	/**
 	 * Schedules
+	 * The string keys can be any unique key. Using a GUID is recommended, but optional.
 	 */
 	BackupRules: {[k: string]: libcomet_BackupRuleConfig}
 	/**
 	 * Devices
+	 * The string keys are the device's ID. The device ID is generated automatically based on a mix of
+	 * hardware and software identifiers on the installed PC.
 	 * To revoke a device, use the AdminRevokeDevice API instead of accessing these fields directly.
 	 * This API can also remove associated Protected Items, uninstall the remote device, and disconnect
 	 * its live connection.
@@ -7863,6 +8621,7 @@ export type libcomet_UserProfileConfig = {
 	 */
 	Policy: libcomet_UserPolicy
 	/**
+	 * One of the PASSWORD_FORMAT_ constants
 	 * To change the user's password, use the AdminResetUserPassword API instead of accessing these
 	 * fields directly. Otherwise, other encrypted fields in the user profile may become corrupted.
 	 */
@@ -7876,7 +8635,14 @@ export type libcomet_UserProfileConfig = {
 	 */
 	PasswordRecovery?: string
 	AllowPasswordLogin: boolean
+	/**
+	 * If true, then TOTP is required to open the desktop app or the Comet Server web interface with
+	 * this user's credentials.
+	 */
 	AllowPasswordAndTOTPLogin: boolean
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
 	TOTPKeyEncryptionFormat: number
 	TOTPKey: string
 	/**
@@ -7932,6 +8698,9 @@ export function New_Zero_libcomet_UserProfileConfig(): libcomet_UserProfileConfi
 }
 
 
+/**
+ * @deprecated This type has been deprecated since Comet version 23.3.5
+ */
 export type libcomet_UserProfileFragment = {
 	Username: string
 }
@@ -8288,8 +9057,8 @@ export function New_Zero_libcomet_WebAuthnRegistrationChallengeResponse(): libco
 }
 
 export function libcomet_WebAuthnRegistrationChallengeResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_WebAuthnRegistrationChallengeResponse, src: libcomet_CometAPIResponseMessage): void {
-	dest.Status = src.Status
-	dest.Message = src.Message
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -8317,8 +9086,8 @@ export function New_Zero_libcomet_WebAuthnRelyingPartyEntity(): libcomet_WebAuth
 }
 
 export function libcomet_WebAuthnRelyingPartyEntity_set_embedded_libcomet_WebAuthnCredentialEntity(dest: libcomet_WebAuthnRelyingPartyEntity, src: libcomet_WebAuthnCredentialEntity): void {
-	dest.name = src.name
-	dest.icon = src.icon
+	dest.name = src.name;
+	dest.icon = src.icon;
 }
 
 
@@ -8377,12 +9146,16 @@ export function New_Zero_libcomet_WebAuthnUserEntity(): libcomet_WebAuthnUserEnt
 }
 
 export function libcomet_WebAuthnUserEntity_set_embedded_libcomet_WebAuthnCredentialEntity(dest: libcomet_WebAuthnUserEntity, src: libcomet_WebAuthnCredentialEntity): void {
-	dest.name = src.name
-	dest.icon = src.icon
+	dest.name = src.name;
+	dest.icon = src.icon;
 }
 
 
 export type libcomet_WebInterfaceBrandingProperties = {
+	/**
+	 * One of the BRANDINGSTYLETYPE_ constants
+	 * This field is available in Comet 23.3.3 and later.
+	 */
 	BrandingStyleType: number
 	BrandName: string
 	LogoImage: string
@@ -8405,17 +9178,39 @@ export function New_Zero_libcomet_WebInterfaceBrandingProperties(): libcomet_Web
 }
 
 
+/**
+ * WebhookOption defines the configuration of a webhook target. The Comet Server will send a live
+ * HTTP POST event to the webhook URL when certain events happen.
+ */
 export type libcomet_WebhookOption = {
+	/**
+	 * The target URL to POST the event data to
+	 */
 	URL: string
-	WhiteListedEventTypes: number[]
+	/**
+	 * CustomHeaders allows specifying custom headers which are added to the outgoing POST request
+	 * from Comet Server. Custom headers are specified as (header name, header value) pairs. If a
+	 * custom header conflicts with a header required by HTTP or the Comet tracing ID header
+	 * (`x-Comet-Tracing-Id`), it will be ignored.
+	 */
 	CustomHeaders: {[k: string]: string}
+	/**
+	 * One of the STREAM_LEVEL_ constants. This controls how much data is sent in the webhook event.
+	 */
+	Level: string
+	/**
+	 * Configure a subset of allowed event types (see SEVT_ constants). If the array is empty, all
+	 * events will be sent
+	 */
+	WhiteListedEventTypes: number[]
 }
 
 export function New_Zero_libcomet_WebhookOption(): libcomet_WebhookOption {
 	return {
 		"URL": "",
-		"WhiteListedEventTypes": [],
 		"CustomHeaders": {},
+		"Level": "",
+		"WhiteListedEventTypes": [],
 	};
 }
 
@@ -8496,13 +9291,13 @@ export function New_Zero_libcomet_WindowsCodeSignProperties(): libcomet_WindowsC
 
 // METHODS
 
-export default class CometServerAPIBase {
+export default abstract class CometServerAPIBase {
 
     _server_url: string;
 
     /**
      * Construct a new CometServerAPIBase instance.
-     * 
+     *
      * @param {string} server_url
      */
     constructor(server_url: string) {
@@ -8511,23 +9306,21 @@ export default class CometServerAPIBase {
 
     /**
      * Perform a network request. Must be overridden by a child class.
-     * 
+     *
      * @param {string} call The endpoint URI
      * @param {Object.<string,string>} params The POST data parameters
      * @return {Promise}
      */
-    async _requestP(call: string, params: {[x: string]: string}): Promise<any> {
-        throw "must override";
-    }
+    abstract _requestP(call: string, params: {[x: string]: string}): Promise<any>;
 
 	/**
 	 * AdminAccountProperties
 	 * Retrieve properties about the current admin account
 	 * Some key parameters are obscured, but the obscured values are safely recognised by the corresponding AdminAccountSetProperties API.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * 
-	 * @return {Promise<libcomet_AdminAccountPropertiesResponse>} 
+	 *
+	 * @return {Promise<libcomet_AdminAccountPropertiesResponse>}
 	 */
 	async AdminAccountPropertiesP(): Promise<libcomet_AdminAccountPropertiesResponse> {
 		return await this._requestP("api/v1/admin/account/properties", {});
@@ -8537,10 +9330,10 @@ export default class CometServerAPIBase {
 	 * AdminAccountRegenerateTotp
 	 * Generate a new TOTP secret
 	 * The secret is returned as a `data-uri` image of a QR code. The new secret is immediately applied to the current admin account.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * 
-	 * @return {Promise<libcomet_TotpRegeneratedResponse>} 
+	 *
+	 * @return {Promise<libcomet_TotpRegeneratedResponse>}
 	 */
 	async AdminAccountRegenerateTotpP(): Promise<libcomet_TotpRegeneratedResponse> {
 		return await this._requestP("api/v1/admin/account/regenerate-totp", {});
@@ -8549,10 +9342,10 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminAccountSessionRevoke
 	 * Revoke a session key (log out)
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * 
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 *
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminAccountSessionRevokeP(): Promise<libcomet_CometAPIResponseMessage> {
 		return await this._requestP("api/v1/admin/account/session-revoke", {});
@@ -8561,14 +9354,14 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminAccountSessionStart
 	 * Generate a session key (log in)
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * 
+	 *
 	 * @param {string|null} SelfAddress External URL of this server
-	 * @return {Promise<libcomet_SessionKeyRegeneratedResponse>} 
+	 * @return {Promise<libcomet_SessionKeyRegeneratedResponse>}
 	 */
 	async AdminAccountSessionStartP(SelfAddress: string|null = null): Promise<libcomet_SessionKeyRegeneratedResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		if (SelfAddress === null) {
 			params["SelfAddress"] = this._server_url;
 		} else {
@@ -8580,14 +9373,14 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminAccountSessionStartAsUser
 	 * Generate a session key for an end-user (log in as end-user)
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * 
+	 *
 	 * @param {string} TargetUser Target account username
-	 * @return {Promise<libcomet_SessionKeyRegeneratedResponse>} 
+	 * @return {Promise<libcomet_SessionKeyRegeneratedResponse>}
 	 */
 	async AdminAccountSessionStartAsUserP(TargetUser: string): Promise<libcomet_SessionKeyRegeneratedResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		return await this._requestP("api/v1/admin/account/session-start-as-user", params);
 	}
@@ -8598,14 +9391,14 @@ export default class CometServerAPIBase {
 	 * Updating your account password requires you to supply your current password.
 	 * To set a new plaintext password, use a password format of 0 (PASSWORD_FORMAT_PLAINTEXT).
 	 * This API does not currently allow you to modify your TOTP secret or IP whitelist.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * 
+	 *
 	 * @param {libcomet_AdminSecurityOptions} Security Updated account properties
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminAccountSetPropertiesP(Security: libcomet_AdminSecurityOptions): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["Security"] = JSON.stringify(Security);
 		return await this._requestP("api/v1/admin/account/set-properties", params);
 	}
@@ -8616,14 +9409,14 @@ export default class CometServerAPIBase {
 	 * Browser support for U2F is ending in February 2022. WebAuthn is backwards
 	 * compatible with U2F keys, and Comet will automatically migrate existing U2F keys
 	 * to allow their use with the WebAuthn endpoints.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * 
+	 *
 	 * @param {string} SelfAddress External URL of this server, used as U2F AppID and Facet
-	 * @return {Promise<libcomet_U2FRegistrationChallengeResponse>} 
+	 * @return {Promise<libcomet_U2FRegistrationChallengeResponse>}
 	 */
 	async AdminAccountU2fRequestRegistrationChallengeP(SelfAddress: string): Promise<libcomet_U2FRegistrationChallengeResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["SelfAddress"] = SelfAddress;
 		return await this._requestP("api/v1/admin/account/u2f/request-registration-challenge", params);
 	}
@@ -8634,18 +9427,18 @@ export default class CometServerAPIBase {
 	 * Browser support for U2F is ending in February 2022. WebAuthn is backwards
 	 * compatible with U2F keys, and Comet will automatically migrate existing U2F keys
 	 * to allow their use with the WebAuthn endpoints.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * 
+	 *
 	 * @param {string} U2FChallengeID Associated value from AdminAccountU2fRequestRegistrationChallenge API
 	 * @param {string} U2FClientData U2F response data supplied by hardware token
 	 * @param {string} U2FRegistrationData U2F response data supplied by hardware token
 	 * @param {string} U2FVersion U2F response data supplied by hardware token
 	 * @param {string|null} Description Description of the token
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminAccountU2fSubmitChallengeResponseP(U2FChallengeID: string, U2FClientData: string, U2FRegistrationData: string, U2FVersion: string, Description: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["U2FChallengeID"] = U2FChallengeID;
 		params["U2FClientData"] = U2FClientData;
 		params["U2FRegistrationData"] = U2FRegistrationData;
@@ -8659,14 +9452,14 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminAccountValidateTotp
 	 * Validate the TOTP code before turning 2fa(TOTP) on
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * 
+	 *
 	 * @param {string} TOTPCode Six-digit code after scanning barcode image
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminAccountValidateTotpP(TOTPCode: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TOTPCode"] = TOTPCode;
 		return await this._requestP("api/v1/admin/account/validate-totp", params);
 	}
@@ -8674,14 +9467,14 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminAccountWebauthnRequestRegistrationChallenge
 	 * Register a new FIDO2 WebAuthn token
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * 
+	 *
 	 * @param {string} SelfAddress External URL of this server, used as WebAuthn ID
-	 * @return {Promise<libcomet_WebAuthnRegistrationChallengeResponse>} 
+	 * @return {Promise<libcomet_WebAuthnRegistrationChallengeResponse>}
 	 */
 	async AdminAccountWebauthnRequestRegistrationChallengeP(SelfAddress: string): Promise<libcomet_WebAuthnRegistrationChallengeResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["SelfAddress"] = SelfAddress;
 		return await this._requestP("api/v1/admin/account/webauthn/request-registration-challenge", params);
 	}
@@ -8689,16 +9482,16 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminAccountWebauthnSubmitChallengeResponse
 	 * Register a new FIDO2 WebAuthn token
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * 
+	 *
 	 * @param {string} SelfAddress External URL of this server, used as WebAuthn ID
 	 * @param {string} ChallengeID Associated value from AdminAccountWebAuthnRequestRegistrationChallenge API
 	 * @param {string} Credential JSON-encoded credential
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminAccountWebauthnSubmitChallengeResponseP(SelfAddress: string, ChallengeID: string, Credential: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["SelfAddress"] = SelfAddress;
 		params["ChallengeID"] = ChallengeID;
 		params["Credential"] = Credential;
@@ -8708,19 +9501,19 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminAddUser
 	 * Add a new user account
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetUser New account username
 	 * @param {string} TargetPassword New account password
 	 * @param {number|null} StoreRecoveryCode If set to 1, store and keep a password recovery code for the generated user (>= 18.3.9)
 	 * @param {number|null} RequirePasswordChange If set to 1, require to reset password at the first login for the generated user (>= 20.3.4)
 	 * @param {string|null} TargetOrganization If present, create the user account on behalf of another organization. Only allowed for administrator accounts in the top-level organization. (>= 22.3.7)
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminAddUserP(TargetUser: string, TargetPassword: string, StoreRecoveryCode: number|null = null, RequirePasswordChange: number|null = null, TargetOrganization: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		params["TargetPassword"] = TargetPassword;
 		if (StoreRecoveryCode !== null) {
@@ -8739,17 +9532,17 @@ export default class CometServerAPIBase {
 	 * AdminAddUserFromProfile
 	 * Add a new user account (with all information)
 	 * This allows you to create a new account and set all its properties at once (e.g. during account replication). Developers creating a signup form may find it simpler to use the AdminAddUser and AdminGetUserProfile / AdminSetUserProfile APIs separately.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetUser New account username
 	 * @param {libcomet_UserProfileConfig} ProfileData New account profile
 	 * @param {string|null} TargetOrganization If present, create the user account on behalf of another organization. Only allowed for administrator accounts in the top-level organization. (>= 22.3.7)
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminAddUserFromProfileP(TargetUser: string, ProfileData: libcomet_UserProfileConfig, TargetOrganization: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		params["ProfileData"] = JSON.stringify(ProfileData);
 		if (TargetOrganization !== null) {
@@ -8761,16 +9554,16 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminAdminUserDelete
 	 * Delete an administrator
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * 
+	 *
 	 * @param {string} TargetUser the username of the admin to be deleted
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminAdminUserDeleteP(TargetUser: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		return await this._requestP("api/v1/admin/admin-user/delete", params);
 	}
@@ -8778,12 +9571,12 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminAdminUserList
 	 * List administrators
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * 
-	 * @return {Promise<libcomet_AllowedAdminUser[]>} 
+	 *
+	 * @return {Promise<libcomet_AllowedAdminUser[]>}
 	 */
 	async AdminAdminUserListP(): Promise<libcomet_AllowedAdminUser[]> {
 		return await this._requestP("api/v1/admin/admin-user/list", {});
@@ -8792,18 +9585,18 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminAdminUserNew
 	 * Add a new administrator
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * 
+	 *
 	 * @param {string} TargetUser the username for this new admin
 	 * @param {string} TargetPassword the password for this new admin user
 	 * @param {string|null} TargetOrgID provide the organization ID for this user, it will default to the org of the authenticating user otherwise
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminAdminUserNewP(TargetUser: string, TargetPassword: string, TargetOrgID: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		params["TargetPassword"] = TargetPassword;
 		if (TargetOrgID !== null) {
@@ -8815,12 +9608,12 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminBrandingAvailablePlatforms
 	 * List available software download platforms
-	 * 
+	 *
 	 * This API requires administrator authentication credentials, unless the server is configured to allow unauthenticated software downloads.
 	 * This API requires the Software Build Role to be enabled.
 	 * This API requires the Auth Role to be enabled.
-	 * 
-	 * @return {Promise<{[k: number]: libcomet_AvailableDownload}>} 
+	 *
+	 * @return {Promise<{[k: number]: libcomet_AvailableDownload}>}
 	 */
 	async AdminBrandingAvailablePlatformsP(): Promise<{[k: number]: libcomet_AvailableDownload}> {
 		return await this._requestP("api/v1/admin/branding/available-platforms", {});
@@ -8829,17 +9622,17 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminBrandingGenerateClientTest
 	 * Check if a software download is available
-	 * 
+	 *
 	 * This API requires administrator authentication credentials, unless the server is configured to allow unauthenticated software downloads.
 	 * This API requires the Software Build Role to be enabled.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {number} Platform The selected download platform, from the AdminBrandingAvailablePlatforms API
 	 * @param {string|null} SelfAddress The external URL of this server, used to resolve conflicts
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminBrandingGenerateClientTestP(Platform: number, SelfAddress: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["Platform"] = ""+Platform;
 		if (SelfAddress === null) {
 			params["SelfAddress"] = this._server_url;
@@ -8852,16 +9645,16 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminBulletinSubmit
 	 * Send an email bulletin to all users
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} Subject Bulletin subject line
 	 * @param {string} Content Bulletin message content
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminBulletinSubmitP(Subject: string, Content: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["Subject"] = Subject;
 		params["Content"] = Content;
 		return await this._requestP("api/v1/admin/bulletin/submit", params);
@@ -8870,11 +9663,11 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminConstellationLastReport
 	 * Get Constellation bucket usage report (cached)
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Constellation Role to be enabled.
-	 * 
-	 * @return {Promise<libcomet_ConstellationCheckReport>} 
+	 *
+	 * @return {Promise<libcomet_ConstellationCheckReport>}
 	 */
 	async AdminConstellationLastReportP(): Promise<libcomet_ConstellationCheckReport> {
 		return await this._requestP("api/v1/admin/constellation/last-report", {});
@@ -8883,11 +9676,11 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminConstellationNewReport
 	 * Get Constellation bucket usage report (regenerate)
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Constellation Role to be enabled.
-	 * 
-	 * @return {Promise<libcomet_ConstellationCheckReport>} 
+	 *
+	 * @return {Promise<libcomet_ConstellationCheckReport>}
 	 */
 	async AdminConstellationNewReportP(): Promise<libcomet_ConstellationCheckReport> {
 		return await this._requestP("api/v1/admin/constellation/new-report", {});
@@ -8896,12 +9689,12 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminConstellationPruneNow
 	 * Prune unused buckets
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * This API requires the Constellation Role to be enabled.
-	 * 
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 *
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminConstellationPruneNowP(): Promise<libcomet_CometAPIResponseMessage> {
 		return await this._requestP("api/v1/admin/constellation/prune-now", {});
@@ -8910,11 +9703,11 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminConstellationStatus
 	 * Get Constellation status
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Constellation Role to be enabled.
-	 * 
-	 * @return {Promise<libcomet_ConstellationStatusAPIResponse>} 
+	 *
+	 * @return {Promise<libcomet_ConstellationStatusAPIResponse>}
 	 */
 	async AdminConstellationStatusP(): Promise<libcomet_ConstellationStatusAPIResponse> {
 		return await this._requestP("api/v1/admin/constellation/status", {});
@@ -8923,15 +9716,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminCountJobsForCustomSearch
 	 * Count jobs (for custom search)
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {libcomet_SearchClause} Query (No description available)
-	 * @return {Promise<libcomet_CountJobsResponse>} 
+	 * @return {Promise<libcomet_CountJobsResponse>}
 	 */
 	async AdminCountJobsForCustomSearchP(Query: libcomet_SearchClause): Promise<libcomet_CountJobsResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["Query"] = JSON.stringify(Query);
 		return await this._requestP("api/v1/admin/count-jobs-for-custom-search", params);
 	}
@@ -8942,17 +9735,17 @@ export default class CometServerAPIBase {
 	 * Currently only supported for Windows & macOS only
 	 * Provide the installation token to silently install the client on windows `install.exe /TOKEN=<installtoken>`
 	 * Provide the installation token to silently install the client on Mac OS `sudo launchctl setenv BACKUP_APP_TOKEN "installtoken" && sudo /usr/sbin/installer -allowUntrusted -pkg "Comet Backup.pkg" -target /`
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetUser Selected account username
 	 * @param {string} TargetPassword Selected account password
 	 * @param {string|null} Server External URL of the authentication server that is different from the current server
-	 * @return {Promise<libcomet_InstallTokenResponse>} 
+	 * @return {Promise<libcomet_InstallTokenResponse>}
 	 */
 	async AdminCreateInstallTokenP(TargetUser: string, TargetPassword: string, Server: string|null = null): Promise<libcomet_InstallTokenResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		params["TargetPassword"] = TargetPassword;
 		if (Server !== null) {
@@ -8968,16 +9761,16 @@ export default class CometServerAPIBase {
 	 * Any stored data can not be decrypted without the user profile. Misuse can cause data loss!
 	 * This also allows to uninstall software from active devices under the user account
 	 * This also removes all job history for the user account.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetUser Selected account username
 	 * @param {libcomet_UninstallConfig|null} UninstallConfig Uninstall software configuration (>= 20.3.5)
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDeleteUserP(TargetUser: string, UninstallConfig: libcomet_UninstallConfig|null = null): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		if (UninstallConfig !== null) {
 			params["UninstallConfig"] = JSON.stringify(UninstallConfig);
@@ -8988,15 +9781,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminDisableUserTotp
 	 * Disable user account 2FA(TOTP) authentication
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetUser Selected account username
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDisableUserTotpP(TargetUser: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		return await this._requestP("api/v1/admin/disable-user-totp", params);
 	}
@@ -9005,16 +9798,16 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherApplyRetentionRules
 	 * Instruct a live connected device to apply retention rules now
 	 * This command is understood by Comet Backup 17.6.9 and newer.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Destination The Storage Vault GUID
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDispatcherApplyRetentionRulesP(TargetID: string, Destination: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Destination"] = Destination;
 		return await this._requestP("api/v1/admin/dispatcher/apply-retention-rules", params);
@@ -9024,16 +9817,16 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherDeepverifyStorageVault
 	 * Instruct a live connected device to deeply verify Storage Vault content
 	 * This command is understood by Comet Backup 18.8.2 and newer.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Destination The Storage Vault GUID
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDispatcherDeepverifyStorageVaultP(TargetID: string, Destination: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Destination"] = Destination;
 		return await this._requestP("api/v1/admin/dispatcher/deepverify-storage-vault", params);
@@ -9042,17 +9835,17 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminDispatcherDeleteSnapshot
 	 * Instruct a live connected device to delete a stored snapshot
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} DestinationID The Storage Vault GUID
 	 * @param {string} SnapshotID The backup job snapshot ID to delete
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDispatcherDeleteSnapshotP(TargetID: string, DestinationID: string, SnapshotID: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["DestinationID"] = DestinationID;
 		params["SnapshotID"] = SnapshotID;
@@ -9063,17 +9856,17 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherDeleteSnapshots
 	 * Instruct a live connected device to delete multiple stored snapshots
 	 * The target device must be running Comet 20.9.10 or later.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} DestinationID The Storage Vault GUID
 	 * @param {string[]} SnapshotIDs The backup job snapshot IDs to delete
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDispatcherDeleteSnapshotsP(TargetID: string, DestinationID: string, SnapshotIDs: string[]): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["DestinationID"] = DestinationID;
 		params["SnapshotIDs"] = JSON.stringify(SnapshotIDs);
@@ -9084,15 +9877,15 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherDropConnection
 	 * Disconnect a live connected device
 	 * The device will almost certainly attempt to reconnect.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDispatcherDropConnectionP(TargetID: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		return await this._requestP("api/v1/admin/dispatcher/drop-connection", params);
 	}
@@ -9101,18 +9894,18 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherEmailPreview
 	 * Request HTML content of an email
 	 * The remote device must have given consent for an MSP to browse their mail
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Snapshot where the email belongs to
 	 * @param {string} Destination The Storage Vault ID
 	 * @param {string} Path of the email to view
-	 * @return {Promise<libcomet_EmailReportGeneratedPreview>} 
+	 * @return {Promise<libcomet_EmailReportGeneratedPreview>}
 	 */
 	async AdminDispatcherEmailPreviewP(TargetID: string, Snapshot: string, Destination: string, Path: string): Promise<libcomet_EmailReportGeneratedPreview> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Snapshot"] = Snapshot;
 		params["Destination"] = Destination;
@@ -9123,16 +9916,16 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminDispatcherGetDefaultLoginUrl
 	 * Get the default login URL for a tenant
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * 
+	 *
 	 * @param {string} OrganizationID Target organization
-	 * @return {Promise<libcomet_OrganizationLoginURLResponse>} 
+	 * @return {Promise<libcomet_OrganizationLoginURLResponse>}
 	 */
 	async AdminDispatcherGetDefaultLoginUrlP(OrganizationID: string): Promise<libcomet_OrganizationLoginURLResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["OrganizationID"] = OrganizationID;
 		return await this._requestP("api/v1/admin/dispatcher/get-default-login-url", params);
 	}
@@ -9141,16 +9934,16 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherImportApply
 	 * Instruct a live connected device to import settings from an installed product
 	 * This command is understood by Comet Backup 17.12.0 and newer.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} ImportSourceID The selected import source, as found by the AdminDispatcherRequestImportSources API
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDispatcherImportApplyP(TargetID: string, ImportSourceID: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["ImportSourceID"] = ImportSourceID;
 		return await this._requestP("api/v1/admin/dispatcher/import-apply", params);
@@ -9160,15 +9953,15 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherKillProcess
 	 * Instruct a live connected device to disconnect
 	 * The device will terminate its live-connection process and will not reconnect.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDispatcherKillProcessP(TargetID: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		return await this._requestP("api/v1/admin/dispatcher/kill-process", params);
 	}
@@ -9176,15 +9969,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminDispatcherListActive
 	 * List live connected devices
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string|null} UserNameFilter User name filter string
-	 * @return {Promise<{[k: string]: libcomet_LiveUserConnection}>} 
+	 * @return {Promise<{[k: string]: libcomet_LiveUserConnection}>}
 	 */
 	async AdminDispatcherListActiveP(UserNameFilter: string|null = null): Promise<{[k: string]: libcomet_LiveUserConnection}> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		if (UserNameFilter !== null) {
 			params["UserNameFilter"] = UserNameFilter;
 		}
@@ -9195,16 +9988,16 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherOffice365ListVirtualAccounts
 	 * Request a list of Office365 Resources (groups, sites, teams groups and users)
 	 * The remote device must have given consent for an MSP to browse their files.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_Office365Credential} Credentials The Office365 account credential
-	 * @return {Promise<libcomet_BrowseOffice365ListVirtualAccountsResponse>} 
+	 * @return {Promise<libcomet_BrowseOffice365ListVirtualAccountsResponse>}
 	 */
 	async AdminDispatcherOffice365ListVirtualAccountsP(TargetID: string, Credentials: libcomet_Office365Credential): Promise<libcomet_BrowseOffice365ListVirtualAccountsResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Credentials"] = JSON.stringify(Credentials);
 		return await this._requestP("api/v1/admin/dispatcher/office365-list-virtual-accounts", params);
@@ -9213,16 +10006,16 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminDispatcherPingDestination
 	 * Test the connection to the storage bucket
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_DestinationLocation} ExtraData The destination location settings
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDispatcherPingDestinationP(TargetID: string, ExtraData: libcomet_DestinationLocation): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["ExtraData"] = JSON.stringify(ExtraData);
 		return await this._requestP("api/v1/admin/dispatcher/ping-destination", params);
@@ -9232,15 +10025,15 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherRefetchProfile
 	 * Instruct a live connected device to refresh their profile
 	 * This command is understood by Comet Backup 17.12.0 and newer.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDispatcherRefetchProfileP(TargetID: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		return await this._requestP("api/v1/admin/dispatcher/refetch-profile", params);
 	}
@@ -9249,16 +10042,16 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherRegisterOfficeApplicationBegin
 	 * Begin the process of registering a new Azure AD application that can access Office 365 for backup
 	 * After calling this API, you should supply the login details to the end-user, and then begin polling the AdminDispatcherRegisterOfficeApplicationCheck with the supplied "Continuation" parameter to check on the registration process.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} EmailAddress The email address of the Azure AD administrator
-	 * @return {Promise<libcomet_RegisterOfficeApplicationBeginResponse>} 
+	 * @return {Promise<libcomet_RegisterOfficeApplicationBeginResponse>}
 	 */
 	async AdminDispatcherRegisterOfficeApplicationBeginP(TargetID: string, EmailAddress: string): Promise<libcomet_RegisterOfficeApplicationBeginResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["EmailAddress"] = EmailAddress;
 		return await this._requestP("api/v1/admin/dispatcher/register-office-application/begin", params);
@@ -9268,16 +10061,16 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherRegisterOfficeApplicationCheck
 	 * Check the process of registering a new Azure AD application that can access Office 365 for backup
 	 * You should begin the process by calling AdminDispatcherRegisterOfficeApplicationBegin and asking the end-user to complete the Azure authentication steps.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Continuation The ID returned from the AdminDispatcherRegisterOfficeApplicationBegin endpoint
-	 * @return {Promise<libcomet_RegisterOfficeApplicationCheckResponse>} 
+	 * @return {Promise<libcomet_RegisterOfficeApplicationCheckResponse>}
 	 */
 	async AdminDispatcherRegisterOfficeApplicationCheckP(TargetID: string, Continuation: string): Promise<libcomet_RegisterOfficeApplicationCheckResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Continuation"] = Continuation;
 		return await this._requestP("api/v1/admin/dispatcher/register-office-application/check", params);
@@ -9287,16 +10080,16 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherReindexStorageVault
 	 * Instruct a live connected device to rebuild Storage Vault indexes now
 	 * This command is understood by Comet Backup 18.6.9 and newer.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Destination The Storage Vault GUID
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDispatcherReindexStorageVaultP(TargetID: string, Destination: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Destination"] = Destination;
 		return await this._requestP("api/v1/admin/dispatcher/reindex-storage-vault", params);
@@ -9305,15 +10098,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminDispatcherRequestBrowseDiskDrives
 	 * Request a list of physical disk drive information from a live connected device
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
-	 * @return {Promise<libcomet_BrowseDiskDrivesResponse>} 
+	 * @return {Promise<libcomet_BrowseDiskDrivesResponse>}
 	 */
 	async AdminDispatcherRequestBrowseDiskDrivesP(TargetID: string): Promise<libcomet_BrowseDiskDrivesResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		return await this._requestP("api/v1/admin/dispatcher/request-browse-disk-drives", params);
 	}
@@ -9321,15 +10114,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminDispatcherRequestBrowseExchangeEdb
 	 * Request a list of Exchange EDB databases from a live connected device
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
-	 * @return {Promise<libcomet_BrowseEDBResponse>} 
+	 * @return {Promise<libcomet_BrowseEDBResponse>}
 	 */
 	async AdminDispatcherRequestBrowseExchangeEdbP(TargetID: string): Promise<libcomet_BrowseEDBResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		return await this._requestP("api/v1/admin/dispatcher/request-browse-exchange-edb", params);
 	}
@@ -9337,15 +10130,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminDispatcherRequestBrowseHyperv
 	 * Request a list of Hyper-V virtual machines from a live connected device
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
-	 * @return {Promise<libcomet_BrowseHVResponse>} 
+	 * @return {Promise<libcomet_BrowseHVResponse>}
 	 */
 	async AdminDispatcherRequestBrowseHypervP(TargetID: string): Promise<libcomet_BrowseHVResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		return await this._requestP("api/v1/admin/dispatcher/request-browse-hyperv", params);
 	}
@@ -9354,16 +10147,16 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherRequestBrowseMongodb
 	 * Request a list of tables in MongoDB database
 	 * The remote device must have given consent for an MSP to browse their files.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_MongoDBConnection} Credentials The Mongo database authentication settings
-	 * @return {Promise<libcomet_BrowseSQLServerResponse>} 
+	 * @return {Promise<libcomet_BrowseSQLServerResponse>}
 	 */
 	async AdminDispatcherRequestBrowseMongodbP(TargetID: string, Credentials: libcomet_MongoDBConnection): Promise<libcomet_BrowseSQLServerResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Credentials"] = JSON.stringify(Credentials);
 		return await this._requestP("api/v1/admin/dispatcher/request-browse-mongodb", params);
@@ -9373,16 +10166,16 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherRequestBrowseMssql
 	 * Request a list of tables in MSSQL database
 	 * The remote device must have given consent for an MSP to browse their files.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_MSSQLConnection} Credentials The MSSQL database authentication settings
-	 * @return {Promise<libcomet_BrowseSQLServerResponse>} 
+	 * @return {Promise<libcomet_BrowseSQLServerResponse>}
 	 */
 	async AdminDispatcherRequestBrowseMssqlP(TargetID: string, Credentials: libcomet_MSSQLConnection): Promise<libcomet_BrowseSQLServerResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Credentials"] = JSON.stringify(Credentials);
 		return await this._requestP("api/v1/admin/dispatcher/request-browse-mssql", params);
@@ -9392,16 +10185,16 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherRequestBrowseMysql
 	 * Request a list of tables in MySQL database
 	 * The remote device must have given consent for an MSP to browse their files.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_MySQLConnection} Credentials The MySQL database authentication settings
-	 * @return {Promise<libcomet_BrowseSQLServerResponse>} 
+	 * @return {Promise<libcomet_BrowseSQLServerResponse>}
 	 */
 	async AdminDispatcherRequestBrowseMysqlP(TargetID: string, Credentials: libcomet_MySQLConnection): Promise<libcomet_BrowseSQLServerResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Credentials"] = JSON.stringify(Credentials);
 		return await this._requestP("api/v1/admin/dispatcher/request-browse-mysql", params);
@@ -9410,15 +10203,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminDispatcherRequestBrowseVssAaw
 	 * Request a list of installed VSS Writers (Application-Aware Writers) from a live connected device
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
-	 * @return {Promise<libcomet_BrowseVSSResponse>} 
+	 * @return {Promise<libcomet_BrowseVSSResponse>}
 	 */
 	async AdminDispatcherRequestBrowseVssAawP(TargetID: string): Promise<libcomet_BrowseVSSResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		return await this._requestP("api/v1/admin/dispatcher/request-browse-vss-aaw", params);
 	}
@@ -9427,16 +10220,16 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherRequestFilesystemObjects
 	 * Request a list of filesystem objects from a live connected device
 	 * The device must have granted the administrator permission to view its filenames.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string|null} Path Browse objects inside this path. If empty or not present, returns the top-level device paths
-	 * @return {Promise<libcomet_DispatcherStoredObjectsResponse>} 
+	 * @return {Promise<libcomet_DispatcherStoredObjectsResponse>}
 	 */
 	async AdminDispatcherRequestFilesystemObjectsP(TargetID: string, Path: string|null = null): Promise<libcomet_DispatcherStoredObjectsResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		if (Path !== null) {
 			params["Path"] = Path;
@@ -9447,15 +10240,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminDispatcherRequestImportSources
 	 * Request a list of import sources from a live connected device
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
-	 * @return {Promise<libcomet_DispatcherAdminSourcesResponse>} 
+	 * @return {Promise<libcomet_DispatcherAdminSourcesResponse>}
 	 */
 	async AdminDispatcherRequestImportSourcesP(TargetID: string): Promise<libcomet_DispatcherAdminSourcesResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		return await this._requestP("api/v1/admin/dispatcher/request-import-sources", params);
 	}
@@ -9464,16 +10257,16 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherRequestOffice365Accounts
 	 * Request a list of Office365 mailbox accounts
 	 * The remote device must have given consent for an MSP to browse their files.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_Office365Credential} Credentials The Office365 account credential
-	 * @return {Promise<libcomet_BrowseOffice365ObjectsResponse>} 
+	 * @return {Promise<libcomet_BrowseOffice365ObjectsResponse>}
 	 */
 	async AdminDispatcherRequestOffice365AccountsP(TargetID: string, Credentials: libcomet_Office365Credential): Promise<libcomet_BrowseOffice365ObjectsResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Credentials"] = JSON.stringify(Credentials);
 		return await this._requestP("api/v1/admin/dispatcher/request-office365-accounts", params);
@@ -9483,16 +10276,16 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherRequestOffice365Sites
 	 * Request a list of Office365 sites
 	 * The remote device must have given consent for an MSP to browse their files.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_Office365Credential} Credentials The Office365 account credential
-	 * @return {Promise<libcomet_BrowseOffice365ObjectsResponse>} 
+	 * @return {Promise<libcomet_BrowseOffice365ObjectsResponse>}
 	 */
 	async AdminDispatcherRequestOffice365SitesP(TargetID: string, Credentials: libcomet_Office365Credential): Promise<libcomet_BrowseOffice365ObjectsResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Credentials"] = JSON.stringify(Credentials);
 		return await this._requestP("api/v1/admin/dispatcher/request-office365-sites", params);
@@ -9503,19 +10296,19 @@ export default class CometServerAPIBase {
 	 * Request a list of stored objects inside an existing backup job
 	 * The remote device must have given consent for an MSP to browse their files.
 	 * To service this request, the remote device must connect to the Storage Vault and load index data. There may be a small delay. If the remote device is running Comet 20.12.0 or later, the necessary index data is cached when this API is first called, for 15 minutes after the last repeated call. This can improve performance for interactively browsing an entire tree of stored objects.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Destination The Storage Vault ID
 	 * @param {string} SnapshotID The selected backup job snapshot
 	 * @param {string|null} TreeID Browse objects inside subdirectory of backup snapshot. If it is for VMDK single file restore, it should be the disk image's subtree ID.
 	 * @param {libcomet_VMDKSnapshotViewOptions|null} Options Request a list of stored objects in vmdk file
-	 * @return {Promise<libcomet_DispatcherStoredObjectsResponse>} 
+	 * @return {Promise<libcomet_DispatcherStoredObjectsResponse>}
 	 */
 	async AdminDispatcherRequestStoredObjectsP(TargetID: string, Destination: string, SnapshotID: string, TreeID: string|null = null, Options: libcomet_VMDKSnapshotViewOptions|null = null): Promise<libcomet_DispatcherStoredObjectsResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Destination"] = Destination;
 		params["SnapshotID"] = SnapshotID;
@@ -9531,16 +10324,16 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminDispatcherRequestVaultSnapshots
 	 * Request a list of Storage Vault snapshots from a live connected device
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Destination The Storage Vault ID
-	 * @return {Promise<libcomet_DispatcherVaultSnapshotsResponse>} 
+	 * @return {Promise<libcomet_DispatcherVaultSnapshotsResponse>}
 	 */
 	async AdminDispatcherRequestVaultSnapshotsP(TargetID: string, Destination: string): Promise<libcomet_DispatcherVaultSnapshotsResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Destination"] = Destination;
 		return await this._requestP("api/v1/admin/dispatcher/request-vault-snapshots", params);
@@ -9549,17 +10342,17 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminDispatcherRequestWindiskSnapshot
 	 * Request a Disk Image snapshot with the windiskbrowse-style from a live connected device
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Destination The Storage Vault ID
 	 * @param {string} SnapshotID The Snapshot ID
-	 * @return {Promise<libcomet_DispatcherWindiskSnapshotResponse>} 
+	 * @return {Promise<libcomet_DispatcherWindiskSnapshotResponse>}
 	 */
 	async AdminDispatcherRequestWindiskSnapshotP(TargetID: string, Destination: string, SnapshotID: string): Promise<libcomet_DispatcherWindiskSnapshotResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Destination"] = Destination;
 		params["SnapshotID"] = SnapshotID;
@@ -9569,16 +10362,16 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminDispatcherRunBackup
 	 * Instruct a live connected device to run a scheduled backup
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} BackupRule The schedule GUID
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDispatcherRunBackupP(TargetID: string, BackupRule: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["BackupRule"] = BackupRule;
 		return await this._requestP("api/v1/admin/dispatcher/run-backup", params);
@@ -9587,18 +10380,18 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminDispatcherRunBackupCustom
 	 * Instruct a live connected device to run a backup
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Source The Protected Item GUID
 	 * @param {string} Destination The Storage Vault GUID
 	 * @param {libcomet_BackupJobAdvancedOptions|null} Options Extra job parameters (>= 19.3.6)
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDispatcherRunBackupCustomP(TargetID: string, Source: string, Destination: string, Options: libcomet_BackupJobAdvancedOptions|null = null): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Source"] = Source;
 		params["Destination"] = Destination;
@@ -9612,20 +10405,20 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherRunRestore
 	 * Instruct a live connected device to perform a local restore
 	 * This command is understood by Comet Backup 17.9.3 and newer.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Path The local path to restore to
 	 * @param {string} Source The Protected Item ID
 	 * @param {string} Destination The Storage Vault ID
 	 * @param {string|null} Snapshot If present, restore a specific snapshot. Otherwise, restore the latest snapshot for the selected Protected Item + Storage Vault pair
 	 * @param {string[]|null} Paths If present, restore these paths only. Otherwise, restore all data (>= 19.3.0)
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDispatcherRunRestoreP(TargetID: string, Path: string, Source: string, Destination: string, Snapshot: string|null = null, Paths: string[]|null = null): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Path"] = Path;
 		params["Source"] = Source;
@@ -9643,20 +10436,20 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherRunRestoreCustom
 	 * Instruct a live connected device to perform a local restore
 	 * This command is understood by Comet Backup 18.6.0 and newer.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Source The Protected Item ID
 	 * @param {string} Destination The Storage Vault ID
 	 * @param {libcomet_RestoreJobAdvancedOptions} Options Restore targets
 	 * @param {string|null} Snapshot If present, restore a specific snapshot. Otherwise, restore the latest snapshot for the selected Protected Item + Storage Vault pair
 	 * @param {string[]|null} Paths If present, restore these paths only. Otherwise, restore all data
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDispatcherRunRestoreCustomP(TargetID: string, Source: string, Destination: string, Options: libcomet_RestoreJobAdvancedOptions, Snapshot: string|null = null, Paths: string[]|null = null): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Source"] = Source;
 		params["Destination"] = Destination;
@@ -9673,18 +10466,18 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminDispatcherSearchSnapshots
 	 * Search storage vault snapshots
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} DestinationID The Storage Vault GUID
 	 * @param {string[]} SnapshotIDs Snapshots to search
 	 * @param {libcomet_SearchClause} Filter The search filter
-	 * @return {Promise<libcomet_SearchSnapshotsResponse>} 
+	 * @return {Promise<libcomet_SearchSnapshotsResponse>}
 	 */
 	async AdminDispatcherSearchSnapshotsP(TargetID: string, DestinationID: string, SnapshotIDs: string[], Filter: libcomet_SearchClause): Promise<libcomet_SearchSnapshotsResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["DestinationID"] = DestinationID;
 		params["SnapshotIDs"] = JSON.stringify(SnapshotIDs);
@@ -9695,16 +10488,16 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminDispatcherUninstallSoftware
 	 * Instruct a live connected device to self-uninstall the software
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {boolean} RemoveConfigFile Determine if the config.dat file will be deleted at the same time
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDispatcherUninstallSoftwareP(TargetID: string, RemoveConfigFile: boolean): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["RemoveConfigFile"] = (RemoveConfigFile ? "1" : "0");
 		return await this._requestP("api/v1/admin/dispatcher/uninstall-software", params);
@@ -9715,16 +10508,16 @@ export default class CometServerAPIBase {
 	 * Instruct a live connected device to remove lock files from a Storage Vault
 	 * Misuse can cause data loss!
 	 * This command is understood by Comet Backup 17.9.4 and newer.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Destination The Storage Vault GUID
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDispatcherUnlockP(TargetID: string, Destination: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Destination"] = Destination;
 		return await this._requestP("api/v1/admin/dispatcher/unlock", params);
@@ -9734,17 +10527,17 @@ export default class CometServerAPIBase {
 	 * AdminDispatcherUpdateLoginUrl
 	 * Instruct a live connected device to update its login server URL
 	 * The device will attempt to connect to the new Auth Role Comet Server using its current username and password. If the test connection succeeds, the device migrates its saved connection settings and live connections to the new server. If the device is not registered on the new URL, or if the credentials are incorrect, the device remains on the current Auth Role server.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} NewURL The new external URL of this server
 	 * @param {boolean|null} Force No checks will be done using previous URL
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDispatcherUpdateLoginUrlP(TargetID: string, NewURL: string, Force: boolean|null = null): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["NewURL"] = NewURL;
 		if (Force !== null) {
@@ -9756,17 +10549,17 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminDispatcherUpdateSoftware
 	 * Instruct a live connected device to download a software update
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
 	 * This API requires the Software Build Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string|null} SelfAddress The external URL of this server, used to resolve conflicts (>= 19.3.11)
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDispatcherUpdateSoftwareP(TargetID: string, SelfAddress: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		if (SelfAddress === null) {
 			params["SelfAddress"] = this._server_url;
@@ -9779,15 +10572,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminGetJobLog
 	 * Get the report log entries for a single job, in plaintext format
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} JobID Selected job ID
-	 * @return {Promise<string>} 
+	 * @return {Promise<string>}
 	 */
 	async AdminGetJobLogP(JobID: string): Promise<string> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["JobID"] = JobID;
 		return await this._requestP("api/v1/admin/get-job-log", params);
 	}
@@ -9795,17 +10588,17 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminGetJobLogEntries
 	 * Get the report log entries for a single job
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} JobID Selected job ID
 	 * @param {string|null} MinSeverity Return only job log entries with equal or higher severity
 	 * @param {string|null} MessageContains Return only job log entries that contain exact string
-	 * @return {Promise<libcomet_JobEntry[]>} 
+	 * @return {Promise<libcomet_JobEntry[]>}
 	 */
 	async AdminGetJobLogEntriesP(JobID: string, MinSeverity: string|null = null, MessageContains: string|null = null): Promise<libcomet_JobEntry[]> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["JobID"] = JobID;
 		if (MinSeverity !== null) {
 			params["MinSeverity"] = MinSeverity;
@@ -9819,15 +10612,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminGetJobProperties
 	 * Get properties of a single job
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} JobID Selected job ID
-	 * @return {Promise<libcomet_BackupJobDetail>} 
+	 * @return {Promise<libcomet_BackupJobDetail>}
 	 */
 	async AdminGetJobPropertiesP(JobID: string): Promise<libcomet_BackupJobDetail> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["JobID"] = JobID;
 		return await this._requestP("api/v1/admin/get-job-properties", params);
 	}
@@ -9836,11 +10629,11 @@ export default class CometServerAPIBase {
 	 * AdminGetJobsAll
 	 * Get jobs (All)
 	 * The jobs are returned in an unspecified order.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
-	 * @return {Promise<libcomet_BackupJobDetail[]>} 
+	 *
+	 * @return {Promise<libcomet_BackupJobDetail[]>}
 	 */
 	async AdminGetJobsAllP(): Promise<libcomet_BackupJobDetail[]> {
 		return await this._requestP("api/v1/admin/get-jobs-all", {});
@@ -9850,15 +10643,15 @@ export default class CometServerAPIBase {
 	 * AdminGetJobsForCustomSearch
 	 * Get jobs (for custom search)
 	 * The jobs are returned in an unspecified order.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {libcomet_SearchClause} Query (No description available)
-	 * @return {Promise<libcomet_BackupJobDetail[]>} 
+	 * @return {Promise<libcomet_BackupJobDetail[]>}
 	 */
 	async AdminGetJobsForCustomSearchP(Query: libcomet_SearchClause): Promise<libcomet_BackupJobDetail[]> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["Query"] = JSON.stringify(Query);
 		return await this._requestP("api/v1/admin/get-jobs-for-custom-search", params);
 	}
@@ -9867,24 +10660,24 @@ export default class CometServerAPIBase {
 	 * AdminGetJobsForDateRange
 	 * Get jobs (for date range)
 	 * The jobs are returned in an unspecified order.
-	 * 
+	 *
 	 * If the `Start` parameter is later than `End`, they will be swapped.
-	 * 
+	 *
 	 * This API will return all jobs that either started or ended within the supplied range.
-	 * 
+	 *
 	 * Incomplete jobs have an end time of `0`. You can use this API to find only incomplete jobs by setting both `Start` and `End` to `0`.
-	 * 
+	 *
 	 * Prior to Comet Server 22.6.0, additional Incomplete jobs may have been returned if you specified non-zero arguments for both `Start` and `End`.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {number} Start Timestamp (Unix)
 	 * @param {number} End Timestamp (Unix)
-	 * @return {Promise<libcomet_BackupJobDetail[]>} 
+	 * @return {Promise<libcomet_BackupJobDetail[]>}
 	 */
 	async AdminGetJobsForDateRangeP(Start: number, End: number): Promise<libcomet_BackupJobDetail[]> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["Start"] = ""+Start;
 		params["End"] = ""+End;
 		return await this._requestP("api/v1/admin/get-jobs-for-date-range", params);
@@ -9894,15 +10687,15 @@ export default class CometServerAPIBase {
 	 * AdminGetJobsForUser
 	 * Get jobs (for user)
 	 * The jobs are returned in an unspecified order.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetUser Selected username
-	 * @return {Promise<libcomet_BackupJobDetail[]>} 
+	 * @return {Promise<libcomet_BackupJobDetail[]>}
 	 */
 	async AdminGetJobsForUserP(TargetUser: string): Promise<libcomet_BackupJobDetail[]> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		return await this._requestP("api/v1/admin/get-jobs-for-user", params);
 	}
@@ -9911,11 +10704,11 @@ export default class CometServerAPIBase {
 	 * AdminGetJobsRecent
 	 * Get jobs (Recent and incomplete)
 	 * The jobs are returned in an unspecified order.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
-	 * @return {Promise<libcomet_BackupJobDetail[]>} 
+	 *
+	 * @return {Promise<libcomet_BackupJobDetail[]>}
 	 */
 	async AdminGetJobsRecentP(): Promise<libcomet_BackupJobDetail[]> {
 		return await this._requestP("api/v1/admin/get-jobs-recent", {});
@@ -9924,15 +10717,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminGetUserProfile
 	 * Get user account profile
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetUser Selected account username
-	 * @return {Promise<libcomet_UserProfileConfig>} 
+	 * @return {Promise<libcomet_UserProfileConfig>}
 	 */
 	async AdminGetUserProfileP(TargetUser: string): Promise<libcomet_UserProfileConfig> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		return await this._requestP("api/v1/admin/get-user-profile", params);
 	}
@@ -9942,15 +10735,15 @@ export default class CometServerAPIBase {
 	 * Get user account profile (atomic)
 	 * The resulting hash parameter can be passed to the corresponding update API, to atomically ensure that no changes occur between get/set operations.
 	 * The hash format is not publicly documented and may change in a future server version. Use server APIs to retrieve current hash values.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetUser Selected account username
-	 * @return {Promise<libcomet_GetProfileAndHashResponseMessage>} 
+	 * @return {Promise<libcomet_GetProfileAndHashResponseMessage>}
 	 */
 	async AdminGetUserProfileAndHashP(TargetUser: string): Promise<libcomet_GetProfileAndHashResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		return await this._requestP("api/v1/admin/get-user-profile-and-hash", params);
 	}
@@ -9960,15 +10753,15 @@ export default class CometServerAPIBase {
 	 * Get user account profile (hash)
 	 * The profile hash can be used to determine if a user account profile has changed.
 	 * The hash format is not publicly documented and may change in a future server version. Use server APIs to retrieve current hash values.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetUser Selected account username
-	 * @return {Promise<libcomet_GetProfileHashResponseMessage>} 
+	 * @return {Promise<libcomet_GetProfileHashResponseMessage>}
 	 */
 	async AdminGetUserProfileHashP(TargetUser: string): Promise<libcomet_GetProfileHashResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		return await this._requestP("api/v1/admin/get-user-profile-hash", params);
 	}
@@ -9979,16 +10772,16 @@ export default class CometServerAPIBase {
 	 * A request is sent to the live-connected device, asking it to cancel the operation. This may fail if there is no live-connection.
 	 * Only jobs from Comet 18.3.5 or newer can be cancelled. A job can only be cancelled if it has a non-empty CancellationID field in its properties.
 	 * If the device is running Comet 21.9.5 or later, this API will wait up to ten seconds for a confirmation from the client.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetUser Username
 	 * @param {string} JobID Job ID
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminJobCancelP(TargetUser: string, JobID: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		params["JobID"] = JobID;
 		return await this._requestP("api/v1/admin/job/cancel", params);
@@ -9997,11 +10790,11 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminListUsers
 	 * List all user accounts
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
-	 * @return {Promise<string[]>} 
+	 *
+	 * @return {Promise<string[]>}
 	 */
 	async AdminListUsersP(): Promise<string[]> {
 		return await this._requestP("api/v1/admin/list-users", {});
@@ -10010,11 +10803,11 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminListUsersFull
 	 * List all user account profiles
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
-	 * @return {Promise<{[k: string]: libcomet_UserProfileConfig}>} 
+	 *
+	 * @return {Promise<{[k: string]: libcomet_UserProfileConfig}>}
 	 */
 	async AdminListUsersFullP(): Promise<{[k: string]: libcomet_UserProfileConfig}> {
 		return await this._requestP("api/v1/admin/list-users-full", {});
@@ -10023,11 +10816,11 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminMetaBrandingConfigGet
 	 * Get Branding configuration
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * 
-	 * @return {Promise<libcomet_ServerConfigOptionsBrandingFragment>} 
+	 *
+	 * @return {Promise<libcomet_ServerConfigOptionsBrandingFragment>}
 	 */
 	async AdminMetaBrandingConfigGetP(): Promise<libcomet_ServerConfigOptionsBrandingFragment> {
 		return await this._requestP("api/v1/admin/meta/branding-config/get", {});
@@ -10037,15 +10830,15 @@ export default class CometServerAPIBase {
 	 * AdminMetaBrandingConfigSet
 	 * Set Branding configuration
 	 * Note that file resources must be provided using a resource URI, i.e `"resource://05ba0b90ee66bda433169581188aba8d29faa938f9464cccd651a02fdf2e5b57"`. See AdminMetaResourceNew for the API documentation to create new file resources.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * 
+	 *
 	 * @param {libcomet_BrandingOptions} BrandingConfig Updated configuration content
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminMetaBrandingConfigSetP(BrandingConfig: libcomet_BrandingOptions): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["BrandingConfig"] = JSON.stringify(BrandingConfig);
 		return await this._requestP("api/v1/admin/meta/branding-config/set", params);
 	}
@@ -10053,11 +10846,11 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminMetaBuildConfigGet
 	 * Get Software Build Role configuration
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * 
-	 * @return {Promise<libcomet_ServerConfigOptionsSoftwareBuildRoleFragment>} 
+	 *
+	 * @return {Promise<libcomet_ServerConfigOptionsSoftwareBuildRoleFragment>}
 	 */
 	async AdminMetaBuildConfigGetP(): Promise<libcomet_ServerConfigOptionsSoftwareBuildRoleFragment> {
 		return await this._requestP("api/v1/admin/meta/build-config/get", {});
@@ -10066,15 +10859,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminMetaBuildConfigSet
 	 * Set Build Role configuration
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * 
+	 *
 	 * @param {libcomet_SoftwareBuildRoleOptions} SoftwareBuildRoleConfig Updated configuration content
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminMetaBuildConfigSetP(SoftwareBuildRoleConfig: libcomet_SoftwareBuildRoleOptions): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["SoftwareBuildRoleConfig"] = JSON.stringify(SoftwareBuildRoleConfig);
 		return await this._requestP("api/v1/admin/meta/build-config/set", params);
 	}
@@ -10082,11 +10875,11 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminMetaConstellationConfigGet
 	 * Get Constellation configuration for the current organization
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Constellation Role to be enabled.
-	 * 
-	 * @return {Promise<libcomet_ConstellationRoleOptions>} 
+	 *
+	 * @return {Promise<libcomet_ConstellationRoleOptions>}
 	 */
 	async AdminMetaConstellationConfigGetP(): Promise<libcomet_ConstellationRoleOptions> {
 		return await this._requestP("api/v1/admin/meta/constellation/config/get", {});
@@ -10095,15 +10888,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminMetaConstellationConfigSet
 	 * Set Constellation configuration for the current organization
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Constellation Role to be enabled.
-	 * 
+	 *
 	 * @param {libcomet_ConstellationRoleOptions} ConstellationRoleOptions Constellation role options to set
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminMetaConstellationConfigSetP(ConstellationRoleOptions: libcomet_ConstellationRoleOptions): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["ConstellationRoleOptions"] = JSON.stringify(ConstellationRoleOptions);
 		return await this._requestP("api/v1/admin/meta/constellation/config/set", params);
 	}
@@ -10111,11 +10904,11 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminMetaEmailOptionsGet
 	 * Get the email options
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * 
-	 * @return {Promise<libcomet_EmailOptions>} 
+	 *
+	 * @return {Promise<libcomet_EmailOptions>}
 	 */
 	async AdminMetaEmailOptionsGetP(): Promise<libcomet_EmailOptions> {
 		return await this._requestP("api/v1/admin/meta/email-options/get", {});
@@ -10124,15 +10917,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminMetaEmailOptionsSet
 	 * Set the email options
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * 
+	 *
 	 * @param {libcomet_EmailOptions} EmailOptions The replacement email reporting options.
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminMetaEmailOptionsSetP(EmailOptions: libcomet_EmailOptions): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["EmailOptions"] = JSON.stringify(EmailOptions);
 		return await this._requestP("api/v1/admin/meta/email-options/set", params);
 	}
@@ -10140,11 +10933,11 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminMetaListAvailableLogDays
 	 * Get log files
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * 
-	 * @return {Promise<number[]>} 
+	 *
+	 * @return {Promise<number[]>}
 	 */
 	async AdminMetaListAvailableLogDaysP(): Promise<number[]> {
 		return await this._requestP("api/v1/admin/meta/list-available-log-days", {});
@@ -10153,10 +10946,10 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminMetaPsaConfigListGet
 	 * Get the server PSA configuration
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * 
-	 * @return {Promise<libcomet_PSAConfig[]>} 
+	 *
+	 * @return {Promise<libcomet_PSAConfig[]>}
 	 */
 	async AdminMetaPsaConfigListGetP(): Promise<libcomet_PSAConfig[]> {
 		return await this._requestP("api/v1/admin/meta/psa-config-list/get", {});
@@ -10165,14 +10958,14 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminMetaPsaConfigListSet
 	 * Update the server PSA configuration
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * 
+	 *
 	 * @param {libcomet_PSAConfig[]} PSAConfigList The replacement PSA configuration list
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminMetaPsaConfigListSetP(PSAConfigList: libcomet_PSAConfig[]): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["PSAConfigList"] = JSON.stringify(PSAConfigList);
 		return await this._requestP("api/v1/admin/meta/psa-config-list/set", params);
 	}
@@ -10181,11 +10974,11 @@ export default class CometServerAPIBase {
 	 * AdminMetaPsaConfigListSyncNow
 	 * Synchronize all PSA services now
 	 * This API applies to the current Organization's PSAConfig's only.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 *
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminMetaPsaConfigListSyncNowP(): Promise<libcomet_CometAPIResponseMessage> {
 		return await this._requestP("api/v1/admin/meta/psa-config-list/sync-now", {});
@@ -10196,15 +10989,15 @@ export default class CometServerAPIBase {
 	 * Get log file content
 	 * On non-Windows platforms, log content uses LF line endings. On Windows, Comet changed from LF to CRLF line endings in 18.3.2.
 	 * This API does not automatically convert line endings; around the 18.3.2 timeframe, log content may even contain mixed line-endings.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * 
+	 *
 	 * @param {number} Log A log day, selected from the options returned by the Get Log Files API
-	 * @return {Promise<string>} 
+	 * @return {Promise<string>}
 	 */
 	async AdminMetaReadLogsP(Log: number): Promise<string> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["Log"] = ""+Log;
 		return await this._requestP("api/v1/admin/meta/read-logs", params);
 	}
@@ -10212,11 +11005,11 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminMetaRemoteStorageVaultGet
 	 * Get Requesting Remote Storage Vault Config
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * 
-	 * @return {Promise<libcomet_RemoteStorageOption[]>} 
+	 *
+	 * @return {Promise<libcomet_RemoteStorageOption[]>}
 	 */
 	async AdminMetaRemoteStorageVaultGetP(): Promise<libcomet_RemoteStorageOption[]> {
 		return await this._requestP("api/v1/admin/meta/remote-storage-vault/get", {});
@@ -10225,15 +11018,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminMetaRemoteStorageVaultSet
 	 * Set Storage template vault options
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * 
+	 *
 	 * @param {libcomet_RemoteStorageOption[]} RemoteStorageOptions Updated configuration content
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminMetaRemoteStorageVaultSetP(RemoteStorageOptions: libcomet_RemoteStorageOption[]): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["RemoteStorageOptions"] = JSON.stringify(RemoteStorageOptions);
 		return await this._requestP("api/v1/admin/meta/remote-storage-vault/set", params);
 	}
@@ -10241,15 +11034,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminMetaRemoteStorageVaultTest
 	 * Test the connection to the storage template
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * 
+	 *
 	 * @param {libcomet_RemoteStorageOption} TemplateOptions Storage Template Vault Options
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminMetaRemoteStorageVaultTestP(TemplateOptions: libcomet_RemoteStorageOption): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TemplateOptions"] = JSON.stringify(TemplateOptions);
 		return await this._requestP("api/v1/admin/meta/remote-storage-vault/test", params);
 	}
@@ -10258,14 +11051,14 @@ export default class CometServerAPIBase {
 	 * AdminMetaRestartService
 	 * Restart server
 	 * The Comet Server process will exit. The service manager should restart the server automatically.
-	 * 
+	 *
 	 * Prior to 18.9.2, this API terminated the server immediately without returning a response. In 18.9.2 and later, it returns a successful response before shutting down.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * 
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 *
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminMetaRestartServiceP(): Promise<libcomet_CometAPIResponseMessage> {
 		return await this._requestP("api/v1/admin/meta/restart-service", {});
@@ -10275,16 +11068,16 @@ export default class CometServerAPIBase {
 	 * AdminMetaSendTestEmail
 	 * Send a test email message
 	 * This allows the Comet Server web interface to support testing different email credentials during setup.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * 
+	 *
 	 * @param {libcomet_EmailOptions} EmailOptions Updated configuration content
 	 * @param {string} Recipient Target email address to send test email
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminMetaSendTestEmailP(EmailOptions: libcomet_EmailOptions, Recipient: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["EmailOptions"] = JSON.stringify(EmailOptions);
 		params["Recipient"] = Recipient;
 		return await this._requestP("api/v1/admin/meta/send-test-email", params);
@@ -10294,15 +11087,15 @@ export default class CometServerAPIBase {
 	 * AdminMetaSendTestReport
 	 * Send a test admin email report
 	 * This allows a user to send a test email report
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * 
+	 *
 	 * @param {libcomet_EmailReportingOption} EmailReportingOption Test email reporting option for sending
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminMetaSendTestReportP(EmailReportingOption: libcomet_EmailReportingOption): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["EmailReportingOption"] = JSON.stringify(EmailReportingOption);
 		return await this._requestP("api/v1/admin/meta/send-test-report", params);
 	}
@@ -10310,12 +11103,12 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminMetaServerConfigGet
 	 * Get server configuration
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * 
-	 * @return {Promise<libcomet_ServerConfigOptions>} 
+	 *
+	 * @return {Promise<libcomet_ServerConfigOptions>}
 	 */
 	async AdminMetaServerConfigGetP(): Promise<libcomet_ServerConfigOptions> {
 		return await this._requestP("api/v1/admin/meta/server-config/get", {});
@@ -10325,12 +11118,12 @@ export default class CometServerAPIBase {
 	 * AdminMetaServerConfigNetworkInterfaces
 	 * List the available network interfaces on the PC running Comet Server
 	 * Any IPv6 addresses are listed in compressed form without square-brackets.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * 
-	 * @return {Promise<string[]>} 
+	 *
+	 * @return {Promise<string[]>}
 	 */
 	async AdminMetaServerConfigNetworkInterfacesP(): Promise<string[]> {
 		return await this._requestP("api/v1/admin/meta/server-config/network-interfaces", {});
@@ -10340,18 +11133,18 @@ export default class CometServerAPIBase {
 	 * AdminMetaServerConfigSet
 	 * Set server configuration
 	 * The Comet Server process will exit. The service manager should restart the server automatically.
-	 * 
+	 *
 	 * Prior to 18.9.2, this API terminated the server immediately without returning a response. In 18.9.2 and later, it returns a successful response before shutting down.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * 
+	 *
 	 * @param {libcomet_ServerConfigOptions} Config Updated configuration content
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminMetaServerConfigSetP(Config: libcomet_ServerConfigOptions): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["Config"] = JSON.stringify(Config);
 		return await this._requestP("api/v1/admin/meta/server-config/set", params);
 	}
@@ -10360,14 +11153,14 @@ export default class CometServerAPIBase {
 	 * AdminMetaShutdownService
 	 * Shut down server
 	 * The Comet Server process will exit.
-	 * 
+	 *
 	 * Prior to 18.9.2, this API terminated the server immediately without returning a response. In 18.9.2 and later, it returns a successful response before shutting down.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * 
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 *
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminMetaShutdownServiceP(): Promise<libcomet_CometAPIResponseMessage> {
 		return await this._requestP("api/v1/admin/meta/shutdown-service", {});
@@ -10376,10 +11169,10 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminMetaSoftwareUpdateNews
 	 * Get software update news from the software provider
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * 
-	 * @return {Promise<libcomet_SoftwareUpdateNewsResponse>} 
+	 *
+	 * @return {Promise<libcomet_SoftwareUpdateNewsResponse>}
 	 */
 	async AdminMetaSoftwareUpdateNewsP(): Promise<libcomet_SoftwareUpdateNewsResponse> {
 		return await this._requestP("api/v1/admin/meta/software-update-news", {});
@@ -10389,14 +11182,14 @@ export default class CometServerAPIBase {
 	 * AdminMetaStats
 	 * Get Comet Server historical statistics
 	 * The returned key-value map is not necessarily ordered. Client-side code should sort the result before display.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * 
+	 *
 	 * @param {boolean} Simple Remove redundant statistics
-	 * @return {Promise<{[k: number]: libcomet_StatResult}>} 
+	 * @return {Promise<{[k: number]: libcomet_StatResult}>}
 	 */
 	async AdminMetaStatsP(Simple: boolean): Promise<{[k: number]: libcomet_StatResult}> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["Simple"] = (Simple ? "1" : "0");
 		return await this._requestP("api/v1/admin/meta/stats", params);
 	}
@@ -10405,10 +11198,10 @@ export default class CometServerAPIBase {
 	 * AdminMetaVersion
 	 * Get server properties
 	 * Retrieve the version number and basic properties about the server.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * 
-	 * @return {Promise<libcomet_ServerMetaVersionInfo>} 
+	 *
+	 * @return {Promise<libcomet_ServerMetaVersionInfo>}
 	 */
 	async AdminMetaVersionP(): Promise<libcomet_ServerMetaVersionInfo> {
 		return await this._requestP("api/v1/admin/meta/version", {});
@@ -10417,11 +11210,11 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminMetaWebhookOptionsGet
 	 * Get the server webhook configuration
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * 
-	 * @return {Promise<{[k: string]: libcomet_WebhookOption}>} 
+	 *
+	 * @return {Promise<{[k: string]: libcomet_WebhookOption}>}
 	 */
 	async AdminMetaWebhookOptionsGetP(): Promise<{[k: string]: libcomet_WebhookOption}> {
 		return await this._requestP("api/v1/admin/meta/webhook-options/get", {});
@@ -10431,15 +11224,15 @@ export default class CometServerAPIBase {
 	 * AdminMetaWebhookOptionsSet
 	 * Update the server webhook configuration
 	 * Calling this endpoint will interrupt any messages currently queued for existing webhook destinations.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * 
+	 *
 	 * @param {{[k: string]: libcomet_WebhookOption}} WebhookOptions The replacement webhook target options.
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminMetaWebhookOptionsSetP(WebhookOptions: {[k: string]: libcomet_WebhookOption}): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["WebhookOptions"] = JSON.stringify(WebhookOptions);
 		return await this._requestP("api/v1/admin/meta/webhook-options/set", params);
 	}
@@ -10447,11 +11240,11 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminNewsGetAll
 	 * Get News entries (Admin)
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
-	 * @return {Promise<{[k: string]: libcomet_NewsEntry}>} 
+	 *
+	 * @return {Promise<{[k: string]: libcomet_NewsEntry}>}
 	 */
 	async AdminNewsGetAllP(): Promise<{[k: string]: libcomet_NewsEntry}> {
 		return await this._requestP("api/v1/admin/news/get-all", {});
@@ -10460,15 +11253,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminNewsRemove
 	 * Remove news item
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} NewsItem Selected news item GUID
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminNewsRemoveP(NewsItem: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["NewsItem"] = NewsItem;
 		return await this._requestP("api/v1/admin/news/remove", params);
 	}
@@ -10476,15 +11269,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminNewsSubmit
 	 * Submit news item
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} NewsContent Content of news item
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminNewsSubmitP(NewsContent: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["NewsContent"] = NewsContent;
 		return await this._requestP("api/v1/admin/news/submit", params);
 	}
@@ -10492,18 +11285,18 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminOrganizationDelete
 	 * Delete an organization and all related users
-	 * 
+	 *
 	 * Prior to Comet 22.6.0, this API was documented as returning the OrganizationResponse type. However, it always has returned only a CometAPIResponseMessage.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * 
+	 *
 	 * @param {string|null} OrganizationID (No description available)
 	 * @param {libcomet_UninstallConfig|null} UninstallConfig Uninstall software configuration
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminOrganizationDeleteP(OrganizationID: string|null = null, UninstallConfig: libcomet_UninstallConfig|null = null): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		if (OrganizationID !== null) {
 			params["OrganizationID"] = OrganizationID;
 		}
@@ -10516,15 +11309,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminOrganizationExport
 	 * Run self-backup for a specific tenant
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * 
+	 *
 	 * @param {libcomet_SelfBackupExportOptions} Options The export config options
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminOrganizationExportP(Options: libcomet_SelfBackupExportOptions): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["Options"] = JSON.stringify(Options);
 		return await this._requestP("api/v1/admin/organization/export", params);
 	}
@@ -10532,11 +11325,11 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminOrganizationList
 	 * List Organizations
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * 
-	 * @return {Promise<{[k: string]: libcomet_Organization}>} 
+	 *
+	 * @return {Promise<{[k: string]: libcomet_Organization}>}
 	 */
 	async AdminOrganizationListP(): Promise<{[k: string]: libcomet_Organization}> {
 		return await this._requestP("api/v1/admin/organization/list", {});
@@ -10545,18 +11338,18 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminOrganizationSet
 	 * Create or Update an Organization
-	 * 
+	 *
 	 * Prior to Comet 22.6.0, the 'ID' and 'Organization' fields were not present in the response.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * 
+	 *
 	 * @param {string|null} OrganizationID (No description available)
 	 * @param {libcomet_Organization|null} Organization (No description available)
-	 * @return {Promise<libcomet_OrganizationResponse>} 
+	 * @return {Promise<libcomet_OrganizationResponse>}
 	 */
 	async AdminOrganizationSetP(OrganizationID: string|null = null, Organization: libcomet_Organization|null = null): Promise<libcomet_OrganizationResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		if (OrganizationID !== null) {
 			params["OrganizationID"] = OrganizationID;
 		}
@@ -10569,15 +11362,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminPoliciesDelete
 	 * Delete an existing policy object
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} PolicyID The policy ID to update or create
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminPoliciesDeleteP(PolicyID: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["PolicyID"] = PolicyID;
 		return await this._requestP("api/v1/admin/policies/delete", params);
 	}
@@ -10586,15 +11379,15 @@ export default class CometServerAPIBase {
 	 * AdminPoliciesGet
 	 * Retrieve a single policy object
 	 * A hash is also returned, to allow atomic modification operations.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} PolicyID The policy ID to retrieve
-	 * @return {Promise<libcomet_GetGroupPolicyResponse>} 
+	 * @return {Promise<libcomet_GetGroupPolicyResponse>}
 	 */
 	async AdminPoliciesGetP(PolicyID: string): Promise<libcomet_GetGroupPolicyResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["PolicyID"] = PolicyID;
 		return await this._requestP("api/v1/admin/policies/get", params);
 	}
@@ -10603,15 +11396,15 @@ export default class CometServerAPIBase {
 	 * AdminPoliciesList
 	 * List all policy object names
 	 * For the top-level organization, the API result includes all policies for all organizations, unless the TargetOrganization parameter is present.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string|null} TargetOrganization If present, list the policies belonging to another organization. Only allowed for administrator accounts in the top-level organization. (>= 22.3.7)
-	 * @return {Promise<{[k: string]: string}>} 
+	 * @return {Promise<{[k: string]: string}>}
 	 */
 	async AdminPoliciesListP(TargetOrganization: string|null = null): Promise<{[k: string]: string}> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		if (TargetOrganization !== null) {
 			params["TargetOrganization"] = TargetOrganization;
 		}
@@ -10622,15 +11415,15 @@ export default class CometServerAPIBase {
 	 * AdminPoliciesListFull
 	 * Get all policy objects
 	 * For the top-level organization, the API result includes all policies for all organizations, unless the TargetOrganization parameter is present.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string|null} TargetOrganization If present, list the policies belonging to another organization. Only allowed for administrator accounts in the top-level organization. (>= 22.3.7)
-	 * @return {Promise<{[k: string]: libcomet_GroupPolicy}>} 
+	 * @return {Promise<{[k: string]: libcomet_GroupPolicy}>}
 	 */
 	async AdminPoliciesListFullP(TargetOrganization: string|null = null): Promise<{[k: string]: libcomet_GroupPolicy}> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		if (TargetOrganization !== null) {
 			params["TargetOrganization"] = TargetOrganization;
 		}
@@ -10640,15 +11433,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminPoliciesNew
 	 * Create a new policy object
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {libcomet_GroupPolicy} Policy The policy data
-	 * @return {Promise<libcomet_CreateGroupPolicyResponse>} 
+	 * @return {Promise<libcomet_CreateGroupPolicyResponse>}
 	 */
 	async AdminPoliciesNewP(Policy: libcomet_GroupPolicy): Promise<libcomet_CreateGroupPolicyResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["Policy"] = JSON.stringify(Policy);
 		return await this._requestP("api/v1/admin/policies/new", params);
 	}
@@ -10658,17 +11451,17 @@ export default class CometServerAPIBase {
 	 * Update an existing policy object
 	 * An optional hash may be used, to ensure the modification was atomic.
 	 * This API can also be used to create a new policy object with a specific hash.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} PolicyID The policy ID to update or create
 	 * @param {libcomet_GroupPolicy} Policy The policy data
 	 * @param {string|null} CheckPolicyHash An atomic verification hash as supplied by the AdminPoliciesGet API
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminPoliciesSetP(PolicyID: string, Policy: libcomet_GroupPolicy, CheckPolicyHash: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["PolicyID"] = PolicyID;
 		params["Policy"] = JSON.stringify(Policy);
 		if (CheckPolicyHash !== null) {
@@ -10680,17 +11473,17 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminPreviewUserEmailReport
 	 * Preview an email report for a customer
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetUser Selected account username
 	 * @param {libcomet_EmailReportConfig} EmailReportConfig Email report configuration to preview
 	 * @param {string|null} EmailAddress Email address that may be included in the report body (>= 20.3.3)
-	 * @return {Promise<libcomet_EmailReportGeneratedPreview>} 
+	 * @return {Promise<libcomet_EmailReportGeneratedPreview>}
 	 */
 	async AdminPreviewUserEmailReportP(TargetUser: string, EmailReportConfig: libcomet_EmailReportConfig, EmailAddress: string|null = null): Promise<libcomet_EmailReportGeneratedPreview> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		params["EmailReportConfig"] = JSON.stringify(EmailReportConfig);
 		if (EmailAddress !== null) {
@@ -10702,11 +11495,11 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminReplicationState
 	 * Get Replication status
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * 
-	 * @return {Promise<libcomet_ReplicatorStateAPIResponse[]>} 
+	 *
+	 * @return {Promise<libcomet_ReplicatorStateAPIResponse[]>}
 	 */
 	async AdminReplicationStateP(): Promise<libcomet_ReplicatorStateAPIResponse[]> {
 		return await this._requestP("api/v1/admin/replication/state", {});
@@ -10718,17 +11511,17 @@ export default class CometServerAPIBase {
 	 * This action does not respect the "Prevent creating new Storage Vaults (via Request)" policy setting. New Storage Vaults can be requested regardless of the policy setting.
 	 * Prior to Comet 19.8.0, the response type was CometAPIResponseMessage (i.e. no DestinationID field in response).
 	 * The StorageProvider must exist for the target user account's organization.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetUser The user to receive the new Storage Vault
 	 * @param {string} StorageProvider ID for the storage template destination
 	 * @param {string|null} SelfAddress The external URL for this server. Used to resolve conflicts
-	 * @return {Promise<libcomet_RequestStorageVaultResponseMessage>} 
+	 * @return {Promise<libcomet_RequestStorageVaultResponseMessage>}
 	 */
 	async AdminRequestStorageVaultP(TargetUser: string, StorageProvider: string, SelfAddress: string|null = null): Promise<libcomet_RequestStorageVaultResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		params["StorageProvider"] = StorageProvider;
 		if (SelfAddress === null) {
@@ -10742,15 +11535,15 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminRequestStorageVaultProviders
 	 * Get the available options for Requesting a Storage Vault
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string|null} TargetOrganization If present, list the storage template options belonging to another organization. Only allowed for administrator accounts in the top-level organization. (>= 22.3.7)
-	 * @return {Promise<{[k: string]: string}>} 
+	 * @return {Promise<{[k: string]: string}>}
 	 */
 	async AdminRequestStorageVaultProvidersP(TargetOrganization: string|null = null): Promise<{[k: string]: string}> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		if (TargetOrganization !== null) {
 			params["TargetOrganization"] = TargetOrganization;
 		}
@@ -10761,17 +11554,17 @@ export default class CometServerAPIBase {
 	 * AdminResetUserPassword
 	 * Reset user account password
 	 * The user account must have a recovery code present. A new replacement recovery code will be generated automatically.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetUser Selected account username
 	 * @param {string} NewPassword New account password
 	 * @param {string|null} OldPassword Old account password. Required if no recovery code is present for the user account.
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminResetUserPasswordP(TargetUser: string, NewPassword: string, OldPassword: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		params["NewPassword"] = NewPassword;
 		if (OldPassword !== null) {
@@ -10784,16 +11577,16 @@ export default class CometServerAPIBase {
 	 * AdminRevokeDevice
 	 * Revoke device from user account
 	 * It's possible to simply remove the Device section from the user's profile, however, using this dedicated API will also gracefully handle live connections.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetUser Selected account username
 	 * @param {string} TargetDevice Selected Device ID
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminRevokeDeviceP(TargetUser: string, TargetDevice: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		params["TargetDevice"] = TargetDevice;
 		return await this._requestP("api/v1/admin/revoke-device", params);
@@ -10802,11 +11595,11 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminSelfBackupStart
 	 * Run self-backup on all targets
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * 
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 *
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminSelfBackupStartP(): Promise<libcomet_CometAPIResponseMessage> {
 		return await this._requestP("api/v1/admin/self-backup/start", {});
@@ -10815,16 +11608,16 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminSetUserProfile
 	 * Modify user account profile
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetUser Selected account username
 	 * @param {libcomet_UserProfileConfig} ProfileData Modified user profile
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminSetUserProfileP(TargetUser: string, ProfileData: libcomet_UserProfileConfig): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		params["ProfileData"] = JSON.stringify(ProfileData);
 		return await this._requestP("api/v1/admin/set-user-profile", params);
@@ -10835,17 +11628,17 @@ export default class CometServerAPIBase {
 	 * Modify user account profile (atomic)
 	 * The hash parameter can be determined from the corresponding API, to atomically ensure that no changes occur between get/set operations.
 	 * The hash format is not publicly documented and may change in a future server version. Use server APIs to retrieve current hash values.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetUser Selected account username
 	 * @param {libcomet_UserProfileConfig} ProfileData Modified user profile
 	 * @param {string} RequireHash Previous hash parameter
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminSetUserProfileHashP(TargetUser: string, ProfileData: libcomet_UserProfileConfig, RequireHash: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		params["ProfileData"] = JSON.stringify(ProfileData);
 		params["RequireHash"] = RequireHash;
@@ -10856,16 +11649,16 @@ export default class CometServerAPIBase {
 	 * AdminStorageBucketProperties
 	 * Retrieve properties for a single bucket
 	 * This API can also be used to refresh the size measurement for a single bucket by passing a valid AfterTimestamp parameter.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Storage Role to be enabled.
-	 * 
+	 *
 	 * @param {string} BucketID Bucket ID
 	 * @param {number|null} AfterTimestamp Allow a stale size measurement if it is at least as new as the supplied Unix timestamp. Timestamps in the future may produce a result clamped down to the Comet Server's current time. If not present, the size measurement may be arbitrarily stale.
-	 * @return {Promise<libcomet_BucketProperties>} 
+	 * @return {Promise<libcomet_BucketProperties>}
 	 */
 	async AdminStorageBucketPropertiesP(BucketID: string, AfterTimestamp: number|null = null): Promise<libcomet_BucketProperties> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["BucketID"] = BucketID;
 		if (AfterTimestamp !== null) {
 			params["AfterTimestamp"] = ""+AfterTimestamp;
@@ -10877,15 +11670,15 @@ export default class CometServerAPIBase {
 	 * AdminStorageDeleteBucket
 	 * Delete a bucket
 	 * All data will be removed from the server. Misuse can cause data loss!
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Storage Role to be enabled.
-	 * 
+	 *
 	 * @param {string} BucketID Selected bucket name
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminStorageDeleteBucketP(BucketID: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["BucketID"] = BucketID;
 		return await this._requestP("api/v1/admin/storage/delete-bucket", params);
 	}
@@ -10893,17 +11686,17 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminStorageFreeSpace
 	 * Retrieve available space metrics
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
 	 * This API requires the Storage Role to be enabled.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * 
+	 *
 	 * @param {string|null} BucketID (This parameter is not used)
-	 * @return {Promise<libcomet_StorageFreeSpaceInfo>} 
+	 * @return {Promise<libcomet_StorageFreeSpaceInfo>}
 	 */
 	async AdminStorageFreeSpaceP(BucketID: string|null = null): Promise<libcomet_StorageFreeSpaceInfo> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		if (BucketID !== null) {
 			params["BucketID"] = BucketID;
 		}
@@ -10913,11 +11706,11 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminStorageListBuckets
 	 * List all buckets
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Storage Role to be enabled.
-	 * 
-	 * @return {Promise<{[k: string]: libcomet_BucketProperties}>} 
+	 *
+	 * @return {Promise<{[k: string]: libcomet_BucketProperties}>}
 	 */
 	async AdminStorageListBucketsP(): Promise<{[k: string]: libcomet_BucketProperties}> {
 		return await this._requestP("api/v1/admin/storage/list-buckets", {});
@@ -10926,17 +11719,17 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminStoragePingDestination
 	 * Ping a storage destination
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
 	 * This API requires the Storage Role to be enabled.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * 
+	 *
 	 * @param {libcomet_DestinationLocation} ExtraData The destination location settings
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminStoragePingDestinationP(ExtraData: libcomet_DestinationLocation): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["ExtraData"] = JSON.stringify(ExtraData);
 		return await this._requestP("api/v1/admin/storage/ping-destination", params);
 	}
@@ -10946,18 +11739,18 @@ export default class CometServerAPIBase {
 	 * Create a new bucket
 	 * Leave the Set* parameters blank to generate a bucket with random credentials, or, supply a pre-hashed password for zero-knowledge operations.
 	 * Any auto-generated credentials are returned in the response message.
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Storage Role to be enabled.
-	 * 
+	 *
 	 * @param {string|null} SetBucketValue Bucket ID
 	 * @param {string|null} SetKeyHashFormat Bucket key hashing format
 	 * @param {string|null} SetKeyHashValue Bucket key hash
 	 * @param {string|null} SetOrganizationID Target organization ID (>= 20.9.0)
-	 * @return {Promise<libcomet_AddBucketResponseMessage>} 
+	 * @return {Promise<libcomet_AddBucketResponseMessage>}
 	 */
 	async AdminStorageRegisterBucketP(SetBucketValue: string|null = null, SetKeyHashFormat: string|null = null, SetKeyHashValue: string|null = null, SetOrganizationID: string|null = null): Promise<libcomet_AddBucketResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		if (SetBucketValue !== null) {
 			params["SetBucketValue"] = SetBucketValue;
 		}
@@ -10976,17 +11769,17 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminUpdateCampaignStart
 	 * Start a new software update campaign
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * This API requires the Software Build Role to be enabled.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {libcomet_UpdateCampaignOptions} Options Configure targets for the software update campaign
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminUpdateCampaignStartP(Options: libcomet_UpdateCampaignOptions): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["Options"] = JSON.stringify(Options);
 		return await this._requestP("api/v1/admin/update-campaign/start", params);
 	}
@@ -10994,13 +11787,13 @@ export default class CometServerAPIBase {
 	/**
 	 * AdminUpdateCampaignStatus
 	 * Get current campaign status
-	 * 
+	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * This API requires the Software Build Role to be enabled.
 	 * This API requires the Auth Role to be enabled.
-	 * 
-	 * @return {Promise<libcomet_UpdateCampaignStatus>} 
+	 *
+	 * @return {Promise<libcomet_UpdateCampaignStatus>}
 	 */
 	async AdminUpdateCampaignStatusP(): Promise<libcomet_UpdateCampaignStatus> {
 		return await this._requestP("api/v1/admin/update-campaign/status", {});
@@ -11011,8 +11804,8 @@ export default class CometServerAPIBase {
 	 * Generate a session key (log in)
 	 * This hybrid API allows you to log in to the Comet Server as either an administrator or end-user account.
 	 * This API behaves like either AdminAccountSessionStart or UserWebSessionStart, depending on what the supplied credentials were valid for.
-	 * 
-	 * @return {Promise<libcomet_SessionKeyRegeneratedResponse>} 
+	 *
+	 * @return {Promise<libcomet_SessionKeyRegeneratedResponse>}
 	 */
 	async HybridSessionStartP(): Promise<libcomet_SessionKeyRegeneratedResponse> {
 		return await this._requestP("api/v1/hybrid/session/start", {});
@@ -11022,18 +11815,18 @@ export default class CometServerAPIBase {
 	 * UserDispatcherEmailPreview
 	 * Request HTML content of an email
 	 * The remote device must have given consent for an MSP to browse their mail
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Snapshot where the email belongs to
 	 * @param {string} Destination The Storage Vault ID
 	 * @param {string} Path of the email to view
-	 * @return {Promise<libcomet_EmailReportGeneratedPreview>} 
+	 * @return {Promise<libcomet_EmailReportGeneratedPreview>}
 	 */
 	async UserDispatcherEmailPreviewP(TargetID: string, Snapshot: string, Destination: string, Path: string): Promise<libcomet_EmailReportGeneratedPreview> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Snapshot"] = Snapshot;
 		params["Destination"] = Destination;
@@ -11045,15 +11838,15 @@ export default class CometServerAPIBase {
 	 * UserWebAccountRegenerateTotp
 	 * Generate a new TOTP secret for user (web)
 	 * The secret is returned as a `data-uri` image of a QR code. The new secret is immediately applied to the current admin account.
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} ProfileHash Previous account profile hash
-	 * @return {Promise<libcomet_TotpRegeneratedResponse>} 
+	 * @return {Promise<libcomet_TotpRegeneratedResponse>}
 	 */
 	async UserWebAccountRegenerateTotpP(ProfileHash: string): Promise<libcomet_TotpRegeneratedResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["ProfileHash"] = ProfileHash;
 		return await this._requestP("api/v1/user/web/account/regenerate-totp", params);
 	}
@@ -11062,17 +11855,17 @@ export default class CometServerAPIBase {
 	 * UserWebAccountResetPassword
 	 * Reset the password for your own user account (web)
 	 * A new replacement recovery code will be generated if the present recovery code is not empty
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} ProfileHash Previous account profile hash
 	 * @param {string} OldPassword Current account password
 	 * @param {string} NewPassword New account password
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async UserWebAccountResetPasswordP(ProfileHash: string, OldPassword: string, NewPassword: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["ProfileHash"] = ProfileHash;
 		params["OldPassword"] = OldPassword;
 		params["NewPassword"] = NewPassword;
@@ -11082,16 +11875,16 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebAccountValidateTotp
 	 * Validate the TOTP code before turning 2fa(TOTP) on
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} ProfileHash Previous account profile hash
 	 * @param {string} TOTPCode Six-digit code after scanning barcode image
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async UserWebAccountValidateTotpP(ProfileHash: string, TOTPCode: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["ProfileHash"] = ProfileHash;
 		params["TOTPCode"] = TOTPCode;
 		return await this._requestP("api/v1/user/web/account/validate-totp", params);
@@ -11100,17 +11893,17 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebDispatcherDeleteSnapshot
 	 * Instruct a live connected device to delete a stored snapshot
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} DestinationID The Storage Vault GUID
 	 * @param {string} SnapshotID The backup job snapshot ID to delete
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async UserWebDispatcherDeleteSnapshotP(TargetID: string, DestinationID: string, SnapshotID: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["DestinationID"] = DestinationID;
 		params["SnapshotID"] = SnapshotID;
@@ -11121,17 +11914,17 @@ export default class CometServerAPIBase {
 	 * UserWebDispatcherDeleteSnapshots
 	 * Instruct a live connected device to delete multiple stored snapshots
 	 * The target device must be running Comet 20.9.10 or later.
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} DestinationID The Storage Vault GUID
 	 * @param {string[]} SnapshotIDs The backup job snapshot IDs to delete
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async UserWebDispatcherDeleteSnapshotsP(TargetID: string, DestinationID: string, SnapshotIDs: string[]): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["DestinationID"] = DestinationID;
 		params["SnapshotIDs"] = JSON.stringify(SnapshotIDs);
@@ -11141,11 +11934,11 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebDispatcherListActive
 	 * List live connected devices in my account
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
-	 * @return {Promise<{[k: string]: libcomet_LiveUserConnection}>} 
+	 *
+	 * @return {Promise<{[k: string]: libcomet_LiveUserConnection}>}
 	 */
 	async UserWebDispatcherListActiveP(): Promise<{[k: string]: libcomet_LiveUserConnection}> {
 		return await this._requestP("api/v1/user/web/dispatcher/list-active", {});
@@ -11154,16 +11947,16 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebDispatcherOffice365ListVirtualAccounts
 	 * Request a list of Office365 Resources (groups, sites, teams groups and users)
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_Office365Credential} Credentials The Office365 account credential
-	 * @return {Promise<libcomet_BrowseOffice365ListVirtualAccountsResponse>} 
+	 * @return {Promise<libcomet_BrowseOffice365ListVirtualAccountsResponse>}
 	 */
 	async UserWebDispatcherOffice365ListVirtualAccountsP(TargetID: string, Credentials: libcomet_Office365Credential): Promise<libcomet_BrowseOffice365ListVirtualAccountsResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Credentials"] = JSON.stringify(Credentials);
 		return await this._requestP("api/v1/user/web/dispatcher/office365-list-virtual-accounts", params);
@@ -11172,16 +11965,16 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebDispatcherPingDestination
 	 * Test the connection to the storage bucket
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_DestinationLocation} ExtraData The destination location settings
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async UserWebDispatcherPingDestinationP(TargetID: string, ExtraData: libcomet_DestinationLocation): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["ExtraData"] = JSON.stringify(ExtraData);
 		return await this._requestP("api/v1/user/web/dispatcher/ping-destination", params);
@@ -11191,16 +11984,16 @@ export default class CometServerAPIBase {
 	 * UserWebDispatcherRegisterOfficeApplicationBegin
 	 * Begin the process of registering a new Azure AD application that can access Office 365 for backup
 	 * After calling this API, you should supply the login details to the end-user, and then begin polling the AdminDispatcherRegisterOfficeApplicationCheck with the supplied "Continuation" parameter to check on the registration process.
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} EmailAddress The email address of the Azure AD administrator
-	 * @return {Promise<libcomet_RegisterOfficeApplicationBeginResponse>} 
+	 * @return {Promise<libcomet_RegisterOfficeApplicationBeginResponse>}
 	 */
 	async UserWebDispatcherRegisterOfficeApplicationBeginP(TargetID: string, EmailAddress: string): Promise<libcomet_RegisterOfficeApplicationBeginResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["EmailAddress"] = EmailAddress;
 		return await this._requestP("api/v1/user/web/dispatcher/register-office-application/begin", params);
@@ -11210,16 +12003,16 @@ export default class CometServerAPIBase {
 	 * UserWebDispatcherRegisterOfficeApplicationCheck
 	 * Check the process of registering a new Azure AD application that can access Office 365 for backup
 	 * You should begin the process by calling AdminDispatcherRegisterOfficeApplicationBegin and asking the end-user to complete the Azure authentication steps.
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Continuation The ID returned from the AdminDispatcherRegisterOfficeApplicationBegin endpoint
-	 * @return {Promise<libcomet_RegisterOfficeApplicationCheckResponse>} 
+	 * @return {Promise<libcomet_RegisterOfficeApplicationCheckResponse>}
 	 */
 	async UserWebDispatcherRegisterOfficeApplicationCheckP(TargetID: string, Continuation: string): Promise<libcomet_RegisterOfficeApplicationCheckResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Continuation"] = Continuation;
 		return await this._requestP("api/v1/user/web/dispatcher/register-office-application/check", params);
@@ -11228,15 +12021,15 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebDispatcherRequestBrowseDiskDrives
 	 * Request a list of physical disk drive information from a live connected device
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
-	 * @return {Promise<libcomet_BrowseDiskDrivesResponse>} 
+	 * @return {Promise<libcomet_BrowseDiskDrivesResponse>}
 	 */
 	async UserWebDispatcherRequestBrowseDiskDrivesP(TargetID: string): Promise<libcomet_BrowseDiskDrivesResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		return await this._requestP("api/v1/user/web/dispatcher/request-browse-disk-drives", params);
 	}
@@ -11244,15 +12037,15 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebDispatcherRequestBrowseExchangeEdb
 	 * Request a list of Exchange EDB databases from a live connected device
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
-	 * @return {Promise<libcomet_BrowseEDBResponse>} 
+	 * @return {Promise<libcomet_BrowseEDBResponse>}
 	 */
 	async UserWebDispatcherRequestBrowseExchangeEdbP(TargetID: string): Promise<libcomet_BrowseEDBResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		return await this._requestP("api/v1/user/web/dispatcher/request-browse-exchange-edb", params);
 	}
@@ -11260,15 +12053,15 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebDispatcherRequestBrowseHyperv
 	 * Request a list of Hyper-V virtual machines from a live connected device
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
-	 * @return {Promise<libcomet_BrowseHVResponse>} 
+	 * @return {Promise<libcomet_BrowseHVResponse>}
 	 */
 	async UserWebDispatcherRequestBrowseHypervP(TargetID: string): Promise<libcomet_BrowseHVResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		return await this._requestP("api/v1/user/web/dispatcher/request-browse-hyperv", params);
 	}
@@ -11276,16 +12069,16 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebDispatcherRequestBrowseMongodb
 	 * Request a list of tables in MongoDB database
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_MongoDBConnection} Credentials The MongoDB database authentication settings
-	 * @return {Promise<libcomet_BrowseSQLServerResponse>} 
+	 * @return {Promise<libcomet_BrowseSQLServerResponse>}
 	 */
 	async UserWebDispatcherRequestBrowseMongodbP(TargetID: string, Credentials: libcomet_MongoDBConnection): Promise<libcomet_BrowseSQLServerResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Credentials"] = JSON.stringify(Credentials);
 		return await this._requestP("api/v1/user/web/dispatcher/request-browse-mongodb", params);
@@ -11294,16 +12087,16 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebDispatcherRequestBrowseMssql
 	 * Request a list of tables in MSSQL database
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_MSSQLConnection} Credentials The MSSQL database authentication settings
-	 * @return {Promise<libcomet_BrowseSQLServerResponse>} 
+	 * @return {Promise<libcomet_BrowseSQLServerResponse>}
 	 */
 	async UserWebDispatcherRequestBrowseMssqlP(TargetID: string, Credentials: libcomet_MSSQLConnection): Promise<libcomet_BrowseSQLServerResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Credentials"] = JSON.stringify(Credentials);
 		return await this._requestP("api/v1/user/web/dispatcher/request-browse-mssql", params);
@@ -11312,16 +12105,16 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebDispatcherRequestBrowseMysql
 	 * Request a list of tables in MySQL database
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_MySQLConnection} Credentials The MySQL database authentication settings
-	 * @return {Promise<libcomet_BrowseSQLServerResponse>} 
+	 * @return {Promise<libcomet_BrowseSQLServerResponse>}
 	 */
 	async UserWebDispatcherRequestBrowseMysqlP(TargetID: string, Credentials: libcomet_MySQLConnection): Promise<libcomet_BrowseSQLServerResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Credentials"] = JSON.stringify(Credentials);
 		return await this._requestP("api/v1/user/web/dispatcher/request-browse-mysql", params);
@@ -11330,15 +12123,15 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebDispatcherRequestBrowseVssAaw
 	 * Request a list of installed VSS Writers (Application-Aware Writers) from a live connected device
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
-	 * @return {Promise<libcomet_BrowseVSSResponse>} 
+	 * @return {Promise<libcomet_BrowseVSSResponse>}
 	 */
 	async UserWebDispatcherRequestBrowseVssAawP(TargetID: string): Promise<libcomet_BrowseVSSResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		return await this._requestP("api/v1/user/web/dispatcher/request-browse-vss-aaw", params);
 	}
@@ -11346,16 +12139,16 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebDispatcherRequestOffice365Accounts
 	 * Request a list of Office365 mailbox accounts
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_Office365Credential} Credentials The Office365 account credential
-	 * @return {Promise<libcomet_BrowseOffice365ObjectsResponse>} 
+	 * @return {Promise<libcomet_BrowseOffice365ObjectsResponse>}
 	 */
 	async UserWebDispatcherRequestOffice365AccountsP(TargetID: string, Credentials: libcomet_Office365Credential): Promise<libcomet_BrowseOffice365ObjectsResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Credentials"] = JSON.stringify(Credentials);
 		return await this._requestP("api/v1/user/web/dispatcher/request-office365-accounts", params);
@@ -11364,16 +12157,16 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebDispatcherRequestOffice365Sites
 	 * Request a list of Office365 sites
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_Office365Credential} Credentials The Office365 account credential
-	 * @return {Promise<libcomet_BrowseOffice365ObjectsResponse>} 
+	 * @return {Promise<libcomet_BrowseOffice365ObjectsResponse>}
 	 */
 	async UserWebDispatcherRequestOffice365SitesP(TargetID: string, Credentials: libcomet_Office365Credential): Promise<libcomet_BrowseOffice365ObjectsResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Credentials"] = JSON.stringify(Credentials);
 		return await this._requestP("api/v1/user/web/dispatcher/request-office365-sites", params);
@@ -11383,19 +12176,19 @@ export default class CometServerAPIBase {
 	 * UserWebDispatcherRequestStoredObjects
 	 * Request a list of stored objects inside an existing backup job
 	 * The remote device must have given consent for an MSP to browse their files.
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Destination The Storage Vault ID
 	 * @param {string} SnapshotID The selected backup job snapshot
 	 * @param {string|null} TreeID Browse objects inside subdirectory of backup snapshot. If it is for VMDK single file restore, it should be the disk image's subtree ID.
 	 * @param {libcomet_VMDKSnapshotViewOptions|null} Options Request a list of stored objects in vmdk file
-	 * @return {Promise<libcomet_DispatcherStoredObjectsResponse>} 
+	 * @return {Promise<libcomet_DispatcherStoredObjectsResponse>}
 	 */
 	async UserWebDispatcherRequestStoredObjectsP(TargetID: string, Destination: string, SnapshotID: string, TreeID: string|null = null, Options: libcomet_VMDKSnapshotViewOptions|null = null): Promise<libcomet_DispatcherStoredObjectsResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Destination"] = Destination;
 		params["SnapshotID"] = SnapshotID;
@@ -11411,16 +12204,16 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebDispatcherRequestVaultSnapshots
 	 * Request a list of Storage Vault snapshots from a live connected device
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Destination The Storage Vault ID
-	 * @return {Promise<libcomet_DispatcherVaultSnapshotsResponse>} 
+	 * @return {Promise<libcomet_DispatcherVaultSnapshotsResponse>}
 	 */
 	async UserWebDispatcherRequestVaultSnapshotsP(TargetID: string, Destination: string): Promise<libcomet_DispatcherVaultSnapshotsResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Destination"] = Destination;
 		return await this._requestP("api/v1/user/web/dispatcher/request-vault-snapshots", params);
@@ -11429,17 +12222,17 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebDispatcherRequestWindiskSnapshot
 	 * Request a Disk Image snapshot with the windiskbrowse-style from a live connected device
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Destination The Storage Vault ID
 	 * @param {string} SnapshotID The Snapshot ID
-	 * @return {Promise<libcomet_DispatcherWindiskSnapshotResponse>} 
+	 * @return {Promise<libcomet_DispatcherWindiskSnapshotResponse>}
 	 */
 	async UserWebDispatcherRequestWindiskSnapshotP(TargetID: string, Destination: string, SnapshotID: string): Promise<libcomet_DispatcherWindiskSnapshotResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Destination"] = Destination;
 		params["SnapshotID"] = SnapshotID;
@@ -11449,16 +12242,16 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebDispatcherRunBackup
 	 * Instruct a live connected device in my account to run a scheduled backup
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} BackupRule The schedule GUID
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async UserWebDispatcherRunBackupP(TargetID: string, BackupRule: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["BackupRule"] = BackupRule;
 		return await this._requestP("api/v1/user/web/dispatcher/run-backup", params);
@@ -11467,18 +12260,18 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebDispatcherRunBackupCustom
 	 * Instruct a live connected device to run a backup
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Source The Protected Item GUID
 	 * @param {string} Destination The Storage Vault GUID
 	 * @param {libcomet_BackupJobAdvancedOptions|null} Options Extra job parameters (>= 19.3.6)
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async UserWebDispatcherRunBackupCustomP(TargetID: string, Source: string, Destination: string, Options: libcomet_BackupJobAdvancedOptions|null = null): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Source"] = Source;
 		params["Destination"] = Destination;
@@ -11491,20 +12284,20 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebDispatcherRunRestore
 	 * Instruct a live connected device in my account to perform a local restore
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Path The local path to restore to
 	 * @param {string} Source The Protected Item ID
 	 * @param {string} Destination The Storage Vault ID
 	 * @param {string|null} Snapshot If present, restore a specific snapshot. Otherwise, restore the latest snapshot for the selected Protected Item + Storage Vault pair
 	 * @param {string[]|null} Paths If present, restore these paths only. Otherwise, restore all data (>= 19.3.0)
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async UserWebDispatcherRunRestoreP(TargetID: string, Path: string, Source: string, Destination: string, Snapshot: string|null = null, Paths: string[]|null = null): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Path"] = Path;
 		params["Source"] = Source;
@@ -11522,20 +12315,20 @@ export default class CometServerAPIBase {
 	 * UserWebDispatcherRunRestoreCustom
 	 * Instruct a live connected device in my account to perform a local restore
 	 * This command is understood by Comet Backup 18.6.0 and newer.
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Source The Protected Item ID
 	 * @param {string} Destination The Storage Vault ID
 	 * @param {libcomet_RestoreJobAdvancedOptions} Options Restore targets
 	 * @param {string|null} Snapshot If present, restore a specific snapshot. Otherwise, restore the latest snapshot for the selected Protected Item + Storage Vault pair
 	 * @param {string[]|null} Paths If present, restore these paths only. Otherwise, restore all data (>= 19.3.0)
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async UserWebDispatcherRunRestoreCustomP(TargetID: string, Source: string, Destination: string, Options: libcomet_RestoreJobAdvancedOptions, Snapshot: string|null = null, Paths: string[]|null = null): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Source"] = Source;
 		params["Destination"] = Destination;
@@ -11552,18 +12345,18 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebDispatcherSearchSnapshots
 	 * Search storage vault snapshots
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} DestinationID The Storage Vault GUID
 	 * @param {string[]} SnapshotIDs Snapshots to search
 	 * @param {libcomet_SearchClause} Filter The search filter
-	 * @return {Promise<libcomet_SearchSnapshotsResponse>} 
+	 * @return {Promise<libcomet_SearchSnapshotsResponse>}
 	 */
 	async UserWebDispatcherSearchSnapshotsP(TargetID: string, DestinationID: string, SnapshotIDs: string[], Filter: libcomet_SearchClause): Promise<libcomet_SearchSnapshotsResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["DestinationID"] = DestinationID;
 		params["SnapshotIDs"] = JSON.stringify(SnapshotIDs);
@@ -11574,15 +12367,15 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebGetJobLog
 	 * Get backup job report log, in plaintext format (Web)
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} JobID Selected job GUID
-	 * @return {Promise<string>} 
+	 * @return {Promise<string>}
 	 */
 	async UserWebGetJobLogP(JobID: string): Promise<string> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["JobID"] = JobID;
 		return await this._requestP("api/v1/user/web/get-job-log", params);
 	}
@@ -11590,17 +12383,17 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebGetJobLogEntries
 	 * Get backup job report log (Web)
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} JobID Selected job GUID
 	 * @param {string|null} MinSeverity Return only job log entries with equal or higher severity
 	 * @param {string|null} MessageContains Return only job log entries that contain exact string
-	 * @return {Promise<libcomet_JobEntry[]>} 
+	 * @return {Promise<libcomet_JobEntry[]>}
 	 */
 	async UserWebGetJobLogEntriesP(JobID: string, MinSeverity: string|null = null, MessageContains: string|null = null): Promise<libcomet_JobEntry[]> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["JobID"] = JobID;
 		if (MinSeverity !== null) {
 			params["MinSeverity"] = MinSeverity;
@@ -11614,15 +12407,15 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebGetJobProperties
 	 * Get backup job properties (Web)
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} JobID Selected job GUID
-	 * @return {Promise<libcomet_BackupJobDetail>} 
+	 * @return {Promise<libcomet_BackupJobDetail>}
 	 */
 	async UserWebGetJobPropertiesP(JobID: string): Promise<libcomet_BackupJobDetail> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["JobID"] = JobID;
 		return await this._requestP("api/v1/user/web/get-job-properties", params);
 	}
@@ -11630,11 +12423,11 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebGetJobs
 	 * List all backup jobs (Web)
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
-	 * @return {Promise<libcomet_BackupJobDetail[]>} 
+	 *
+	 * @return {Promise<libcomet_BackupJobDetail[]>}
 	 */
 	async UserWebGetJobsP(): Promise<libcomet_BackupJobDetail[]> {
 		return await this._requestP("api/v1/user/web/get-jobs", {});
@@ -11643,11 +12436,11 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebGetJobsForCustomSearch
 	 * List all backup jobs (Web)
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
-	 * @return {Promise<libcomet_BackupJobDetail[]>} 
+	 *
+	 * @return {Promise<libcomet_BackupJobDetail[]>}
 	 */
 	async UserWebGetJobsForCustomSearchP(): Promise<libcomet_BackupJobDetail[]> {
 		return await this._requestP("api/v1/user/web/get-jobs-for-custom-search", {});
@@ -11657,11 +12450,11 @@ export default class CometServerAPIBase {
 	 * UserWebGetUserProfileAndHash
 	 * Get user account profile (atomic)
 	 * (Web interface version)
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
-	 * @return {Promise<libcomet_GetProfileAndHashResponseMessage>} 
+	 *
+	 * @return {Promise<libcomet_GetProfileAndHashResponseMessage>}
 	 */
 	async UserWebGetUserProfileAndHashP(): Promise<libcomet_GetProfileAndHashResponseMessage> {
 		return await this._requestP("api/v1/user/web/get-user-profile-and-hash", {});
@@ -11673,15 +12466,15 @@ export default class CometServerAPIBase {
 	 * A request is sent to the live-connected device, asking it to cancel the operation. This may fail if there is no live-connection.
 	 * Only jobs from Comet 18.3.5 or newer can be cancelled. A job can only be cancelled if it has a non-empty CancellationID field in its properties.
 	 * If the device is running Comet 21.9.5 or later, this API will wait up to ten seconds for a confirmation from the client.
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} JobID Job ID
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async UserWebJobCancelP(JobID: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["JobID"] = JobID;
 		return await this._requestP("api/v1/user/web/job/cancel", params);
 	}
@@ -11689,11 +12482,11 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebNewsGetAll
 	 * Get News entries (Web)
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
-	 * @return {Promise<{[k: string]: libcomet_NewsEntry}>} 
+	 *
+	 * @return {Promise<{[k: string]: libcomet_NewsEntry}>}
 	 */
 	async UserWebNewsGetAllP(): Promise<{[k: string]: libcomet_NewsEntry}> {
 		return await this._requestP("api/v1/user/web/news/get-all", {});
@@ -11703,16 +12496,16 @@ export default class CometServerAPIBase {
 	 * UserWebRequestFilesystemObjects
 	 * Request a list of filesystem objects from the device
 	 * The device must have granted the administrator permission to view its filenames.
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string|null} Path Browse objects inside this path. If empty or not present, returns the top-level device paths
-	 * @return {Promise<libcomet_DispatcherStoredObjectsResponse>} 
+	 * @return {Promise<libcomet_DispatcherStoredObjectsResponse>}
 	 */
 	async UserWebRequestFilesystemObjectsP(TargetID: string, Path: string|null = null): Promise<libcomet_DispatcherStoredObjectsResponse> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		if (Path !== null) {
 			params["Path"] = Path;
@@ -11726,16 +12519,16 @@ export default class CometServerAPIBase {
 	 * This action can be prevented via policy.
 	 * Prior to Comet 19.8.0, the response type was CometAPIResponseMessage (i.e. no DestinationID field in response).
 	 * The StorageProvider must exist for the target user account's organization.
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {string} StorageProvider ID for the storage template destination
 	 * @param {string|null} SelfAddress The external URL for this server. Used to resolve conflicts
-	 * @return {Promise<libcomet_RequestStorageVaultResponseMessage>} 
+	 * @return {Promise<libcomet_RequestStorageVaultResponseMessage>}
 	 */
 	async UserWebRequestStorageVaultP(StorageProvider: string, SelfAddress: string|null = null): Promise<libcomet_RequestStorageVaultResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["StorageProvider"] = StorageProvider;
 		if (SelfAddress === null) {
 			params["SelfAddress"] = this._server_url;
@@ -11748,11 +12541,11 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebRequestStorageVaultProviders
 	 * Get the available options for Requesting a Storage Vault (User Web)
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
-	 * @return {Promise<{[k: string]: string}>} 
+	 *
+	 * @return {Promise<{[k: string]: string}>}
 	 */
 	async UserWebRequestStorageVaultProvidersP(): Promise<{[k: string]: string}> {
 		return await this._requestP("api/v1/user/web/request-storage-vault-providers", {});
@@ -11761,11 +12554,11 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebSessionRevoke
 	 * Revoke a session key (log out)
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 *
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async UserWebSessionRevokeP(): Promise<libcomet_CometAPIResponseMessage> {
 		return await this._requestP("api/v1/user/web/session/revoke", {});
@@ -11774,11 +12567,11 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebSessionStart
 	 * Generate a session key (log in)
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
-	 * @return {Promise<libcomet_SessionKeyRegeneratedResponse>} 
+	 *
+	 * @return {Promise<libcomet_SessionKeyRegeneratedResponse>}
 	 */
 	async UserWebSessionStartP(): Promise<libcomet_SessionKeyRegeneratedResponse> {
 		return await this._requestP("api/v1/user/web/session/start", {});
@@ -11787,16 +12580,16 @@ export default class CometServerAPIBase {
 	/**
 	 * UserWebSetProfileHash
 	 * Set account profile (atomic, web)
-	 * 
+	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
-	 * 
+	 *
 	 * @param {libcomet_UserProfileConfig} ProfileData Updated account profile
 	 * @param {string} ProfileHash Previous account profile hash
-	 * @return {Promise<libcomet_CometAPIResponseMessage>} 
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async UserWebSetProfileHashP(ProfileData: libcomet_UserProfileConfig, ProfileHash: string): Promise<libcomet_CometAPIResponseMessage> {
-		let params: { [s: string]: string; } = {};
+		const params: { [s: string]: string; } = {};
 		params["ProfileData"] = JSON.stringify(ProfileData);
 		params["ProfileHash"] = ProfileHash;
 		return await this._requestP("api/v1/user/web/set-profile-hash", params);
