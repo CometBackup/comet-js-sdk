@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 2023-06-01 v1.4.0
+## 2023-06-01 v2.0.0
 
 - Based on Comet 23.5.0
 - Add new `StreamableEventType` constants (`SEVT_*`) used for tracking Comet Server config changes
