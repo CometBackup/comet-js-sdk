@@ -2,6 +2,7 @@
 
 ## 2023-06-01 v2.0.0
 
+- **BREAKING:** The `_requestP` function was changed from a throwing method to an abstract method. This will have no effect on most use cases.
 - Based on Comet 23.5.0
 - Add new `StreamableEventType` constants (`SEVT_*`) used for tracking Comet Server config changes
 - Add new `StreamerType` constants (`STREAMER_TYPE_*`)
