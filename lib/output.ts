@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "23.5.0";
+export const APPLICATION_VERSION = "23.6.5";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -21,14 +21,14 @@ export const APPLICATION_VERSION_MAJOR = 23;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MINOR = 5;
+export const APPLICATION_VERSION_MINOR = 6;
 
 /**
  * APPLICATION_VERSION_REVISION
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 0;
+export const APPLICATION_VERSION_REVISION = 5;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -1138,7 +1138,7 @@ export const PSA_TYPE_GRADIENT = 1;
  *
  * @var {string}
  */
-export const RELEASE_CODENAME = "Thebe";
+export const RELEASE_CODENAME = "Voyager";
 
 /**
  * REMOTESERVER_COMET
@@ -1643,7 +1643,7 @@ export const SCHEDULE_MAXINT = 1125899906842624;
 
 /**
  * SEARCHCLAUSE_RULE
- * SearchClauseType
+ * SearchClauseType: The search clause is an explicit rule
  *
  * @var {string}
  */
@@ -1651,7 +1651,7 @@ export const SEARCHCLAUSE_RULE = "";
 
 /**
  * SEARCHCLAUSE_AND
- * SearchClauseType
+ * SearchClauseType: All of the ClauseChildren must match
  *
  * @var {string}
  */
@@ -1659,7 +1659,7 @@ export const SEARCHCLAUSE_AND = "and";
 
 /**
  * SEARCHCLAUSE_OR
- * SearchClauseType
+ * SearchClauseType: At least one of the ClauseChildren must match
  *
  * @var {string}
  */
@@ -1683,6 +1683,7 @@ export const SEARCHCLAUSE_NOT_OR = "not_or";
 
 /**
  * SEARCHOPERATOR_STRING_EQ
+ * String equals (case sensitive)
  *
  * @var {string}
  */
@@ -1690,6 +1691,7 @@ export const SEARCHOPERATOR_STRING_EQ = "str_eq";
 
 /**
  * SEARCHOPERATOR_STRING_NEQ
+ * String does not equal (case sensitive)
  *
  * @var {string}
  */
@@ -1697,6 +1699,7 @@ export const SEARCHOPERATOR_STRING_NEQ = "str_neq";
 
 /**
  * SEARCHOPERATOR_STRING_CONTAINS
+ * String contains anywhere (case sensitive)
  *
  * @var {string}
  */
@@ -1704,6 +1707,7 @@ export const SEARCHOPERATOR_STRING_CONTAINS = "str_contains";
 
 /**
  * SEARCHOPERATOR_STRING_NCONTAINS
+ * String does not contain anywhere (case sensitive)
  *
  * @var {string}
  */
@@ -1711,6 +1715,7 @@ export const SEARCHOPERATOR_STRING_NCONTAINS = "str_ncontains";
 
 /**
  * SEARCHOPERATOR_STRING_STARTSWITH
+ * String starts with prefix (case sensitive)
  *
  * @var {string}
  */
@@ -1718,6 +1723,7 @@ export const SEARCHOPERATOR_STRING_STARTSWITH = "str_startswith";
 
 /**
  * SEARCHOPERATOR_STRING_NSTARTSWITH
+ * String does not start with prefix (case sensitive)
  *
  * @var {string}
  */
@@ -1725,6 +1731,7 @@ export const SEARCHOPERATOR_STRING_NSTARTSWITH = "str_nstartswith";
 
 /**
  * SEARCHOPERATOR_STRING_ENDSWITH
+ * String ends with suffix (case sensitive)
  *
  * @var {string}
  */
@@ -1732,6 +1739,7 @@ export const SEARCHOPERATOR_STRING_ENDSWITH = "str_endswith";
 
 /**
  * SEARCHOPERATOR_STRING_NENDSWITH
+ * String does not end with suffix (case sensitive)
  *
  * @var {string}
  */
@@ -1739,6 +1747,7 @@ export const SEARCHOPERATOR_STRING_NENDSWITH = "str_nendswith";
 
 /**
  * SEARCHOPERATOR_STRING_EQ_CI
+ * String equals (case insensitive)
  *
  * @var {string}
  */
@@ -1746,6 +1755,7 @@ export const SEARCHOPERATOR_STRING_EQ_CI = "str_eq_ci";
 
 /**
  * SEARCHOPERATOR_STRING_NEQ_CI
+ * String does not equal (case insensitive)
  *
  * @var {string}
  */
@@ -1753,6 +1763,7 @@ export const SEARCHOPERATOR_STRING_NEQ_CI = "str_neq_ci";
 
 /**
  * SEARCHOPERATOR_STRING_CONTAINS_CI
+ * String contains anywhere (case sensitive)
  *
  * @var {string}
  */
@@ -1760,6 +1771,7 @@ export const SEARCHOPERATOR_STRING_CONTAINS_CI = "str_contains_ci";
 
 /**
  * SEARCHOPERATOR_STRING_NCONTAINS_CI
+ * String does not contain anywhere (case sensitive)
  *
  * @var {string}
  */
@@ -1767,6 +1779,7 @@ export const SEARCHOPERATOR_STRING_NCONTAINS_CI = "str_ncontains_ci";
 
 /**
  * SEARCHOPERATOR_STRING_STARTSWITH_CI
+ * String starts with prefix (case sensitive)
  *
  * @var {string}
  */
@@ -1774,6 +1787,7 @@ export const SEARCHOPERATOR_STRING_STARTSWITH_CI = "str_startswith_ci";
 
 /**
  * SEARCHOPERATOR_STRING_NSTARTSWITH_CI
+ * String does not start with (case sensitive)
  *
  * @var {string}
  */
@@ -1781,6 +1795,7 @@ export const SEARCHOPERATOR_STRING_NSTARTSWITH_CI = "str_nstartswith_ci";
 
 /**
  * SEARCHOPERATOR_STRING_ENDSWITH_CI
+ * String ends with suffix (case sensitive)
  *
  * @var {string}
  */
@@ -1788,6 +1803,7 @@ export const SEARCHOPERATOR_STRING_ENDSWITH_CI = "str_endswith_ci";
 
 /**
  * SEARCHOPERATOR_STRING_NENDSWITH_CI
+ * String does not end with suffix (case sensitive)
  *
  * @var {string}
  */
@@ -1795,6 +1811,7 @@ export const SEARCHOPERATOR_STRING_NENDSWITH_CI = "str_nendswith_ci";
 
 /**
  * SEARCHOPERATOR_STRING_REGEXMATCH
+ * String matches provided regular expression (using Go regex syntax)
  *
  * @var {string}
  */
@@ -1802,6 +1819,7 @@ export const SEARCHOPERATOR_STRING_REGEXMATCH = "str_regexmatch";
 
 /**
  * SEARCHOPERATOR_STRING_NREGEXMATCH
+ * String does not match provided regular expression (using Go regex syntax)
  *
  * @var {string}
  */
@@ -1809,6 +1827,7 @@ export const SEARCHOPERATOR_STRING_NREGEXMATCH = "str_nregexmatch";
 
 /**
  * SEARCHOPERATOR_INT_EQ
+ * Integer field is equal to value
  *
  * @var {string}
  */
@@ -1816,6 +1835,7 @@ export const SEARCHOPERATOR_INT_EQ = "int_eq";
 
 /**
  * SEARCHOPERATOR_INT_NEQ
+ * Integer field is not equal to value
  *
  * @var {string}
  */
@@ -1823,6 +1843,7 @@ export const SEARCHOPERATOR_INT_NEQ = "int_neq";
 
 /**
  * SEARCHOPERATOR_INT_GT
+ * Integer field is greater than value
  *
  * @var {string}
  */
@@ -1830,6 +1851,7 @@ export const SEARCHOPERATOR_INT_GT = "int_gt";
 
 /**
  * SEARCHOPERATOR_INT_GTE
+ * Integer field is greater than or equal to value
  *
  * @var {string}
  */
@@ -1837,6 +1859,7 @@ export const SEARCHOPERATOR_INT_GTE = "int_gte";
 
 /**
  * SEARCHOPERATOR_INT_LT
+ * Integer field is less than value
  *
  * @var {string}
  */
@@ -1844,6 +1867,7 @@ export const SEARCHOPERATOR_INT_LT = "int_lt";
 
 /**
  * SEARCHOPERATOR_INT_LTE
+ * Integer field is less than or equal to value
  *
  * @var {string}
  */
@@ -1851,6 +1875,7 @@ export const SEARCHOPERATOR_INT_LTE = "int_lte";
 
 /**
  * SEARCHOPERATOR_BOOL_IS
+ * Boolean field matches value
  *
  * @var {string}
  */
@@ -1858,6 +1883,7 @@ export const SEARCHOPERATOR_BOOL_IS = "bool_is";
 
 /**
  * SEARCHOPERATOR_BOOL_NIS
+ * Boolean field does not match value
  *
  * @var {string}
  */
@@ -2761,6 +2787,9 @@ export function libcomet_AddBucketResponseMessage_set_embedded_libcomet_NewBucke
 export type libcomet_AdminAccountPropertiesResponse = {
 	OrganizationID: string
 	Permissions: libcomet_AdminUserPermissions
+	/**
+	 * This field is available in Comet 18.9.9 and later.
+	 */
 	Security: libcomet_AdminSecurityOptions
 }
 
@@ -2810,6 +2839,9 @@ export function libcomet_AdminResourceResponse_set_embedded_libcomet_CometAPIRes
 
 
 export type libcomet_AdminSecurityOptions = {
+	/**
+	 * One of the PASSWORD_FORMAT_ constants
+	 */
 	PasswordFormat: number
 	Password: string
 	AllowPasswordLogin: boolean
@@ -2829,6 +2861,7 @@ export type libcomet_AdminSecurityOptions = {
 	 */
 	WebAuthnRegistrations?: libcomet_AdminWebAuthnRegistration[]
 	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
 	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
 	TOTPKeyEncryptionFormat?: number
@@ -2837,6 +2870,8 @@ export type libcomet_AdminSecurityOptions = {
 	 */
 	TOTPKey?: string
 	/**
+	 * A regular expression in Go regex syntax, for which IP addresses are allowed to authenticate as
+	 * this admin account
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	IPWhitelist?: string
@@ -2859,6 +2894,9 @@ export function New_Zero_libcomet_AdminSecurityOptions(): libcomet_AdminSecurity
  */
 export type libcomet_AdminU2FRegistration = {
 	Description: string
+	/**
+	 * Unix timestamp, in seconds.
+	 */
 	RegisterTime: number
 	Registration: string
 }
@@ -2905,6 +2943,41 @@ export type libcomet_AdminUserPermissions = {
 	 * Omission from JSON will be interpreted as false
 	 */
 	DenyConstellationRole?: boolean
+	/**
+	 * This field is available in Comet 23.6.0 and later.
+	 * Omission from JSON will be interpreted as false
+	 */
+	DenyViewServerHistory?: boolean
+	/**
+	 * This field is available in Comet 23.6.0 and later.
+	 * Omission from JSON will be interpreted as false
+	 */
+	DenyViewServerInfo?: boolean
+	/**
+	 * This field is available in Comet 23.6.0 and later.
+	 * Omission from JSON will be interpreted as false
+	 */
+	PreventRequestStorageVault?: boolean
+	/**
+	 * This field is available in Comet 23.6.0 and later.
+	 * Omission from JSON will be interpreted as false
+	 */
+	PreventAddCustomStorageVault?: boolean
+	/**
+	 * This field is available in Comet 23.6.0 and later.
+	 * Omission from JSON will be interpreted as false
+	 */
+	HideCloudStorageBranding?: boolean
+	/**
+	 * This field is available in Comet 23.6.0 and later.
+	 * Omission from JSON will be interpreted as false
+	 */
+	ShouldRestrictProviderList?: boolean
+	/**
+	 * This field is available in Comet 23.6.0 and later.
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	AllowedProvidersWhenRestricted?: number[]
 }
 
 export function New_Zero_libcomet_AdminUserPermissions(): libcomet_AdminUserPermissions {
@@ -2915,6 +2988,9 @@ export function New_Zero_libcomet_AdminUserPermissions(): libcomet_AdminUserPerm
 
 export type libcomet_AdminWebAuthnRegistration = {
 	Description: string
+	/**
+	 * Unix timestamp, in seconds.
+	 */
 	RegisterTime: number
 	Type: number
 	/**
@@ -2922,6 +2998,7 @@ export type libcomet_AdminWebAuthnRegistration = {
 	 */
 	IsLegacyU2F?: boolean
 	/**
+	 * In other language projections, this field may contain raw binary data. When the field is expressed as JSON, this field contains base64 content. This javascript/typescript SDK preserves the base64 version in this field.
 	 * Omission from JSON will be interpreted as an empty array
 	 */
 	ID?: string
@@ -2947,6 +3024,9 @@ export type libcomet_AllowedAdminUser = {
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	ExternalAuthenticationSource?: string
+	/**
+	 * One of the PASSWORD_FORMAT_ constants
+	 */
 	PasswordFormat: number
 	Password: string
 	AllowPasswordLogin: boolean
@@ -2966,6 +3046,7 @@ export type libcomet_AllowedAdminUser = {
 	 */
 	WebAuthnRegistrations?: libcomet_AdminWebAuthnRegistration[]
 	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
 	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
 	TOTPKeyEncryptionFormat?: number
@@ -2974,6 +3055,8 @@ export type libcomet_AllowedAdminUser = {
 	 */
 	TOTPKey?: string
 	/**
+	 * A regular expression in Go regex syntax, for which IP addresses are allowed to authenticate as
+	 * this admin account
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	IPWhitelist?: string
@@ -3032,8 +3115,14 @@ export function New_Zero_libcomet_AmazonAWSVirtualStorageRoleSettings(): libcome
 
 export type libcomet_AuthenticationRoleOptions = {
 	RoleEnabled: boolean
+	/**
+	 * One of the INTEGRITYCHECK_ constants
+	 */
 	DatabaseCheckLevel: number
 	GenerateMissedBackupEvents: boolean
+	/**
+	 * Unix timestamp in seconds, before which no Missed jobs are created
+	 */
 	NoMissedBackupEventsBefore: number
 	GenerateScheduledEmails: boolean
 	PruneLogsAfterDays: number
@@ -3511,6 +3600,9 @@ export type libcomet_BrandingOptions = {
 	TileBackgroundColor: string
 	AccountRegisterURL: string
 	HideBackgroundLogo: boolean
+	/**
+	 * One of the CLIENTBRANDINGBUILD_ constants
+	 */
 	BuildMode: number
 	PathIcoFile: string
 	PathIcnsFile: string
@@ -3520,8 +3612,14 @@ export type libcomet_BrandingOptions = {
 	PathHeaderImage: string
 	PathAppIconImage: string
 	PackageIdentifier: string
+	/**
+	 * One of the WINDOWSCODESIGN_METHOD_ constants
+	 */
 	WindowsCodeSignMethod: number
 	WindowsCodeSignPKCS12FilePath: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
 	WindowsCodeSignPKCS12PasswordFormat: number
 	WindowsCodeSignPKCS12Password: string
 	WindowsCodeSignPKCS11Engine: string
@@ -3531,11 +3629,17 @@ export type libcomet_BrandingOptions = {
 	 */
 	WindowsCodeSignPKCS11Certfile: string
 	WindowsCodeSignPKCS11KeyID: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
 	WindowsCodeSignPKCS11PasswordFormat: number
 	WindowsCodeSignPKCS11Password: string
 	WindowsCodeSignAzureVaultName: string
 	WindowsCodeSignAzureCertName: string
 	WindowsCodeSignAzureAppID: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
 	WindowsCodeSignAzureAppSecretFormat: number
 	WindowsCodeSignAzureAppSecret: string
 	WindowsCodeSignAzureTenantID: string
@@ -3645,6 +3749,9 @@ export type libcomet_BrandingProperties = {
 	TileBackgroundColor: string
 	AccountRegisterURL: string
 	HideBackgroundLogo: boolean
+	/**
+	 * One of the CLIENTBRANDINGBUILD_ constants
+	 */
 	BuildMode: number
 	PathIcoFile: string
 	PathIcnsFile: string
@@ -3654,8 +3761,14 @@ export type libcomet_BrandingProperties = {
 	PathHeaderImage: string
 	PathAppIconImage: string
 	PackageIdentifier: string
+	/**
+	 * One of the WINDOWSCODESIGN_METHOD_ constants
+	 */
 	WindowsCodeSignMethod: number
 	WindowsCodeSignPKCS12FilePath: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
 	WindowsCodeSignPKCS12PasswordFormat: number
 	WindowsCodeSignPKCS12Password: string
 	WindowsCodeSignPKCS11Engine: string
@@ -3665,11 +3778,17 @@ export type libcomet_BrandingProperties = {
 	 */
 	WindowsCodeSignPKCS11Certfile: string
 	WindowsCodeSignPKCS11KeyID: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
 	WindowsCodeSignPKCS11PasswordFormat: number
 	WindowsCodeSignPKCS11Password: string
 	WindowsCodeSignAzureVaultName: string
 	WindowsCodeSignAzureCertName: string
 	WindowsCodeSignAzureAppID: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
 	WindowsCodeSignAzureAppSecretFormat: number
 	WindowsCodeSignAzureAppSecret: string
 	WindowsCodeSignAzureTenantID: string
@@ -3919,7 +4038,13 @@ export function libcomet_BrowseVSSResponse_set_embedded_libcomet_CometAPIRespons
 
 export type libcomet_BucketProperties = {
 	OrganizationID: string
+	/**
+	 * Unix timestamp, in seconds.
+	 */
 	CreateTime: number
+	/**
+	 * One of the PASSWORD_FORMAT_ constants
+	 */
 	ReadWriteKeyFormat: number
 	ReadWriteKey: string
 	Size: libcomet_SizeMeasurement
@@ -4026,8 +4151,19 @@ export function New_Zero_libcomet_ConstellationRoleOptions(): libcomet_Constella
 
 
 export type libcomet_ConstellationStats = {
+	/**
+	 * Unix timestamp, in seconds.
+	 */
 	LastCheckStart: number
+	/**
+	 * The total number of Constellation bucket report scans that have been performed since this Comet
+	 * Server was last restarted
+	 */
 	TotalChecksStarted: number
+	/**
+	 * The total number of buckets that Constellation has successfully deleted since this Comet Server
+	 * was last restarted
+	 */
 	TotalBucketsDeleted: number
 	ChecksCurrentlyActive: number
 }
@@ -4785,6 +4921,11 @@ export type libcomet_DeviceConfig = {
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	DeviceTimezone?: string
+	/**
+	 * This field is available in Comet 23.6.0 and later.
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	ClientVersion?: string
 }
 
 export function New_Zero_libcomet_DeviceConfig(): libcomet_DeviceConfig {
@@ -5049,7 +5190,13 @@ export function libcomet_EmailReportGeneratedPreview_set_embedded_libcomet_Comet
 
 export type libcomet_EmailReportingOption = {
 	EmailReportConfig: libcomet_EmailReportConfig
+	/**
+	 * A supported language code (e.g. "en_US" or the DEFAULT_LANGUAGE constant)
+	 */
 	LanguageCode: string
+	/**
+	 * The timezone in IANA format (e.g. "Pacific/Auckland" or the DEFAULT_TIMEZONE constant)
+	 */
 	LocalTimezone: string
 	Recipients: string[]
 }
@@ -5138,6 +5285,9 @@ export function libcomet_ExternalAuthenticationSource_set_embedded_libcomet_Remo
 export type libcomet_ExternalLDAPAuthenticationSourceServer = {
 	Hostname: string
 	Port: number
+	/**
+	 * One of the LDAPSECURITYMETHOD_ constants (e.g. "plain" / "ldaps" / "starttls")
+	 */
 	SecurityMethod: string
 	AcceptInvalidSSL: boolean
 }
@@ -5155,6 +5305,9 @@ export function New_Zero_libcomet_ExternalLDAPAuthenticationSourceServer(): libc
 export type libcomet_ExternalLDAPAuthenticationSourceSettings = {
 	Hostname: string
 	Port: number
+	/**
+	 * One of the LDAPSECURITYMETHOD_ constants (e.g. "plain" / "ldaps" / "starttls")
+	 */
 	SecurityMethod: string
 	AcceptInvalidSSL: boolean
 	FallbackServers: libcomet_ExternalLDAPAuthenticationSourceServer[]
@@ -5501,10 +5654,25 @@ export function New_Zero_libcomet_InstallCreds(): libcomet_InstallCreds {
 
 export type libcomet_InstallToken = {
 	Username: string
+	/**
+	 * The URL of the Comet Server (Auth Role) for the target user to log in to.
+	 */
 	Server: string
+	/**
+	 * The token for use with the "/TOKEN=" silent install flag.
+	 */
 	Token: string
+	/**
+	 * Unix timestamp, in seconds.
+	 */
 	CreateTime: number
+	/**
+	 * If the token has been used, it cannot be used again.
+	 */
 	Used: boolean
+	/**
+	 * Unix timestamp, in seconds.
+	 */
 	ExpireTime: number
 }
 
@@ -5674,11 +5842,20 @@ export function New_Zero_libcomet_LocalStorageDirectory(): libcomet_LocalStorage
 
 
 export type libcomet_MSSQLConnection = {
+	/**
+	 * One of the MSSQL_AUTH_ constants (e.g. "windows" or "native")
+	 */
 	Type: string
 	Username: string
 	Password: string
+	/**
+	 * @deprecated This member has been deprecated since Comet version Unused
+	 */
 	Hostname: string
 	InstanceName: string
+	/**
+	 * One of the MSSQL_METHOD_ constants, to control using x86_32 or x86_64 OLEDB drivers
+	 */
 	Method: string
 }
 
@@ -5726,14 +5903,28 @@ export type libcomet_MacOSCodeSignProperties = {
 	Level: number
 	SignLocally: boolean
 	SSHServer: libcomet_SSHConnection
+	/**
+	 * "Developer ID Installer" certificate, either a local filepath or a resource:// URI. Used for
+	 * signing the final flat *.pkg.
+	 */
 	CertificateName: string
+	/**
+	 * "Developer ID Application" certificate, either a local filepath or a resource:// URI. Used for
+	 * signing internal binaries if Notary is enabled
+	 */
 	AppCertificateName: string
 	AppleID: string
 	AppleIDPass: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
 	AppleIDPassFormat: number
 	CertificateFile: string
 	AppCertificateFile: string
 	PfxFilePassword: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
 	PfxFilePasswordFormat: number
 	NotaryAPIIssuerID: string
 	NotaryAPIKeyID: string
@@ -5863,6 +6054,9 @@ export function New_Zero_libcomet_NewBucketDetail(): libcomet_NewBucketDetail {
 
 export type libcomet_NewsEntry = {
 	OrganizationID: string
+	/**
+	 * Unix timestamp, in seconds.
+	 */
 	DateTime: number
 	TextContent: string
 }
@@ -5876,22 +6070,42 @@ export function New_Zero_libcomet_NewsEntry(): libcomet_NewsEntry {
 }
 
 
+/**
+ * OSInfo represents the common set of version information between all operating systems
+ */
 export type libcomet_OSInfo = {
 	/**
+	 * The primary version number (e.g. on Windows: 1703 / 2009, on Linux: 20.04 / 22.04)
 	 * Version
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	version?: string
 	/**
+	 * The primary presentation name (e.g. "Windows 10 Pro", "debian", "Synology DSM")
 	 * Distribution
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	distribution?: string
 	/**
+	 * The detailed build number (e.g. 19043)
 	 * Build
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	build?: string
+	/**
+	 * The GOOS value
+	 * OS
+	 * This field is available in Comet 23.6.0 and later.
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	os?: string
+	/**
+	 * The GOARCH value
+	 * Arch
+	 * This field is available in Comet 23.6.0 and later.
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	arch?: string
 }
 
 export function New_Zero_libcomet_OSInfo(): libcomet_OSInfo {
@@ -6152,16 +6366,26 @@ export function New_Zero_libcomet_OrganizationResponse(): libcomet_OrganizationR
 
 
 export type libcomet_PSAConfig = {
+	/**
+	 * For PSA_TYPE_GRADIENT. Defaults to enabled
+	 */
 	AlertsDisabled: boolean
 	/**
 	 * Omission from JSON will be interpreted as an empty map
 	 */
 	CustomHeaders?: {[k: string]: string}
 	/**
+	 * Specified credentials for the target PSA
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	PartnerKey?: string
+	/**
+	 * One of the PSA_TYPE_ constants
+	 */
 	Type: number
+	/**
+	 * For PSA_TYPE_GENERIC
+	 */
 	URL: string
 }
 
@@ -6176,13 +6400,26 @@ export function New_Zero_libcomet_PSAConfig(): libcomet_PSAConfig {
 
 export type libcomet_Partition = {
 	DeviceName: string
+	/**
+	 * The name of the filesystem used on this partition (e.g. "NTFS")
+	 */
 	Filesystem: string
 	VolumeName: string
 	VolumeGuid: string
 	VolumeSerial: string
 	MountPoints: string[]
+	/**
+	 * Bytes. The partition's offset within the DeviceName. It will be zero if this partition has a
+	 * direct DeviceName handle.
+	 */
 	ReadOffset: number
+	/**
+	 * Bytes
+	 */
 	Size: number
+	/**
+	 * Bytes. Only present for supported filesystems that are currently mounted by the OS
+	 */
 	UsedSize: number
 	Flags: number
 	BytesPerFilesystemCluster: number
@@ -6206,6 +6443,9 @@ export function New_Zero_libcomet_Partition(): libcomet_Partition {
 
 
 export type libcomet_PrivateBrandingProperties = {
+	/**
+	 * One of the CLIENTBRANDINGBUILD_ constants
+	 */
 	BuildMode: number
 	PathIcoFile: string
 	PathIcnsFile: string
@@ -6215,8 +6455,14 @@ export type libcomet_PrivateBrandingProperties = {
 	PathHeaderImage: string
 	PathAppIconImage: string
 	PackageIdentifier: string
+	/**
+	 * One of the WINDOWSCODESIGN_METHOD_ constants
+	 */
 	WindowsCodeSignMethod: number
 	WindowsCodeSignPKCS12FilePath: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
 	WindowsCodeSignPKCS12PasswordFormat: number
 	WindowsCodeSignPKCS12Password: string
 	WindowsCodeSignPKCS11Engine: string
@@ -6226,11 +6472,17 @@ export type libcomet_PrivateBrandingProperties = {
 	 */
 	WindowsCodeSignPKCS11Certfile: string
 	WindowsCodeSignPKCS11KeyID: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
 	WindowsCodeSignPKCS11PasswordFormat: number
 	WindowsCodeSignPKCS11Password: string
 	WindowsCodeSignAzureVaultName: string
 	WindowsCodeSignAzureCertName: string
 	WindowsCodeSignAzureAppID: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
 	WindowsCodeSignAzureAppSecretFormat: number
 	WindowsCodeSignAzureAppSecret: string
 	WindowsCodeSignAzureTenantID: string
@@ -6675,6 +6927,16 @@ export type libcomet_RestoreJobAdvancedOptions = {
 	 */
 	ArchiveFormat: number
 	/**
+	 * Corresponds to the "Allow partial file restores (zero-out unrecoverable data)" option
+	 * This field is available in Comet 23.6.4 and later.
+	 */
+	SkipUnreadableChunks: boolean
+	/**
+	 * Corresponds to the "Prefer temporary files instead of RAM (slower)" option
+	 * This field is available in Comet 23.6.4 and later.
+	 */
+	OnDiskIndexesKey: boolean
+	/**
 	 * For RESTORETYPE_OFFICE365_CLOUD.
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
@@ -6731,6 +6993,8 @@ export function New_Zero_libcomet_RestoreJobAdvancedOptions(): libcomet_RestoreJ
 		"DestPath": "",
 		"ExactDestPaths": [],
 		"ArchiveFormat": 0,
+		"SkipUnreadableChunks": false,
+		"OnDiskIndexesKey": false,
 		"Username": "",
 		"Password": "",
 		"Host": "",
@@ -6760,8 +7024,18 @@ export function New_Zero_libcomet_RetentionPolicy(): libcomet_RetentionPolicy {
 }
 
 
+/**
+ * The Type field controls which fields of this data type are used. For additional information, see
+ * the notes on the RETENTIONRANGE_ constants.
+ */
 export type libcomet_RetentionRange = {
+	/**
+	 * One of the RETENTIONRANGE_ constants
+	 */
 	Type: number
+	/**
+	 * Unix timestamp, in seconds. Used by RETENTIONRANGE_NEWER_THAN_X.
+	 */
 	Timestamp: number
 	Jobs: number
 	Days: number
@@ -6771,6 +7045,12 @@ export type libcomet_RetentionRange = {
 	 * 0: Sunday, 6: Saturday
 	 */
 	WeekOffset: number
+	/**
+	 * 1: 1st, 31: 31st
+	 * Prior to Comet version 23.6.2, 31 was treated as 30.
+	 * For months that do not have a day equal to the specified offset, no backup will be retained.
+	 * For example, if the offset is set to 30, no backup will be kept for February.
+	 */
 	MonthOffset: number
 }
 
@@ -6962,11 +7242,35 @@ export function New_Zero_libcomet_ScheduleConfig(): libcomet_ScheduleConfig {
 
 
 export type libcomet_SearchClause = {
+	/**
+	 * One of the SEARCHCLAUSE_ constants (e.g. empty-string if this is a rule, or "and"/"or" if there
+	 * are ClauseChildren)
+	 */
 	ClauseType: string
+	/**
+	 * The field name to search. Check the specific API for more information about which fields are
+	 * available for searching. For use with ClauseType = SEARCHCLAUSE_RULE.
+	 */
 	RuleField: string
+	/**
+	 * One of the SEARCHOPERATOR_ constants. The operator must match the type of the particular field.
+	 * For use with ClauseType = SEARCHCLAUSE_RULE.
+	 */
 	RuleOperator: string
+	/**
+	 * The value to compare the field against.
+	 * - If the field is a string, any string is permissable.
+	 * - If the field is an integer, the integer should be cast to a base-10 string. There is currently
+	 * no support for fractional or floating-point numbers.
+	 * - If the field is a boolean, the following values can be used for true ("1", "t", "T", "true",
+	 * "TRUE", "True") and the following values can be used for false ("0", "f", "F", "false", "FALSE",
+	 * "False").
+	 * For use with ClauseType = SEARCHCLAUSE_RULE.
+	 */
 	RuleValue: string
 	/**
+	 * If ClauseType is not SEARCHCLAUSE_RULE, the child rules will be applied according to the
+	 * ClauseType (e.g. "and"/"or")
 	 * Omission from JSON will be interpreted as an empty array
 	 */
 	ClauseChildren?: libcomet_SearchClause[]
@@ -7071,6 +7375,9 @@ export function libcomet_SearchSnapshotsResponse_set_embedded_libcomet_CometAPIR
 export type libcomet_SelfBackupExportOptions = {
 	Location: libcomet_DestinationLocation
 	EncryptionKey: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
 	EncryptionKeyFormat: number
 	/**
 	 * One of the COMPRESS_LVL_ constants
@@ -7141,6 +7448,9 @@ export type libcomet_SelfBackupTarget = {
 	RetentionPolicy: libcomet_RetentionPolicy
 	Location: libcomet_DestinationLocation
 	EncryptionKey: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
 	EncryptionKeyFormat: number
 	/**
 	 * One of the COMPRESS_LVL_ constants
@@ -7208,6 +7518,9 @@ export type libcomet_ServerConfigOptions = {
 	 */
 	ExperimentalOptions?: string[]
 	ExternalAdminUserSources: {[k: string]: libcomet_ExternalAuthenticationSource}
+	/**
+	 * The Comet Server can enforce a bandwidth limit based on the target IP address
+	 */
 	IPRateLimit: libcomet_RatelimitOptions
 	License: libcomet_LicenseOptions
 	/**
@@ -7298,7 +7611,13 @@ export type libcomet_ServerMetaBrandingProperties = {
 	 * cache key.
 	 */
 	ImageEtag: string
+	/**
+	 * Colour in RGB hex format (e.g. "#FFFFFF")
+	 */
 	TopColor: string
+	/**
+	 * Colour in RGB hex format (e.g. "#FFFFFF")
+	 */
 	AccentColor: string
 	HideNewsArea: boolean
 	AllowUnauthenticatedDownloads: boolean
@@ -7361,6 +7680,9 @@ export type libcomet_ServerMetaVersionInfo = {
 	ServerLicenseHash: string
 	ServerLicenseFeaturesAll: boolean
 	ServerLicenseFeatureSet: number
+	/**
+	 * Unix timestamp, in seconds.
+	 */
 	LicenseValidUntil: number
 	EmailsSentSuccessfully: number
 	EmailsSentErrors: number
@@ -7370,6 +7692,9 @@ export type libcomet_ServerMetaVersionInfo = {
 	ScheduledEmailThreadWaitingUntil: number
 	ScheduledEmailThreadLastWakeTime: number
 	ScheduledEmailThreadLastWakeSentEmails: boolean
+	/**
+	 * This field is available in Comet 21.3.2 and later.
+	 */
 	SelfBackup: libcomet_SelfBackupStatistics[]
 }
 
@@ -7409,6 +7734,10 @@ export type libcomet_SessionKeyRegeneratedResponse = {
 	Status: number
 	Message: string
 	SessionKey: string
+	/**
+	 * e.g. "admin" or "user"
+	 * This field is available in Comet 18.12.3 and later.
+	 */
 	SessionType: string
 }
 
@@ -7444,6 +7773,9 @@ export function New_Zero_libcomet_SessionOptions(): libcomet_SessionOptions {
 
 export type libcomet_SingleFieldSource = {
 	FieldName: string
+	/**
+	 * One of "bool" / "int" / "string"
+	 */
 	FieldType: string
 	BoolVal: boolean
 	IntVal: number
@@ -7500,18 +7832,22 @@ export function New_Zero_libcomet_SoftwareBuildRoleOptions(): libcomet_SoftwareB
 
 export type libcomet_SoftwareUpdateNewsResponse = {
 	/**
+	 * The latest "Quarterly" release version of Comet known to the account.cometbackup.com system.
 	 * LatestStable
 	 */
 	latest_stable: string
 	/**
+	 * The latest "Voyager" release version of Comet known to the account.cometbackup.com system.
 	 * LatestPrerelease
 	 */
 	latest_prerelease: string
 	/**
+	 * A URL linking to the Comet Server downloads page.
 	 * DownloadsURL
 	 */
 	downloads_url: string
 	/**
+	 * An array of recent news items written by Comet Backup staff. Entries are english plaintext.
 	 * WhatsNew
 	 */
 	updates_info: string[]
@@ -7527,6 +7863,10 @@ export function New_Zero_libcomet_SoftwareUpdateNewsResponse(): libcomet_Softwar
 }
 
 
+/**
+ * SourceBasicInfo is the minimal amount of information one device knows about another device's
+ * Protected Items, in order to safely perform retention passes on their behalf.
+ */
 export type libcomet_SourceBasicInfo = {
 	Description: string
 	O365AccountCount: number
@@ -7624,6 +7964,17 @@ export type libcomet_SourceConfig = {
 	 */
 	EngineProps: {[k: string]: string}
 	/**
+	 * If set, this SourceConfig was added from a Policy with the specified ID.
+	 * This field is available in Comet 23.6.0 and later.
+	 */
+	PolicySourceID: string
+	/**
+	 * For a Policy-defined SourceConfig, this field controls whether the Protected Item will stay
+	 * linked with the policy.
+	 * This field is available in Comet 23.6.0 and later.
+	 */
+	ExistingUserUpdate: boolean
+	/**
 	 * By default, backup jobs from this Protected Item will be subject
 	 * to the overall retention policy for the Storage Vault. You can override the policy
 	 * for specific Storage Vaults by putting their destination ID as a key here.
@@ -7647,6 +7998,8 @@ export function New_Zero_libcomet_SourceConfig(): libcomet_SourceConfig {
 		"ThawExec": [],
 		"PostExec": [],
 		"EngineProps": {},
+		"PolicySourceID": "",
+		"ExistingUserUpdate": false,
 	};
 }
 
@@ -7775,6 +8128,7 @@ export type libcomet_StorageRoleOptions = {
 	/**
 	 * LocalStorage_Legacy
 	 * Omission from JSON will be interpreted as an empty array
+	 * @deprecated This member has been deprecated since Comet version 17.3.5
 	 */
 	LocalStorage?: libcomet_LocalStorageDirectory[]
 	ReplicateTo: libcomet_ReplicaServer[]
@@ -8089,8 +8443,17 @@ export type libcomet_TotpRegeneratedResponse = {
 	 */
 	Status: number
 	Message: string
+	/**
+	 * A data URI of an image of a TOTP code (e.g. "data:image/png;base64,AAA...")
+	 */
 	Image: string
+	/**
+	 * This field is available in Comet 18.9.9 and later.
+	 */
 	URL: string
+	/**
+	 * This field is available in Comet 20.3.2 and later.
+	 */
 	ProfileHash: string
 }
 
@@ -8240,6 +8603,9 @@ export function New_Zero_libcomet_UninstallConfig(): libcomet_UninstallConfig {
 
 
 export type libcomet_UpdateCampaignDeviceStatus = {
+	/**
+	 * One of the UPDATESTATUS_ constants
+	 */
 	Status: number
 }
 
@@ -8303,6 +8669,9 @@ export type libcomet_UpdateCampaignProperties = {
 	 */
 	ApplyDeviceFilter: boolean
 	DeviceFilter: libcomet_SearchClause
+	/**
+	 * Unix timestamp, in seconds
+	 */
 	StartTime: number
 	TargetVersion: string
 }
@@ -8348,6 +8717,9 @@ export type libcomet_UpdateCampaignStatus = {
 	 */
 	ApplyDeviceFilter: boolean
 	DeviceFilter: libcomet_SearchClause
+	/**
+	 * Unix timestamp, in seconds
+	 */
 	StartTime: number
 	TargetVersion: string
 	Devices: libcomet_UpdateCampaignStatusDeviceEntry[]
@@ -8384,6 +8756,9 @@ export function libcomet_UpdateCampaignStatus_set_embedded_libcomet_UpdateCampai
 export type libcomet_UpdateCampaignStatusDeviceEntry = {
 	Username: string
 	DeviceID: string
+	/**
+	 * One of the UPDATESTATUS_ constants
+	 */
 	Status: number
 }
 
@@ -8755,6 +9130,9 @@ export function New_Zero_libcomet_VMDKSnapshotViewOptions(): libcomet_VMDKSnapsh
 export type libcomet_VSSComponent = {
 	Path: string
 	Name: string
+	/**
+	 * "VSS_CT_DATABASE" or "VSS_CT_FILEGROUP"
+	 */
 	CType: string
 	Selectable: boolean
 }
@@ -8786,6 +9164,9 @@ export type libcomet_VaultSnapshot = {
 	Snapshot: string
 	Source: string
 	CreateTime: number
+	/**
+	 * This field is available in Comet 20.12.4 and later.
+	 */
 	HasOriginalPathInfo: boolean
 }
 
@@ -8889,6 +9270,7 @@ export type libcomet_WebAuthnCredentialDescriptor = {
 	type: string
 	/**
 	 * CredentialID
+	 * In other language projections, this field may contain raw binary data. When the field is expressed as JSON, this field contains base64 content. This javascript/typescript SDK preserves the base64 version in this field.
 	 */
 	id: string
 	/**
@@ -8947,6 +9329,7 @@ export function New_Zero_libcomet_WebAuthnCredentialParameter(): libcomet_WebAut
 export type libcomet_WebAuthnPublicKeyCredentialCreationOptions = {
 	/**
 	 * Challenge
+	 * In other language projections, this field may contain raw binary data. When the field is expressed as JSON, this field contains base64 content. This javascript/typescript SDK preserves the base64 version in this field.
 	 */
 	challenge: string
 	/**
@@ -9001,6 +9384,7 @@ export function New_Zero_libcomet_WebAuthnPublicKeyCredentialCreationOptions(): 
 export type libcomet_WebAuthnPublicKeyCredentialRequestOptions = {
 	/**
 	 * Challenge
+	 * In other language projections, this field may contain raw binary data. When the field is expressed as JSON, this field contains base64 content. This javascript/typescript SDK preserves the base64 version in this field.
 	 */
 	challenge: string
 	/**
@@ -9134,6 +9518,7 @@ export type libcomet_WebAuthnUserEntity = {
 	displayName?: string
 	/**
 	 * ID
+	 * In other language projections, this field may contain raw binary data. When the field is expressed as JSON, this field contains base64 content. This javascript/typescript SDK preserves the base64 version in this field.
 	 */
 	id: string
 }
@@ -9247,8 +9632,14 @@ export function New_Zero_libcomet_WinSMBAuth(): libcomet_WinSMBAuth {
 
 
 export type libcomet_WindowsCodeSignProperties = {
+	/**
+	 * One of the WINDOWSCODESIGN_METHOD_ constants
+	 */
 	WindowsCodeSignMethod: number
 	WindowsCodeSignPKCS12FilePath: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
 	WindowsCodeSignPKCS12PasswordFormat: number
 	WindowsCodeSignPKCS12Password: string
 	WindowsCodeSignPKCS11Engine: string
@@ -9258,11 +9649,17 @@ export type libcomet_WindowsCodeSignProperties = {
 	 */
 	WindowsCodeSignPKCS11Certfile: string
 	WindowsCodeSignPKCS11KeyID: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
 	WindowsCodeSignPKCS11PasswordFormat: number
 	WindowsCodeSignPKCS11Password: string
 	WindowsCodeSignAzureVaultName: string
 	WindowsCodeSignAzureCertName: string
 	WindowsCodeSignAzureAppID: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
 	WindowsCodeSignAzureAppSecretFormat: number
 	WindowsCodeSignAzureAppSecret: string
 	WindowsCodeSignAzureTenantID: string
@@ -10446,9 +10843,12 @@ export default abstract class CometServerAPIBase {
 	 * @param {libcomet_RestoreJobAdvancedOptions} Options Restore targets
 	 * @param {string|null} Snapshot If present, restore a specific snapshot. Otherwise, restore the latest snapshot for the selected Protected Item + Storage Vault pair
 	 * @param {string[]|null} Paths If present, restore these paths only. Otherwise, restore all data
+	 * @param {number|null} KnownFileCount The number of files to restore, if known. Supplying this means we don't need to walk the entire tree just to find the file count and will speed up the restoration process.
+	 * @param {number|null} KnownByteCount The total size in bytes of files to restore, if known. Supplying this means we don't need to walk the entire tree just to find the total file size and will speed up the restoration process.
+	 * @param {number|null} KnownDirCount The number of directories to restore, if known. Supplying this means we don't need to walk the entire tree just to find the number of directories and will speed up the restoration process.
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
-	async AdminDispatcherRunRestoreCustomP(TargetID: string, Source: string, Destination: string, Options: libcomet_RestoreJobAdvancedOptions, Snapshot: string|null = null, Paths: string[]|null = null): Promise<libcomet_CometAPIResponseMessage> {
+	async AdminDispatcherRunRestoreCustomP(TargetID: string, Source: string, Destination: string, Options: libcomet_RestoreJobAdvancedOptions, Snapshot: string|null = null, Paths: string[]|null = null, KnownFileCount: number|null = null, KnownByteCount: number|null = null, KnownDirCount: number|null = null): Promise<libcomet_CometAPIResponseMessage> {
 		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Source"] = Source;
@@ -10459,6 +10859,15 @@ export default abstract class CometServerAPIBase {
 		}
 		if (Paths !== null) {
 			params["Paths"] = JSON.stringify(Paths);
+		}
+		if (KnownFileCount !== null) {
+			params["KnownFileCount"] = ""+KnownFileCount;
+		}
+		if (KnownByteCount !== null) {
+			params["KnownByteCount"] = ""+KnownByteCount;
+		}
+		if (KnownDirCount !== null) {
+			params["KnownDirCount"] = ""+KnownDirCount;
 		}
 		return await this._requestP("api/v1/admin/dispatcher/run-restore-custom", params);
 	}
@@ -12325,9 +12734,12 @@ export default abstract class CometServerAPIBase {
 	 * @param {libcomet_RestoreJobAdvancedOptions} Options Restore targets
 	 * @param {string|null} Snapshot If present, restore a specific snapshot. Otherwise, restore the latest snapshot for the selected Protected Item + Storage Vault pair
 	 * @param {string[]|null} Paths If present, restore these paths only. Otherwise, restore all data (>= 19.3.0)
+	 * @param {number|null} KnownFileCount The number of files to restore, if known. Supplying this means we don't need to walk the entire tree just to find the file count and will speed up the restoration process.
+	 * @param {number|null} KnownByteCount The total size in bytes of files to restore, if known. Supplying this means we don't need to walk the entire tree just to find the total file size and will speed up the restoration process.
+	 * @param {number|null} KnownDirCount The number of directories to restore, if known. Supplying this means we don't need to walk the entire tree just to find the number of directories and will speed up the restoration process.
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
-	async UserWebDispatcherRunRestoreCustomP(TargetID: string, Source: string, Destination: string, Options: libcomet_RestoreJobAdvancedOptions, Snapshot: string|null = null, Paths: string[]|null = null): Promise<libcomet_CometAPIResponseMessage> {
+	async UserWebDispatcherRunRestoreCustomP(TargetID: string, Source: string, Destination: string, Options: libcomet_RestoreJobAdvancedOptions, Snapshot: string|null = null, Paths: string[]|null = null, KnownFileCount: number|null = null, KnownByteCount: number|null = null, KnownDirCount: number|null = null): Promise<libcomet_CometAPIResponseMessage> {
 		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Source"] = Source;
@@ -12338,6 +12750,15 @@ export default abstract class CometServerAPIBase {
 		}
 		if (Paths !== null) {
 			params["Paths"] = JSON.stringify(Paths);
+		}
+		if (KnownFileCount !== null) {
+			params["KnownFileCount"] = ""+KnownFileCount;
+		}
+		if (KnownByteCount !== null) {
+			params["KnownByteCount"] = ""+KnownByteCount;
+		}
+		if (KnownDirCount !== null) {
+			params["KnownDirCount"] = ""+KnownDirCount;
 		}
 		return await this._requestP("api/v1/user/web/dispatcher/run-restore-custom", params);
 	}
