@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "23.6.5";
+export const APPLICATION_VERSION = "23.6.9";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -28,7 +28,7 @@ export const APPLICATION_VERSION_MINOR = 6;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 5;
+export const APPLICATION_VERSION_REVISION = 9;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -1118,6 +1118,30 @@ export const OS_ONLY_LINUX = 5;
 export const PASSWORD_FORMAT_PLAINTEXT = 0;
 
 /**
+ * PROVIDER_GENERIC
+ * OidcProvider
+ *
+ * @var {string}
+ */
+export const PROVIDER_GENERIC = "oidc";
+
+/**
+ * PROVIDER_AZUREADV2
+ * OidcProvider
+ *
+ * @var {string}
+ */
+export const PROVIDER_AZUREADV2 = "azure-ad-v2";
+
+/**
+ * PROVIDER_GOOGLE
+ * OidcProvider
+ *
+ * @var {string}
+ */
+export const PROVIDER_GOOGLE = "google";
+
+/**
  * PSA_TYPE_GENERIC
  * PSAType
  *
@@ -1155,6 +1179,14 @@ export const REMOTESERVER_COMET = "comet";
  * @var {string}
  */
 export const REMOTESERVER_LDAP = "ldap";
+
+/**
+ * REMOTESERVER_OIDC
+ * RemoteServerType
+ *
+ * @var {string}
+ */
+export const REMOTESERVER_OIDC = "oidc";
 
 /**
  * REMOTESERVER_B2
@@ -2712,10 +2744,10 @@ export const WEBAUTHN_DEVICE_TYPE__TPM_LINUX = 6;
 
 /**
  * WINDOWSCODESIGN_METHOD_AUTO
- * WindowsCodesignMethod: When upgrading from a version of Comet Server prior to 22.12.7, this option will be automatically converted to a more specific type.
+ * WindowsCodesignMethod: When upgrading from a version of Comet Server prior to 23.3.0, this option will be automatically converted to a more specific type.
  *
  * @var {number}
- * @deprecated This const has been deprecated since Comet version 22.12.7
+ * @deprecated This const has been deprecated since Comet version 23.3.0
  */
 export const WINDOWSCODESIGN_METHOD_AUTO = 0;
 
@@ -2939,6 +2971,10 @@ export type libcomet_AdminUserPermissions = {
 	 * Omission from JSON will be interpreted as false
 	 */
 	AllowEditWebhooks?: boolean
+	/**
+	 * Omission from JSON will be interpreted as false
+	 */
+	AllowEditExternalAuthSources?: boolean
 	/**
 	 * Omission from JSON will be interpreted as false
 	 */
@@ -3625,7 +3661,7 @@ export type libcomet_BrandingOptions = {
 	WindowsCodeSignPKCS11Engine: string
 	WindowsCodeSignPKCS11Module: string
 	/**
-	 * @deprecated This member has been deprecated since Comet version 22.12.7
+	 * This field was deprecated between 23.3.0 and 23.6.x, but is now used again.
 	 */
 	WindowsCodeSignPKCS11Certfile: string
 	WindowsCodeSignPKCS11KeyID: string
@@ -3774,7 +3810,7 @@ export type libcomet_BrandingProperties = {
 	WindowsCodeSignPKCS11Engine: string
 	WindowsCodeSignPKCS11Module: string
 	/**
-	 * @deprecated This member has been deprecated since Comet version 22.12.7
+	 * This field was deprecated between 23.3.0 and 23.6.x, but is now used again.
 	 */
 	WindowsCodeSignPKCS11Certfile: string
 	WindowsCodeSignPKCS11KeyID: string
@@ -5233,6 +5269,10 @@ export type libcomet_ExternalAuthenticationSource = {
 	/**
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
+	OIDC?: libcomet_OidcConfig
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
 	B2?: libcomet_B2VirtualStorageRoleSettings
 	/**
 	 * Omission from JSON will be interpreted as the zero value for this field type
@@ -5273,12 +5313,43 @@ export function libcomet_ExternalAuthenticationSource_set_embedded_libcomet_Remo
 	dest.Username = src.Username;
 	dest.Password = src.Password;
 	dest.LDAP = src.LDAP;
+	dest.OIDC = src.OIDC;
 	dest.B2 = src.B2;
 	dest.Wasabi = src.Wasabi;
 	dest.Custom = src.Custom;
 	dest.S3 = src.S3;
 	dest.AWS = src.AWS;
 	dest.Storj = src.Storj;
+}
+
+
+export type libcomet_ExternalAuthenticationSourceDisplay = {
+	DisplayName: string
+	LoginStartURL: string
+}
+
+export function New_Zero_libcomet_ExternalAuthenticationSourceDisplay(): libcomet_ExternalAuthenticationSourceDisplay {
+	return {
+		"DisplayName": "",
+		"LoginStartURL": "",
+	};
+}
+
+
+export type libcomet_ExternalAuthenticationSourceResponse = {
+	Status: number
+	Message: string
+	ID: string
+	Source: libcomet_ExternalAuthenticationSource
+}
+
+export function New_Zero_libcomet_ExternalAuthenticationSourceResponse(): libcomet_ExternalAuthenticationSourceResponse {
+	return {
+		"Status": 0,
+		"Message": "",
+		"ID": "",
+		"Source": New_Zero_libcomet_ExternalAuthenticationSource(),
+	};
 }
 
 
@@ -6302,6 +6373,71 @@ export function New_Zero_libcomet_Office365ObjectInfo(): libcomet_Office365Objec
 }
 
 
+export type libcomet_OidcClaim = {
+	Name: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Value?: string
+}
+
+export function New_Zero_libcomet_OidcClaim(): libcomet_OidcClaim {
+	return {
+		"Name": "",
+	};
+}
+
+
+export type libcomet_OidcConfig = {
+	DisplayName: string
+	/**
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	Hosts?: string[]
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	OrganizationID?: string
+	Provider: string
+	ClientID: string
+	ClientSecret: string
+	SkipMFA: boolean
+	/**
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	Scopes?: string[]
+	/**
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	RequiredClaims?: libcomet_OidcClaim[]
+	/**
+	 * GenericOP_DiscoveryDocumentURL
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	DiscoveryDocumentURL?: string
+	/**
+	 * AzureADV2OP_TenantID
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	AzureTenantID?: string
+	/**
+	 * GoogleOP_HostedDomain
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	GoogleHostedDomain?: string
+}
+
+export function New_Zero_libcomet_OidcConfig(): libcomet_OidcConfig {
+	return {
+		"DisplayName": "",
+		"Provider": "",
+		"ClientID": "",
+		"ClientSecret": "",
+		"SkipMFA": false,
+	};
+}
+
+
 export type libcomet_Organization = {
 	AuditFileOptions: {[k: string]: libcomet_FileOption}
 	Branding: libcomet_BrandingOptions
@@ -6468,7 +6604,7 @@ export type libcomet_PrivateBrandingProperties = {
 	WindowsCodeSignPKCS11Engine: string
 	WindowsCodeSignPKCS11Module: string
 	/**
-	 * @deprecated This member has been deprecated since Comet version 22.12.7
+	 * This field was deprecated between 23.3.0 and 23.6.x, but is now used again.
 	 */
 	WindowsCodeSignPKCS11Certfile: string
 	WindowsCodeSignPKCS11KeyID: string
@@ -6660,6 +6796,10 @@ export type libcomet_RemoteServerAddress = {
 	/**
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
+	OIDC?: libcomet_OidcConfig
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
 	B2?: libcomet_B2VirtualStorageRoleSettings
 	/**
 	 * Omission from JSON will be interpreted as the zero value for this field type
@@ -6714,6 +6854,10 @@ export type libcomet_RemoteStorageOption = {
 	/**
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
+	OIDC?: libcomet_OidcConfig
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
 	B2?: libcomet_B2VirtualStorageRoleSettings
 	/**
 	 * Omission from JSON will be interpreted as the zero value for this field type
@@ -6758,6 +6902,7 @@ export function libcomet_RemoteStorageOption_set_embedded_libcomet_RemoteServerA
 	dest.Username = src.Username;
 	dest.Password = src.Password;
 	dest.LDAP = src.LDAP;
+	dest.OIDC = src.OIDC;
 	dest.B2 = src.B2;
 	dest.Wasabi = src.Wasabi;
 	dest.Custom = src.Custom;
@@ -6786,6 +6931,10 @@ export type libcomet_ReplicaServer = {
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	LDAP?: libcomet_ExternalLDAPAuthenticationSourceSettings
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	OIDC?: libcomet_OidcConfig
 	/**
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
@@ -6831,6 +6980,7 @@ export function libcomet_ReplicaServer_set_embedded_libcomet_RemoteServerAddress
 	dest.Username = src.Username;
 	dest.Password = src.Password;
 	dest.LDAP = src.LDAP;
+	dest.OIDC = src.OIDC;
 	dest.B2 = src.B2;
 	dest.Wasabi = src.Wasabi;
 	dest.Custom = src.Custom;
@@ -6927,11 +7077,14 @@ export type libcomet_RestoreJobAdvancedOptions = {
 	 */
 	ArchiveFormat: number
 	/**
+	 * Default disabled. For RESTORETYPE_FILE and RESTORETYPE_WINDISK. Used to continue the restore job
+	 * when unreadable data chunks are found.
 	 * Corresponds to the "Allow partial file restores (zero-out unrecoverable data)" option
 	 * This field is available in Comet 23.6.4 and later.
 	 */
 	SkipUnreadableChunks: boolean
 	/**
+	 * Default disabled. Used to store the index files on disk instead of in memory.
 	 * Corresponds to the "Prefer temporary files instead of RAM (slower)" option
 	 * This field is available in Comet 23.6.4 and later.
 	 */
@@ -7624,6 +7777,10 @@ export type libcomet_ServerMetaBrandingProperties = {
 	AllowAuthenticatedDownloads: boolean
 	PruneLogsAfterDays: number
 	ExpiredInSeconds: number
+	/**
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	ExternalAuthenticationSources?: libcomet_ExternalAuthenticationSourceDisplay[]
 }
 
 export function New_Zero_libcomet_ServerMetaBrandingProperties(): libcomet_ServerMetaBrandingProperties {
@@ -8848,6 +9005,7 @@ export type libcomet_UserPolicy = {
 	DefaultStorageVaultRetention: libcomet_RetentionPolicy
 	EnforceStorageVaultRetention: boolean
 	PreventProtectedItemRetention: boolean
+	AllowEditObjectLockRetention: boolean
 	DefaultSources: {[k: string]: libcomet_SourceConfig}
 	DefaultSourcesBackupRules: {[k: string]: libcomet_BackupRuleConfig}
 	DefaultSourcesWithOSRestriction: {[k: string]: libcomet_DefaultSourceWithOSRestriction}
@@ -8884,6 +9042,7 @@ export function New_Zero_libcomet_UserPolicy(): libcomet_UserPolicy {
 		"DefaultStorageVaultRetention": New_Zero_libcomet_RetentionPolicy(),
 		"EnforceStorageVaultRetention": false,
 		"PreventProtectedItemRetention": false,
+		"AllowEditObjectLockRetention": false,
 		"DefaultSources": {},
 		"DefaultSourcesBackupRules": {},
 		"DefaultSourcesWithOSRestriction": {},
@@ -9645,7 +9804,7 @@ export type libcomet_WindowsCodeSignProperties = {
 	WindowsCodeSignPKCS11Engine: string
 	WindowsCodeSignPKCS11Module: string
 	/**
-	 * @deprecated This member has been deprecated since Comet version 22.12.7
+	 * This field was deprecated between 23.3.0 and 23.6.x, but is now used again.
 	 */
 	WindowsCodeSignPKCS11Certfile: string
 	WindowsCodeSignPKCS11KeyID: string
@@ -9780,6 +9939,21 @@ export default abstract class CometServerAPIBase {
 		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		return await this._requestP("api/v1/admin/account/session-start-as-user", params);
+	}
+
+	/**
+	 * AdminAccountSessionUpgrade
+	 * Upgrade a session key which is pending an MFA upgrade to a full session key
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 *
+	 * @param {string} SessionKey The session key to upgrade
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async AdminAccountSessionUpgradeP(SessionKey: string): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["SessionKey"] = SessionKey;
+		return await this._requestP("api/v1/admin/account/session-upgrade", params);
 	}
 
 	/**
@@ -10976,6 +11150,68 @@ export default abstract class CometServerAPIBase {
 			params["SelfAddress"] = SelfAddress;
 		}
 		return await this._requestP("api/v1/admin/dispatcher/update-software", params);
+	}
+
+	/**
+	 * AdminExternalAuthSourcesDelete
+	 * Delete an external admin authentication source
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 *
+	 * @param {string} SourceID (No description available)
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async AdminExternalAuthSourcesDeleteP(SourceID: string): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["SourceID"] = SourceID;
+		return await this._requestP("api/v1/admin/external-auth-sources/delete", params);
+	}
+
+	/**
+	 * AdminExternalAuthSourcesGet
+	 * Get a map of all external admin authentication sources
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 *
+	 * @return {Promise<{[k: string]: libcomet_ExternalAuthenticationSource}>}
+	 */
+	async AdminExternalAuthSourcesGetP(): Promise<{[k: string]: libcomet_ExternalAuthenticationSource}> {
+		return await this._requestP("api/v1/admin/external-auth-sources/get", {});
+	}
+
+	/**
+	 * AdminExternalAuthSourcesNew
+	 * Create an external admin authentication source
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 *
+	 * @param {libcomet_ExternalAuthenticationSource} Source (No description available)
+	 * @param {string|null} SourceID (No description available)
+	 * @return {Promise<libcomet_ExternalAuthenticationSourceResponse>}
+	 */
+	async AdminExternalAuthSourcesNewP(Source: libcomet_ExternalAuthenticationSource, SourceID: string|null = null): Promise<libcomet_ExternalAuthenticationSourceResponse> {
+		const params: { [s: string]: string; } = {};
+		params["Source"] = JSON.stringify(Source);
+		if (SourceID !== null) {
+			params["SourceID"] = SourceID;
+		}
+		return await this._requestP("api/v1/admin/external-auth-sources/new", params);
+	}
+
+	/**
+	 * AdminExternalAuthSourcesSet
+	 * Updates the current tenant's external admin authentication sources. This will set all
+	 * sources for the tenant; none will be preserved.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 *
+	 * @param {{[k: string]: libcomet_ExternalAuthenticationSource}} Sources (No description available)
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async AdminExternalAuthSourcesSetP(Sources: {[k: string]: libcomet_ExternalAuthenticationSource}): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["Sources"] = JSON.stringify(Sources);
+		return await this._requestP("api/v1/admin/external-auth-sources/set", params);
 	}
 
 	/**
