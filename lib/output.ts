@@ -330,6 +330,13 @@ export const DESTINATIONTYPE_B2 = 1008;
 export const DESTINATIONTYPE_STORJ = 1009;
 
 /**
+ * DESTINATIONTYPE_WEBDAV
+ *
+ * @var {number}
+ */
+export const DESTINATIONTYPE_WEBDAV = 1010;
+
+/**
  * DESTINATIONTYPE_LATEST
  * When defining a schedule via policy, use this option to dynamically select the Storage Vault that was created most recently.
  *
@@ -4506,6 +4513,10 @@ export type libcomet_DestinationConfig = {
 	LocalcopyWinSMBPasswordFormat: number
 	Swift: libcomet_SwiftDestinationLocation
 	B2: libcomet_B2DestinationLocation
+	/**
+	 * This field is available in Comet 23.6.9 and later.
+	 */
+	WebDav: libcomet_WebDavDestinationLocation
 	Storj: libcomet_StorjDestinationLocation
 	/**
 	 * A list of underlying destinations, that will be combined and presented as one.
@@ -4608,6 +4619,7 @@ export function New_Zero_libcomet_DestinationConfig(): libcomet_DestinationConfi
 		"LocalcopyWinSMBPasswordFormat": 0,
 		"Swift": New_Zero_libcomet_SwiftDestinationLocation(),
 		"B2": New_Zero_libcomet_B2DestinationLocation(),
+		"WebDav": New_Zero_libcomet_WebDavDestinationLocation(),
 		"Storj": New_Zero_libcomet_StorjDestinationLocation(),
 		"SpanTargets": [],
 		"SpanUseStaticSlots": false,
@@ -4664,6 +4676,7 @@ export function libcomet_DestinationConfig_set_embedded_libcomet_DestinationLoca
 	dest.LocalcopyWinSMBPasswordFormat = src.LocalcopyWinSMBPasswordFormat;
 	dest.Swift = src.Swift;
 	dest.B2 = src.B2;
+	dest.WebDav = src.WebDav;
 	dest.Storj = src.Storj;
 	dest.SpanTargets = src.SpanTargets;
 	dest.SpanUseStaticSlots = src.SpanUseStaticSlots;
@@ -4774,6 +4787,10 @@ export type libcomet_DestinationLocation = {
 	LocalcopyWinSMBPasswordFormat: number
 	Swift: libcomet_SwiftDestinationLocation
 	B2: libcomet_B2DestinationLocation
+	/**
+	 * This field is available in Comet 23.6.9 and later.
+	 */
+	WebDav: libcomet_WebDavDestinationLocation
 	Storj: libcomet_StorjDestinationLocation
 	/**
 	 * A list of underlying destinations, that will be combined and presented as one.
@@ -4838,6 +4855,7 @@ export function New_Zero_libcomet_DestinationLocation(): libcomet_DestinationLoc
 		"LocalcopyWinSMBPasswordFormat": 0,
 		"Swift": New_Zero_libcomet_SwiftDestinationLocation(),
 		"B2": New_Zero_libcomet_B2DestinationLocation(),
+		"WebDav": New_Zero_libcomet_WebDavDestinationLocation(),
 		"Storj": New_Zero_libcomet_StorjDestinationLocation(),
 		"SpanTargets": [],
 		"SpanUseStaticSlots": false,
@@ -9695,6 +9713,38 @@ export function libcomet_WebAuthnUserEntity_set_embedded_libcomet_WebAuthnCreden
 }
 
 
+/**
+ * This type is available in Comet 23.6.9 and later.
+ */
+export type libcomet_WebDavDestinationLocation = {
+	/**
+	 * The URL of the WebDAV server, including http/https and any custom port
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	DavServer?: string
+	/**
+	 * The username for logging in to the WebDAV server
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	UserName?: string
+	/**
+	 * The password for logging in to the WebDAV server
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	AccessKey?: string
+	/**
+	 * The target directory path within the WebDAV server
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Path?: string
+}
+
+export function New_Zero_libcomet_WebDavDestinationLocation(): libcomet_WebDavDestinationLocation {
+	return {
+	};
+}
+
+
 export type libcomet_WebInterfaceBrandingProperties = {
 	/**
 	 * One of the BRANDINGSTYLETYPE_ constants
@@ -12367,7 +12417,6 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API requires the Storage Role to be enabled.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 *
 	 * @param {libcomet_DestinationLocation} ExtraData The destination location settings
