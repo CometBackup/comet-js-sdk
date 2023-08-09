@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2023-08-09 v2.3.0
+
+- Based on Comet 23.6.9
+- Added WebDAV `DestinationLocation`
+
 ## 2023-08-02 v2.2.0
 
 - Based on Comet 23.6.9
