@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2023-08-29 v2.4.0
+
+- Based on Comet 23.8.0
+- Improve documentation of JobStatus constants
+
 ## 2023-08-09 v2.3.0
 
 - Based on Comet 23.6.9
