@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "23.6.9";
+export const APPLICATION_VERSION = "23.8.0";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -21,14 +21,14 @@ export const APPLICATION_VERSION_MAJOR = 23;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MINOR = 6;
+export const APPLICATION_VERSION_MINOR = 8;
 
 /**
  * APPLICATION_VERSION_REVISION
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 9;
+export const APPLICATION_VERSION_REVISION = 0;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -730,7 +730,7 @@ export const JOB_STATUS_STOP_SUCCESS__MIN = 5000;
 
 /**
  * JOB_STATUS_STOP_SUCCESS
- * JobStatus
+ * JobStatus: The job is complete and was successful.
  *
  * @var {number}
  */
@@ -762,7 +762,7 @@ export const JOB_STATUS_RUNNING_INDETERMINATE = 6000;
 
 /**
  * JOB_STATUS_RUNNING_ACTIVE
- * JobStatus
+ * JobStatus: The last information the server received from the device is that the job is currently running.
  *
  * @var {number}
  */
@@ -770,7 +770,7 @@ export const JOB_STATUS_RUNNING_ACTIVE = 6001;
 
 /**
  * JOB_STATUS_RUNNING_REVIVED
- * JobStatus: A backup job that was marked as stopped or abandoned, but has somehow continued to run
+ * JobStatus: The job was thought to have been in an Abandoned state but updated the Comet Server with a running status.
  *
  * @var {number}
  */
@@ -802,7 +802,7 @@ export const JOB_STATUS_FAILED_TIMEOUT = 7000;
 
 /**
  * JOB_STATUS_FAILED_WARNING
- * JobStatus
+ * JobStatus: The job is complete but there was a problem that may have resulted in issues with the expected result.
  *
  * @var {number}
  */
@@ -810,7 +810,7 @@ export const JOB_STATUS_FAILED_WARNING = 7001;
 
 /**
  * JOB_STATUS_FAILED_ERROR
- * JobStatus
+ * JobStatus: There was an error during the job and it did not fully complete.
  *
  * @var {number}
  */
@@ -818,7 +818,7 @@ export const JOB_STATUS_FAILED_ERROR = 7002;
 
 /**
  * JOB_STATUS_FAILED_QUOTA
- * JobStatus
+ * JobStatus: During a backup job either the "All protected items" quota or "Storage Vault" quota was exceeded.
  *
  * @var {number}
  */
@@ -826,7 +826,7 @@ export const JOB_STATUS_FAILED_QUOTA = 7003;
 
 /**
  * JOB_STATUS_FAILED_SCHEDULEMISSED
- * JobStatus
+ * JobStatus: The job did not start at its scheduled time.
  *
  * @var {number}
  */
@@ -834,7 +834,7 @@ export const JOB_STATUS_FAILED_SCHEDULEMISSED = 7004;
 
 /**
  * JOB_STATUS_FAILED_CANCELLED
- * JobStatus
+ * JobStatus: The job was cancelled manually, a device shutdown was detected, or the backup time limit was reached.
  *
  * @var {number}
  */
@@ -842,7 +842,7 @@ export const JOB_STATUS_FAILED_CANCELLED = 7005;
 
 /**
  * JOB_STATUS_FAILED_SKIPALREADYRUNNING
- * JobStatus
+ * JobStatus: The backup job was skipped as there was already a backup running and the "Skip if already running" option was enabled.
  *
  * @var {number}
  */
@@ -850,7 +850,7 @@ export const JOB_STATUS_FAILED_SKIPALREADYRUNNING = 7006;
 
 /**
  * JOB_STATUS_FAILED_ABANDONED
- * JobStatus
+ * JobStatus: The job has stopped unexpectedly or has been manually marked as abandoned by an admin.
  *
  * @var {number}
  */
@@ -1169,7 +1169,7 @@ export const PSA_TYPE_GRADIENT = 1;
  *
  * @var {string}
  */
-export const RELEASE_CODENAME = "Voyager";
+export const RELEASE_CODENAME = "Adrastea";
 
 /**
  * REMOTESERVER_COMET
