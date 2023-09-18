@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "23.8.0";
+export const APPLICATION_VERSION = "23.9.2";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -21,14 +21,14 @@ export const APPLICATION_VERSION_MAJOR = 23;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MINOR = 8;
+export const APPLICATION_VERSION_MINOR = 9;
 
 /**
  * APPLICATION_VERSION_REVISION
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 0;
+export const APPLICATION_VERSION_REVISION = 2;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -1034,6 +1034,27 @@ export const MSSQL_RESTORE_RECOVERY = "RECOVERY";
 export const MSSQL_RESTORE_NORECOVERY = "NO_RECOVERY";
 
 /**
+ * OBJECT_LOCK_LEGACY
+ *
+ * @var {number}
+ */
+export const OBJECT_LOCK_LEGACY = 0;
+
+/**
+ * OBJECT_LOCK_ON
+ *
+ * @var {number}
+ */
+export const OBJECT_LOCK_ON = 1;
+
+/**
+ * OBJECT_LOCK_OFF
+ *
+ * @var {number}
+ */
+export const OBJECT_LOCK_OFF = 2;
+
+/**
  * OFFICE365_REGION_PUBLIC
  *
  * @var {string}
@@ -1169,7 +1190,7 @@ export const PSA_TYPE_GRADIENT = 1;
  *
  * @var {string}
  */
-export const RELEASE_CODENAME = "Adrastea";
+export const RELEASE_CODENAME = "Voyager";
 
 /**
  * REMOTESERVER_COMET
@@ -2321,6 +2342,22 @@ export const SEVT_DEVICE_LIVE_CONNECT = 4702;
 export const SEVT_DEVICE_LIVE_DISCONNECT = 4703;
 
 /**
+ * SEVT_DEVICE_LOBBY_CONNECT
+ * StreamableEventType: Device connected to registration lobby
+ *
+ * @var {number}
+ */
+export const SEVT_DEVICE_LOBBY_CONNECT = 4704;
+
+/**
+ * SEVT_DEVICE_LOBBY_DISCONNECT
+ * StreamableEventType: Device disconnected from registration lobby
+ *
+ * @var {number}
+ */
+export const SEVT_DEVICE_LOBBY_DISCONNECT = 4705;
+
+/**
  * SEVT__MAX
  * StreamableEventType
  *
@@ -2663,6 +2700,13 @@ export const UPDATESTATUS_UPDATE_FAILED = 4;
  * @var {number}
  */
 export const UPDATESTATUS_UPDATE_CONFIRMED = 5;
+
+/**
+ * USERNAME_MAX_LENGTH
+ *
+ * @var {number}
+ */
+export const USERNAME_MAX_LENGTH = 255;
 
 /**
  * UnknownDeviceError
@@ -3139,7 +3183,11 @@ export type libcomet_AmazonAWSVirtualStorageRoleSettings = {
 	MasterBucket: string
 	AccessKey: string
 	SecretKey: string
+	/**
+	 * UseObjectLock_Legacy_DoNotUse
+	 */
 	UseObjectLock: boolean
+	ObjectLockMode: number
 	ObjectLockDays: number
 	RemoveDeleted: boolean
 }
@@ -3150,6 +3198,7 @@ export function New_Zero_libcomet_AmazonAWSVirtualStorageRoleSettings(): libcome
 		"AccessKey": "",
 		"SecretKey": "",
 		"UseObjectLock": false,
+		"ObjectLockMode": 0,
 		"ObjectLockDays": 0,
 		"RemoveDeleted": false,
 	};
@@ -4437,6 +4486,7 @@ export type libcomet_DestinationConfig = {
 	 */
 	S3UsesV2Signing: boolean
 	S3RemoveDeleted: boolean
+	S3ObjectLockMode: number
 	S3ObjectLockDays: number
 	SFTPServer: string
 	SFTPUsername: string
@@ -4590,6 +4640,7 @@ export function New_Zero_libcomet_DestinationConfig(): libcomet_DestinationConfi
 		"S3CustomRegion": "",
 		"S3UsesV2Signing": false,
 		"S3RemoveDeleted": false,
+		"S3ObjectLockMode": 0,
 		"S3ObjectLockDays": 0,
 		"SFTPServer": "",
 		"SFTPUsername": "",
@@ -4647,6 +4698,7 @@ export function libcomet_DestinationConfig_set_embedded_libcomet_DestinationLoca
 	dest.S3CustomRegion = src.S3CustomRegion;
 	dest.S3UsesV2Signing = src.S3UsesV2Signing;
 	dest.S3RemoveDeleted = src.S3RemoveDeleted;
+	dest.S3ObjectLockMode = src.S3ObjectLockMode;
 	dest.S3ObjectLockDays = src.S3ObjectLockDays;
 	dest.SFTPServer = src.SFTPServer;
 	dest.SFTPUsername = src.SFTPUsername;
@@ -4711,6 +4763,7 @@ export type libcomet_DestinationLocation = {
 	 */
 	S3UsesV2Signing: boolean
 	S3RemoveDeleted: boolean
+	S3ObjectLockMode: number
 	S3ObjectLockDays: number
 	SFTPServer: string
 	SFTPUsername: string
@@ -4826,6 +4879,7 @@ export function New_Zero_libcomet_DestinationLocation(): libcomet_DestinationLoc
 		"S3CustomRegion": "",
 		"S3UsesV2Signing": false,
 		"S3RemoveDeleted": false,
+		"S3ObjectLockMode": 0,
 		"S3ObjectLockDays": 0,
 		"SFTPServer": "",
 		"SFTPUsername": "",
@@ -4878,6 +4932,7 @@ export function libcomet_DestinationLocation_set_embedded_libcomet_S3Destination
 	dest.S3CustomRegion = src.S3CustomRegion;
 	dest.S3UsesV2Signing = src.S3UsesV2Signing;
 	dest.S3RemoveDeleted = src.S3RemoveDeleted;
+	dest.S3ObjectLockMode = src.S3ObjectLockMode;
 	dest.S3ObjectLockDays = src.S3ObjectLockDays;
 }
 
@@ -5727,6 +5782,7 @@ export function New_Zero_libcomet_HyperVMachineInfo(): libcomet_HyperVMachineInf
 export type libcomet_InstallCreds = {
 	Username: string
 	Password: string
+	TOTPCode: string
 	Server: string
 	AutoLogin: boolean
 }
@@ -5735,6 +5791,7 @@ export function New_Zero_libcomet_InstallCreds(): libcomet_InstallCreds {
 	return {
 		"Username": "",
 		"Password": "",
+		"TOTPCode": "",
 		"Server": "",
 		"AutoLogin": false,
 	};
@@ -6541,6 +6598,7 @@ export type libcomet_PSAConfig = {
 	 * For PSA_TYPE_GENERIC
 	 */
 	URL: string
+	GroupedBy: libcomet_PSAGroupedBy
 }
 
 export function New_Zero_libcomet_PSAConfig(): libcomet_PSAConfig {
@@ -6548,6 +6606,22 @@ export function New_Zero_libcomet_PSAConfig(): libcomet_PSAConfig {
 		"AlertsDisabled": false,
 		"Type": 0,
 		"URL": "",
+		"GroupedBy": New_Zero_libcomet_PSAGroupedBy(),
+	};
+}
+
+
+export type libcomet_PSAGroupedBy = {
+	Users: boolean
+	Tenants: boolean
+	AccountName: boolean
+}
+
+export function New_Zero_libcomet_PSAGroupedBy(): libcomet_PSAGroupedBy {
+	return {
+		"Users": false,
+		"Tenants": false,
+		"AccountName": false,
 	};
 }
 
@@ -6788,6 +6862,39 @@ export function New_Zero_libcomet_RegisterOfficeApplicationCheckResponse(): libc
 		"Continuation": "",
 		"Completed": false,
 		"Error": "",
+	};
+}
+
+
+export type libcomet_RegistrationLobbyConnection = {
+	DeviceID: string
+	OrganizationID: string
+	FriendlyName: string
+	ReportedVersion: string
+	ReportedPlatform: string
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	ReportedPlatformVersion?: libcomet_OSInfo
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	DeviceTimeZone?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	IPAddress?: string
+	ConnectionTime: number
+}
+
+export function New_Zero_libcomet_RegistrationLobbyConnection(): libcomet_RegistrationLobbyConnection {
+	return {
+		"DeviceID": "",
+		"OrganizationID": "",
+		"FriendlyName": "",
+		"ReportedVersion": "",
+		"ReportedPlatform": "",
+		"ConnectionTime": 0,
 	};
 }
 
@@ -7252,6 +7359,7 @@ export type libcomet_S3DestinationLocation = {
 	 */
 	S3UsesV2Signing: boolean
 	S3RemoveDeleted: boolean
+	S3ObjectLockMode: number
 	S3ObjectLockDays: number
 }
 
@@ -7266,6 +7374,7 @@ export function New_Zero_libcomet_S3DestinationLocation(): libcomet_S3Destinatio
 		"S3CustomRegion": "",
 		"S3UsesV2Signing": false,
 		"S3RemoveDeleted": false,
+		"S3ObjectLockMode": 0,
 		"S3ObjectLockDays": 0,
 	};
 }
@@ -7277,7 +7386,11 @@ export type libcomet_S3GenericVirtualStorageRole = {
 	MasterBucket: string
 	AccessKey: string
 	SecretKey: string
+	/**
+	 * UseObjectLock_Legacy_DoNotUse
+	 */
 	UseObjectLock: boolean
+	ObjectLockMode: number
 	ObjectLockDays: number
 	RemoveDeleted: boolean
 }
@@ -7290,6 +7403,7 @@ export function New_Zero_libcomet_S3GenericVirtualStorageRole(): libcomet_S3Gene
 		"AccessKey": "",
 		"SecretKey": "",
 		"UseObjectLock": false,
+		"ObjectLockMode": 0,
 		"ObjectLockDays": 0,
 		"RemoveDeleted": false,
 	};
@@ -9361,7 +9475,11 @@ export type libcomet_WasabiVirtualStorageRoleSettings = {
 	MasterBucket: string
 	AccessKey: string
 	SecretKey: string
+	/**
+	 * UseObjectLock_Legacy_DoNotUse
+	 */
 	UseObjectLock: boolean
+	ObjectLockMode: number
 	ObjectLockDays: number
 	RemoveDeleted: boolean
 }
@@ -9372,6 +9490,7 @@ export function New_Zero_libcomet_WasabiVirtualStorageRoleSettings(): libcomet_W
 		"AccessKey": "",
 		"SecretKey": "",
 		"UseObjectLock": false,
+		"ObjectLockMode": 0,
 		"ObjectLockDays": 0,
 		"RemoveDeleted": false,
 	};
@@ -11459,6 +11578,80 @@ export default abstract class CometServerAPIBase {
 		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		return await this._requestP("api/v1/admin/get-user-profile-hash", params);
+	}
+
+	/**
+	 * AdminInstallationDispatchDropConnection
+	 * Instruct a live connected device to disconnect
+	 * The device will terminate its live-connection process and will not reconnect.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} DeviceID The live connection Device GUID
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async AdminInstallationDispatchDropConnectionP(DeviceID: string): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["DeviceID"] = DeviceID;
+		return await this._requestP("api/v1/admin/installation/dispatch/drop-connection", params);
+	}
+
+	/**
+	 * AdminInstallationDispatchRegisterDevice
+	 * Instruct an unregistered device to authenticate with a given user
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} DeviceID The live connection Device GUID
+	 * @param {string} TargetUser Selected account username
+	 * @param {string} TargetPassword Selected account password
+	 * @param {string|null} TargetTOTPCode Selected account TOTP code
+	 * @return {Promise<string>}
+	 */
+	async AdminInstallationDispatchRegisterDeviceP(DeviceID: string, TargetUser: string, TargetPassword: string, TargetTOTPCode: string|null = null): Promise<string> {
+		const params: { [s: string]: string; } = {};
+		params["DeviceID"] = DeviceID;
+		params["TargetUser"] = TargetUser;
+		params["TargetPassword"] = TargetPassword;
+		if (TargetTOTPCode !== null) {
+			params["TargetTOTPCode"] = TargetTOTPCode;
+		}
+		return await this._requestP("api/v1/admin/installation/dispatch/register-device", params);
+	}
+
+	/**
+	 * AdminInstallationListActive
+	 * List live connected devices in lobby mode
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @return {Promise<{[k: string]: libcomet_RegistrationLobbyConnection}>}
+	 */
+	async AdminInstallationListActiveP(): Promise<{[k: string]: libcomet_RegistrationLobbyConnection}> {
+		return await this._requestP("api/v1/admin/installation/list-active", {});
+	}
+
+	/**
+	 * AdminJobAbandon
+	 * Mark a running job as abandoned
+	 * This will change the status of a running job to abandoned.
+	 * This is intended to be used on jobs which are definitely no longer running but are stuck in the running state; it will not attempt to cancel the job. If the job is detected to still be running after being marked as abandoned, it will be revived.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetUser Username
+	 * @param {string} JobID Job ID
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async AdminJobAbandonP(TargetUser: string, JobID: string): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["TargetUser"] = TargetUser;
+		params["JobID"] = JobID;
+		return await this._requestP("api/v1/admin/job/abandon", params);
 	}
 
 	/**
