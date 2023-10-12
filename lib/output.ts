@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "23.9.2";
+export const APPLICATION_VERSION = "23.9.5";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -28,7 +28,7 @@ export const APPLICATION_VERSION_MINOR = 9;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 2;
+export const APPLICATION_VERSION_REVISION = 5;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -1497,6 +1497,14 @@ export const RESTORETYPE_MYSQL = 10;
 export const RESTORETYPE_MSSQL = 11;
 
 /**
+ * RESTORETYPE_WINDISK_ESXI
+ * RestoreType: Restore disk image backup as VMware-compatible virtual disks
+ *
+ * @var {number}
+ */
+export const RESTORETYPE_WINDISK_ESXI = 12;
+
+/**
  * RESTORETYPE_PROCESS_TARBALL
  * RestoreType: Legacy name alias - Prefer to use RESTORETYPE_PROCESS_ARCHIVE since multiple archive file formats are supported within this single RESTORETYPE_
  *
@@ -2063,7 +2071,7 @@ export const SEVT__MIN = 4000;
 
 /**
  * SEVT_META_HELLO
- * StreamableEventType: New websocket connection. Data is typically ServerMetaVersionInfo
+ * StreamableEventType: New event stream connection. Data is typically ServerMetaVersionInfo
  *
  * @var {number}
  */
@@ -2159,7 +2167,7 @@ export const SEVT_ACCOUNT_ADMIN_UPDATED = 4152;
 
 /**
  * SEVT_ACCOUNT_ADMIN_LOGIN
- * StreamableEventType: Admin authentication suceeded. Only emitted for non-session requests. Resource is the requested path
+ * StreamableEventType: Admin authentication succeeded. Only emitted for non-session requests. Resource is the requested path
  *
  * @var {number}
  */
@@ -3398,6 +3406,7 @@ export type libcomet_BackupJobAdvancedOptions = {
 	 * If Zero: default Automatic (BACKUPJOBAUTORETENTION_AUTOMATIC)
 	 */
 	AutoRetentionLevel: number
+	LogLevel: string
 }
 
 export function New_Zero_libcomet_BackupJobAdvancedOptions(): libcomet_BackupJobAdvancedOptions {
@@ -3409,6 +3418,7 @@ export function New_Zero_libcomet_BackupJobAdvancedOptions(): libcomet_BackupJob
 		"UseOnDiskIndexes": false,
 		"AllowZeroFilesSuccess": false,
 		"AutoRetentionLevel": 0,
+		"LogLevel": "",
 	};
 }
 
@@ -3609,6 +3619,7 @@ export type libcomet_BackupRuleConfig = {
 	 * If Zero: default Automatic (BACKUPJOBAUTORETENTION_AUTOMATIC)
 	 */
 	AutoRetentionLevel: number
+	LogLevel: string
 	/**
 	 * Scheduled start times
 	 */
@@ -3636,6 +3647,7 @@ export function New_Zero_libcomet_BackupRuleConfig(): libcomet_BackupRuleConfig 
 		"UseOnDiskIndexes": false,
 		"AllowZeroFilesSuccess": false,
 		"AutoRetentionLevel": 0,
+		"LogLevel": "",
 		"Schedules": [],
 		"EventTriggers": New_Zero_libcomet_BackupRuleEventTriggers(),
 	};
@@ -3649,6 +3661,7 @@ export function libcomet_BackupRuleConfig_set_embedded_libcomet_BackupJobAdvance
 	dest.UseOnDiskIndexes = src.UseOnDiskIndexes;
 	dest.AllowZeroFilesSuccess = src.AllowZeroFilesSuccess;
 	dest.AutoRetentionLevel = src.AutoRetentionLevel;
+	dest.LogLevel = src.LogLevel;
 }
 
 
