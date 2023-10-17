@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "23.9.5";
+export const APPLICATION_VERSION = "23.9.6";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -28,7 +28,7 @@ export const APPLICATION_VERSION_MINOR = 9;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 5;
+export const APPLICATION_VERSION_REVISION = 6;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -1199,6 +1199,14 @@ export const RELEASE_CODENAME = "Voyager";
  * @var {string}
  */
 export const REMOTESERVER_COMET = "comet";
+
+/**
+ * REMOTESERVER_COMET_STORAGE
+ * RemoteServerType
+ *
+ * @var {string}
+ */
+export const REMOTESERVER_COMET_STORAGE = "cometstorage";
 
 /**
  * REMOTESERVER_LDAP
@@ -4598,6 +4606,7 @@ export type libcomet_DestinationConfig = {
 	 * The default option is false.
 	 */
 	SpanUseStaticSlots: boolean
+	Tag: string
 	/**
 	 * One of the ENCRYPTIONMETHOD_ constants
 	 */
@@ -4687,6 +4696,7 @@ export function New_Zero_libcomet_DestinationConfig(): libcomet_DestinationConfi
 		"Storj": New_Zero_libcomet_StorjDestinationLocation(),
 		"SpanTargets": [],
 		"SpanUseStaticSlots": false,
+		"Tag": "",
 		"EncryptionKeyEncryptionMethod": 0,
 		"EncryptedEncryptionKey": "",
 		"RepoInitTimestamp": 0,
@@ -4745,6 +4755,7 @@ export function libcomet_DestinationConfig_set_embedded_libcomet_DestinationLoca
 	dest.Storj = src.Storj;
 	dest.SpanTargets = src.SpanTargets;
 	dest.SpanUseStaticSlots = src.SpanUseStaticSlots;
+	dest.Tag = src.Tag;
 }
 
 
@@ -4875,6 +4886,7 @@ export type libcomet_DestinationLocation = {
 	 * The default option is false.
 	 */
 	SpanUseStaticSlots: boolean
+	Tag: string
 }
 
 export function New_Zero_libcomet_DestinationLocation(): libcomet_DestinationLocation {
@@ -4926,6 +4938,7 @@ export function New_Zero_libcomet_DestinationLocation(): libcomet_DestinationLoc
 		"Storj": New_Zero_libcomet_StorjDestinationLocation(),
 		"SpanTargets": [],
 		"SpanUseStaticSlots": false,
+		"Tag": "",
 	};
 }
 
