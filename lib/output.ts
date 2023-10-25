@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "23.9.6";
+export const APPLICATION_VERSION = "23.9.7";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -28,7 +28,7 @@ export const APPLICATION_VERSION_MINOR = 9;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 6;
+export const APPLICATION_VERSION_REVISION = 7;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -585,6 +585,14 @@ export const ENGINE_BUILTIN_MONGODB = "engine1/mongodb";
 export const ENGINE_BUILTIN_MSOFFICE = "engine1/winmsofficemail";
 
 /**
+ * ENGINE_BUILTIN_VMWARE
+ * VMware
+ *
+ * @var {string}
+ */
+export const ENGINE_BUILTIN_VMWARE = "engine1/vmware";
+
+/**
  * FTPS_MODE_PLAINTEXT
  * FtpsModeType: Use plain FTP, do not use FTPS.
  *
@@ -607,6 +615,32 @@ export const FTPS_MODE_IMPLICIT = 1;
  * @var {number}
  */
 export const FTPS_MODE_EXPLICIT = 2;
+
+/**
+ * HYPERV_METHOD_VSS
+ * Back up Hyper-V virtual machines using VSS mode. This includes all previous snapshots.
+ *
+ * @var {string}
+ */
+export const HYPERV_METHOD_VSS = "vss";
+
+/**
+ * HYPERV_METHOD_WMI_COPY
+ * Back up Hyper-V virtual machines using WMI mode. This includes the latest snapshot data only.
+ * This const is available in Comet 23.9.8 and later.
+ *
+ * @var {string}
+ */
+export const HYPERV_METHOD_WMI_COPY = "copy";
+
+/**
+ * HYPERV_METHOD_WMI_CBT
+ * Back up Hyper-V virtual machines using WMI mode with RCT acceleration. This includes the latest snapshot data only.
+ * This const is available in Comet 23.9.8 and later.
+ *
+ * @var {string}
+ */
+export const HYPERV_METHOD_WMI_CBT = "wmi";
 
 /**
  * JOB_CLASSIFICATION__MIN
@@ -2747,6 +2781,70 @@ export const UnsupportVhdxFileSystem = "ERR_UNSUPPORT_VHDX_FILE_SYSTEM";
 export const UnsupportVmdkFileSystem = "ERR_UNSUPPORT_VMDK_FILE_SYSTEM";
 
 /**
+ * VMWARE_CONNECTION_SSH
+ * VMwareConnectionType
+ *
+ * @var {string}
+ */
+export const VMWARE_CONNECTION_SSH = "ssh";
+
+/**
+ * VMWARE_CONNECTION_VSPHERE
+ * VMwareConnectionType
+ *
+ * @var {string}
+ */
+export const VMWARE_CONNECTION_VSPHERE = "vsphere";
+
+/**
+ * VMWARE_SNAPSHOT_FAST
+ * VmwareSnapshotType
+ *
+ * @var {string}
+ */
+export const VMWARE_SNAPSHOT_FAST = "";
+
+/**
+ * VMWARE_SNAPSHOT_QUIESCE
+ * VmwareSnapshotType
+ *
+ * @var {string}
+ */
+export const VMWARE_SNAPSHOT_QUIESCE = "quiesce";
+
+/**
+ * VMWARE_SNAPSHOT_MEMORY
+ * VmwareSnapshotType
+ *
+ * @var {string}
+ */
+export const VMWARE_SNAPSHOT_MEMORY = "memory";
+
+/**
+ * VMWARE_BACKUP_FULL
+ * VmwareBackupType
+ *
+ * @var {string}
+ */
+export const VMWARE_BACKUP_FULL = "full";
+
+/**
+ * VMWARE_BACKUP_CBT
+ * VmwareBackupType
+ *
+ * @var {string}
+ */
+export const VMWARE_BACKUP_CBT = "cbt";
+
+/**
+ * VMWARE_BACKUP_COPY
+ * VmwareBackupType
+ *
+ * @var {string}
+ */
+export const VMWARE_BACKUP_COPY = "copy";
+
+/**
  * VhdxPartitonReadErrMsg
  *
  * @var {string}
@@ -4121,6 +4219,29 @@ export function New_Zero_libcomet_BrowseSQLServerResponse(): libcomet_BrowseSQLS
 }
 
 export function libcomet_BrowseSQLServerResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_BrowseSQLServerResponse, src: libcomet_CometAPIResponseMessage): void {
+	dest.Status = src.Status;
+	dest.Message = src.Message;
+}
+
+
+export type libcomet_BrowseVMwareResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
+	Status: number
+	Message: string
+	VirtualMachines: libcomet_VMwareMachineInfo[]
+}
+
+export function New_Zero_libcomet_BrowseVMwareResponse(): libcomet_BrowseVMwareResponse {
+	return {
+		"Status": 0,
+		"Message": "",
+		"VirtualMachines": [],
+	};
+}
+
+export function libcomet_BrowseVMwareResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_BrowseVMwareResponse, src: libcomet_CometAPIResponseMessage): void {
 	dest.Status = src.Status;
 	dest.Message = src.Message;
 }
@@ -9444,6 +9565,35 @@ export function New_Zero_libcomet_VMDKSnapshotViewOptions(): libcomet_VMDKSnapsh
 }
 
 
+export type libcomet_VMwareConnection = {
+	/**
+	 * One of the VMWARE_CONNECTION_ constants
+	 */
+	ConnectionType: string
+	SSH: libcomet_SSHConnection
+	VSphere: libcomet_VSphereConnection
+}
+
+export function New_Zero_libcomet_VMwareConnection(): libcomet_VMwareConnection {
+	return {
+		"ConnectionType": "",
+		"SSH": New_Zero_libcomet_SSHConnection(),
+		"VSphere": New_Zero_libcomet_VSphereConnection(),
+	};
+}
+
+
+export type libcomet_VMwareMachineInfo = {
+	Name: string
+}
+
+export function New_Zero_libcomet_VMwareMachineInfo(): libcomet_VMwareMachineInfo {
+	return {
+		"Name": "",
+	};
+}
+
+
 export type libcomet_VSSComponent = {
 	Path: string
 	Name: string
@@ -9473,6 +9623,27 @@ export function New_Zero_libcomet_VSSWriterInfo(): libcomet_VSSWriterInfo {
 	return {
 		"DisplayName": "",
 		"Components": [],
+	};
+}
+
+
+export type libcomet_VSphereConnection = {
+	Hostname: string
+	Https: boolean
+	AllowInvalidCertificate: boolean
+	Username: string
+	Password: string
+	ThumbPrint: string
+}
+
+export function New_Zero_libcomet_VSphereConnection(): libcomet_VSphereConnection {
+	return {
+		"Hostname": "",
+		"Https": false,
+		"AllowInvalidCertificate": false,
+		"Username": "",
+		"Password": "",
+		"ThumbPrint": "",
 	};
 }
 
@@ -10964,6 +11135,25 @@ export default abstract class CometServerAPIBase {
 		params["TargetID"] = TargetID;
 		params["Credentials"] = JSON.stringify(Credentials);
 		return await this._requestP("api/v1/admin/dispatcher/request-browse-mysql", params);
+	}
+
+	/**
+	 * AdminDispatcherRequestBrowseVmware
+	 * Request a list of VMware vSphere virtual machines
+	 * The remote device must have given consent for an MSP to browse their files.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {libcomet_VMwareConnection} Credentials The VMware vSphere connection settings
+	 * @return {Promise<libcomet_BrowseVMwareResponse>}
+	 */
+	async AdminDispatcherRequestBrowseVmwareP(TargetID: string, Credentials: libcomet_VMwareConnection): Promise<libcomet_BrowseVMwareResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Credentials"] = JSON.stringify(Credentials);
+		return await this._requestP("api/v1/admin/dispatcher/request-browse-vmware", params);
 	}
 
 	/**
@@ -13031,6 +13221,24 @@ export default abstract class CometServerAPIBase {
 		params["TargetID"] = TargetID;
 		params["Credentials"] = JSON.stringify(Credentials);
 		return await this._requestP("api/v1/user/web/dispatcher/request-browse-mysql", params);
+	}
+
+	/**
+	 * UserWebDispatcherRequestBrowseVmware
+	 * Request a list of VMware vSphere virtual machines
+	 *
+	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {libcomet_VMwareConnection} Credentials The VMWare ESXi connection settings
+	 * @return {Promise<libcomet_BrowseVMwareResponse>}
+	 */
+	async UserWebDispatcherRequestBrowseVmwareP(TargetID: string, Credentials: libcomet_VMwareConnection): Promise<libcomet_BrowseVMwareResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Credentials"] = JSON.stringify(Credentials);
+		return await this._requestP("api/v1/user/web/dispatcher/request-browse-vmware", params);
 	}
 
 	/**
