@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "23.9.8";
+export const APPLICATION_VERSION = "23.9.9";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -28,7 +28,7 @@ export const APPLICATION_VERSION_MINOR = 9;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 8;
+export const APPLICATION_VERSION_REVISION = 9;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -1218,6 +1218,14 @@ export const PSA_TYPE_GENERIC = 0;
  * @var {number}
  */
 export const PSA_TYPE_GRADIENT = 1;
+
+/**
+ * PSA_TYPE_SYNCRO
+ * PSAType
+ *
+ * @var {number}
+ */
+export const PSA_TYPE_SYNCRO = 2;
 
 /**
  * RELEASE_CODENAME
@@ -5182,6 +5190,11 @@ export type libcomet_DeviceConfig = {
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	ClientVersion?: string
+	/**
+	 * This field is available in Comet 23.9.8 and later.
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	SyncroUUID?: string
 }
 
 export function New_Zero_libcomet_DeviceConfig(): libcomet_DeviceConfig {
@@ -6729,11 +6742,12 @@ export type libcomet_PSAConfig = {
 	 */
 	AlertsDisabled: boolean
 	/**
+	 * Custom headers to send with each PSA request
 	 * Omission from JSON will be interpreted as an empty map
 	 */
 	CustomHeaders?: {[k: string]: string}
 	/**
-	 * Specified credentials for the target PSA
+	 * Specified API key for the target PSA
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	PartnerKey?: string
@@ -6742,7 +6756,7 @@ export type libcomet_PSAConfig = {
 	 */
 	Type: number
 	/**
-	 * For PSA_TYPE_GENERIC
+	 * The URL or subdomain for outbound PSA requests
 	 */
 	URL: string
 	GroupedBy: libcomet_PSAGroupedBy
