@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "23.9.9";
+export const APPLICATION_VERSION = "23.9.11";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -28,7 +28,7 @@ export const APPLICATION_VERSION_MINOR = 9;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 9;
+export const APPLICATION_VERSION_REVISION = 11;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -1202,6 +1202,14 @@ export const PROVIDER_AZUREADV2 = "azure-ad-v2";
  * @var {string}
  */
 export const PROVIDER_GOOGLE = "google";
+
+/**
+ * PROVIDER_DASHBOARD
+ * OidcProvider
+ *
+ * @var {string}
+ */
+export const PROVIDER_DASHBOARD = "dashboard";
 
 /**
  * PSA_TYPE_GENERIC
@@ -2793,6 +2801,7 @@ export const UnsupportVmdkFileSystem = "ERR_UNSUPPORT_VMDK_FILE_SYSTEM";
  * VMwareConnectionType
  *
  * @var {string}
+ * @deprecated This const has been deprecated since Comet version 23.9.11
  */
 export const VMWARE_CONNECTION_SSH = "ssh";
 
@@ -2849,6 +2858,7 @@ export const VMWARE_BACKUP_CBT = "cbt";
  * VmwareBackupType
  *
  * @var {string}
+ * @deprecated This const has been deprecated since Comet version 23.9.11
  */
 export const VMWARE_BACKUP_COPY = "copy";
 
@@ -3187,6 +3197,11 @@ export type libcomet_AdminUserPermissions = {
 	 * Omission from JSON will be interpreted as an empty array
 	 */
 	AllowedProvidersWhenRestricted?: number[]
+	/**
+	 * This field is available in Comet 23.9.11 and later.
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	AllowedUserPolicies?: string[]
 }
 
 export function New_Zero_libcomet_AdminUserPermissions(): libcomet_AdminUserPermissions {
@@ -9584,6 +9599,9 @@ export type libcomet_VMwareConnection = {
 	 * One of the VMWARE_CONNECTION_ constants
 	 */
 	ConnectionType: string
+	/**
+	 * @deprecated This member has been deprecated since Comet version 23.9.11
+	 */
 	SSH: libcomet_SSHConnection
 	VSphere: libcomet_VSphereConnection
 }
