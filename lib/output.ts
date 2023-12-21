@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "23.11.2";
+export const APPLICATION_VERSION = "23.12.1";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -21,14 +21,14 @@ export const APPLICATION_VERSION_MAJOR = 23;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MINOR = 11;
+export const APPLICATION_VERSION_MINOR = 12;
 
 /**
  * APPLICATION_VERSION_REVISION
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 2;
+export const APPLICATION_VERSION_REVISION = 1;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -1240,7 +1240,7 @@ export const PSA_TYPE_SYNCRO = 2;
  *
  * @var {string}
  */
-export const RELEASE_CODENAME = "Saturn";
+export const RELEASE_CODENAME = "Voyager";
 
 /**
  * REMOTESERVER_COMET
