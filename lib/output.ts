@@ -4539,11 +4539,16 @@ export function libcomet_CreateGroupPolicyResponse_set_embedded_libcomet_CometAP
 
 export type libcomet_CustomRemoteBucketSettings = {
 	URL: string
+	/**
+	 * This field is available in Comet 23.12.5 and later.
+	 */
+	CustomHeaders: {[k: string]: string}
 }
 
 export function New_Zero_libcomet_CustomRemoteBucketSettings(): libcomet_CustomRemoteBucketSettings {
 	return {
 		"URL": "",
+		"CustomHeaders": {},
 	};
 }
 
