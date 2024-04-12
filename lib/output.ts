@@ -7,28 +7,28 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "23.12.3";
+export const APPLICATION_VERSION = "24.3.5";
 
 /**
  * APPLICATION_VERSION_MAJOR
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MAJOR = 23;
+export const APPLICATION_VERSION_MAJOR = 24;
 
 /**
  * APPLICATION_VERSION_MINOR
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MINOR = 12;
+export const APPLICATION_VERSION_MINOR = 3;
 
 /**
  * APPLICATION_VERSION_REVISION
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 3;
+export const APPLICATION_VERSION_REVISION = 5;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -335,6 +335,14 @@ export const DESTINATIONTYPE_STORJ = 1009;
  * @var {number}
  */
 export const DESTINATIONTYPE_WEBDAV = 1010;
+
+/**
+ * DESTINATIONTYPE_SMB
+ * SMB Path
+ *
+ * @var {number}
+ */
+export const DESTINATIONTYPE_SMB = 1011;
 
 /**
  * DESTINATIONTYPE_LATEST
@@ -1069,8 +1077,11 @@ export const MSSQL_RESTORE_NORECOVERY = "NO_RECOVERY";
 
 /**
  * OBJECT_LOCK_LEGACY
+ * Enable Object Lock capability if the corresponding Days field is greater than zero.
+New code should explicitly use OBJECT_LOCK_ON / OBJECT_LOCK_OFF instead.
  *
  * @var {number}
+ * @deprecated This const has been deprecated since Comet version 23.x.x
  */
 export const OBJECT_LOCK_LEGACY = 0;
 
@@ -1244,7 +1255,7 @@ export const RELEASE_CODENAME = "Voyager";
 
 /**
  * REMOTESERVER_COMET
- * RemoteServerType
+ * RemoteServerType: Comet Server
  *
  * @var {string}
  */
@@ -1252,7 +1263,7 @@ export const REMOTESERVER_COMET = "comet";
 
 /**
  * REMOTESERVER_COMET_STORAGE
- * RemoteServerType
+ * RemoteServerType: Comet Storage powered by Wasabi
  *
  * @var {string}
  */
@@ -1260,7 +1271,7 @@ export const REMOTESERVER_COMET_STORAGE = "cometstorage";
 
 /**
  * REMOTESERVER_LDAP
- * RemoteServerType
+ * RemoteServerType: LDAP (Lightweight Directory Access Protocol)
  *
  * @var {string}
  */
@@ -1268,7 +1279,7 @@ export const REMOTESERVER_LDAP = "ldap";
 
 /**
  * REMOTESERVER_OIDC
- * RemoteServerType
+ * RemoteServerType: OpenID Connect
  *
  * @var {string}
  */
@@ -1276,7 +1287,7 @@ export const REMOTESERVER_OIDC = "oidc";
 
 /**
  * REMOTESERVER_B2
- * RemoteServerType
+ * RemoteServerType: Backblaze B2
  *
  * @var {string}
  */
@@ -1284,7 +1295,7 @@ export const REMOTESERVER_B2 = "b2";
 
 /**
  * REMOTESERVER_WASABI
- * RemoteServerType
+ * RemoteServerType: Wasabi Cloud Storage
  *
  * @var {string}
  */
@@ -1292,7 +1303,7 @@ export const REMOTESERVER_WASABI = "wasabi";
 
 /**
  * REMOTESERVER_CUSTOM
- * RemoteServerType
+ * RemoteServerType: Custom Remote Bucket HTTP protocol
  *
  * @var {string}
  */
@@ -1300,7 +1311,7 @@ export const REMOTESERVER_CUSTOM = "custom";
 
 /**
  * REMOTESERVER_S3_GENERIC
- * RemoteServerType
+ * RemoteServerType: Custom IAM-Compatible
  *
  * @var {string}
  */
@@ -1308,7 +1319,7 @@ export const REMOTESERVER_S3_GENERIC = "s3";
 
 /**
  * REMOTESERVER_AWS
- * RemoteServerType
+ * RemoteServerType: Amazon Web Services
  *
  * @var {string}
  */
@@ -1316,7 +1327,7 @@ export const REMOTESERVER_AWS = "aws";
 
 /**
  * REMOTESERVER_STORJ
- * RemoteServerType
+ * RemoteServerType: Storj DCS
  *
  * @var {string}
  */
@@ -1324,11 +1335,27 @@ export const REMOTESERVER_STORJ = "storj";
 
 /**
  * REMOTESERVER_IDRIVEE2
- * RemoteServerType
+ * RemoteServerType: IDrive e2
  *
  * @var {string}
  */
 export const REMOTESERVER_IDRIVEE2 = "idrivee2";
+
+/**
+ * REMOTESERVER_IMPOSSIBLECLOUD_PARTNER
+ * RemoteServerType: Impossible Cloud (Partner API)
+ *
+ * @var {string}
+ */
+export const REMOTESERVER_IMPOSSIBLECLOUD_PARTNER = "impossiblecloud-partner";
+
+/**
+ * REMOTESERVER_IMPOSSIBLECLOUD_IAM
+ * RemoteServerType: Impossible Cloud
+ *
+ * @var {string}
+ */
+export const REMOTESERVER_IMPOSSIBLECLOUD_IAM = "impossiblecloud-iam";
 
 /**
  * REPLICADELETION_NONE
@@ -2096,6 +2123,14 @@ export const SETTING_ENFORCED_ON = 3;
 export const SETTING_ENFORCED_OFF = 4;
 
 /**
+ * SEVERITY_DEBUG
+ * Severity
+ *
+ * @var {string}
+ */
+export const SEVERITY_DEBUG = "D";
+
+/**
  * SEVERITY_INFO
  * Severity
  *
@@ -2518,6 +2553,22 @@ export const STOREDOBJECTTYPE_UNIXSOCKET = "socket";
  * @var {string}
  */
 export const STOREDOBJECTTYPE_WINEFS = "winefs";
+
+/**
+ * STOREDOBJECTTYPE_WINDOWSFILE
+ * StoredObjectType
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_WINDOWSFILE = "winfile";
+
+/**
+ * STOREDOBJECTTYPE_WINDOWSDIR
+ * StoredObjectType
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_WINDOWSDIR = "windir";
 
 /**
  * STOREDOBJECTTYPE_EMAILMESSAGE
@@ -3173,6 +3224,11 @@ export type libcomet_AdminUserPermissions = {
 	 */
 	DenyViewServerInfo?: boolean
 	/**
+	 * This field is available in Comet 24.3.2 and later.
+	 * Omission from JSON will be interpreted as false
+	 */
+	PreventDeleteStorageVault?: boolean
+	/**
 	 * This field is available in Comet 23.6.0 and later.
 	 * Omission from JSON will be interpreted as false
 	 */
@@ -3317,15 +3373,35 @@ export function libcomet_AllowedAdminUser_set_embedded_libcomet_AdminSecurityOpt
 
 
 export type libcomet_AmazonAWSVirtualStorageRoleSettings = {
+	/**
+	 * If set, the Storage Template will generate Storage Vaults pointing to a subdirectory within this
+	 * bucket. A single dynamic IAM policy will cover all created Storage Vaults.
+	 * This is preferable for platforms that have limits on the total number of IAM policies. However,
+	 * it requires a high level of IAM compatibility.
+	 * If left blank, the Storage Template will generate Storage Vaults pointing to new, separate S3
+	 * buckets each time. An additional IAM policy is created for each new Storage Vault.
+	 * This is preferable for platforms that have a lower level of IAM compatibility.
+	 */
 	MasterBucket: string
 	AccessKey: string
 	SecretKey: string
 	/**
 	 * UseObjectLock_Legacy_DoNotUse
+	 * @deprecated This member has been deprecated since Comet version 23.x.x
 	 */
 	UseObjectLock: boolean
+	/**
+	 * Control whether the resulting Storage Vaults are configured for Object Lock. One of the
+	 * OBJECT_LOCK_ constants
+	 */
 	ObjectLockMode: number
 	ObjectLockDays: number
+	/**
+	 * Control whether the "Allow removal of deleted files" checkbox is enabled for Storage Vaults
+	 * generated from this Storage Template.
+	 * When configuring a Storage Template from the Comet Server web interface, this field is set
+	 * automatically for Storage Templates using Object Lock.
+	 */
 	RemoveDeleted: boolean
 }
 
@@ -3339,6 +3415,13 @@ export function New_Zero_libcomet_AmazonAWSVirtualStorageRoleSettings(): libcome
 		"ObjectLockDays": 0,
 		"RemoveDeleted": false,
 	};
+}
+
+export function libcomet_AmazonAWSVirtualStorageRoleSettings_set_embedded_libcomet_ObjectLockStorageTemplateSettings(dest: libcomet_AmazonAWSVirtualStorageRoleSettings, src: libcomet_ObjectLockStorageTemplateSettings): void {
+	dest.UseObjectLock = src.UseObjectLock;
+	dest.ObjectLockMode = src.ObjectLockMode;
+	dest.ObjectLockDays = src.ObjectLockDays;
+	dest.RemoveDeleted = src.RemoveDeleted;
 }
 
 
@@ -4738,6 +4821,7 @@ export type libcomet_DestinationConfig = {
 	 */
 	WebDav: libcomet_WebDavDestinationLocation
 	Storj: libcomet_StorjDestinationLocation
+	SMB: libcomet_SMBDestinationLocation
 	/**
 	 * A list of underlying destinations, that will be combined and presented as one.
 	 */
@@ -4788,6 +4872,10 @@ export type libcomet_DestinationConfig = {
 	 * The "Prevent users from viewing the actual storage type" option
 	 */
 	RebrandStorage: boolean
+	/**
+	 * If not empty, an error occured during a retention pass. Describes the error.
+	 */
+	RetentionError: string
 }
 
 export function New_Zero_libcomet_DestinationConfig(): libcomet_DestinationConfig {
@@ -4843,6 +4931,7 @@ export function New_Zero_libcomet_DestinationConfig(): libcomet_DestinationConfi
 		"B2": New_Zero_libcomet_B2DestinationLocation(),
 		"WebDav": New_Zero_libcomet_WebDavDestinationLocation(),
 		"Storj": New_Zero_libcomet_StorjDestinationLocation(),
+		"SMB": New_Zero_libcomet_SMBDestinationLocation(),
 		"SpanTargets": [],
 		"SpanUseStaticSlots": false,
 		"Tag": "",
@@ -4853,6 +4942,7 @@ export function New_Zero_libcomet_DestinationConfig(): libcomet_DestinationConfi
 		"StorageLimitBytes": 0,
 		"DefaultRetention": New_Zero_libcomet_RetentionPolicy(),
 		"RebrandStorage": false,
+		"RetentionError": "",
 	};
 }
 
@@ -4902,6 +4992,7 @@ export function libcomet_DestinationConfig_set_embedded_libcomet_DestinationLoca
 	dest.B2 = src.B2;
 	dest.WebDav = src.WebDav;
 	dest.Storj = src.Storj;
+	dest.SMB = src.SMB;
 	dest.SpanTargets = src.SpanTargets;
 	dest.SpanUseStaticSlots = src.SpanUseStaticSlots;
 	dest.Tag = src.Tag;
@@ -5018,6 +5109,7 @@ export type libcomet_DestinationLocation = {
 	 */
 	WebDav: libcomet_WebDavDestinationLocation
 	Storj: libcomet_StorjDestinationLocation
+	SMB: libcomet_SMBDestinationLocation
 	/**
 	 * A list of underlying destinations, that will be combined and presented as one.
 	 */
@@ -5085,6 +5177,7 @@ export function New_Zero_libcomet_DestinationLocation(): libcomet_DestinationLoc
 		"B2": New_Zero_libcomet_B2DestinationLocation(),
 		"WebDav": New_Zero_libcomet_WebDavDestinationLocation(),
 		"Storj": New_Zero_libcomet_StorjDestinationLocation(),
+		"SMB": New_Zero_libcomet_SMBDestinationLocation(),
 		"SpanTargets": [],
 		"SpanUseStaticSlots": false,
 		"Tag": "",
@@ -5504,14 +5597,17 @@ export type libcomet_ExternalAuthenticationSource = {
 	Type: string
 	Description: string
 	/**
+	 * For use with Comet Server (Storage Role / Auth Role)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	RemoteAddress?: string
 	/**
+	 * For use with Comet Server (Storage Role / Auth Role)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Username?: string
 	/**
+	 * For use with Comet Server (Storage Role / Auth Role)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Password?: string
@@ -5524,30 +5620,45 @@ export type libcomet_ExternalAuthenticationSource = {
 	 */
 	OIDC?: libcomet_OidcConfig
 	/**
+	 * Backblaze B2 (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	B2?: libcomet_B2VirtualStorageRoleSettings
 	/**
+	 * Wasabi, or Comet Storage powered by Wasabi (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	Wasabi?: libcomet_WasabiVirtualStorageRoleSettings
 	/**
+	 * Custom Remote Bucket HTTP protocol (Storage Template)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	Custom?: libcomet_CustomRemoteBucketSettings
 	/**
+	 * IDrive e2, or Custom IAM-compatible (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	S3?: libcomet_S3GenericVirtualStorageRole
 	/**
-	 * Amazon AWS - Virtual Storage Role
+	 * Amazon AWS (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	AWS?: libcomet_AmazonAWSVirtualStorageRoleSettings
 	/**
+	 * Storj (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	Storj?: libcomet_StorjVirtualStorageRoleSetting
+	/**
+	 * Impossible Cloud Partner API (Storage Template / Constellation)
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	ImpPartner?: libcomet_ImpossibleCloudPartnerTemplateSettings
+	/**
+	 * Impossible Cloud IAM API (Storage Template / Constellation)
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	ImpUser?: libcomet_ImpossibleCloudIAMTemplateSettings
 	NewUserPermissions: libcomet_AdminUserPermissions
 }
 
@@ -5573,6 +5684,8 @@ export function libcomet_ExternalAuthenticationSource_set_embedded_libcomet_Remo
 	dest.S3 = src.S3;
 	dest.AWS = src.AWS;
 	dest.Storj = src.Storj;
+	dest.ImpPartner = src.ImpPartner;
+	dest.ImpUser = src.ImpUser;
 }
 
 
@@ -5955,6 +6068,77 @@ export function New_Zero_libcomet_HyperVMachineInfo(): libcomet_HyperVMachineInf
 	return {
 		"ID": "",
 		"Name": "",
+	};
+}
+
+
+/**
+ * This type is available in Comet 24.3.1 and later.
+ */
+export type libcomet_ImpossibleCloudIAMTemplateSettings = {
+	AccessKey: string
+	SecretKey: string
+	/**
+	 * Optional. The region for both IAM communication and for provisioning new buckets. If blank, uses
+	 * the default region for Impossible Cloud (eu-central-2).
+	 */
+	Region: string
+	/**
+	 * UseObjectLock_Legacy_DoNotUse
+	 * @deprecated This member has been deprecated since Comet version 23.x.x
+	 */
+	UseObjectLock: boolean
+	/**
+	 * Control whether the resulting Storage Vaults are configured for Object Lock. One of the
+	 * OBJECT_LOCK_ constants
+	 */
+	ObjectLockMode: number
+	ObjectLockDays: number
+	/**
+	 * Control whether the "Allow removal of deleted files" checkbox is enabled for Storage Vaults
+	 * generated from this Storage Template.
+	 * When configuring a Storage Template from the Comet Server web interface, this field is set
+	 * automatically for Storage Templates using Object Lock.
+	 */
+	RemoveDeleted: boolean
+}
+
+export function New_Zero_libcomet_ImpossibleCloudIAMTemplateSettings(): libcomet_ImpossibleCloudIAMTemplateSettings {
+	return {
+		"AccessKey": "",
+		"SecretKey": "",
+		"Region": "",
+		"UseObjectLock": false,
+		"ObjectLockMode": 0,
+		"ObjectLockDays": 0,
+		"RemoveDeleted": false,
+	};
+}
+
+export function libcomet_ImpossibleCloudIAMTemplateSettings_set_embedded_libcomet_ObjectLockStorageTemplateSettings(dest: libcomet_ImpossibleCloudIAMTemplateSettings, src: libcomet_ObjectLockStorageTemplateSettings): void {
+	dest.UseObjectLock = src.UseObjectLock;
+	dest.ObjectLockMode = src.ObjectLockMode;
+	dest.ObjectLockDays = src.ObjectLockDays;
+	dest.RemoveDeleted = src.RemoveDeleted;
+}
+
+
+/**
+ * This type is available in Comet 24.3.1 and later.
+ */
+export type libcomet_ImpossibleCloudPartnerTemplateSettings = {
+	/**
+	 * Optional. The region for your Partner console and for provisioning new buckets. If blank, uses
+	 * the default region for Impossible Cloud (eu-central-2).
+	 */
+	Region: string
+	AccessKey: string
+}
+
+export function New_Zero_libcomet_ImpossibleCloudPartnerTemplateSettings(): libcomet_ImpossibleCloudPartnerTemplateSettings {
+	return {
+		"Region": "",
+		"AccessKey": "",
 	};
 }
 
@@ -6436,6 +6620,37 @@ export type libcomet_OSInfo = {
 
 export function New_Zero_libcomet_OSInfo(): libcomet_OSInfo {
 	return {
+	};
+}
+
+
+export type libcomet_ObjectLockStorageTemplateSettings = {
+	/**
+	 * UseObjectLock_Legacy_DoNotUse
+	 * @deprecated This member has been deprecated since Comet version 23.x.x
+	 */
+	UseObjectLock: boolean
+	/**
+	 * Control whether the resulting Storage Vaults are configured for Object Lock. One of the
+	 * OBJECT_LOCK_ constants
+	 */
+	ObjectLockMode: number
+	ObjectLockDays: number
+	/**
+	 * Control whether the "Allow removal of deleted files" checkbox is enabled for Storage Vaults
+	 * generated from this Storage Template.
+	 * When configuring a Storage Template from the Comet Server web interface, this field is set
+	 * automatically for Storage Templates using Object Lock.
+	 */
+	RemoveDeleted: boolean
+}
+
+export function New_Zero_libcomet_ObjectLockStorageTemplateSettings(): libcomet_ObjectLockStorageTemplateSettings {
+	return {
+		"UseObjectLock": false,
+		"ObjectLockMode": 0,
+		"ObjectLockDays": 0,
+		"RemoveDeleted": false,
 	};
 }
 
@@ -7084,14 +7299,17 @@ export type libcomet_RemoteServerAddress = {
 	Type: string
 	Description: string
 	/**
+	 * For use with Comet Server (Storage Role / Auth Role)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	RemoteAddress?: string
 	/**
+	 * For use with Comet Server (Storage Role / Auth Role)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Username?: string
 	/**
+	 * For use with Comet Server (Storage Role / Auth Role)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Password?: string
@@ -7104,30 +7322,45 @@ export type libcomet_RemoteServerAddress = {
 	 */
 	OIDC?: libcomet_OidcConfig
 	/**
+	 * Backblaze B2 (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	B2?: libcomet_B2VirtualStorageRoleSettings
 	/**
+	 * Wasabi, or Comet Storage powered by Wasabi (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	Wasabi?: libcomet_WasabiVirtualStorageRoleSettings
 	/**
+	 * Custom Remote Bucket HTTP protocol (Storage Template)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	Custom?: libcomet_CustomRemoteBucketSettings
 	/**
+	 * IDrive e2, or Custom IAM-compatible (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	S3?: libcomet_S3GenericVirtualStorageRole
 	/**
-	 * Amazon AWS - Virtual Storage Role
+	 * Amazon AWS (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	AWS?: libcomet_AmazonAWSVirtualStorageRoleSettings
 	/**
+	 * Storj (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	Storj?: libcomet_StorjVirtualStorageRoleSetting
+	/**
+	 * Impossible Cloud Partner API (Storage Template / Constellation)
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	ImpPartner?: libcomet_ImpossibleCloudPartnerTemplateSettings
+	/**
+	 * Impossible Cloud IAM API (Storage Template / Constellation)
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	ImpUser?: libcomet_ImpossibleCloudIAMTemplateSettings
 }
 
 export function New_Zero_libcomet_RemoteServerAddress(): libcomet_RemoteServerAddress {
@@ -7142,14 +7375,17 @@ export type libcomet_RemoteStorageOption = {
 	Type: string
 	Description: string
 	/**
+	 * For use with Comet Server (Storage Role / Auth Role)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	RemoteAddress?: string
 	/**
+	 * For use with Comet Server (Storage Role / Auth Role)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Username?: string
 	/**
+	 * For use with Comet Server (Storage Role / Auth Role)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Password?: string
@@ -7162,30 +7398,45 @@ export type libcomet_RemoteStorageOption = {
 	 */
 	OIDC?: libcomet_OidcConfig
 	/**
+	 * Backblaze B2 (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	B2?: libcomet_B2VirtualStorageRoleSettings
 	/**
+	 * Wasabi, or Comet Storage powered by Wasabi (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	Wasabi?: libcomet_WasabiVirtualStorageRoleSettings
 	/**
+	 * Custom Remote Bucket HTTP protocol (Storage Template)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	Custom?: libcomet_CustomRemoteBucketSettings
 	/**
+	 * IDrive e2, or Custom IAM-compatible (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	S3?: libcomet_S3GenericVirtualStorageRole
 	/**
-	 * Amazon AWS - Virtual Storage Role
+	 * Amazon AWS (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	AWS?: libcomet_AmazonAWSVirtualStorageRoleSettings
 	/**
+	 * Storj (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	Storj?: libcomet_StorjVirtualStorageRoleSetting
+	/**
+	 * Impossible Cloud Partner API (Storage Template / Constellation)
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	ImpPartner?: libcomet_ImpossibleCloudPartnerTemplateSettings
+	/**
+	 * Impossible Cloud IAM API (Storage Template / Constellation)
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	ImpUser?: libcomet_ImpossibleCloudIAMTemplateSettings
 	StorageLimitEnabled: boolean
 	StorageLimitBytes: number
 	RebrandStorage: boolean
@@ -7215,6 +7466,8 @@ export function libcomet_RemoteStorageOption_set_embedded_libcomet_RemoteServerA
 	dest.S3 = src.S3;
 	dest.AWS = src.AWS;
 	dest.Storj = src.Storj;
+	dest.ImpPartner = src.ImpPartner;
+	dest.ImpUser = src.ImpUser;
 }
 
 
@@ -7222,14 +7475,17 @@ export type libcomet_ReplicaServer = {
 	Type: string
 	Description: string
 	/**
+	 * For use with Comet Server (Storage Role / Auth Role)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	RemoteAddress?: string
 	/**
+	 * For use with Comet Server (Storage Role / Auth Role)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Username?: string
 	/**
+	 * For use with Comet Server (Storage Role / Auth Role)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Password?: string
@@ -7242,30 +7498,45 @@ export type libcomet_ReplicaServer = {
 	 */
 	OIDC?: libcomet_OidcConfig
 	/**
+	 * Backblaze B2 (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	B2?: libcomet_B2VirtualStorageRoleSettings
 	/**
+	 * Wasabi, or Comet Storage powered by Wasabi (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	Wasabi?: libcomet_WasabiVirtualStorageRoleSettings
 	/**
+	 * Custom Remote Bucket HTTP protocol (Storage Template)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	Custom?: libcomet_CustomRemoteBucketSettings
 	/**
+	 * IDrive e2, or Custom IAM-compatible (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	S3?: libcomet_S3GenericVirtualStorageRole
 	/**
-	 * Amazon AWS - Virtual Storage Role
+	 * Amazon AWS (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	AWS?: libcomet_AmazonAWSVirtualStorageRoleSettings
 	/**
+	 * Storj (Storage Template / Constellation)
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	Storj?: libcomet_StorjVirtualStorageRoleSetting
+	/**
+	 * Impossible Cloud Partner API (Storage Template / Constellation)
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	ImpPartner?: libcomet_ImpossibleCloudPartnerTemplateSettings
+	/**
+	 * Impossible Cloud IAM API (Storage Template / Constellation)
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	ImpUser?: libcomet_ImpossibleCloudIAMTemplateSettings
 	/**
 	 * Omission from JSON will be interpreted as empty-string
 	 */
@@ -7293,6 +7564,8 @@ export function libcomet_ReplicaServer_set_embedded_libcomet_RemoteServerAddress
 	dest.S3 = src.S3;
 	dest.AWS = src.AWS;
 	dest.Storj = src.Storj;
+	dest.ImpPartner = src.ImpPartner;
+	dest.ImpUser = src.ImpUser;
 }
 
 
@@ -7365,6 +7638,10 @@ export type libcomet_RestoreJobAdvancedOptions = {
 	 * For RESTORETYPE_FILE. If set, OverwriteExistingFiles must be true
 	 */
 	OverwriteIfNewer: boolean
+	/**
+	 * For RESTORETYPE_FILE. If set, OverwriteExistingFiles must be true
+	 */
+	OverwriteIfDifferentContent: boolean
 	/**
 	 * For RESTORETYPE_FILE. If set, DestPath must be blank
 	 */
@@ -7448,6 +7725,7 @@ export function New_Zero_libcomet_RestoreJobAdvancedOptions(): libcomet_RestoreJ
 		"Type": 0,
 		"OverwriteExistingFiles": false,
 		"OverwriteIfNewer": false,
+		"OverwriteIfDifferentContent": false,
 		"DestIsOriginalLocation": false,
 		"DestPath": "",
 		"ExactDestPaths": [],
@@ -7562,18 +7840,50 @@ export function New_Zero_libcomet_S3DestinationLocation(): libcomet_S3Destinatio
 
 
 export type libcomet_S3GenericVirtualStorageRole = {
+	/**
+	 * The URL for S3 API calls (e.g. "s3.amazonaws.com")
+	 */
 	S3Endpoint: string
+	/**
+	 * The URL for IAM API calls (e.g. "iam.amazonaws.com")
+	 */
 	IAMEndpoint: string
+	/**
+	 * If set, the Storage Template will generate Storage Vaults pointing to a subdirectory within this
+	 * bucket. A single dynamic IAM policy will cover all created Storage Vaults.
+	 * This is preferable for platforms that have limits on the total number of IAM policies. However,
+	 * it requires a high level of IAM compatibility.
+	 * If left blank, the Storage Template will generate Storage Vaults pointing to new, separate S3
+	 * buckets each time. An additional IAM policy is created for each new Storage Vault.
+	 * This is preferable for platforms that have a lower level of IAM compatibility.
+	 */
 	MasterBucket: string
 	AccessKey: string
 	SecretKey: string
 	/**
 	 * UseObjectLock_Legacy_DoNotUse
+	 * @deprecated This member has been deprecated since Comet version 23.x.x
 	 */
 	UseObjectLock: boolean
+	/**
+	 * Control whether the resulting Storage Vaults are configured for Object Lock. One of the
+	 * OBJECT_LOCK_ constants
+	 */
 	ObjectLockMode: number
 	ObjectLockDays: number
+	/**
+	 * Control whether the "Allow removal of deleted files" checkbox is enabled for Storage Vaults
+	 * generated from this Storage Template.
+	 * When configuring a Storage Template from the Comet Server web interface, this field is set
+	 * automatically for Storage Templates using Object Lock.
+	 */
 	RemoveDeleted: boolean
+	/**
+	 * Optional. The region to be used for new buckets. If blank, uses the default region for the
+	 * S3-compatible provider (e.g. us-east-1).
+	 * This field is available in Comet 24.3.1 and later.
+	 */
+	Region: string
 }
 
 export function New_Zero_libcomet_S3GenericVirtualStorageRole(): libcomet_S3GenericVirtualStorageRole {
@@ -7587,7 +7897,18 @@ export function New_Zero_libcomet_S3GenericVirtualStorageRole(): libcomet_S3Gene
 		"ObjectLockMode": 0,
 		"ObjectLockDays": 0,
 		"RemoveDeleted": false,
+		"Region": "",
 	};
+}
+
+export function libcomet_S3GenericVirtualStorageRole_set_embedded_libcomet_AmazonAWSVirtualStorageRoleSettings(dest: libcomet_S3GenericVirtualStorageRole, src: libcomet_AmazonAWSVirtualStorageRoleSettings): void {
+	dest.MasterBucket = src.MasterBucket;
+	dest.AccessKey = src.AccessKey;
+	dest.SecretKey = src.SecretKey;
+	dest.UseObjectLock = src.UseObjectLock;
+	dest.ObjectLockMode = src.ObjectLockMode;
+	dest.ObjectLockDays = src.ObjectLockDays;
+	dest.RemoveDeleted = src.RemoveDeleted;
 }
 
 
@@ -7632,6 +7953,25 @@ export function New_Zero_libcomet_SFTPDestinationLocation(): libcomet_SFTPDestin
 		"SFTPPrivateKey": "",
 		"SFTPCustomAuth_UseKnownHostsFile": false,
 		"SFTPCustomAuth_KnownHostsFile": "",
+	};
+}
+
+
+export type libcomet_SMBDestinationLocation = {
+	SMBServer: string
+	SMBShare: string
+	SMBDirectory: string
+	SMBUsername: string
+	SMBPassword: string
+}
+
+export function New_Zero_libcomet_SMBDestinationLocation(): libcomet_SMBDestinationLocation {
+	return {
+		"SMBServer": "",
+		"SMBShare": "",
+		"SMBDirectory": "",
+		"SMBUsername": "",
+		"SMBPassword": "",
 	};
 }
 
@@ -8404,6 +8744,8 @@ export type libcomet_SourceConfig = {
 	 * - USE_WIN_VSS: If present, the 'Take filesystem snapshot' checkbox is checked
 	 * - CONFIRM_EFS: If present, the 'Dismiss EFS warning' checkbox is checked
 	 * - RESCAN_UNCHANGED: If present, the 'Rescan unchanged files' checkbox is checked
+	 * - EXTRA_ATTRIBUTES: If present, the 'Back up extra system permissions and attributes' checkbox
+	 * is checked
 	 *
 	 * For engine1/mssql, Comet understands the following EngineProp keys:
 	 *
@@ -9705,16 +10047,39 @@ export function New_Zero_libcomet_VaultSnapshot(): libcomet_VaultSnapshot {
 }
 
 
+/**
+ * This is an alias type for AmazonAWSVirtualStorageRoleSettings.
+ */
 export type libcomet_WasabiVirtualStorageRoleSettings = {
+	/**
+	 * If set, the Storage Template will generate Storage Vaults pointing to a subdirectory within this
+	 * bucket. A single dynamic IAM policy will cover all created Storage Vaults.
+	 * This is preferable for platforms that have limits on the total number of IAM policies. However,
+	 * it requires a high level of IAM compatibility.
+	 * If left blank, the Storage Template will generate Storage Vaults pointing to new, separate S3
+	 * buckets each time. An additional IAM policy is created for each new Storage Vault.
+	 * This is preferable for platforms that have a lower level of IAM compatibility.
+	 */
 	MasterBucket: string
 	AccessKey: string
 	SecretKey: string
 	/**
 	 * UseObjectLock_Legacy_DoNotUse
+	 * @deprecated This member has been deprecated since Comet version 23.x.x
 	 */
 	UseObjectLock: boolean
+	/**
+	 * Control whether the resulting Storage Vaults are configured for Object Lock. One of the
+	 * OBJECT_LOCK_ constants
+	 */
 	ObjectLockMode: number
 	ObjectLockDays: number
+	/**
+	 * Control whether the "Allow removal of deleted files" checkbox is enabled for Storage Vaults
+	 * generated from this Storage Template.
+	 * When configuring a Storage Template from the Comet Server web interface, this field is set
+	 * automatically for Storage Templates using Object Lock.
+	 */
 	RemoveDeleted: boolean
 }
 
@@ -9728,6 +10093,16 @@ export function New_Zero_libcomet_WasabiVirtualStorageRoleSettings(): libcomet_W
 		"ObjectLockDays": 0,
 		"RemoveDeleted": false,
 	};
+}
+
+export function libcomet_WasabiVirtualStorageRoleSettings_set_embedded_libcomet_AmazonAWSVirtualStorageRoleSettings(dest: libcomet_WasabiVirtualStorageRoleSettings, src: libcomet_AmazonAWSVirtualStorageRoleSettings): void {
+	dest.MasterBucket = src.MasterBucket;
+	dest.AccessKey = src.AccessKey;
+	dest.SecretKey = src.SecretKey;
+	dest.UseObjectLock = src.UseObjectLock;
+	dest.ObjectLockMode = src.ObjectLockMode;
+	dest.ObjectLockDays = src.ObjectLockDays;
+	dest.RemoveDeleted = src.RemoveDeleted;
 }
 
 
@@ -12144,6 +12519,24 @@ export default abstract class CometServerAPIBase {
 	}
 
 	/**
+	 * AdminMetaReadSelectLogs
+	 * Get logs file content
+	 * On non-Windows platforms, log content uses LF line endings. On Windows, Comet changed from LF to CRLF line endings in 18.3.2.
+	 * This API does not automatically convert line endings; around the 18.3.2 timeframe, log content may even contain mixed line-endings.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
+	 *
+	 * @param {number[]} Logs An array of log days, selected from the options returned by the Get Log Files API
+	 * @return {Promise<string>}
+	 */
+	async AdminMetaReadSelectLogsP(Logs: number[]): Promise<string> {
+		const params: { [s: string]: string; } = {};
+		params["Logs"] = JSON.stringify(Logs);
+		return await this._requestP("api/v1/admin/meta/read-select-logs", params);
+	}
+
+	/**
 	 * AdminMetaRemoteStorageVaultGet
 	 * Get Requesting Remote Storage Vault Config
 	 *
@@ -12233,11 +12626,15 @@ export default abstract class CometServerAPIBase {
 	 * Access to this API may be prevented on a per-administrator basis.
 	 *
 	 * @param {libcomet_EmailReportingOption} EmailReportingOption Test email reporting option for sending
+	 * @param {string|null} TargetOrganization If present, Testing email with a target organization. Only allowed for top-level admins. (>= 24.3.0)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
-	async AdminMetaSendTestReportP(EmailReportingOption: libcomet_EmailReportingOption): Promise<libcomet_CometAPIResponseMessage> {
+	async AdminMetaSendTestReportP(EmailReportingOption: libcomet_EmailReportingOption, TargetOrganization: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
 		const params: { [s: string]: string; } = {};
 		params["EmailReportingOption"] = JSON.stringify(EmailReportingOption);
+		if (TargetOrganization !== null) {
+			params["TargetOrganization"] = TargetOrganization;
+		}
 		return await this._requestP("api/v1/admin/meta/send-test-report", params);
 	}
 
