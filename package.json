@@ -1,25 +1,28 @@
 {
   "name": "comet-js-sdk",
-  "version": "2.22.0",
+  "version": "3.0.0",
   "description": "The SDK for usage with a Comet Backup Comet Server",
   "scripts": {
     "clean": "rm -rf dist/",
-    "build:browser": "esbuild browser-entrypoint.ts --sourcemap --bundle --target=chrome58,firefox57,safari11,edge16 > dist/comet.js && esbuild browser-entrypoint.ts --bundle --target=chrome58,firefox57,safari11,edge16 > dist/comet.min.js",
-    "build": "tsc && tsc -p tsconfig.cjs.json && sh fixup.sh && npm run build:browser",
+    "build:browser": "esbuild browser-entrypoint.ts --sourcemap --bundle --target=chrome58,firefox57,safari11,edge16 > dist/comet.js && esbuild browser-entrypoint.ts --minify --bundle --target=chrome58,firefox57,safari11,edge16 > dist/comet.min.js",
+    "build": "tsc -b tsconfig.esm.json tsconfig.cjs.json tsconfig.types.json && sh fixup.sh && npm run build:browser",
     "prepublish": "npm run build",
     "test": "jest"
   },
   "repository": "https://github.com/CometBackup/comet-js-sdk",
   "main": "dist/cjs/index.js",
-  "types": "dist/cjs/index.d.ts",
+  "module": "dist/mjs/index.js",
+  "types": "dist/types/index.d.ts",
   "browser": "dist/comet.min.js",
   "files": [
     "dist/"
   ],
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
+      "require": "./dist/cjs/index.js",
       "import": "./dist/mjs/index.js",
-      "require": "./dist/cjs/index.js"
+      "default": "./dist/mjs/index.js"
     }
   },
   "keywords": [
@@ -31,13 +34,13 @@
   "license": "Copyright Comet Licensing LTD",
   "devDependencies": {
     "@types/jest": "^28.1.4",
+    "esbuild": "^0.15.15",
     "jest": "^28.1.2",
     "ts-jest": "^28.0.5",
     "typescript": "^4.7.4"
   },
   "dependencies": {
     "cross-fetch": "^3.1.5",
-    "esbuild": "^0.15.15",
     "form-data": "^4.0.0"
   }
 }
