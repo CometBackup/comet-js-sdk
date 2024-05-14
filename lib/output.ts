@@ -3618,6 +3618,13 @@ export type libcomet_BackupJobAdvancedOptions = {
 	 * If Zero: default Automatic (BACKUPJOBAUTORETENTION_AUTOMATIC)
 	 */
 	AutoRetentionLevel: number
+	/**
+	 * Desired concurrency count. If Zero, uses mode defaults
+	 */
+	ConcurrencyCount: number
+	/**
+	 * Log verbosity level. LOG_DEBUG has the greatest verbosity
+	 */
 	LogLevel: string
 }
 
@@ -3630,6 +3637,7 @@ export function New_Zero_libcomet_BackupJobAdvancedOptions(): libcomet_BackupJob
 		"UseOnDiskIndexes": false,
 		"AllowZeroFilesSuccess": false,
 		"AutoRetentionLevel": 0,
+		"ConcurrencyCount": 0,
 		"LogLevel": "",
 	};
 }
@@ -3831,6 +3839,13 @@ export type libcomet_BackupRuleConfig = {
 	 * If Zero: default Automatic (BACKUPJOBAUTORETENTION_AUTOMATIC)
 	 */
 	AutoRetentionLevel: number
+	/**
+	 * Desired concurrency count. If Zero, uses mode defaults
+	 */
+	ConcurrencyCount: number
+	/**
+	 * Log verbosity level. LOG_DEBUG has the greatest verbosity
+	 */
 	LogLevel: string
 	/**
 	 * Scheduled start times
@@ -3859,6 +3874,7 @@ export function New_Zero_libcomet_BackupRuleConfig(): libcomet_BackupRuleConfig 
 		"UseOnDiskIndexes": false,
 		"AllowZeroFilesSuccess": false,
 		"AutoRetentionLevel": 0,
+		"ConcurrencyCount": 0,
 		"LogLevel": "",
 		"Schedules": [],
 		"EventTriggers": New_Zero_libcomet_BackupRuleEventTriggers(),
@@ -3873,6 +3889,7 @@ export function libcomet_BackupRuleConfig_set_embedded_libcomet_BackupJobAdvance
 	dest.UseOnDiskIndexes = src.UseOnDiskIndexes;
 	dest.AllowZeroFilesSuccess = src.AllowZeroFilesSuccess;
 	dest.AutoRetentionLevel = src.AutoRetentionLevel;
+	dest.ConcurrencyCount = src.ConcurrencyCount;
 	dest.LogLevel = src.LogLevel;
 }
 
@@ -6656,22 +6673,26 @@ export function New_Zero_libcomet_ObjectLockStorageTemplateSettings(): libcomet_
 
 
 export type libcomet_Office365Connection = {
-	FeatureFlag: string
+	Concurrency: number
 	Credential: libcomet_Office365Credential
 	CustomSetting: libcomet_Office365CustomSetting
+	CustomSettingV2: libcomet_Office365CustomSettingV2
+	FeatureFlag: string
+	LogLevel: string
 	MailboxUniqueMembers: string[]
 	SiteUniqueMembers: string[]
-	CustomSettingV2: libcomet_Office365CustomSettingV2
 }
 
 export function New_Zero_libcomet_Office365Connection(): libcomet_Office365Connection {
 	return {
-		"FeatureFlag": "",
+		"Concurrency": 0,
 		"Credential": New_Zero_libcomet_Office365Credential(),
 		"CustomSetting": New_Zero_libcomet_Office365CustomSetting(),
+		"CustomSettingV2": New_Zero_libcomet_Office365CustomSettingV2(),
+		"FeatureFlag": "",
+		"LogLevel": "",
 		"MailboxUniqueMembers": [],
 		"SiteUniqueMembers": [],
-		"CustomSettingV2": New_Zero_libcomet_Office365CustomSettingV2(),
 	};
 }
 
