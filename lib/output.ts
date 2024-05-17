@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "24.3.7";
+export const APPLICATION_VERSION = "24.3.8";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -28,7 +28,7 @@ export const APPLICATION_VERSION_MINOR = 3;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 7;
+export const APPLICATION_VERSION_REVISION = 8;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -8651,12 +8651,18 @@ export function New_Zero_libcomet_SizeMeasurement(): libcomet_SizeMeasurement {
 export type libcomet_SoftwareBuildRoleOptions = {
 	RoleEnabled: boolean
 	AllowUnauthenticatedDownloads: boolean
+	/**
+	 * 0 will default to CPU core count - 2
+	 * This field is available in Comet 24.3.8 and later.
+	 */
+	MaxBuilders: number
 }
 
 export function New_Zero_libcomet_SoftwareBuildRoleOptions(): libcomet_SoftwareBuildRoleOptions {
 	return {
 		"RoleEnabled": false,
 		"AllowUnauthenticatedDownloads": false,
+		"MaxBuilders": 0,
 	};
 }
 
@@ -8862,12 +8868,14 @@ export function New_Zero_libcomet_SourceIncludePattern(): libcomet_SourceInclude
 
 
 export type libcomet_SourceStatistics = {
+	LastStartTime: number
 	LastBackupJob: libcomet_BackupJobDetail
 	LastSuccessfulBackupJob: libcomet_BackupJobDetail
 }
 
 export function New_Zero_libcomet_SourceStatistics(): libcomet_SourceStatistics {
 	return {
+		"LastStartTime": 0,
 		"LastBackupJob": New_Zero_libcomet_BackupJobDetail(),
 		"LastSuccessfulBackupJob": New_Zero_libcomet_BackupJobDetail(),
 	};
