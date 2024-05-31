@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "24.3.9";
+export const APPLICATION_VERSION = "24.5.0";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -21,14 +21,14 @@ export const APPLICATION_VERSION_MAJOR = 24;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MINOR = 3;
+export const APPLICATION_VERSION_MINOR = 5;
 
 /**
  * APPLICATION_VERSION_REVISION
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 9;
+export const APPLICATION_VERSION_REVISION = 0;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -173,6 +173,38 @@ export const COMPRESS_MAX = COMPRESS_LVL_5;
  * @var {number}
  */
 export const COMPRESS_DEFAULT = COMPRESS_LVL_4;
+
+/**
+ * CUSTOMREMOTEBUCKET_CUSTOMBODY_NONE
+ * CustomRemoteBucketCustomBodyType
+ *
+ * @var {string}
+ */
+export const CUSTOMREMOTEBUCKET_CUSTOMBODY_NONE = "none";
+
+/**
+ * CUSTOMREMOTEBUCKET_CUSTOMBODY_JSON
+ * CustomRemoteBucketCustomBodyType
+ *
+ * @var {string}
+ */
+export const CUSTOMREMOTEBUCKET_CUSTOMBODY_JSON = "json";
+
+/**
+ * CUSTOMREMOTEBUCKET_CUSTOMBODY_URLENC
+ * CustomRemoteBucketCustomBodyType
+ *
+ * @var {string}
+ */
+export const CUSTOMREMOTEBUCKET_CUSTOMBODY_URLENC = "urlencoded";
+
+/**
+ * CUSTOMREMOTEBUCKET_CUSTOMBODY_FORM
+ * CustomRemoteBucketCustomBodyType
+ *
+ * @var {string}
+ */
+export const CUSTOMREMOTEBUCKET_CUSTOMBODY_FORM = "form";
 
 /**
  * DEFAULT_LANGUAGE
@@ -1251,7 +1283,7 @@ export const PSA_TYPE_SYNCRO = 2;
  *
  * @var {string}
  */
-export const RELEASE_CODENAME = "Voyager";
+export const RELEASE_CODENAME = "Enceladus";
 
 /**
  * REMOTESERVER_COMET
@@ -4643,12 +4675,19 @@ export type libcomet_CustomRemoteBucketSettings = {
 	 * This field is available in Comet 23.12.5 and later.
 	 */
 	CustomHeaders: {[k: string]: string}
+	/**
+	 * This field is available in Comet 24.5.0 and later.
+	 */
+	CustomBody: string
+	CustomBodyType: string
 }
 
 export function New_Zero_libcomet_CustomRemoteBucketSettings(): libcomet_CustomRemoteBucketSettings {
 	return {
 		"URL": "",
 		"CustomHeaders": {},
+		"CustomBody": "",
+		"CustomBodyType": "",
 	};
 }
 
@@ -6150,13 +6189,42 @@ export type libcomet_ImpossibleCloudPartnerTemplateSettings = {
 	 */
 	Region: string
 	AccessKey: string
+	/**
+	 * UseObjectLock_Legacy_DoNotUse
+	 * @deprecated This member has been deprecated since Comet version 23.x.x
+	 */
+	UseObjectLock: boolean
+	/**
+	 * Control whether the resulting Storage Vaults are configured for Object Lock. One of the
+	 * OBJECT_LOCK_ constants
+	 */
+	ObjectLockMode: number
+	ObjectLockDays: number
+	/**
+	 * Control whether the "Allow removal of deleted files" checkbox is enabled for Storage Vaults
+	 * generated from this Storage Template.
+	 * When configuring a Storage Template from the Comet Server web interface, this field is set
+	 * automatically for Storage Templates using Object Lock.
+	 */
+	RemoveDeleted: boolean
 }
 
 export function New_Zero_libcomet_ImpossibleCloudPartnerTemplateSettings(): libcomet_ImpossibleCloudPartnerTemplateSettings {
 	return {
 		"Region": "",
 		"AccessKey": "",
+		"UseObjectLock": false,
+		"ObjectLockMode": 0,
+		"ObjectLockDays": 0,
+		"RemoveDeleted": false,
 	};
+}
+
+export function libcomet_ImpossibleCloudPartnerTemplateSettings_set_embedded_libcomet_ObjectLockStorageTemplateSettings(dest: libcomet_ImpossibleCloudPartnerTemplateSettings, src: libcomet_ObjectLockStorageTemplateSettings): void {
+	dest.UseObjectLock = src.UseObjectLock;
+	dest.ObjectLockMode = src.ObjectLockMode;
+	dest.ObjectLockDays = src.ObjectLockDays;
+	dest.RemoveDeleted = src.RemoveDeleted;
 }
 
 
@@ -6777,21 +6845,21 @@ export function New_Zero_libcomet_Office365CustomSettingV2(): libcomet_Office365
 
 export type libcomet_Office365MixedVirtualAccount = {
 	/**
-	 * ID
+	 * Omission from JSON will be interpreted as empty-string
 	 */
-	id: string
-	/**
-	 * Omission from JSON will be interpreted as 0 (zero)
-	 */
-	Type?: number
+	DefaultDriveID?: string
 	/**
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	DisplayName?: string
 	/**
-	 * Omission from JSON will be interpreted as empty-string
+	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
-	Mail?: string
+	EnabledServiceOption?: number
+	/**
+	 * ID
+	 */
+	id: string
 	/**
 	 * Omission from JSON will be interpreted as empty-string
 	 */
@@ -6799,7 +6867,19 @@ export type libcomet_Office365MixedVirtualAccount = {
 	/**
 	 * Omission from JSON will be interpreted as empty-string
 	 */
+	Mail?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
 	SiteID?: string
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	Type?: number
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	UserPrincipalName?: string
 	/**
 	 * Omission from JSON will be interpreted as empty-string
 	 */
@@ -6808,14 +6888,6 @@ export type libcomet_Office365MixedVirtualAccount = {
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	WebURL?: string
-	/**
-	 * Omission from JSON will be interpreted as empty-string
-	 */
-	UserPrincipalName?: string
-	/**
-	 * Omission from JSON will be interpreted as 0 (zero)
-	 */
-	EnabledServiceOption?: number
 	/**
 	 * Omission from JSON will be interpreted as an empty array
 	 */
