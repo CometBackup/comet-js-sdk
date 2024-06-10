@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "24.5.0";
+export const APPLICATION_VERSION = "24.6.0";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -21,7 +21,7 @@ export const APPLICATION_VERSION_MAJOR = 24;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MINOR = 5;
+export const APPLICATION_VERSION_MINOR = 6;
 
 /**
  * APPLICATION_VERSION_REVISION
@@ -1283,7 +1283,7 @@ export const PSA_TYPE_SYNCRO = 2;
  *
  * @var {string}
  */
-export const RELEASE_CODENAME = "Enceladus";
+export const RELEASE_CODENAME = "Voyager";
 
 /**
  * REMOTESERVER_COMET
@@ -5553,6 +5553,12 @@ export type libcomet_EmailOptions = {
 	 * Omission from JSON will be interpreted as false
 	 */
 	SMTPAllowUnencrypted?: boolean
+	/**
+	 * Override the HELO/EHLO hostname for SMTP or MX Direct modes. If blank, uses system default
+	 * HELO/EHLO hostname.
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	SMTPCustomEhlo?: string
 }
 
 export function New_Zero_libcomet_EmailOptions(): libcomet_EmailOptions {
@@ -6848,6 +6854,10 @@ export type libcomet_Office365MixedVirtualAccount = {
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	DefaultDriveID?: string
+	/**
+	 * Omission from JSON will be interpreted as false
+	 */
+	Disabled?: boolean
 	/**
 	 * Omission from JSON will be interpreted as empty-string
 	 */
@@ -10130,6 +10140,10 @@ export function New_Zero_libcomet_VSphereConnection(): libcomet_VSphereConnectio
 
 export type libcomet_VaultSnapshot = {
 	Snapshot: string
+	/**
+	 * This field is available in Comet 24.3.x and later.
+	 */
+	EngineType: string
 	Source: string
 	CreateTime: number
 	/**
@@ -10141,6 +10155,7 @@ export type libcomet_VaultSnapshot = {
 export function New_Zero_libcomet_VaultSnapshot(): libcomet_VaultSnapshot {
 	return {
 		"Snapshot": "",
+		"EngineType": "",
 		"Source": "",
 		"CreateTime": 0,
 		"HasOriginalPathInfo": false,
