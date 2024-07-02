@@ -1,4 +1,10 @@
 import * as comet from './index'
 
-// @ts-ignore
-window.comet = comet
+declare global {
+    interface Window {
+        comet: typeof comet;
+    }
+}
+
+
+window.comet = comet;
