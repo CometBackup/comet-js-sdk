@@ -1,4 +1,4 @@
-import * as comet from './index'
+import * as comet from "./index";
 
 declare global {
     interface Window {
