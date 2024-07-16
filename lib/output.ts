@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "24.6.0";
+export const APPLICATION_VERSION = "24.6.4";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -28,7 +28,7 @@ export const APPLICATION_VERSION_MINOR = 6;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 0;
+export const APPLICATION_VERSION_REVISION = 4;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -3290,6 +3290,11 @@ export type libcomet_AdminUserPermissions = {
 	 * Omission from JSON will be interpreted as an empty array
 	 */
 	AllowedUserPolicies?: string[]
+	/**
+	 * This field is available in Comet 24.6.1 and later.
+	 * Omission from JSON will be interpreted as false
+	 */
+	DenySoftwareBuildRole?: boolean
 }
 
 export function New_Zero_libcomet_AdminUserPermissions(): libcomet_AdminUserPermissions {
@@ -6336,6 +6341,25 @@ export function New_Zero_libcomet_JobEntry(): libcomet_JobEntry {
 }
 
 
+export type libcomet_LicenseLimits = {
+	/**
+	 * DeviceCount
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	deviceCount?: number
+	/**
+	 * BoosterCount
+	 * Omission from JSON will be interpreted as an empty map
+	 */
+	boosterCount?: {[k: string]: number}
+}
+
+export function New_Zero_libcomet_LicenseLimits(): libcomet_LicenseLimits {
+	return {
+	};
+}
+
+
 export type libcomet_LicenseOptions = {
 	/**
 	 * Omission from JSON will be interpreted as empty-string
@@ -8594,6 +8618,22 @@ export type libcomet_ServerMetaVersionInfo = {
 	ServerLicenseFeaturesAll: boolean
 	ServerLicenseFeatureSet: number
 	/**
+	 * If non-zero, the maximum numbers of devices and Protected Item types that this server is
+	 * allowed.
+	 * This field is available in Comet 24.6.3 and later.
+	 */
+	ServerLicenseLimit: libcomet_LicenseLimits
+	/**
+	 * A count of the devices registered on the server that have a configured Protected Item.
+	 * This field is available in Comet 24.6.3 and later.
+	 */
+	ConfiguredDevices: number
+	/**
+	 * The current number of Protected Item types configured on the server.
+	 * This field is available in Comet 24.6.3 and later.
+	 */
+	BoosterLimit: {[k: string]: number}
+	/**
 	 * Unix timestamp, in seconds.
 	 */
 	LicenseValidUntil: number
@@ -8626,6 +8666,9 @@ export function New_Zero_libcomet_ServerMetaVersionInfo(): libcomet_ServerMetaVe
 		"ServerLicenseHash": "",
 		"ServerLicenseFeaturesAll": false,
 		"ServerLicenseFeatureSet": 0,
+		"ServerLicenseLimit": New_Zero_libcomet_LicenseLimits(),
+		"ConfiguredDevices": 0,
+		"BoosterLimit": {},
 		"LicenseValidUntil": 0,
 		"EmailsSentSuccessfully": 0,
 		"EmailsSentErrors": 0,
