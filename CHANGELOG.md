@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2024-07-26 v3.0.0
+
+- Fixed an issue with type resolution failing when importing comet-js-sdk as an esmodule
+- Fixed an issue with the minified browser bundle not being minified
+- Ran `npm audit fix` to update vulnerable dependencies
+- Removed esbuild as direct dependency and moved it to dev dependencies
+
 ## 2024-07-16 v2.23.0
 
 - Based on Comet 24.6.4
