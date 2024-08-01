@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "24.6.4";
+export const APPLICATION_VERSION = "24.6.6";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -28,7 +28,7 @@ export const APPLICATION_VERSION_MINOR = 6;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 4;
+export const APPLICATION_VERSION_REVISION = 6;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -205,6 +205,24 @@ export const CUSTOMREMOTEBUCKET_CUSTOMBODY_URLENC = "urlencoded";
  * @var {string}
  */
 export const CUSTOMREMOTEBUCKET_CUSTOMBODY_FORM = "form";
+
+/**
+ * DEFAULT_RETRY_COUNT
+ * The number of retry attempts a backup job can do
+ * This const is available in Comet 24.6.6 and later.
+ *
+ * @var {number}
+ */
+export const DEFAULT_RETRY_COUNT = 1;
+
+/**
+ * DEFAULT_RETRY_TIME
+ * The number of minutes between backup job retry attempts
+ * This const is available in Comet 24.6.6 and later.
+ *
+ * @var {number}
+ */
+export const DEFAULT_RETRY_TIME = 30;
 
 /**
  * DEFAULT_LANGUAGE
@@ -851,6 +869,14 @@ export const JOB_STATUS_RUNNING_ACTIVE = 6001;
 export const JOB_STATUS_RUNNING_REVIVED = 6002;
 
 /**
+ * JOB_STATUS_RUNNING_TRYAGAIN
+ * JobStatus: The job has encountered an error and will wait to retry.
+ *
+ * @var {number}
+ */
+export const JOB_STATUS_RUNNING_TRYAGAIN = 6003;
+
+/**
  * JOB_STATUS_RUNNING__MAX
  * JobStatus
  *
@@ -1016,6 +1042,20 @@ export const MACOSCODESIGN_LEVEL_SIGN_NOTARISE = 1;
  * @var {number}
  */
 export const MACOSCODESIGN_LEVEL_SIGN_NOTARISE_STAPLE = 2;
+
+/**
+ * MIN_BUILD_NUMBER_WIN_SERVER_2016
+ *
+ * @var {number}
+ */
+export const MIN_BUILD_NUMBER_WIN_SERVER_2016 = 14393;
+
+/**
+ * MIN_BUILD_NUMBER_WIN_10
+ *
+ * @var {number}
+ */
+export const MIN_BUILD_NUMBER_WIN_10 = 10240;
 
 /**
  * MINIMUM_LOG_RETENTION_DAYS
@@ -3693,6 +3733,7 @@ export type libcomet_BackupJobDetail = {
 	 * Unix timestamp in seconds. Will be zero if the job is still running.
 	 */
 	EndTime: number
+	RetryCount: number
 	/**
 	 * The Protected Item that this job is for
 	 */
@@ -3706,6 +3747,12 @@ export type libcomet_BackupJobDetail = {
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	SnapshotID?: string
+	/**
+	 * The ID of the backup rule that contains the schedule that triggered this job
+	 * This field is available in Comet 24.6.6 and later.
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	BackupRuleGUID?: string
 	ClientVersion: string
 	TotalDirectories: number
 	TotalFiles: number
@@ -3774,6 +3821,7 @@ export function New_Zero_libcomet_BackupJobDetail(): libcomet_BackupJobDetail {
 		"Status": 0,
 		"StartTime": 0,
 		"EndTime": 0,
+		"RetryCount": 0,
 		"SourceGUID": "",
 		"DestinationGUID": "",
 		"DeviceID": "",
@@ -3943,6 +3991,24 @@ export type libcomet_BackupRuleEventTriggers = {
 	 * Omission from JSON will be interpreted as false
 	 */
 	OnPCBootIfLastJobMissed?: boolean
+	/**
+	 * The option to enable retrying when a backup job failed.
+	 * This field is available in Comet 24.6.6 and later.
+	 * Omission from JSON will be interpreted as false
+	 */
+	OnLastJobFailDoRetry?: boolean
+	/**
+	 * The number of retries when the backup job fails.
+	 * This field is available in Comet 24.6.6 and later.
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	LastJobFailDoRetryCount?: number
+	/**
+	 * The number of minutes before retrying when the backup job fails.
+	 * This field is available in Comet 24.6.6 and later.
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	LastJobFailDoRetryTime?: number
 }
 
 export function New_Zero_libcomet_BackupRuleEventTriggers(): libcomet_BackupRuleEventTriggers {
@@ -8011,6 +8077,11 @@ export type libcomet_S3GenericVirtualStorageRole = {
 	 * This field is available in Comet 24.3.1 and later.
 	 */
 	Region: string
+	/**
+	 * Optional. Prefix to use for bucket paths.
+	 * This field is available in Comet 24.6.3 and later.
+	 */
+	Prefix: string
 }
 
 export function New_Zero_libcomet_S3GenericVirtualStorageRole(): libcomet_S3GenericVirtualStorageRole {
@@ -8025,6 +8096,7 @@ export function New_Zero_libcomet_S3GenericVirtualStorageRole(): libcomet_S3Gene
 		"ObjectLockDays": 0,
 		"RemoveDeleted": false,
 		"Region": "",
+		"Prefix": "",
 	};
 }
 
@@ -9791,6 +9863,18 @@ export type libcomet_UserPolicy = {
 	/**
 	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
+	ModeScheduleLastJobFailDoRetry?: number
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	ModeLastJobFailDoRetryTime?: number
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	ModeLastJobFailDoRetryCount?: number
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
 	ModeAdminResetPassword?: number
 	/**
 	 * Omission from JSON will be interpreted as 0 (zero)
@@ -11219,6 +11303,23 @@ export default abstract class CometServerAPIBase {
 	 */
 	async AdminConstellationStatusP(): Promise<libcomet_ConstellationStatusAPIResponse> {
 		return await this._requestP("api/v1/admin/constellation/status", {});
+	}
+
+	/**
+	 * AdminConvertStorageRole
+	 * Convert IAM Storage Role vault to its underlying S3 type
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 *
+	 * @param {string} TargetUser The user to receive the new Storage Vault
+	 * @param {string} DestinationId The id of the old storage role destination to convert
+	 * @return {Promise<libcomet_RequestStorageVaultResponseMessage>}
+	 */
+	async AdminConvertStorageRoleP(TargetUser: string, DestinationId: string): Promise<libcomet_RequestStorageVaultResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["TargetUser"] = TargetUser;
+		params["DestinationId"] = DestinationId;
+		return await this._requestP("api/v1/admin/convert-storage-role", params);
 	}
 
 	/**
