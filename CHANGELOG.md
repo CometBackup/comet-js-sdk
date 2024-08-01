@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2024-08-01 v3.1.0
+
+- Based on Comet 24.6.6
+- Add new AdminConvertStorageRole API
+- Update data types for new job retry feature (BackupJobDetail, BackupRuleEventTriggers, and new JOB_STATUS_RUNNING_TRYAGAIN)
+- Add support for custom Prefix in S3GenericVirtualStorageRole
+
 ## 2024-07-26 v3.0.0
 
 - Fixed an issue with type resolution failing when importing comet-js-sdk as an esmodule
