@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "24.6.6";
+export const APPLICATION_VERSION = "24.9.1";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -21,14 +21,14 @@ export const APPLICATION_VERSION_MAJOR = 24;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MINOR = 6;
+export const APPLICATION_VERSION_MINOR = 9;
 
 /**
  * APPLICATION_VERSION_REVISION
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 6;
+export const APPLICATION_VERSION_REVISION = 1;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -7836,6 +7836,11 @@ export type libcomet_RestoreJobAdvancedOptions = {
 	 */
 	OverwriteIfDifferentContent: boolean
 	/**
+	 * For RESTORETYPE_FILE. If set, OverwriteExistingFiles must be true. This can be set in
+	 * combination with other OverwriteIf options.
+	 */
+	OverwriteForcePermissions: boolean
+	/**
 	 * For RESTORETYPE_FILE. If set, DestPath must be blank
 	 */
 	DestIsOriginalLocation: boolean
@@ -7919,6 +7924,7 @@ export function New_Zero_libcomet_RestoreJobAdvancedOptions(): libcomet_RestoreJ
 		"OverwriteExistingFiles": false,
 		"OverwriteIfNewer": false,
 		"OverwriteIfDifferentContent": false,
+		"OverwriteForcePermissions": false,
 		"DestIsOriginalLocation": false,
 		"DestPath": "",
 		"ExactDestPaths": [],
@@ -8902,8 +8908,10 @@ export function New_Zero_libcomet_SoftwareUpdateNewsResponse(): libcomet_Softwar
  * Protected Items, in order to safely perform retention passes on their behalf.
  */
 export type libcomet_SourceBasicInfo = {
+	Engine: string
 	Description: string
 	O365AccountCount: number
+	TotalVmCount: number
 	/**
 	 * Bytes
 	 */
@@ -8916,8 +8924,10 @@ export type libcomet_SourceBasicInfo = {
 
 export function New_Zero_libcomet_SourceBasicInfo(): libcomet_SourceBasicInfo {
 	return {
+		"Engine": "",
 		"Description": "",
 		"O365AccountCount": 0,
+		"TotalVmCount": 0,
 		"Size": 0,
 	};
 }
@@ -10037,6 +10047,16 @@ export type libcomet_UserProfileConfig = {
 	 */
 	QuotaOffice365ProtectedAccounts: number
 	/**
+	 * A limit on the total number of Hyper-V guests across all Hyper-V Protected Items in this
+	 * account. Set to zero to allow unlimited Office 365 Protected Accounts.
+	 */
+	QuotaHyperVGuests: number
+	/**
+	 * A limit on the total number of VMware guests across all VMware Protected Items in this account.
+	 * Set to zero to allow unlimited Office 365 Protected Accounts.
+	 */
+	QuotaVMwareGuests: number
+	/**
 	 * If the PolicyID field is set to a non-empty string, the Comet Server will enforce the contents
 	 * of the Policy field based on the matching server's policy. Otherwise if the PolicyID field is
 	 * set to an empty string, the administrator may configure any custom values in the Policy field.
@@ -10110,6 +10130,8 @@ export function New_Zero_libcomet_UserProfileConfig(): libcomet_UserProfileConfi
 		"AllProtectedItemsQuotaBytes": 0,
 		"MaximumDevices": 0,
 		"QuotaOffice365ProtectedAccounts": 0,
+		"QuotaHyperVGuests": 0,
+		"QuotaVMwareGuests": 0,
 		"PolicyID": "",
 		"Policy": New_Zero_libcomet_UserPolicy(),
 		"PasswordFormat": 0,
