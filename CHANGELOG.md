@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2024-09-17 v3.2.0
+
+- Based on Comet 24.9.1
+- Added Hyper-V Guest limits per user
+- Added VMware Guest limits per user
+- Added protected item type (engine) to protected item class
+- Added Force Overwrite Restore permissions
+
 ## 2024-08-01 v3.1.0
 
 - Based on Comet 24.6.6
