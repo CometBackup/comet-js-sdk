@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "24.9.1";
+export const APPLICATION_VERSION = "24.9.6";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -28,7 +28,7 @@ export const APPLICATION_VERSION_MINOR = 9;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 1;
+export const APPLICATION_VERSION_REVISION = 6;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -1660,6 +1660,14 @@ export const RESTORETYPE_MSSQL = 11;
  * @var {number}
  */
 export const RESTORETYPE_WINDISK_ESXI = 12;
+
+/**
+ * RESTORETYPE_WINDISK_VHDX
+ * RestoreType: Restore disk image backup as Hyper-V-compatible virtual disks (.vhdx format)
+ *
+ * @var {number}
+ */
+export const RESTORETYPE_WINDISK_VHDX = 13;
 
 /**
  * RESTORETYPE_PROCESS_TARBALL
@@ -3791,6 +3799,13 @@ export type libcomet_BackupJobDetail = {
 	 */
 	TotalUnlicensedMailsCount?: number
 	/**
+	 * If this field is present, this job did not perform some work because the Storage Vault is
+	 * currently busy.
+	 * This field is available in Comet 24.9.2 and later.
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	ConflictingJobID?: string
+	/**
 	 * If this field is present, it is possible to request cancellation of this job via the API.
 	 * Omission from JSON will be interpreted as empty-string
 	 */
@@ -3852,6 +3867,7 @@ export type libcomet_BackupJobProgress = {
 	RecievedTime: number
 	BytesDone: number
 	ItemsDone: number
+	ItemsTotal: number
 }
 
 export function New_Zero_libcomet_BackupJobProgress(): libcomet_BackupJobProgress {
@@ -3861,6 +3877,7 @@ export function New_Zero_libcomet_BackupJobProgress(): libcomet_BackupJobProgres
 		"RecievedTime": 0,
 		"BytesDone": 0,
 		"ItemsDone": 0,
+		"ItemsTotal": 0,
 	};
 }
 
@@ -5450,11 +5467,32 @@ export type libcomet_DiskDrive = {
 	Caption: string
 	Model: string
 	SerialNumber: string
+	/**
+	 * Bytes
+	 */
 	Size: number
 	Partitions: libcomet_Partition[]
+	/**
+	 * For physical disks, this array will be empty. For virtual disks, RAID devices or Linux DM
+	 * devices, this array may contain the DeviceName of the parent device.
+	 * This field is available in Comet 24.6.x and later.
+	 */
+	DeviceParents: string[]
+	/**
+	 * See WINDISKFLAG_ constants
+	 */
 	Flags: number
+	/**
+	 * @deprecated This member has been deprecated since Comet version 24.6.x This value is reported from the disk driver if available. Otherwise emulates a value based on modern LBA addressing. The field value is not used.
+	 */
 	Cylinders: number
+	/**
+	 * @deprecated This member has been deprecated since Comet version 24.6.x This value is reported from the disk driver if available. Otherwise emulates a value based on modern LBA addressing. The field value is not used.
+	 */
 	Heads: number
+	/**
+	 * @deprecated This member has been deprecated since Comet version 24.6.x This value is reported from the disk driver if available. Otherwise emulates a value based on modern LBA addressing. The field value is not used.
+	 */
 	Sectors: number
 	SectorSize: number
 }
@@ -5468,6 +5506,7 @@ export function New_Zero_libcomet_DiskDrive(): libcomet_DiskDrive {
 		"SerialNumber": "",
 		"Size": 0,
 		"Partitions": [],
+		"DeviceParents": [],
 		"Flags": 0,
 		"Cylinders": 0,
 		"Heads": 0,
@@ -12148,6 +12187,24 @@ export default abstract class CometServerAPIBase {
 	}
 
 	/**
+	 * AdminDispatcherTestSmbAuth
+	 * Test a set of Windows SMB credentials
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {libcomet_WinSMBAuth} Wsa The target credentials to test
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async AdminDispatcherTestSmbAuthP(TargetID: string, Wsa: libcomet_WinSMBAuth): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Wsa"] = JSON.stringify(Wsa);
+		return await this._requestP("api/v1/admin/dispatcher/test-smb-auth", params);
+	}
+
+	/**
 	 * AdminDispatcherUninstallSoftware
 	 * Instruct a live connected device to self-uninstall the software
 	 *
@@ -14211,6 +14268,24 @@ export default abstract class CometServerAPIBase {
 		params["SnapshotIDs"] = JSON.stringify(SnapshotIDs);
 		params["Filter"] = JSON.stringify(Filter);
 		return await this._requestP("api/v1/user/web/dispatcher/search-snapshots", params);
+	}
+
+	/**
+	 * UserWebDispatcherTestSmbAuth
+	 * Test a set of Windows SMB credentials
+	 *
+	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {libcomet_WinSMBAuth} Wsa The target credentials to test
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async UserWebDispatcherTestSmbAuthP(TargetID: string, Wsa: libcomet_WinSMBAuth): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Wsa"] = JSON.stringify(Wsa);
+		return await this._requestP("api/v1/user/web/dispatcher/test-smb-auth", params);
 	}
 
 	/**
