@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "24.9.6";
+export const APPLICATION_VERSION = "24.12.2";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -21,14 +21,14 @@ export const APPLICATION_VERSION_MAJOR = 24;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MINOR = 9;
+export const APPLICATION_VERSION_MINOR = 12;
 
 /**
  * APPLICATION_VERSION_REVISION
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 6;
+export const APPLICATION_VERSION_REVISION = 2;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -588,7 +588,7 @@ export const ENGINE_BUILTIN_MSSQL = "engine1/mssql";
 
 /**
  * ENGINE_BUILTIN_WINDOWSSYSTEM
- * Windows System Backup
+ * Windows System Backup, deprecated from version 24.12.2
  *
  * @var {string}
  */
@@ -1146,6 +1146,30 @@ export const MSSQL_RESTORE_RECOVERY = "RECOVERY";
  * @var {string}
  */
 export const MSSQL_RESTORE_NORECOVERY = "NO_RECOVERY";
+
+/**
+ * NEW_STORAGE_VAULT_MODE_USER
+ * Used in policy to define that the automatic Storage Vaults for new devices is not enforced by the policy
+ *
+ * @var {string}
+ */
+export const NEW_STORAGE_VAULT_MODE_USER = "user_controlled";
+
+/**
+ * NEW_STORAGE_VAULT_MODE_NONE
+ * No Storage Vault will be created when a new device is added
+ *
+ * @var {string}
+ */
+export const NEW_STORAGE_VAULT_MODE_NONE = "none";
+
+/**
+ * NEW_STORAGE_VAULT_MODE_SERVER
+ * When a new device is added, a Storage Vault will be created using the servers default Storage Template
+ *
+ * @var {string}
+ */
+export const NEW_STORAGE_VAULT_MODE_SERVER = "server_controlled";
 
 /**
  * OBJECT_LOCK_LEGACY
@@ -2539,6 +2563,30 @@ export const SEVT_DEVICE_LOBBY_CONNECT = 4704;
 export const SEVT_DEVICE_LOBBY_DISCONNECT = 4705;
 
 /**
+ * SEVT_USERGROUP_NEW
+ * StreamableEventType: UserGroup created.
+ *
+ * @var {number}
+ */
+export const SEVT_USERGROUP_NEW = 4800;
+
+/**
+ * SEVT_USERGROUP_REMOVED
+ * StreamableEventType: UserGroup deleted
+ *
+ * @var {number}
+ */
+export const SEVT_USERGROUP_REMOVED = 4801;
+
+/**
+ * SEVT_USERGROUP_UPDATED
+ * StreamableEventType: UserGroup updated.
+ *
+ * @var {number}
+ */
+export const SEVT_USERGROUP_UPDATED = 4802;
+
+/**
  * SEVT__MAX
  * StreamableEventType
  *
@@ -3207,6 +3255,10 @@ export type libcomet_AdminSecurityOptions = {
 	 */
 	WebAuthnRegistrations?: libcomet_AdminWebAuthnRegistration[]
 	/**
+	 * This field is available in Comet 24.12.0 and later.
+	 */
+	RequirePasswordChange: boolean
+	/**
 	 * One of the ENCRYPTIONMETHOD_ constants
 	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
@@ -3231,6 +3283,7 @@ export function New_Zero_libcomet_AdminSecurityOptions(): libcomet_AdminSecurity
 		"AllowPasswordAndTOTPLogin": false,
 		"AllowPasswordAndU2FLogin": false,
 		"AllowPasswordAndWebAuthnLogin": false,
+		"RequirePasswordChange": false,
 	};
 }
 
@@ -3411,6 +3464,10 @@ export type libcomet_AllowedAdminUser = {
 	 */
 	WebAuthnRegistrations?: libcomet_AdminWebAuthnRegistration[]
 	/**
+	 * This field is available in Comet 24.12.0 and later.
+	 */
+	RequirePasswordChange: boolean
+	/**
 	 * One of the ENCRYPTIONMETHOD_ constants
 	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
@@ -3438,6 +3495,7 @@ export function New_Zero_libcomet_AllowedAdminUser(): libcomet_AllowedAdminUser 
 		"AllowPasswordAndTOTPLogin": false,
 		"AllowPasswordAndU2FLogin": false,
 		"AllowPasswordAndWebAuthnLogin": false,
+		"RequirePasswordChange": false,
 		"Permissions": New_Zero_libcomet_AdminUserPermissions(),
 	};
 }
@@ -3451,6 +3509,7 @@ export function libcomet_AllowedAdminUser_set_embedded_libcomet_AdminSecurityOpt
 	dest.AllowPasswordAndWebAuthnLogin = src.AllowPasswordAndWebAuthnLogin;
 	dest.U2FRegistrations = src.U2FRegistrations;
 	dest.WebAuthnRegistrations = src.WebAuthnRegistrations;
+	dest.RequirePasswordChange = src.RequirePasswordChange;
 	dest.TOTPKeyEncryptionFormat = src.TOTPKeyEncryptionFormat;
 	dest.TOTPKey = src.TOTPKey;
 	dest.IPWhitelist = src.IPWhitelist;
@@ -4757,6 +4816,29 @@ export function libcomet_CreateGroupPolicyResponse_set_embedded_libcomet_CometAP
 }
 
 
+export type libcomet_CreateUserGroupResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
+	Status: number
+	Message: string
+	UserGroupID: string
+}
+
+export function New_Zero_libcomet_CreateUserGroupResponse(): libcomet_CreateUserGroupResponse {
+	return {
+		"Status": 0,
+		"Message": "",
+		"UserGroupID": "",
+	};
+}
+
+export function libcomet_CreateUserGroupResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_CreateUserGroupResponse, src: libcomet_CometAPIResponseMessage): void {
+	dest.Status = src.Status;
+	dest.Message = src.Message;
+}
+
+
 export type libcomet_CustomRemoteBucketSettings = {
 	URL: string
 	/**
@@ -5020,6 +5102,7 @@ export type libcomet_DestinationConfig = {
 	 * If not empty, an error occured during a retention pass. Describes the error.
 	 */
 	RetentionError: string
+	AssociatedDevices: string[]
 }
 
 export function New_Zero_libcomet_DestinationConfig(): libcomet_DestinationConfig {
@@ -5087,6 +5170,7 @@ export function New_Zero_libcomet_DestinationConfig(): libcomet_DestinationConfi
 		"DefaultRetention": New_Zero_libcomet_RetentionPolicy(),
 		"RebrandStorage": false,
 		"RetentionError": "",
+		"AssociatedDevices": [],
 	};
 }
 
@@ -6133,6 +6217,32 @@ export function libcomet_GetProfileHashResponseMessage_set_embedded_libcomet_Com
 }
 
 
+export type libcomet_GetUserGroupResponse = {
+	UserGroup: libcomet_UserGroup
+	UserGroupHash: string
+}
+
+export function New_Zero_libcomet_GetUserGroupResponse(): libcomet_GetUserGroupResponse {
+	return {
+		"UserGroup": New_Zero_libcomet_UserGroup(),
+		"UserGroupHash": "",
+	};
+}
+
+
+export type libcomet_GetUserGroupWithUsersResponse = {
+	UserGroup: libcomet_UserGroup
+	Users: {[k: string]: libcomet_UserProfileConfig}
+}
+
+export function New_Zero_libcomet_GetUserGroupWithUsersResponse(): libcomet_GetUserGroupWithUsersResponse {
+	return {
+		"UserGroup": New_Zero_libcomet_UserGroup(),
+		"Users": {},
+	};
+}
+
+
 export type libcomet_GlobalOverrideOptions = {
 	/**
 	 * Omission from JSON will be interpreted as 0 (zero)
@@ -6567,6 +6677,32 @@ export type libcomet_LocalStorageDirectory = {
 export function New_Zero_libcomet_LocalStorageDirectory(): libcomet_LocalStorageDirectory {
 	return {
 		"Path": "",
+	};
+}
+
+
+export type libcomet_LoginProtectionOptions = {
+	/**
+	 * Enable this feature to block repeated failed login attempts to the Comet Server.
+	 */
+	Enabled: boolean
+	/**
+	 * The number of failed attempts before a cooldown is applied. If the feature is enabled, should be
+	 * at least 1.
+	 */
+	FailureThreshold: number
+	/**
+	 * The duration to block requests, in seconds. If the feature is enabled, should be at least 1
+	 * second.
+	 */
+	CooldownSeconds: number
+}
+
+export function New_Zero_libcomet_LoginProtectionOptions(): libcomet_LoginProtectionOptions {
+	return {
+		"Enabled": false,
+		"FailureThreshold": 0,
+		"CooldownSeconds": 0,
 	};
 }
 
@@ -7672,6 +7808,8 @@ export type libcomet_RemoteStorageOption = {
 	StorageLimitEnabled: boolean
 	StorageLimitBytes: number
 	RebrandStorage: boolean
+	ID: string
+	Default: boolean
 }
 
 export function New_Zero_libcomet_RemoteStorageOption(): libcomet_RemoteStorageOption {
@@ -7681,6 +7819,8 @@ export function New_Zero_libcomet_RemoteStorageOption(): libcomet_RemoteStorageO
 		"StorageLimitEnabled": false,
 		"StorageLimitBytes": 0,
 		"RebrandStorage": false,
+		"ID": "",
+		"Default": false,
 	};
 }
 
@@ -8572,6 +8712,10 @@ export type libcomet_ServerConfigOptions = {
 	 * The Comet Server can enforce a bandwidth limit based on the target IP address
 	 */
 	IPRateLimit: libcomet_RatelimitOptions
+	/**
+	 * This field is available in Comet 24.9.x and later.
+	 */
+	LoginProtection: libcomet_LoginProtectionOptions
 	License: libcomet_LicenseOptions
 	/**
 	 * Configure ip, port, and SSL settings for this self-hosted Comet Server.
@@ -8611,6 +8755,7 @@ export function New_Zero_libcomet_ServerConfigOptions(): libcomet_ServerConfigOp
 		"Email": New_Zero_libcomet_EmailOptions(),
 		"ExternalAdminUserSources": {},
 		"IPRateLimit": New_Zero_libcomet_RatelimitOptions(),
+		"LoginProtection": New_Zero_libcomet_LoginProtectionOptions(),
 		"License": New_Zero_libcomet_LicenseOptions(),
 		"ListenAddresses": [],
 		"Organizations": {},
@@ -8678,6 +8823,10 @@ export type libcomet_ServerMetaBrandingProperties = {
 	 * Omission from JSON will be interpreted as an empty array
 	 */
 	ExternalAuthenticationSources?: libcomet_ExternalAuthenticationSourceDisplay[]
+	/**
+	 * If true, this Comet Server currently has no admins or users.
+	 */
+	ServerIsEmpty: boolean
 }
 
 export function New_Zero_libcomet_ServerMetaBrandingProperties(): libcomet_ServerMetaBrandingProperties {
@@ -8693,6 +8842,7 @@ export function New_Zero_libcomet_ServerMetaBrandingProperties(): libcomet_Serve
 		"AllowAuthenticatedDownloads": false,
 		"PruneLogsAfterDays": 0,
 		"ExpiredInSeconds": 0,
+		"ServerIsEmpty": false,
 	};
 }
 
@@ -8732,7 +8882,13 @@ export type libcomet_ServerMetaVersionInfo = {
 	 * Comet Server endpoints point to an identical server.
 	 */
 	ServerLicenseHash: string
+	/**
+	 * @deprecated This member has been deprecated since Comet version 24.9.x
+	 */
 	ServerLicenseFeaturesAll: boolean
+	/**
+	 * A bitset of feature flags representing functionality available in this Comet Server's plan
+	 */
 	ServerLicenseFeatureSet: number
 	/**
 	 * If non-zero, the maximum numbers of devices and Protected Item types that this server is
@@ -9873,6 +10029,24 @@ export function New_Zero_libcomet_UserCustomEmailSettings(): libcomet_UserCustom
 }
 
 
+export type libcomet_UserGroup = {
+	/**
+	 * Unix timestamp in seconds
+	 */
+	CreatedAt: number
+	OrganizationID: string
+	Name: string
+}
+
+export function New_Zero_libcomet_UserGroup(): libcomet_UserGroup {
+	return {
+		"CreatedAt": 0,
+		"OrganizationID": "",
+		"Name": "",
+	};
+}
+
+
 export type libcomet_UserOnServer = {
 	/**
 	 * The server where this user was found. The 0-based indexes here correspond to the entries inside
@@ -9897,6 +10071,7 @@ export type libcomet_UserPolicy = {
 	HideCloudStorageBranding: boolean
 	PreventDeleteStorageVault: boolean
 	StorageVaultProviders: libcomet_StorageVaultProviderPolicy
+	DefaultNewStorageVault: string
 	PreventNewProtectedItem: boolean
 	PreventEditProtectedItem: boolean
 	PreventDeleteProtectedItem: boolean
@@ -9966,6 +10141,7 @@ export function New_Zero_libcomet_UserPolicy(): libcomet_UserPolicy {
 		"HideCloudStorageBranding": false,
 		"PreventDeleteStorageVault": false,
 		"StorageVaultProviders": New_Zero_libcomet_StorageVaultProviderPolicy(),
+		"DefaultNewStorageVault": "",
 		"PreventNewProtectedItem": false,
 		"PreventEditProtectedItem": false,
 		"PreventDeleteProtectedItem": false,
@@ -10021,12 +10197,13 @@ export type libcomet_UserProfileConfig = {
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	OrganizationID?: string
+	GroupID: string
 	/**
 	 * A list of email addresses to send reports to.
 	 */
 	Emails: string[]
 	/**
-	 * By default, all the email addresses in the Emails field will receieve the policy-default or
+	 * By default, all the email addresses in the Emails field will receive the policy-default or
 	 * server-wide-default style of email report. Add an override for a specific email address in here
 	 * to allow customizing the email report that will be received.
 	 */
@@ -10040,6 +10217,10 @@ export type libcomet_UserProfileConfig = {
 	 * The string keys can be any unique key. Using a GUID is recommended, but optional.
 	 */
 	Destinations: {[k: string]: libcomet_DestinationConfig}
+	/**
+	 * Leave as true
+	 */
+	SupportsDeviceAssociations: boolean
 	/**
 	 * Protected Items
 	 * The string keys can be any unique key. Using a GUID is recommended, but optional.
@@ -10120,6 +10301,10 @@ export type libcomet_UserProfileConfig = {
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	PasswordRecovery?: string
+	/**
+	 * Allow login using the password alone. Set this to false if the password alone should not be
+	 * sufficient.
+	 */
 	AllowPasswordLogin: boolean
 	/**
 	 * If true, then TOTP is required to open the desktop app or the Comet Server web interface with
@@ -10149,6 +10334,7 @@ export type libcomet_UserProfileConfig = {
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	ServerConfig?: libcomet_UserServerConfig
+	AutoStorageTemplateGUID: string
 }
 
 export function New_Zero_libcomet_UserProfileConfig(): libcomet_UserProfileConfig {
@@ -10157,10 +10343,12 @@ export function New_Zero_libcomet_UserProfileConfig(): libcomet_UserProfileConfi
 		"AccountName": "",
 		"LocalTimezone": "",
 		"LanguageCode": "",
+		"GroupID": "",
 		"Emails": [],
 		"OverrideEmailSettings": {},
 		"SendEmailReports": false,
 		"Destinations": {},
+		"SupportsDeviceAssociations": false,
 		"Sources": {},
 		"BackupRules": {},
 		"Devices": {},
@@ -10182,6 +10370,7 @@ export function New_Zero_libcomet_UserProfileConfig(): libcomet_UserProfileConfi
 		"RequirePasswordChange": false,
 		"CreateTime": 0,
 		"CreationGUID": "",
+		"AutoStorageTemplateGUID": "",
 	};
 }
 
@@ -11152,6 +11341,21 @@ export default abstract class CometServerAPIBase {
 	}
 
 	/**
+	 * AdminAddFirstAdminUser
+	 * Add first admin user account on new server
+	 *
+	 * @param {string} TargetUser the username for this new admin
+	 * @param {string} TargetPassword the password for this new admin user
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async AdminAddFirstAdminUserP(TargetUser: string, TargetPassword: string): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["TargetUser"] = TargetUser;
+		params["TargetPassword"] = TargetPassword;
+		return await this._requestP("api/v1/admin/add-first-admin-user", params);
+	}
+
+	/**
 	 * AdminAddUser
 	 * Add a new user account
 	 *
@@ -11946,6 +12150,7 @@ export default abstract class CometServerAPIBase {
 	 * AdminDispatcherRequestOffice365Accounts
 	 * Request a list of Office365 mailbox accounts
 	 * The remote device must have given consent for an MSP to browse their files.
+	 * This is primarily used for testing the connection to Graph API, not for actual listing
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
@@ -12896,11 +13101,15 @@ export default abstract class CometServerAPIBase {
 	 * Access to this API may be prevented on a per-administrator basis.
 	 *
 	 * @param {libcomet_RemoteStorageOption[]} RemoteStorageOptions Updated configuration content
+	 * @param {string|null} ReplacementAutoVaultID Replacement Storage Template ID for auto Storage Vault configurations that use deleted Storage Templates
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
-	async AdminMetaRemoteStorageVaultSetP(RemoteStorageOptions: libcomet_RemoteStorageOption[]): Promise<libcomet_CometAPIResponseMessage> {
+	async AdminMetaRemoteStorageVaultSetP(RemoteStorageOptions: libcomet_RemoteStorageOption[], ReplacementAutoVaultID: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
 		const params: { [s: string]: string; } = {};
 		params["RemoteStorageOptions"] = JSON.stringify(RemoteStorageOptions);
+		if (ReplacementAutoVaultID !== null) {
+			params["ReplacementAutoVaultID"] = ReplacementAutoVaultID;
+		}
 		return await this._requestP("api/v1/admin/meta/remote-storage-vault/set", params);
 	}
 
@@ -13395,9 +13604,10 @@ export default abstract class CometServerAPIBase {
 	 * @param {string} TargetUser The user to receive the new Storage Vault
 	 * @param {string} StorageProvider ID for the storage template destination
 	 * @param {string|null} SelfAddress The external URL for this server. Used to resolve conflicts
+	 * @param {string|null} DeviceID The ID of the device to be added as a associated device of the Storage Vault
 	 * @return {Promise<libcomet_RequestStorageVaultResponseMessage>}
 	 */
-	async AdminRequestStorageVaultP(TargetUser: string, StorageProvider: string, SelfAddress: string|null = null): Promise<libcomet_RequestStorageVaultResponseMessage> {
+	async AdminRequestStorageVaultP(TargetUser: string, StorageProvider: string, SelfAddress: string|null = null, DeviceID: string|null = null): Promise<libcomet_RequestStorageVaultResponseMessage> {
 		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		params["StorageProvider"] = StorageProvider;
@@ -13405,6 +13615,9 @@ export default abstract class CometServerAPIBase {
 			params["SelfAddress"] = this._server_url;
 		} else {
 			params["SelfAddress"] = SelfAddress;
+		}
+		if (DeviceID !== null) {
+			params["DeviceID"] = DeviceID;
 		}
 		return await this._requestP("api/v1/admin/request-storage-vault", params);
 	}
@@ -13673,6 +13886,138 @@ export default abstract class CometServerAPIBase {
 	 */
 	async AdminUpdateCampaignStatusP(): Promise<libcomet_UpdateCampaignStatus> {
 		return await this._requestP("api/v1/admin/update-campaign/status", {});
+	}
+
+	/**
+	 * AdminUserGroupsDelete
+	 * Delete an existing user group object
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} GroupID The user group ID to delete
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async AdminUserGroupsDeleteP(GroupID: string): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["GroupID"] = GroupID;
+		return await this._requestP("api/v1/admin/user-groups/delete", params);
+	}
+
+	/**
+	 * AdminUserGroupsGet
+	 * Retrieve a single user group object
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} GroupID The user group ID to retrieve
+	 * @param {boolean|null} IncludeUsers If present, includes the users array in the response.
+	 * @return {Promise<libcomet_GetUserGroupWithUsersResponse>}
+	 */
+	async AdminUserGroupsGetP(GroupID: string, IncludeUsers: boolean|null = null): Promise<libcomet_GetUserGroupWithUsersResponse> {
+		const params: { [s: string]: string; } = {};
+		params["GroupID"] = GroupID;
+		if (IncludeUsers !== null) {
+			params["IncludeUsers"] = (IncludeUsers ? "1" : "0");
+		}
+		return await this._requestP("api/v1/admin/user-groups/get", params);
+	}
+
+	/**
+	 * AdminUserGroupsList
+	 * List all user group names
+	 * For the top-level organization, the API result includes all user groups for all organizations, unless the TargetOrganization parameter is present.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string|null} TargetOrganization If present, list the user groups belonging to another organization. Only allowed for administrator accounts in the top-level organization.
+	 * @return {Promise<{[k: string]: string}>}
+	 */
+	async AdminUserGroupsListP(TargetOrganization: string|null = null): Promise<{[k: string]: string}> {
+		const params: { [s: string]: string; } = {};
+		if (TargetOrganization !== null) {
+			params["TargetOrganization"] = TargetOrganization;
+		}
+		return await this._requestP("api/v1/admin/user-groups/list", params);
+	}
+
+	/**
+	 * AdminUserGroupsListFull
+	 * Get all user group objects
+	 * For the top-level organization, the API result includes all user groups for all organizations, unless the TargetOrganization parameter is present.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string|null} TargetOrganization If present, list the user groups belonging to the specified organization. Only allowed for administrator accounts in the top-level organization.
+	 * @return {Promise<{[k: string]: libcomet_UserGroup}>}
+	 */
+	async AdminUserGroupsListFullP(TargetOrganization: string|null = null): Promise<{[k: string]: libcomet_UserGroup}> {
+		const params: { [s: string]: string; } = {};
+		if (TargetOrganization !== null) {
+			params["TargetOrganization"] = TargetOrganization;
+		}
+		return await this._requestP("api/v1/admin/user-groups/list-full", params);
+	}
+
+	/**
+	 * AdminUserGroupsNew
+	 * Create a new user group object
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} Name this is the name of the group.
+	 * @param {string|null} TargetOrganization If present, list the policies belonging to another organization. Only allowed for administrator accounts in the top-level organization.
+	 * @return {Promise<libcomet_CreateUserGroupResponse>}
+	 */
+	async AdminUserGroupsNewP(Name: string, TargetOrganization: string|null = null): Promise<libcomet_CreateUserGroupResponse> {
+		const params: { [s: string]: string; } = {};
+		params["Name"] = Name;
+		if (TargetOrganization !== null) {
+			params["TargetOrganization"] = TargetOrganization;
+		}
+		return await this._requestP("api/v1/admin/user-groups/new", params);
+	}
+
+	/**
+	 * AdminUserGroupsSet
+	 * Update an existing user group or create a new user group
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} GroupID The user group ID to update or create
+	 * @param {libcomet_UserGroup} Group The user group data
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async AdminUserGroupsSetP(GroupID: string, Group: libcomet_UserGroup): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["GroupID"] = GroupID;
+		params["Group"] = JSON.stringify(Group);
+		return await this._requestP("api/v1/admin/user-groups/set", params);
+	}
+
+	/**
+	 * AdminUserGroupsSetUsersForGroup
+	 * Update the users in the specified group
+	 * The provided list of users will be moved into the specified group, and any users
+	 * already in the group who are not in the list of usernames will be removed.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} GroupID The user group ID to update
+	 * @param {string[]} Users An array of usernames.
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async AdminUserGroupsSetUsersForGroupP(GroupID: string, Users: string[]): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["GroupID"] = GroupID;
+		params["Users"] = JSON.stringify(Users);
+		return await this._requestP("api/v1/admin/user-groups/set-users-for-group", params);
 	}
 
 	/**
@@ -14449,15 +14794,19 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * @param {string} StorageProvider ID for the storage template destination
 	 * @param {string|null} SelfAddress The external URL for this server. Used to resolve conflicts
+	 * @param {string|null} DeviceID The ID of the device to be added as a associated device of the Storage Vault
 	 * @return {Promise<libcomet_RequestStorageVaultResponseMessage>}
 	 */
-	async UserWebRequestStorageVaultP(StorageProvider: string, SelfAddress: string|null = null): Promise<libcomet_RequestStorageVaultResponseMessage> {
+	async UserWebRequestStorageVaultP(StorageProvider: string, SelfAddress: string|null = null, DeviceID: string|null = null): Promise<libcomet_RequestStorageVaultResponseMessage> {
 		const params: { [s: string]: string; } = {};
 		params["StorageProvider"] = StorageProvider;
 		if (SelfAddress === null) {
 			params["SelfAddress"] = this._server_url;
 		} else {
 			params["SelfAddress"] = SelfAddress;
+		}
+		if (DeviceID !== null) {
+			params["DeviceID"] = DeviceID;
 		}
 		return await this._requestP("api/v1/user/web/request-storage-vault", params);
 	}
