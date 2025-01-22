@@ -1,6 +1,6 @@
 {
   "name": "comet-js-sdk",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "description": "The SDK for usage with a Comet Backup Comet Server",
   "scripts": {
     "clean": "rm -rf dist/",
