@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2025-01-22 v3.5.0
+
+- Based on Comet 24.12.3
+- Additional properties for BrandingOptions, BrandingProperties and ServerMetaBrandingProperties
+
 ## 2025-01-15 v3.4.0
 
 - Based on Comet 24.12.2
