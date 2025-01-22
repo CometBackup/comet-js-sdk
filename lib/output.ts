@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "24.12.2";
+export const APPLICATION_VERSION = "24.12.3";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -28,7 +28,7 @@ export const APPLICATION_VERSION_MINOR = 12;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 2;
+export const APPLICATION_VERSION_REVISION = 3;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -676,7 +676,7 @@ export const FTPS_MODE_EXPLICIT = 2;
 
 /**
  * HYPERV_METHOD_VSS
- * Back up Hyper-V virtual machines using VSS mode. This includes all previous snapshots.
+ * HypervMethod: Back up Hyper-V virtual machines using VSS mode. This includes all previous snapshots.
  *
  * @var {string}
  */
@@ -684,7 +684,7 @@ export const HYPERV_METHOD_VSS = "vss";
 
 /**
  * HYPERV_METHOD_WMI_COPY
- * Back up Hyper-V virtual machines using WMI mode. This includes the latest snapshot data only.
+ * HypervMethod: Back up Hyper-V virtual machines using WMI mode. This includes the latest snapshot data only.
  * This const is available in Comet 23.9.8 and later.
  *
  * @var {string}
@@ -693,7 +693,7 @@ export const HYPERV_METHOD_WMI_COPY = "copy";
 
 /**
  * HYPERV_METHOD_WMI_CBT
- * Back up Hyper-V virtual machines using WMI mode with RCT acceleration. This includes the latest snapshot data only.
+ * HypervMethod: Back up Hyper-V virtual machines using WMI mode with RCT acceleration. This includes the latest snapshot data only.
  * This const is available in Comet 23.9.8 and later.
  *
  * @var {string}
@@ -4113,6 +4113,9 @@ export type libcomet_BrandingOptions = {
 	TileBackgroundColor: string
 	AccountRegisterURL: string
 	HideBackgroundLogo: boolean
+	CloudStorageName: string
+	AdminHidePreBuiltClientOption: boolean
+	AdminHideBrandedCloudStorage: boolean
 	/**
 	 * One of the CLIENTBRANDINGBUILD_ constants
 	 */
@@ -4176,6 +4179,9 @@ export function New_Zero_libcomet_BrandingOptions(): libcomet_BrandingOptions {
 		"TileBackgroundColor": "",
 		"AccountRegisterURL": "",
 		"HideBackgroundLogo": false,
+		"CloudStorageName": "",
+		"AdminHidePreBuiltClientOption": false,
+		"AdminHideBrandedCloudStorage": false,
 		"BuildMode": 0,
 		"PathIcoFile": "",
 		"PathIcnsFile": "",
@@ -4224,6 +4230,9 @@ export function libcomet_BrandingOptions_set_embedded_libcomet_BrandingPropertie
 	dest.TileBackgroundColor = src.TileBackgroundColor;
 	dest.AccountRegisterURL = src.AccountRegisterURL;
 	dest.HideBackgroundLogo = src.HideBackgroundLogo;
+	dest.CloudStorageName = src.CloudStorageName;
+	dest.AdminHidePreBuiltClientOption = src.AdminHidePreBuiltClientOption;
+	dest.AdminHideBrandedCloudStorage = src.AdminHideBrandedCloudStorage;
 	dest.BuildMode = src.BuildMode;
 	dest.PathIcoFile = src.PathIcoFile;
 	dest.PathIcnsFile = src.PathIcnsFile;
@@ -4262,6 +4271,9 @@ export type libcomet_BrandingProperties = {
 	TileBackgroundColor: string
 	AccountRegisterURL: string
 	HideBackgroundLogo: boolean
+	CloudStorageName: string
+	AdminHidePreBuiltClientOption: boolean
+	AdminHideBrandedCloudStorage: boolean
 	/**
 	 * One of the CLIENTBRANDINGBUILD_ constants
 	 */
@@ -4318,6 +4330,9 @@ export function New_Zero_libcomet_BrandingProperties(): libcomet_BrandingPropert
 		"TileBackgroundColor": "",
 		"AccountRegisterURL": "",
 		"HideBackgroundLogo": false,
+		"CloudStorageName": "",
+		"AdminHidePreBuiltClientOption": false,
+		"AdminHideBrandedCloudStorage": false,
 		"BuildMode": 0,
 		"PathIcoFile": "",
 		"PathIcnsFile": "",
@@ -4356,6 +4371,9 @@ export function libcomet_BrandingProperties_set_embedded_libcomet_PublicBranding
 	dest.TileBackgroundColor = src.TileBackgroundColor;
 	dest.AccountRegisterURL = src.AccountRegisterURL;
 	dest.HideBackgroundLogo = src.HideBackgroundLogo;
+	dest.CloudStorageName = src.CloudStorageName;
+	dest.AdminHidePreBuiltClientOption = src.AdminHidePreBuiltClientOption;
+	dest.AdminHideBrandedCloudStorage = src.AdminHideBrandedCloudStorage;
 }
 
 export function libcomet_BrandingProperties_set_embedded_libcomet_PrivateBrandingProperties(dest: libcomet_BrandingProperties, src: libcomet_PrivateBrandingProperties): void {
@@ -7554,6 +7572,9 @@ export type libcomet_PublicBrandingProperties = {
 	TileBackgroundColor: string
 	AccountRegisterURL: string
 	HideBackgroundLogo: boolean
+	CloudStorageName: string
+	AdminHidePreBuiltClientOption: boolean
+	AdminHideBrandedCloudStorage: boolean
 }
 
 export function New_Zero_libcomet_PublicBrandingProperties(): libcomet_PublicBrandingProperties {
@@ -7566,6 +7587,9 @@ export function New_Zero_libcomet_PublicBrandingProperties(): libcomet_PublicBra
 		"TileBackgroundColor": "",
 		"AccountRegisterURL": "",
 		"HideBackgroundLogo": false,
+		"CloudStorageName": "",
+		"AdminHidePreBuiltClientOption": false,
+		"AdminHideBrandedCloudStorage": false,
 	};
 }
 
@@ -8827,6 +8851,17 @@ export type libcomet_ServerMetaBrandingProperties = {
 	 * If true, this Comet Server currently has no admins or users.
 	 */
 	ServerIsEmpty: boolean
+	CloudStorageName: string
+	/**
+	 * Will hide the "Pre-built software client" option from the server settings. Only properly
+	 * enforced when custom branding is enforced via the license.
+	 */
+	AdminHidePreBuiltClientOption: boolean
+	/**
+	 * Will hide Comet Storage from everywhere, including the admin view. Only properly enforced when
+	 * custom branding is enforced via the license.
+	 */
+	AdminHideBrandedCloudStorage: boolean
 }
 
 export function New_Zero_libcomet_ServerMetaBrandingProperties(): libcomet_ServerMetaBrandingProperties {
@@ -8843,6 +8878,9 @@ export function New_Zero_libcomet_ServerMetaBrandingProperties(): libcomet_Serve
 		"PruneLogsAfterDays": 0,
 		"ExpiredInSeconds": 0,
 		"ServerIsEmpty": false,
+		"CloudStorageName": "",
+		"AdminHidePreBuiltClientOption": false,
+		"AdminHideBrandedCloudStorage": false,
 	};
 }
 
@@ -11232,7 +11270,8 @@ export default abstract class CometServerAPIBase {
 	 * Update settings for your own admin account
 	 * Updating your account password requires you to supply your current password.
 	 * To set a new plaintext password, use a password format of 0 (PASSWORD_FORMAT_PLAINTEXT).
-	 * This API does not currently allow you to modify your TOTP secret or IP whitelist.
+	 * This API does not currently allow you to modify your TOTP secret.
+	 * In Comet 24.12.2 and later, this API can change the IPWhitelist field. Prior to this, changes to the IPWhitelist field were ignored.
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 *
