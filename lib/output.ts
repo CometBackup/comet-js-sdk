@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "24.12.3";
+export const APPLICATION_VERSION = "24.12.4";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -28,7 +28,7 @@ export const APPLICATION_VERSION_MINOR = 12;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 3;
+export const APPLICATION_VERSION_REVISION = 4;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
