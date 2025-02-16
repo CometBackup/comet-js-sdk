@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "24.12.4";
+export const APPLICATION_VERSION = "24.12.5";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -28,7 +28,7 @@ export const APPLICATION_VERSION_MINOR = 12;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 4;
+export const APPLICATION_VERSION_REVISION = 5;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -1694,6 +1694,15 @@ export const RESTORETYPE_WINDISK_ESXI = 12;
 export const RESTORETYPE_WINDISK_VHDX = 13;
 
 /**
+ * RESTORETYPE_VMHOST
+ * RestoreType: Restore virtual machines directly to hypervisor
+ * This const is available in Comet 24.12.x and later.
+ *
+ * @var {number}
+ */
+export const RESTORETYPE_VMHOST = 14;
+
+/**
  * RESTORETYPE_PROCESS_TARBALL
  * RestoreType: Legacy name alias - Prefer to use RESTORETYPE_PROCESS_ARCHIVE since multiple archive file formats are supported within this single RESTORETYPE_
  *
@@ -3209,6 +3218,17 @@ export function New_Zero_libcomet_AdminEmailOptions(): libcomet_AdminEmailOption
 }
 
 
+export type libcomet_AdminOptions = {
+	Policy: libcomet_PolicyOptions
+}
+
+export function New_Zero_libcomet_AdminOptions(): libcomet_AdminOptions {
+	return {
+		"Policy": New_Zero_libcomet_PolicyOptions(),
+	};
+}
+
+
 export type libcomet_AdminResourceResponse = {
 	/**
 	 * If the operation was successful, the status will be in the 200-299 range.
@@ -4544,6 +4564,118 @@ export function libcomet_BrowseSQLServerResponse_set_embedded_libcomet_CometAPIR
 }
 
 
+/**
+ * BrowseVMwareDatacentersResponse contains a list of VMware Datacenters when remotely browsing a
+ * VMware vSphere connection.
+ */
+export type libcomet_BrowseVMwareDatacentersResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
+	Status: number
+	Message: string
+	Datacenters: libcomet_VMwareDatacenterInfo[]
+}
+
+export function New_Zero_libcomet_BrowseVMwareDatacentersResponse(): libcomet_BrowseVMwareDatacentersResponse {
+	return {
+		"Status": 0,
+		"Message": "",
+		"Datacenters": [],
+	};
+}
+
+export function libcomet_BrowseVMwareDatacentersResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_BrowseVMwareDatacentersResponse, src: libcomet_CometAPIResponseMessage): void {
+	dest.Status = src.Status;
+	dest.Message = src.Message;
+}
+
+
+/**
+ * BrowseVMwareHostsResponse contains a list of VMware Datastores for a specific VMware Datacenter,
+ * when remotely browsing a VMware vSphere connection.
+ */
+export type libcomet_BrowseVMwareDatastoresResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
+	Status: number
+	Message: string
+	Datastores: libcomet_VMwareDatastoreInfo[]
+}
+
+export function New_Zero_libcomet_BrowseVMwareDatastoresResponse(): libcomet_BrowseVMwareDatastoresResponse {
+	return {
+		"Status": 0,
+		"Message": "",
+		"Datastores": [],
+	};
+}
+
+export function libcomet_BrowseVMwareDatastoresResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_BrowseVMwareDatastoresResponse, src: libcomet_CometAPIResponseMessage): void {
+	dest.Status = src.Status;
+	dest.Message = src.Message;
+}
+
+
+/**
+ * BrowseVMwareHostsResponse contains a list of VMware Hosts for a specific VMware Datacenter, when
+ * remotely browsing a VMware vSphere connection.
+ */
+export type libcomet_BrowseVMwareHostsResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
+	Status: number
+	Message: string
+	Hosts: libcomet_VMwareHostInfo[]
+}
+
+export function New_Zero_libcomet_BrowseVMwareHostsResponse(): libcomet_BrowseVMwareHostsResponse {
+	return {
+		"Status": 0,
+		"Message": "",
+		"Hosts": [],
+	};
+}
+
+export function libcomet_BrowseVMwareHostsResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_BrowseVMwareHostsResponse, src: libcomet_CometAPIResponseMessage): void {
+	dest.Status = src.Status;
+	dest.Message = src.Message;
+}
+
+
+/**
+ * BrowseVMwareHostsResponse contains a list of VMware Networks for a specific VMware Datacenter,
+ * when remotely browsing a VMware vSphere connection.
+ */
+export type libcomet_BrowseVMwareNetworksResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
+	Status: number
+	Message: string
+	Networks: libcomet_VMwareNetworkInfo[]
+}
+
+export function New_Zero_libcomet_BrowseVMwareNetworksResponse(): libcomet_BrowseVMwareNetworksResponse {
+	return {
+		"Status": 0,
+		"Message": "",
+		"Networks": [],
+	};
+}
+
+export function libcomet_BrowseVMwareNetworksResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_BrowseVMwareNetworksResponse, src: libcomet_CometAPIResponseMessage): void {
+	dest.Status = src.Status;
+	dest.Message = src.Message;
+}
+
+
+/**
+ * BrowseVMwareResponse contains a list of Virtual Machines when remotely browsing a VMware vSphere
+ * connection.
+ */
 export type libcomet_BrowseVMwareResponse = {
 	/**
 	 * If the operation was successful, the status will be in the 200-299 range.
@@ -5597,6 +5729,10 @@ export type libcomet_DiskDrive = {
 	 */
 	Sectors: number
 	SectorSize: number
+	/**
+	 * Used to indicate the partition conflicts on the disk.
+	 */
+	PartitionConflicts: libcomet_PartitionConflict[]
 }
 
 export function New_Zero_libcomet_DiskDrive(): libcomet_DiskDrive {
@@ -5614,6 +5750,7 @@ export function New_Zero_libcomet_DiskDrive(): libcomet_DiskDrive {
 		"Heads": 0,
 		"Sectors": 0,
 		"SectorSize": 0,
+		"PartitionConflicts": [],
 	};
 }
 
@@ -5638,6 +5775,36 @@ export function New_Zero_libcomet_DispatcherAdminSourcesResponse(): libcomet_Dis
 export function libcomet_DispatcherAdminSourcesResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_DispatcherAdminSourcesResponse, src: libcomet_CometAPIResponseMessage): void {
 	dest.Status = src.Status;
 	dest.Message = src.Message;
+}
+
+
+/**
+ * This type is available in Comet 24.12.x and later.
+ */
+export type libcomet_DispatcherListSnapshotVirtualMachinesResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
+	Status: number
+	Message: string
+	VMs: libcomet_VMInfo[]
+}
+
+export function New_Zero_libcomet_DispatcherListSnapshotVirtualMachinesResponse(): libcomet_DispatcherListSnapshotVirtualMachinesResponse {
+	return {
+		"Status": 0,
+		"Message": "",
+		"VMs": [],
+	};
+}
+
+export function libcomet_DispatcherListSnapshotVirtualMachinesResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_DispatcherListSnapshotVirtualMachinesResponse, src: libcomet_CometAPIResponseMessage): void {
+	dest.Status = src.Status;
+	dest.Message = src.Message;
+}
+
+export function libcomet_DispatcherListSnapshotVirtualMachinesResponse_set_embedded_libcomet_VMInfoList(dest: libcomet_DispatcherListSnapshotVirtualMachinesResponse, src: libcomet_VMInfoList): void {
+	dest.VMs = src.VMs;
 }
 
 
@@ -6362,12 +6529,48 @@ export type libcomet_HyperVMachineInfo = {
 	 * DisplayName
 	 */
 	Name: string
+	/**
+	 * This field is available in Comet 24.12.x and later.
+	 */
+	MemoryLimitMB: number
+	/**
+	 * This field is available in Comet 24.12.x and later.
+	 */
+	CPUCores: number
+	/**
+	 * This field is available in Comet 24.12.x and later.
+	 */
+	HardDrives: string[]
+	/**
+	 * This field is available in Comet 24.12.x and later.
+	 */
+	Generation: number
+	/**
+	 * This field is available in Comet 24.12.x and later.
+	 */
+	ConfigFilePath: string
 }
 
 export function New_Zero_libcomet_HyperVMachineInfo(): libcomet_HyperVMachineInfo {
 	return {
 		"ID": "",
 		"Name": "",
+		"MemoryLimitMB": 0,
+		"CPUCores": 0,
+		"HardDrives": [],
+		"Generation": 0,
+		"ConfigFilePath": "",
+	};
+}
+
+
+export type libcomet_HyperVRestoreTargetOptions = {
+	DiskStoragePath: string
+}
+
+export function New_Zero_libcomet_HyperVRestoreTargetOptions(): libcomet_HyperVRestoreTargetOptions {
+	return {
+		"DiskStoragePath": "",
 	};
 }
 
@@ -7105,29 +7308,44 @@ export function New_Zero_libcomet_Office365CustomSetting(): libcomet_Office365Cu
  */
 export type libcomet_Office365CustomSettingV2 = {
 	/**
-	 * If true, then backup the entire Office 365 Tenant except the selected members. If false, backup
-	 * the selected members only.
+	 * If true, then backup everything except the selected users (group members are still included)
+	 * @deprecated This member has been deprecated since Comet version 24.12.2
 	 */
 	Organization: boolean
 	/**
-	 * Key can be the ID of user, group or SharePoint
-	 * Value is a bitset of the SERVICE_ constants, to select which services to back up for this
-	 * member.
+	 * If true, exclude all filtered IDs and Members. Backup everything else
+	 */
+	FilterMode: boolean
+	/**
+	 * Key is the ID of User, Group, or Site
+	 * Value is a bitset of the SERVICE_ constants, to select which services to back up for members
 	 * Omission from JSON will be interpreted as an empty map
 	 */
 	BackupOptions?: {[k: string]: number}
 	/**
-	 * Key must be a group ID
-	 * Value is a bitset of the SERVICE_ constants, to select which services to back up for this
-	 * member.
+	 * Key is the ID of a Group or Team Site
+	 * Value is a bitset of the SERVICE_ constants, to select which services to back up for members
 	 * Omission from JSON will be interpreted as an empty map
 	 */
 	MemberBackupOptions?: {[k: string]: number}
+	/**
+	 * Key is the ID of a User, Group, or Site
+	 * Value is a bitset of the SERVICE_ constants, to select which services to back up for members
+	 * Omission from JSON will be interpreted as an empty map
+	 */
+	FilterOptions?: {[k: string]: number}
+	/**
+	 * Key is the ID of a Group or Team Site
+	 * Value is a bitset of the SERVICE_ constants, to select which services to back up for members
+	 * Omission from JSON will be interpreted as an empty map
+	 */
+	FilterMemberOptions?: {[k: string]: number}
 }
 
 export function New_Zero_libcomet_Office365CustomSettingV2(): libcomet_Office365CustomSettingV2 {
 	return {
 		"Organization": false,
+		"FilterMode": false,
 	};
 }
 
@@ -7149,6 +7367,11 @@ export type libcomet_Office365MixedVirtualAccount = {
 	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
 	EnabledServiceOption?: number
+	/**
+	 * HasLicense
+	 * Omission from JSON will be interpreted as false
+	 */
+	hasLicense?: boolean
 	/**
 	 * ID
 	 */
@@ -7193,11 +7416,6 @@ export type libcomet_Office365MixedVirtualAccount = {
 	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
 	MemberServiceOptions?: number
-	/**
-	 * HasLicense
-	 * Omission from JSON will be interpreted as false
-	 */
-	hasLicense?: boolean
 }
 
 export function New_Zero_libcomet_Office365MixedVirtualAccount(): libcomet_Office365MixedVirtualAccount {
@@ -7448,6 +7666,32 @@ export function New_Zero_libcomet_Partition(): libcomet_Partition {
 		"UsedSize": 0,
 		"Flags": 0,
 		"BytesPerFilesystemCluster": 0,
+	};
+}
+
+
+export type libcomet_PartitionConflict = {
+	PartitionA: string
+	PartitionB: string
+	Size: number
+}
+
+export function New_Zero_libcomet_PartitionConflict(): libcomet_PartitionConflict {
+	return {
+		"PartitionA": "",
+		"PartitionB": "",
+		"Size": 0,
+	};
+}
+
+
+export type libcomet_PolicyOptions = {
+	DeleteSources: string[]
+}
+
+export function New_Zero_libcomet_PolicyOptions(): libcomet_PolicyOptions {
+	return {
+		"DeleteSources": [],
 	};
 }
 
@@ -8119,6 +8363,18 @@ export type libcomet_RestoreJobAdvancedOptions = {
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	MsSqlConnection?: libcomet_MSSQLLoginArgs
+	/**
+	 * For RESTORETYPE_VMHOST
+	 * This field is available in Comet 24.12.x and later.
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	VMwareConnection?: libcomet_VMwareRestoreTargetOptions
+	/**
+	 * For RESTORETYPE_VMHOST
+	 * This field is available in Comet 24.12.x and later.
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	HyperVConnection?: libcomet_HyperVRestoreTargetOptions
 }
 
 export function New_Zero_libcomet_RestoreJobAdvancedOptions(): libcomet_RestoreJobAdvancedOptions {
@@ -10467,6 +10723,87 @@ export function New_Zero_libcomet_VMDKSnapshotViewOptions(): libcomet_VMDKSnapsh
 }
 
 
+/**
+ * This type is available in Comet 24.12.x and later.
+ */
+export type libcomet_VMDiskInfo = {
+	/**
+	 * Relative path within this backup job snapshot to root disk files
+	 */
+	Path: string
+	/**
+	 * The virtual size of the virtual disk
+	 */
+	Size: number
+	/**
+	 * Controller number where the disk is associated to
+	 */
+	Controller: number
+	/**
+	 * Device number within the controller
+	 */
+	DeviceNum: number
+}
+
+export function New_Zero_libcomet_VMDiskInfo(): libcomet_VMDiskInfo {
+	return {
+		"Path": "",
+		"Size": 0,
+		"Controller": 0,
+		"DeviceNum": 0,
+	};
+}
+
+
+/**
+ * This type is available in Comet 24.12.x and later.
+ */
+export type libcomet_VMInfo = {
+	ID: string
+	Name: string
+	CPUCores: number
+	/**
+	 * Bytes
+	 */
+	RamBytes: number
+	/**
+	 * The BIOS mode of this machine e.g. "Legacy"|"UEFI"
+	 */
+	FirmwareType: string
+	/**
+	 * Relative path to config file or directory, if supported by this Protected Item type
+	 */
+	ConfigPath: string
+	Disks: libcomet_VMDiskInfo[]
+}
+
+export function New_Zero_libcomet_VMInfo(): libcomet_VMInfo {
+	return {
+		"ID": "",
+		"Name": "",
+		"CPUCores": 0,
+		"RamBytes": 0,
+		"FirmwareType": "",
+		"ConfigPath": "",
+		"Disks": [],
+	};
+}
+
+
+/**
+ * This type is available in Comet 24.12.x and later.
+ */
+export type libcomet_VMInfoList = {
+	VMs: libcomet_VMInfo[]
+}
+
+export function New_Zero_libcomet_VMInfoList(): libcomet_VMInfoList {
+	return {
+		"VMs": [],
+	};
+}
+
+
 export type libcomet_VMwareConnection = {
 	/**
 	 * One of the VMWARE_CONNECTION_ constants
@@ -10488,6 +10825,51 @@ export function New_Zero_libcomet_VMwareConnection(): libcomet_VMwareConnection 
 }
 
 
+/**
+ * VMwareDatacenterInfo describes a single VMware datacenter.
+ */
+export type libcomet_VMwareDatacenterInfo = {
+	Name: string
+}
+
+export function New_Zero_libcomet_VMwareDatacenterInfo(): libcomet_VMwareDatacenterInfo {
+	return {
+		"Name": "",
+	};
+}
+
+
+/**
+ * VMwareDatastoreInfo describes a single VMware datastore within a VMware datacenter.
+ */
+export type libcomet_VMwareDatastoreInfo = {
+	Name: string
+}
+
+export function New_Zero_libcomet_VMwareDatastoreInfo(): libcomet_VMwareDatastoreInfo {
+	return {
+		"Name": "",
+	};
+}
+
+
+/**
+ * VMwareHostInfo describes a single VMware host within a VMware datacenter.
+ */
+export type libcomet_VMwareHostInfo = {
+	Name: string
+}
+
+export function New_Zero_libcomet_VMwareHostInfo(): libcomet_VMwareHostInfo {
+	return {
+		"Name": "",
+	};
+}
+
+
+/**
+ * VMwareMachineInfo describes a single VMware virtual machine.
+ */
 export type libcomet_VMwareMachineInfo = {
 	Name: string
 }
@@ -10495,6 +10877,60 @@ export type libcomet_VMwareMachineInfo = {
 export function New_Zero_libcomet_VMwareMachineInfo(): libcomet_VMwareMachineInfo {
 	return {
 		"Name": "",
+	};
+}
+
+
+/**
+ * VMwareNetworkInfo describes a single VMware network within a VMware datacenter.
+ */
+export type libcomet_VMwareNetworkInfo = {
+	Name: string
+}
+
+export function New_Zero_libcomet_VMwareNetworkInfo(): libcomet_VMwareNetworkInfo {
+	return {
+		"Name": "",
+	};
+}
+
+
+/**
+ * VMwareRestoreTargetOptions is used when restoring a virtual machine backup job into VMware, using
+ * the RESTORETYPE_VMHOST option.
+ * This type is available in Comet 24.12.x and later.
+ */
+export type libcomet_VMwareRestoreTargetOptions = {
+	/**
+	 * The name of the VMware Datacenter to restore into. If blank and there is only one Datacenter in
+	 * the vSphere connection, it is chosen.
+	 */
+	Datacenter: string
+	/**
+	 * The name of the VMware Host within the VMware Datacenter to restore into. If blank and there is
+	 * only one Datacenter in the vSphere connection, it is chosen.
+	 */
+	Host: string
+	/**
+	 * The name of the VMware Datastore on the VMware Host to restore into. If blank and there is only
+	 * one Datacenter in the vSphere connection, it is chosen.
+	 */
+	DatastorePath: string
+	/**
+	 * The name of the VMware Network on the VMware Host to restore into. If blank and there is only
+	 * one network on the target vSphere connection, it is chosen.
+	 */
+	Network: string
+	Connection: libcomet_VMwareConnection
+}
+
+export function New_Zero_libcomet_VMwareRestoreTargetOptions(): libcomet_VMwareRestoreTargetOptions {
+	return {
+		"Datacenter": "",
+		"Host": "",
+		"DatastorePath": "",
+		"Network": "",
+		"Connection": New_Zero_libcomet_VMwareConnection(),
 	};
 }
 
@@ -11727,6 +12163,26 @@ export default abstract class CometServerAPIBase {
 	}
 
 	/**
+	 * AdminDispatcherBrowseVirtualMachines
+	 * Browse virtual machines in target snapshot
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {string} DestinationID The Storage Vault GUID
+	 * @param {string} SnapshotID Snapshot to search
+	 * @return {Promise<libcomet_DispatcherListSnapshotVirtualMachinesResponse>}
+	 */
+	async AdminDispatcherBrowseVirtualMachinesP(TargetID: string, DestinationID: string, SnapshotID: string): Promise<libcomet_DispatcherListSnapshotVirtualMachinesResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["DestinationID"] = DestinationID;
+		params["SnapshotID"] = SnapshotID;
+		return await this._requestP("api/v1/admin/dispatcher/browse-virtual-machines", params);
+	}
+
+	/**
 	 * AdminDispatcherDeepverifyStorageVault
 	 * Instruct a live connected device to deeply verify Storage Vault content
 	 * This command is understood by Comet Backup 18.8.2 and newer.
@@ -12130,6 +12586,88 @@ export default abstract class CometServerAPIBase {
 		params["TargetID"] = TargetID;
 		params["Credentials"] = JSON.stringify(Credentials);
 		return await this._requestP("api/v1/admin/dispatcher/request-browse-vmware", params);
+	}
+
+	/**
+	 * AdminDispatcherRequestBrowseVmwareDatacenters
+	 * Request a list of VMware vSphere Datacenters on a VMware vSphere connection
+	 * The remote device must have given consent for an MSP to browse their files.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {libcomet_VMwareConnection} Credentials The VMware vSphere connection settings
+	 * @return {Promise<libcomet_BrowseVMwareDatacentersResponse>}
+	 */
+	async AdminDispatcherRequestBrowseVmwareDatacentersP(TargetID: string, Credentials: libcomet_VMwareConnection): Promise<libcomet_BrowseVMwareDatacentersResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Credentials"] = JSON.stringify(Credentials);
+		return await this._requestP("api/v1/admin/dispatcher/request-browse-vmware/datacenters", params);
+	}
+
+	/**
+	 * AdminDispatcherRequestBrowseVmwareDatastores
+	 * Request a list of VMware vSphere Datastores on a VMware vSphere connection, for a specified VMware Datacenter
+	 * The remote device must have given consent for an MSP to browse their files.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {libcomet_VMwareConnection} Credentials The VMware vSphere connection settings
+	 * @param {string} Filter The name of the target VMware Datacenter
+	 * @return {Promise<libcomet_BrowseVMwareDatastoresResponse>}
+	 */
+	async AdminDispatcherRequestBrowseVmwareDatastoresP(TargetID: string, Credentials: libcomet_VMwareConnection, Filter: string): Promise<libcomet_BrowseVMwareDatastoresResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Credentials"] = JSON.stringify(Credentials);
+		params["Filter"] = Filter;
+		return await this._requestP("api/v1/admin/dispatcher/request-browse-vmware/datastores", params);
+	}
+
+	/**
+	 * AdminDispatcherRequestBrowseVmwareHosts
+	 * Request a list of VMware vSphere Hosts on a VMware vSphere connection, for a specified VMware Datacenter
+	 * The remote device must have given consent for an MSP to browse their files.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {libcomet_VMwareConnection} Credentials The VMware vSphere connection settings
+	 * @param {string} Filter The name of the target VMware Datacenter
+	 * @return {Promise<libcomet_BrowseVMwareHostsResponse>}
+	 */
+	async AdminDispatcherRequestBrowseVmwareHostsP(TargetID: string, Credentials: libcomet_VMwareConnection, Filter: string): Promise<libcomet_BrowseVMwareHostsResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Credentials"] = JSON.stringify(Credentials);
+		params["Filter"] = Filter;
+		return await this._requestP("api/v1/admin/dispatcher/request-browse-vmware/hosts", params);
+	}
+
+	/**
+	 * AdminDispatcherRequestBrowseVmwareNetworks
+	 * Request a list of VMware vSphere Networks on a VMware vSphere connection, for a specified VMware Datacenter
+	 * The remote device must have given consent for an MSP to browse their files.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {libcomet_VMwareConnection} Credentials The VMware vSphere connection settings
+	 * @param {string} Filter The name of the target VMware Datacenter
+	 * @return {Promise<libcomet_BrowseVMwareNetworksResponse>}
+	 */
+	async AdminDispatcherRequestBrowseVmwareNetworksP(TargetID: string, Credentials: libcomet_VMwareConnection, Filter: string): Promise<libcomet_BrowseVMwareNetworksResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Credentials"] = JSON.stringify(Credentials);
+		params["Filter"] = Filter;
+		return await this._requestP("api/v1/admin/dispatcher/request-browse-vmware/networks", params);
 	}
 
 	/**
@@ -13583,14 +14121,18 @@ export default abstract class CometServerAPIBase {
 	 * @param {string} PolicyID The policy ID to update or create
 	 * @param {libcomet_GroupPolicy} Policy The policy data
 	 * @param {string|null} CheckPolicyHash An atomic verification hash as supplied by the AdminPoliciesGet API
+	 * @param {libcomet_PolicyOptions|null} Options An array of PolicySourceID that will be explicitly deleted.
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
-	async AdminPoliciesSetP(PolicyID: string, Policy: libcomet_GroupPolicy, CheckPolicyHash: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
+	async AdminPoliciesSetP(PolicyID: string, Policy: libcomet_GroupPolicy, CheckPolicyHash: string|null = null, Options: libcomet_PolicyOptions|null = null): Promise<libcomet_CometAPIResponseMessage> {
 		const params: { [s: string]: string; } = {};
 		params["PolicyID"] = PolicyID;
 		params["Policy"] = JSON.stringify(Policy);
 		if (CheckPolicyHash !== null) {
 			params["CheckPolicyHash"] = CheckPolicyHash;
+		}
+		if (Options !== null) {
+			params["Options"] = JSON.stringify(Options);
 		}
 		return await this._requestP("api/v1/admin/policies/set", params);
 	}
@@ -13764,13 +14306,17 @@ export default abstract class CometServerAPIBase {
 	 * @param {string} TargetUser Selected account username
 	 * @param {libcomet_UserProfileConfig} ProfileData Modified user profile
 	 * @param {string} RequireHash Previous hash parameter
+	 * @param {libcomet_AdminOptions|null} AdminOptions Instructions for modifying user profile
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
-	async AdminSetUserProfileHashP(TargetUser: string, ProfileData: libcomet_UserProfileConfig, RequireHash: string): Promise<libcomet_CometAPIResponseMessage> {
+	async AdminSetUserProfileHashP(TargetUser: string, ProfileData: libcomet_UserProfileConfig, RequireHash: string, AdminOptions: libcomet_AdminOptions|null = null): Promise<libcomet_CometAPIResponseMessage> {
 		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		params["ProfileData"] = JSON.stringify(ProfileData);
 		params["RequireHash"] = RequireHash;
+		if (AdminOptions !== null) {
+			params["AdminOptions"] = JSON.stringify(AdminOptions);
+		}
 		return await this._requestP("api/v1/admin/set-user-profile-hash", params);
 	}
 
@@ -14151,6 +14697,26 @@ export default abstract class CometServerAPIBase {
 	}
 
 	/**
+	 * UserWebDispatcherBrowseVirtualMachines
+	 * Browse virtual machines in target snapshot
+	 *
+	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {string} DestinationID The Storage Vault GUID
+	 * @param {string} SnapshotID Snapshot to search
+	 * @return {Promise<libcomet_DispatcherListSnapshotVirtualMachinesResponse>}
+	 */
+	async UserWebDispatcherBrowseVirtualMachinesP(TargetID: string, DestinationID: string, SnapshotID: string): Promise<libcomet_DispatcherListSnapshotVirtualMachinesResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["DestinationID"] = DestinationID;
+		params["SnapshotID"] = SnapshotID;
+		return await this._requestP("api/v1/user/web/dispatcher/browse-virtual-machines", params);
+	}
+
+	/**
 	 * UserWebDispatcherDeleteSnapshot
 	 * Instruct a live connected device to delete a stored snapshot
 	 *
@@ -14396,6 +14962,88 @@ export default abstract class CometServerAPIBase {
 		params["TargetID"] = TargetID;
 		params["Credentials"] = JSON.stringify(Credentials);
 		return await this._requestP("api/v1/user/web/dispatcher/request-browse-vmware", params);
+	}
+
+	/**
+	 * UserWebDispatcherRequestBrowseVmwareDatacenters
+	 * Request a list of VMware vSphere Datacenters on a VMware vSphere connection
+	 * The remote device must have given consent for an MSP to browse their files.
+	 *
+	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {libcomet_VMwareConnection} Credentials The VMware vSphere connection settings
+	 * @return {Promise<libcomet_BrowseVMwareDatacentersResponse>}
+	 */
+	async UserWebDispatcherRequestBrowseVmwareDatacentersP(TargetID: string, Credentials: libcomet_VMwareConnection): Promise<libcomet_BrowseVMwareDatacentersResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Credentials"] = JSON.stringify(Credentials);
+		return await this._requestP("api/v1/user/web/dispatcher/request-browse-vmware/datacenters", params);
+	}
+
+	/**
+	 * UserWebDispatcherRequestBrowseVmwareDatastores
+	 * Request a list of VMware vSphere Datastores on a VMware vSphere connection, for a specified VMware Datacenter
+	 * The remote device must have given consent for an MSP to browse their files.
+	 *
+	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {libcomet_VMwareConnection} Credentials The VMware vSphere connection settings
+	 * @param {string} Filter The name of the target VMware Datacenter
+	 * @return {Promise<libcomet_BrowseVMwareDatastoresResponse>}
+	 */
+	async UserWebDispatcherRequestBrowseVmwareDatastoresP(TargetID: string, Credentials: libcomet_VMwareConnection, Filter: string): Promise<libcomet_BrowseVMwareDatastoresResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Credentials"] = JSON.stringify(Credentials);
+		params["Filter"] = Filter;
+		return await this._requestP("api/v1/user/web/dispatcher/request-browse-vmware/datastores", params);
+	}
+
+	/**
+	 * UserWebDispatcherRequestBrowseVmwareHosts
+	 * Request a list of VMware vSphere Hosts on a VMware vSphere connection, for a specified VMware Datacenter
+	 * The remote device must have given consent for an MSP to browse their files.
+	 *
+	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {libcomet_VMwareConnection} Credentials The VMware vSphere connection settings
+	 * @param {string} Filter The name of the target VMware Datacenter
+	 * @return {Promise<libcomet_BrowseVMwareHostsResponse>}
+	 */
+	async UserWebDispatcherRequestBrowseVmwareHostsP(TargetID: string, Credentials: libcomet_VMwareConnection, Filter: string): Promise<libcomet_BrowseVMwareHostsResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Credentials"] = JSON.stringify(Credentials);
+		params["Filter"] = Filter;
+		return await this._requestP("api/v1/user/web/dispatcher/request-browse-vmware/hosts", params);
+	}
+
+	/**
+	 * UserWebDispatcherRequestBrowseVmwareNetworks
+	 * Request a list of VMware vSphere Networks on a VMware vSphere connection, for a specified VMware Datacenter
+	 * The remote device must have given consent for an MSP to browse their files.
+	 *
+	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {libcomet_VMwareConnection} Credentials The VMware vSphere connection settings
+	 * @param {string} Filter The name of the target VMware Datacenter
+	 * @return {Promise<libcomet_BrowseVMwareNetworksResponse>}
+	 */
+	async UserWebDispatcherRequestBrowseVmwareNetworksP(TargetID: string, Credentials: libcomet_VMwareConnection, Filter: string): Promise<libcomet_BrowseVMwareNetworksResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Credentials"] = JSON.stringify(Credentials);
+		params["Filter"] = Filter;
+		return await this._requestP("api/v1/user/web/dispatcher/request-browse-vmware/networks", params);
 	}
 
 	/**
