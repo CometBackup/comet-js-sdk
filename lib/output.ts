@@ -7,28 +7,28 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "24.12.5";
+export const APPLICATION_VERSION = "25.3.1";
 
 /**
  * APPLICATION_VERSION_MAJOR
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MAJOR = 24;
+export const APPLICATION_VERSION_MAJOR = 25;
 
 /**
  * APPLICATION_VERSION_MINOR
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MINOR = 12;
+export const APPLICATION_VERSION_MINOR = 3;
 
 /**
  * APPLICATION_VERSION_REVISION
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 5;
+export const APPLICATION_VERSION_REVISION = 1;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -1752,7 +1752,7 @@ export const RETENTIONRANGE_NEWER_THAN_X = 901;
 
 /**
  * RETENTIONRANGE_JOBS_SINCE
- * RetentionRangeType: Uses Days, Weeks, Months
+ * RetentionRangeType: Uses Days, Weeks, Months, Years
  *
  * @var {number}
  */
@@ -1816,12 +1816,28 @@ export const RETENTIONRANGE_LAST_X_BACKUPS_ONE_FOR_EACH_WEEK = 908;
 export const RETENTIONRANGE_LAST_X_BACKUPS_ONE_FOR_EACH_MONTH = 909;
 
 /**
+ * RETENTIONRANGE_LAST_X_BACKUPS_ONE_FOR_EACH_YEAR
+ * RetentionRangeType: Uses Jobs
+ *
+ * @var {number}
+ */
+export const RETENTIONRANGE_LAST_X_BACKUPS_ONE_FOR_EACH_YEAR = 910;
+
+/**
+ * RETENTIONRANGE_FIRST_JOB_FOR_LAST_X_YEARS
+ * RetentionRangeType: Uses Years, YearOffset
+ *
+ * @var {number}
+ */
+export const RETENTIONRANGE_FIRST_JOB_FOR_LAST_X_YEARS = 911;
+
+/**
  * RETENTIONRANGE__HIGHEST
  * RetentionRangeType
  *
  * @var {number}
  */
-export const RETENTIONRANGE__HIGHEST = 909;
+export const RETENTIONRANGE__HIGHEST = 911;
 
 /**
  * RETENTIONRANGE_MAXINT
@@ -1829,6 +1845,13 @@ export const RETENTIONRANGE__HIGHEST = 909;
  * @var {number}
  */
 export const RETENTIONRANGE_MAXINT = 1125899906842624;
+
+/**
+ * ROTATE_STORAGE_VAULT_KEYS_DEFAULT
+ *
+ * @var {number}
+ */
+export const ROTATE_STORAGE_VAULT_KEYS_DEFAULT = 48;
 
 /**
  * SCHEDULE_FREQUENCY_LOWEST
@@ -1886,11 +1909,19 @@ export const SCHEDULE_FREQUENCY_MONTHLY = 8014;
 export const SCHEDULE_FREQUENCY_PERIODIC = 8015;
 
 /**
+ * SCHEDULE_FREQUENCY_YEARLY
+ * SecondsPast is the number of seconds past 00:00 1st, in the device's local timezone.
+ *
+ * @var {number}
+ */
+export const SCHEDULE_FREQUENCY_YEARLY = 8016;
+
+/**
  * SCHEDULE_FREQUENCY_HIGHEST
  *
  * @var {number}
  */
-export const SCHEDULE_FREQUENCY_HIGHEST = 8015;
+export const SCHEDULE_FREQUENCY_HIGHEST = 8016;
 
 /**
  * SCHEDULE_MAX_RANDOM_DELAY_SECS
@@ -2826,6 +2857,14 @@ export const STOREDOBJECTTYPE_VMDK_WINEFS = "vmdkwinefs";
  * @var {string}
  */
 export const STOREDOBJECTTYPE_VMDK_SYMLINK = "vmdksymlink";
+
+/**
+ * STOREDOBJECTTYPE_VMDK_WINDEDUP
+ * StoredObjectType
+ *
+ * @var {string}
+ */
+export const STOREDOBJECTTYPE_VMDK_WINDEDUP = "vmdkwindedup";
 
 /**
  * STOREDOBJECTTYPE_VIRTUALIMAGE_DISK
@@ -6038,17 +6077,17 @@ export type libcomet_ExternalAuthenticationSource = {
 	Type: string
 	Description: string
 	/**
-	 * For use with Comet Server (Storage Role / Auth Role)
+	 * For use with Comet Server (Storage Gateway / Management Console)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	RemoteAddress?: string
 	/**
-	 * For use with Comet Server (Storage Role / Auth Role)
+	 * For use with Comet Server (Storage Gateway / Management Console)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Username?: string
 	/**
-	 * For use with Comet Server (Storage Role / Auth Role)
+	 * For use with Comet Server (Storage Gateway / Management Console)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Password?: string
@@ -7935,17 +7974,17 @@ export type libcomet_RemoteServerAddress = {
 	Type: string
 	Description: string
 	/**
-	 * For use with Comet Server (Storage Role / Auth Role)
+	 * For use with Comet Server (Storage Gateway / Management Console)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	RemoteAddress?: string
 	/**
-	 * For use with Comet Server (Storage Role / Auth Role)
+	 * For use with Comet Server (Storage Gateway / Management Console)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Username?: string
 	/**
-	 * For use with Comet Server (Storage Role / Auth Role)
+	 * For use with Comet Server (Storage Gateway / Management Console)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Password?: string
@@ -8011,17 +8050,17 @@ export type libcomet_RemoteStorageOption = {
 	Type: string
 	Description: string
 	/**
-	 * For use with Comet Server (Storage Role / Auth Role)
+	 * For use with Comet Server (Storage Gateway / Management Console)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	RemoteAddress?: string
 	/**
-	 * For use with Comet Server (Storage Role / Auth Role)
+	 * For use with Comet Server (Storage Gateway / Management Console)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Username?: string
 	/**
-	 * For use with Comet Server (Storage Role / Auth Role)
+	 * For use with Comet Server (Storage Gateway / Management Console)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Password?: string
@@ -8115,17 +8154,17 @@ export type libcomet_ReplicaServer = {
 	Type: string
 	Description: string
 	/**
-	 * For use with Comet Server (Storage Role / Auth Role)
+	 * For use with Comet Server (Storage Gateway / Management Console)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	RemoteAddress?: string
 	/**
-	 * For use with Comet Server (Storage Role / Auth Role)
+	 * For use with Comet Server (Storage Gateway / Management Console)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Username?: string
 	/**
-	 * For use with Comet Server (Storage Role / Auth Role)
+	 * For use with Comet Server (Storage Gateway / Management Console)
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Password?: string
@@ -8436,6 +8475,7 @@ export type libcomet_RetentionRange = {
 	Days: number
 	Weeks: number
 	Months: number
+	Years: number
 	/**
 	 * 0: Sunday, 6: Saturday
 	 */
@@ -8447,6 +8487,7 @@ export type libcomet_RetentionRange = {
 	 * For example, if the offset is set to 30, no backup will be kept for February.
 	 */
 	MonthOffset: number
+	YearOffset: number
 }
 
 export function New_Zero_libcomet_RetentionRange(): libcomet_RetentionRange {
@@ -8457,8 +8498,10 @@ export function New_Zero_libcomet_RetentionRange(): libcomet_RetentionRange {
 		"Days": 0,
 		"Weeks": 0,
 		"Months": 0,
+		"Years": 0,
 		"WeekOffset": 0,
 		"MonthOffset": 0,
+		"YearOffset": 0,
 	};
 }
 
@@ -8696,6 +8739,8 @@ export type libcomet_ScheduleConfig = {
 	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
 	RandomDelaySecs?: number
+	SelectedMonth: number
+	SelectedDay: number
 }
 
 export function New_Zero_libcomet_ScheduleConfig(): libcomet_ScheduleConfig {
@@ -8707,6 +8752,8 @@ export function New_Zero_libcomet_ScheduleConfig(): libcomet_ScheduleConfig {
 		"ToTime": New_Zero_libcomet_HourSchedConfig(),
 		"RestrictDays": false,
 		"DaysSelect": New_Zero_libcomet_DaysOfWeekConfig(),
+		"SelectedMonth": 0,
+		"SelectedDay": 0,
 	};
 }
 
@@ -8854,8 +8901,8 @@ export type libcomet_SelfBackupExportOptions = {
 	 */
 	Compression: number
 	/**
-	 * The jobs database is often the largest component of the Server Self-Backup archive. By excluding
-	 * it, you could run the Server Self-Backup more often.
+	 * The jobs database is often the largest component of the System Self-Backup archive. By excluding
+	 * it, you could run the System Self-Backup more often.
 	 */
 	ExcludeJobsDB: boolean
 	IncludeServerLogs: boolean
@@ -8927,8 +8974,8 @@ export type libcomet_SelfBackupTarget = {
 	 */
 	Compression: number
 	/**
-	 * The jobs database is often the largest component of the Server Self-Backup archive. By excluding
-	 * it, you could run the Server Self-Backup more often.
+	 * The jobs database is often the largest component of the System Self-Backup archive. By excluding
+	 * it, you could run the System Self-Backup more often.
 	 */
 	ExcludeJobsDB: boolean
 	IncludeServerLogs: boolean
@@ -10425,6 +10472,11 @@ export type libcomet_UserPolicy = {
 	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
 	RandomDelaySecs?: number
+	/**
+	 * Rotate access keys of a conflicting jobs Storage Vault, if no update from the conflicting job
+	 * for X hours. If value is 0, ROTATE_STORAGE_VAULT_KEYS_DEFAULT is used.
+	 */
+	RotateStorageVaultKeysHours: number
 }
 
 export function New_Zero_libcomet_UserPolicy(): libcomet_UserPolicy {
@@ -10459,6 +10511,7 @@ export function New_Zero_libcomet_UserPolicy(): libcomet_UserPolicy {
 		"DefaultSourcesBackupRules": {},
 		"DefaultSourcesWithOSRestriction": {},
 		"DefaultBackupRules": {},
+		"RotateStorageVaultKeysHours": 0,
 	};
 }
 
@@ -13015,12 +13068,16 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Destination The Storage Vault GUID
+	 * @param {boolean|null} AllowUnsafe Allow legacy Storage Vault unlocking, which is unsafe in some cases.
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
-	async AdminDispatcherUnlockP(TargetID: string, Destination: string): Promise<libcomet_CometAPIResponseMessage> {
+	async AdminDispatcherUnlockP(TargetID: string, Destination: string, AllowUnsafe: boolean|null = null): Promise<libcomet_CometAPIResponseMessage> {
 		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Destination"] = Destination;
+		if (AllowUnsafe !== null) {
+			params["AllowUnsafe"] = (AllowUnsafe ? "1" : "0");
+		}
 		return await this._requestP("api/v1/admin/dispatcher/unlock", params);
 	}
 
