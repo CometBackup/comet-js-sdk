@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2025-08-15 v3.9.0
+
+- Based on Comet 25.6.8
+- Add support for Proxmox
+- Add profile hash to some API endpoints
+
 ## 2025-03-20 v3.8.0
 
 - Based on Comet 25.3.1
