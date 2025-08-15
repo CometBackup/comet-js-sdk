@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "25.3.1";
+export const APPLICATION_VERSION = "25.6.8";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -21,14 +21,14 @@ export const APPLICATION_VERSION_MAJOR = 25;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MINOR = 3;
+export const APPLICATION_VERSION_MINOR = 6;
 
 /**
  * APPLICATION_VERSION_REVISION
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 1;
+export const APPLICATION_VERSION_REVISION = 8;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -298,6 +298,14 @@ export const DESTINATION_SFTP_AUTHMODE_PRIVATEKEY = 2;
  * @var {number}
  */
 export const DESTINATIONTYPE___INVALID = 0;
+
+/**
+ * DESTINATIONTYPE_ERROR
+ * Storage type that is applied when Storage Gateway fails to launch correctly
+ *
+ * @var {number}
+ */
+export const DESTINATIONTYPE_ERROR = 1;
 
 /**
  * DESTINATIONTYPE_S3
@@ -649,6 +657,14 @@ export const ENGINE_BUILTIN_MSOFFICE = "engine1/winmsofficemail";
  * @var {string}
  */
 export const ENGINE_BUILTIN_VMWARE = "engine1/vmware";
+
+/**
+ * ENGINE_BUILTIN_PROXMOX
+ * Proxmox (PVE)
+ *
+ * @var {string}
+ */
+export const ENGINE_BUILTIN_PROXMOX = "engine1/proxmox";
 
 /**
  * FTPS_MODE_PLAINTEXT
@@ -1231,6 +1247,13 @@ export const OFFICE365_REGION_US_GOVT = "USGovtGccCloud";
 export const OFFICE365_REGION_US_DOD = "USGovtGccDoDCloud";
 
 /**
+ * OFFICE365_REGION_PUBLIC_TEST
+ *
+ * @var {string}
+ */
+export const OFFICE365_REGION_PUBLIC_TEST = "GlobalPublicCloudTest";
+
+/**
  * OS_ANY
  * ExtraFileExclusionOSRestriction: Applies to any device
  *
@@ -1319,6 +1342,20 @@ export const PROVIDER_GOOGLE = "google";
 export const PROVIDER_DASHBOARD = "dashboard";
 
 /**
+ * PROXMOX_TYPE_VM
+ *
+ * @var {string}
+ */
+export const PROXMOX_TYPE_VM = "qemu";
+
+/**
+ * PROXMOX_TYPE_CONTAINER
+ *
+ * @var {string}
+ */
+export const PROXMOX_TYPE_CONTAINER = "lxc";
+
+/**
  * PSA_TYPE_GENERIC
  * PSAType
  *
@@ -1341,6 +1378,34 @@ export const PSA_TYPE_GRADIENT = 1;
  * @var {number}
  */
 export const PSA_TYPE_SYNCRO = 2;
+
+/**
+ * PVE_BACKUP_METHOD_STOP
+ *
+ * @var {string}
+ */
+export const PVE_BACKUP_METHOD_STOP = "stop";
+
+/**
+ * PVE_BACKUP_METHOD_SUSPEND
+ *
+ * @var {string}
+ */
+export const PVE_BACKUP_METHOD_SUSPEND = "suspend";
+
+/**
+ * PVE_BACKUP_METHOD_SNAPSHOT
+ *
+ * @var {string}
+ */
+export const PVE_BACKUP_METHOD_SNAPSHOT = "snapshot";
+
+/**
+ * PVE_BACKUP_METHOD_DEFAULT
+ *
+ * @var {string}
+ */
+export const PVE_BACKUP_METHOD_DEFAULT = PVE_BACKUP_METHOD_SNAPSHOT;
 
 /**
  * RELEASE_CODENAME
@@ -3917,6 +3982,11 @@ export type libcomet_BackupJobDetail = {
 	 */
 	TotalUnlicensedMailsCount?: number
 	/**
+	 * The CRC32 of the billing data for this job.
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	BillingCrc32?: number
+	/**
 	 * If this field is present, this job did not perform some work because the Storage Vault is
 	 * currently busy.
 	 * This field is available in Comet 24.9.2 and later.
@@ -4148,6 +4218,19 @@ export type libcomet_BackupRuleEventTriggers = {
 
 export function New_Zero_libcomet_BackupRuleEventTriggers(): libcomet_BackupRuleEventTriggers {
 	return {
+	};
+}
+
+
+export type libcomet_BlockInfo = {
+	DeviceID: string
+	DiskNodeName: string
+}
+
+export function New_Zero_libcomet_BlockInfo(): libcomet_BlockInfo {
+	return {
+		"DeviceID": "",
+		"DiskNodeName": "",
 	};
 }
 
@@ -4575,6 +4658,75 @@ export function New_Zero_libcomet_BrowseOffice365ObjectsResponse(): libcomet_Bro
 }
 
 export function libcomet_BrowseOffice365ObjectsResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_BrowseOffice365ObjectsResponse, src: libcomet_CometAPIResponseMessage): void {
+	dest.Status = src.Status;
+	dest.Message = src.Message;
+}
+
+
+export type libcomet_BrowseProxmoxNodesResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
+	Status: number
+	Message: string
+	Nodes: string[]
+}
+
+export function New_Zero_libcomet_BrowseProxmoxNodesResponse(): libcomet_BrowseProxmoxNodesResponse {
+	return {
+		"Status": 0,
+		"Message": "",
+		"Nodes": [],
+	};
+}
+
+export function libcomet_BrowseProxmoxNodesResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_BrowseProxmoxNodesResponse, src: libcomet_CometAPIResponseMessage): void {
+	dest.Status = src.Status;
+	dest.Message = src.Message;
+}
+
+
+export type libcomet_BrowseProxmoxResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
+	Status: number
+	Message: string
+	VMs: libcomet_PVEVM[]
+}
+
+export function New_Zero_libcomet_BrowseProxmoxResponse(): libcomet_BrowseProxmoxResponse {
+	return {
+		"Status": 0,
+		"Message": "",
+		"VMs": [],
+	};
+}
+
+export function libcomet_BrowseProxmoxResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_BrowseProxmoxResponse, src: libcomet_CometAPIResponseMessage): void {
+	dest.Status = src.Status;
+	dest.Message = src.Message;
+}
+
+
+export type libcomet_BrowseProxmoxStorageResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
+	Status: number
+	Message: string
+	Storage: libcomet_PVEStorageName[]
+}
+
+export function New_Zero_libcomet_BrowseProxmoxStorageResponse(): libcomet_BrowseProxmoxStorageResponse {
+	return {
+		"Status": 0,
+		"Message": "",
+		"Storage": [],
+	};
+}
+
+export function libcomet_BrowseProxmoxStorageResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_BrowseProxmoxStorageResponse, src: libcomet_CometAPIResponseMessage): void {
 	dest.Status = src.Status;
 	dest.Message = src.Message;
 }
@@ -7353,29 +7505,35 @@ export type libcomet_Office365CustomSettingV2 = {
 	Organization: boolean
 	/**
 	 * If true, exclude all filtered IDs and Members. Backup everything else
+	 * Omission from JSON will be interpreted as false
 	 */
-	FilterMode: boolean
+	FilterMode?: boolean
+	/**
+	 * If true, backup everything, ignoring selection and filter options
+	 * Omission from JSON will be interpreted as false
+	 */
+	WholeOrg?: boolean
 	/**
 	 * Key is the ID of User, Group, or Site
-	 * Value is a bitset of the SERVICE_ constants, to select which services to back up for members
+	 * Value is a bitset of the SERVICE_ constants, to select which services to backup for accounts
 	 * Omission from JSON will be interpreted as an empty map
 	 */
 	BackupOptions?: {[k: string]: number}
 	/**
 	 * Key is the ID of a Group or Team Site
-	 * Value is a bitset of the SERVICE_ constants, to select which services to back up for members
+	 * Value is a bitset of the SERVICE_ constants, to select which services to backup for members
 	 * Omission from JSON will be interpreted as an empty map
 	 */
 	MemberBackupOptions?: {[k: string]: number}
 	/**
 	 * Key is the ID of a User, Group, or Site
-	 * Value is a bitset of the SERVICE_ constants, to select which services to back up for members
+	 * Value is a bitset of the SERVICE_ constants, to select which services to not backup for accounts
 	 * Omission from JSON will be interpreted as an empty map
 	 */
 	FilterOptions?: {[k: string]: number}
 	/**
 	 * Key is the ID of a Group or Team Site
-	 * Value is a bitset of the SERVICE_ constants, to select which services to back up for members
+	 * Value is a bitset of the SERVICE_ constants, to select which services to not backup for members
 	 * Omission from JSON will be interpreted as an empty map
 	 */
 	FilterMemberOptions?: {[k: string]: number}
@@ -7384,7 +7542,6 @@ export type libcomet_Office365CustomSettingV2 = {
 export function New_Zero_libcomet_Office365CustomSettingV2(): libcomet_Office365CustomSettingV2 {
 	return {
 		"Organization": false,
-		"FilterMode": false,
 	};
 }
 
@@ -7665,8 +7822,211 @@ export function New_Zero_libcomet_PSAGroupedBy(): libcomet_PSAGroupedBy {
 }
 
 
+export type libcomet_PVEBackupDisk = {
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Device?: string
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	DeviceNum?: number
+}
+
+export function New_Zero_libcomet_PVEBackupDisk(): libcomet_PVEBackupDisk {
+	return {
+	};
+}
+
+
+export type libcomet_PVEBackupNode = {
+	/**
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	IncludedVMs?: libcomet_PVEBackupVM[]
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Name?: string
+	/**
+	 * Omission from JSON will be interpreted as false
+	 */
+	Selected?: boolean
+}
+
+export function New_Zero_libcomet_PVEBackupNode(): libcomet_PVEBackupNode {
+	return {
+	};
+}
+
+
+export type libcomet_PVEBackupVM = {
+	/**
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	IncludedDisks?: libcomet_PVEBackupDisk[]
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Name?: string
+	/**
+	 * Omission from JSON will be interpreted as false
+	 */
+	Selected?: boolean
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Type?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	VMID?: string
+}
+
+export function New_Zero_libcomet_PVEBackupVM(): libcomet_PVEBackupVM {
+	return {
+	};
+}
+
+
+export type libcomet_PVEDisk = {
+	Device: string
+	DeviceNum: number
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	StorageID?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Volume?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Size?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Format?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Options?: string
+}
+
+export function New_Zero_libcomet_PVEDisk(): libcomet_PVEDisk {
+	return {
+		"Device": "",
+		"DeviceNum": 0,
+	};
+}
+
+
+export type libcomet_PVEParams = {
+	/**
+	 * Omission from JSON will be interpreted as false
+	 */
+	Everything?: boolean
+	/**
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	Exclusions?: libcomet_PVEBackupNode[]
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Method?: string
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	Quota?: number
+	/**
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	SSHConnection?: libcomet_SSHConnection
+	/**
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	Selections?: libcomet_PVEBackupNode[]
+}
+
+export function New_Zero_libcomet_PVEParams(): libcomet_PVEParams {
+	return {
+	};
+}
+
+
+export type libcomet_PVERestoreSelection = {
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	ID?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Name?: string
+	TargetVM: libcomet_PVEVM
+}
+
+export function New_Zero_libcomet_PVERestoreSelection(): libcomet_PVERestoreSelection {
+	return {
+		"TargetVM": New_Zero_libcomet_PVEVM(),
+	};
+}
+
+
+/**
+ * PVEStorageName contains the name and type of storage configured on a Proxmox Cluster
+ */
+export type libcomet_PVEStorageName = {
+	Name: string
+	Type: string
+}
+
+export function New_Zero_libcomet_PVEStorageName(): libcomet_PVEStorageName {
+	return {
+		"Name": "",
+		"Type": "",
+	};
+}
+
+
+export type libcomet_PVEVM = {
+	CPU: string
+	Disks: libcomet_PVEDisk[]
+	Memory: string
+	Name: string
+	Node: string
+	OSType: string
+	Running: boolean
+	Type: string
+	VMID: string
+}
+
+export function New_Zero_libcomet_PVEVM(): libcomet_PVEVM {
+	return {
+		"CPU": "",
+		"Disks": [],
+		"Memory": "",
+		"Name": "",
+		"Node": "",
+		"OSType": "",
+		"Running": false,
+		"Type": "",
+		"VMID": "",
+	};
+}
+
+
 export type libcomet_Partition = {
 	DeviceName: string
+	/**
+	 * The partition's MBR or GPT id, if any
+	 */
+	PartitionGuid: string
+	/**
+	 * The partition's offset within the physical disk
+	 */
+	PartitionOffset: number
 	/**
 	 * The name of the filesystem used on this partition (e.g. "NTFS")
 	 */
@@ -7695,6 +8055,8 @@ export type libcomet_Partition = {
 export function New_Zero_libcomet_Partition(): libcomet_Partition {
 	return {
 		"DeviceName": "",
+		"PartitionGuid": "",
+		"PartitionOffset": 0,
 		"Filesystem": "",
 		"VolumeName": "",
 		"VolumeGuid": "",
@@ -7846,6 +8208,42 @@ export function New_Zero_libcomet_ProtectedItemEngineTypePolicy(): libcomet_Prot
 }
 
 
+export type libcomet_ProxmoxConnection = {
+	SSH: libcomet_SSHConnection
+}
+
+export function New_Zero_libcomet_ProxmoxConnection(): libcomet_ProxmoxConnection {
+	return {
+		"SSH": New_Zero_libcomet_SSHConnection(),
+	};
+}
+
+
+export type libcomet_ProxmoxRestoreTargetOptions = {
+	/**
+	 * The name of the node to restore to in the Proxmox Cluster
+	 */
+	Node: string
+	SSH: libcomet_SSHConnection
+	/**
+	 * the name of the storage location to restore to
+	 */
+	Storage: string
+}
+
+export function New_Zero_libcomet_ProxmoxRestoreTargetOptions(): libcomet_ProxmoxRestoreTargetOptions {
+	return {
+		"Node": "",
+		"SSH": New_Zero_libcomet_SSHConnection(),
+		"Storage": "",
+	};
+}
+
+export function libcomet_ProxmoxRestoreTargetOptions_set_embedded_libcomet_ProxmoxConnection(dest: libcomet_ProxmoxRestoreTargetOptions, src: libcomet_ProxmoxConnection): void {
+	dest.SSH = src.SSH;
+}
+
+
 export type libcomet_PublicBrandingProperties = {
 	ProductName: string
 	CompanyName: string
@@ -7955,6 +8353,10 @@ export type libcomet_RegistrationLobbyConnection = {
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	IPAddress?: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Host?: string
 	ConnectionTime: number
 }
 
@@ -8288,6 +8690,8 @@ export type libcomet_RequestStorageVaultResponseMessage = {
 	Status: number
 	Message: string
 	DestinationID: string
+	ProfileHash: string
+	Profile: libcomet_UserProfileConfig
 }
 
 export function New_Zero_libcomet_RequestStorageVaultResponseMessage(): libcomet_RequestStorageVaultResponseMessage {
@@ -8295,6 +8699,8 @@ export function New_Zero_libcomet_RequestStorageVaultResponseMessage(): libcomet
 		"Status": 0,
 		"Message": "",
 		"DestinationID": "",
+		"ProfileHash": "",
+		"Profile": New_Zero_libcomet_UserProfileConfig(),
 	};
 }
 
@@ -8414,6 +8820,11 @@ export type libcomet_RestoreJobAdvancedOptions = {
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	HyperVConnection?: libcomet_HyperVRestoreTargetOptions
+	/**
+	 * For RESTORETYPE_VMHOST
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	ProxmoxConnection?: libcomet_ProxmoxRestoreTargetOptions
 }
 
 export function New_Zero_libcomet_RestoreJobAdvancedOptions(): libcomet_RestoreJobAdvancedOptions {
@@ -12623,6 +13034,60 @@ export default abstract class CometServerAPIBase {
 	}
 
 	/**
+	 * AdminDispatcherRequestBrowseProxmox
+	 * Request a list of Proxmox virtual machines and containers
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {libcomet_ProxmoxConnection} Credentials The Proxmox connection settings
+	 * @return {Promise<libcomet_BrowseProxmoxResponse>}
+	 */
+	async AdminDispatcherRequestBrowseProxmoxP(TargetID: string, Credentials: libcomet_ProxmoxConnection): Promise<libcomet_BrowseProxmoxResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Credentials"] = JSON.stringify(Credentials);
+		return await this._requestP("api/v1/admin/dispatcher/request-browse-proxmox", params);
+	}
+
+	/**
+	 * AdminDispatcherRequestBrowseProxmoxNodes
+	 * Request a list of Proxmox nodes
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {libcomet_SSHConnection} Credentials The SSH connection settings
+	 * @return {Promise<libcomet_BrowseProxmoxNodesResponse>}
+	 */
+	async AdminDispatcherRequestBrowseProxmoxNodesP(TargetID: string, Credentials: libcomet_SSHConnection): Promise<libcomet_BrowseProxmoxNodesResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Credentials"] = JSON.stringify(Credentials);
+		return await this._requestP("api/v1/admin/dispatcher/request-browse-proxmox/nodes", params);
+	}
+
+	/**
+	 * AdminDispatcherRequestBrowseProxmoxStorage
+	 * Request a list of configured Proxmox storage
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {libcomet_SSHConnection} Credentials The SSH connection settings
+	 * @return {Promise<libcomet_BrowseProxmoxStorageResponse>}
+	 */
+	async AdminDispatcherRequestBrowseProxmoxStorageP(TargetID: string, Credentials: libcomet_SSHConnection): Promise<libcomet_BrowseProxmoxStorageResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Credentials"] = JSON.stringify(Credentials);
+		return await this._requestP("api/v1/admin/dispatcher/request-browse-proxmox/storage", params);
+	}
+
+	/**
 	 * AdminDispatcherRequestBrowseVmware
 	 * Request a list of VMware vSphere virtual machines
 	 * The remote device must have given consent for an MSP to browse their files.
@@ -14243,9 +14708,10 @@ export default abstract class CometServerAPIBase {
 	 * @param {string} StorageProvider ID for the storage template destination
 	 * @param {string|null} SelfAddress The external URL for this server. Used to resolve conflicts
 	 * @param {string|null} DeviceID The ID of the device to be added as a associated device of the Storage Vault
+	 * @param {string|null} ProfileHash The profile hash of the user profile
 	 * @return {Promise<libcomet_RequestStorageVaultResponseMessage>}
 	 */
-	async AdminRequestStorageVaultP(TargetUser: string, StorageProvider: string, SelfAddress: string|null = null, DeviceID: string|null = null): Promise<libcomet_RequestStorageVaultResponseMessage> {
+	async AdminRequestStorageVaultP(TargetUser: string, StorageProvider: string, SelfAddress: string|null = null, DeviceID: string|null = null, ProfileHash: string|null = null): Promise<libcomet_RequestStorageVaultResponseMessage> {
 		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		params["StorageProvider"] = StorageProvider;
@@ -14256,6 +14722,9 @@ export default abstract class CometServerAPIBase {
 		}
 		if (DeviceID !== null) {
 			params["DeviceID"] = DeviceID;
+		}
+		if (ProfileHash !== null) {
+			params["ProfileHash"] = ProfileHash;
 		}
 		return await this._requestP("api/v1/admin/request-storage-vault", params);
 	}
@@ -14364,9 +14833,9 @@ export default abstract class CometServerAPIBase {
 	 * @param {libcomet_UserProfileConfig} ProfileData Modified user profile
 	 * @param {string} RequireHash Previous hash parameter
 	 * @param {libcomet_AdminOptions|null} AdminOptions Instructions for modifying user profile
-	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 * @return {Promise<libcomet_GetProfileAndHashResponseMessage>}
 	 */
-	async AdminSetUserProfileHashP(TargetUser: string, ProfileData: libcomet_UserProfileConfig, RequireHash: string, AdminOptions: libcomet_AdminOptions|null = null): Promise<libcomet_CometAPIResponseMessage> {
+	async AdminSetUserProfileHashP(TargetUser: string, ProfileData: libcomet_UserProfileConfig, RequireHash: string, AdminOptions: libcomet_AdminOptions|null = null): Promise<libcomet_GetProfileAndHashResponseMessage> {
 		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		params["ProfileData"] = JSON.stringify(ProfileData);
@@ -15004,6 +15473,60 @@ export default abstract class CometServerAPIBase {
 	}
 
 	/**
+	 * UserWebDispatcherRequestBrowseProxmox
+	 * Request a list of Proxmox virtual machines and containers
+	 *
+	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {libcomet_ProxmoxConnection} Credentials The Proxmox connection settings
+	 * @return {Promise<libcomet_BrowseProxmoxResponse>}
+	 */
+	async UserWebDispatcherRequestBrowseProxmoxP(TargetID: string, Credentials: libcomet_ProxmoxConnection): Promise<libcomet_BrowseProxmoxResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Credentials"] = JSON.stringify(Credentials);
+		return await this._requestP("api/v1/user/web/dispatcher/request-browse-proxmox", params);
+	}
+
+	/**
+	 * UserWebDispatcherRequestBrowseProxmoxNodes
+	 * Request a list of Proxmox nodes from a Proxmox cluster
+	 *
+	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {libcomet_SSHConnection} Credentials SSH connection settings
+	 * @return {Promise<libcomet_BrowseProxmoxNodesResponse>}
+	 */
+	async UserWebDispatcherRequestBrowseProxmoxNodesP(TargetID: string, Credentials: libcomet_SSHConnection): Promise<libcomet_BrowseProxmoxNodesResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Credentials"] = JSON.stringify(Credentials);
+		return await this._requestP("api/v1/user/web/dispatcher/request-browse-proxmox/nodes", params);
+	}
+
+	/**
+	 * UserWebDispatcherRequestBrowseProxmoxStorage
+	 * Request a list of configured Proxmox storage from a Proxmox cluster
+	 *
+	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {libcomet_SSHConnection} Credentials SSH connection settings
+	 * @return {Promise<libcomet_BrowseProxmoxStorageResponse>}
+	 */
+	async UserWebDispatcherRequestBrowseProxmoxStorageP(TargetID: string, Credentials: libcomet_SSHConnection): Promise<libcomet_BrowseProxmoxStorageResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Credentials"] = JSON.stringify(Credentials);
+		return await this._requestP("api/v1/user/web/dispatcher/request-browse-proxmox/storage", params);
+	}
+
+	/**
 	 * UserWebDispatcherRequestBrowseVmware
 	 * Request a list of VMware vSphere virtual machines
 	 *
@@ -15448,15 +15971,19 @@ export default abstract class CometServerAPIBase {
 
 	/**
 	 * UserWebGetJobsForCustomSearch
-	 * List all backup jobs (Web)
+	 * Get jobs (for custom search)
+	 * The jobs are returned in an unspecified order.
 	 *
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
 	 *
+	 * @param {libcomet_SearchClause} Query (No description available)
 	 * @return {Promise<libcomet_BackupJobDetail[]>}
 	 */
-	async UserWebGetJobsForCustomSearchP(): Promise<libcomet_BackupJobDetail[]> {
-		return await this._requestP("api/v1/user/web/get-jobs-for-custom-search", {});
+	async UserWebGetJobsForCustomSearchP(Query: libcomet_SearchClause): Promise<libcomet_BackupJobDetail[]> {
+		const params: { [s: string]: string; } = {};
+		params["Query"] = JSON.stringify(Query);
+		return await this._requestP("api/v1/user/web/get-jobs-for-custom-search", params);
 	}
 
 	/**
@@ -15539,9 +16066,10 @@ export default abstract class CometServerAPIBase {
 	 * @param {string} StorageProvider ID for the storage template destination
 	 * @param {string|null} SelfAddress The external URL for this server. Used to resolve conflicts
 	 * @param {string|null} DeviceID The ID of the device to be added as a associated device of the Storage Vault
+	 * @param {string|null} ProfileHash The profile hash of the user profile
 	 * @return {Promise<libcomet_RequestStorageVaultResponseMessage>}
 	 */
-	async UserWebRequestStorageVaultP(StorageProvider: string, SelfAddress: string|null = null, DeviceID: string|null = null): Promise<libcomet_RequestStorageVaultResponseMessage> {
+	async UserWebRequestStorageVaultP(StorageProvider: string, SelfAddress: string|null = null, DeviceID: string|null = null, ProfileHash: string|null = null): Promise<libcomet_RequestStorageVaultResponseMessage> {
 		const params: { [s: string]: string; } = {};
 		params["StorageProvider"] = StorageProvider;
 		if (SelfAddress === null) {
@@ -15551,6 +16079,9 @@ export default abstract class CometServerAPIBase {
 		}
 		if (DeviceID !== null) {
 			params["DeviceID"] = DeviceID;
+		}
+		if (ProfileHash !== null) {
+			params["ProfileHash"] = ProfileHash;
 		}
 		return await this._requestP("api/v1/user/web/request-storage-vault", params);
 	}
@@ -15603,9 +16134,9 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * @param {libcomet_UserProfileConfig} ProfileData Updated account profile
 	 * @param {string} ProfileHash Previous account profile hash
-	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 * @return {Promise<libcomet_GetProfileAndHashResponseMessage>}
 	 */
-	async UserWebSetProfileHashP(ProfileData: libcomet_UserProfileConfig, ProfileHash: string): Promise<libcomet_CometAPIResponseMessage> {
+	async UserWebSetProfileHashP(ProfileData: libcomet_UserProfileConfig, ProfileHash: string): Promise<libcomet_GetProfileAndHashResponseMessage> {
 		const params: { [s: string]: string; } = {};
 		params["ProfileData"] = JSON.stringify(ProfileData);
 		params["ProfileHash"] = ProfileHash;
