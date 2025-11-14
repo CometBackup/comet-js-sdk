@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "25.6.8";
+export const APPLICATION_VERSION = "25.9.6";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -21,14 +21,14 @@ export const APPLICATION_VERSION_MAJOR = 25;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MINOR = 6;
+export const APPLICATION_VERSION_MINOR = 9;
 
 /**
  * APPLICATION_VERSION_REVISION
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 8;
+export const APPLICATION_VERSION_REVISION = 6;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -893,6 +893,14 @@ export const JOB_STATUS_RUNNING_REVIVED = 6002;
 export const JOB_STATUS_RUNNING_TRYAGAIN = 6003;
 
 /**
+ * JOB_STATUS_NOT_YET_STARTED
+ * JobStatus: The job has been created by the server but has not yet been initialized by the client.
+ *
+ * @var {number}
+ */
+export const JOB_STATUS_NOT_YET_STARTED = 6004;
+
+/**
  * JOB_STATUS_RUNNING__MAX
  * JobStatus
  *
@@ -1381,6 +1389,7 @@ export const PSA_TYPE_SYNCRO = 2;
 
 /**
  * PVE_BACKUP_METHOD_STOP
+ * PveBackupMethod
  *
  * @var {string}
  */
@@ -1388,6 +1397,7 @@ export const PVE_BACKUP_METHOD_STOP = "stop";
 
 /**
  * PVE_BACKUP_METHOD_SUSPEND
+ * PveBackupMethod
  *
  * @var {string}
  */
@@ -1395,6 +1405,7 @@ export const PVE_BACKUP_METHOD_SUSPEND = "suspend";
 
 /**
  * PVE_BACKUP_METHOD_SNAPSHOT
+ * PveBackupMethod
  *
  * @var {string}
  */
@@ -1402,6 +1413,7 @@ export const PVE_BACKUP_METHOD_SNAPSHOT = "snapshot";
 
 /**
  * PVE_BACKUP_METHOD_DEFAULT
+ * PveBackupMethod
  *
  * @var {string}
  */
@@ -3258,6 +3270,14 @@ export const WINDOWSCODESIGN_METHOD_PKCS11HSM = 3;
  */
 export const WINDOWSCODESIGN_METHOD_AZUREKEYVAULT = 4;
 
+/**
+ * WINDOWSCODESIGN_METHOD_RELICSERVER
+ * WindowsCodesignMethod: Use a configured SAS Relic server for Authenticode codesigning
+ *
+ * @var {number}
+ */
+export const WINDOWSCODESIGN_METHOD_RELICSERVER = 5;
+
 // DATA TYPES
 
 
@@ -3894,6 +3914,10 @@ export type libcomet_BackupJobAdvancedOptions = {
 	 * Log verbosity level. LOG_DEBUG has the greatest verbosity
 	 */
 	LogLevel: string
+	/**
+	 * Default disabled
+	 */
+	Tags: string
 }
 
 export function New_Zero_libcomet_BackupJobAdvancedOptions(): libcomet_BackupJobAdvancedOptions {
@@ -3907,6 +3931,7 @@ export function New_Zero_libcomet_BackupJobAdvancedOptions(): libcomet_BackupJob
 		"AutoRetentionLevel": 0,
 		"ConcurrencyCount": 0,
 		"LogLevel": "",
+		"Tags": "",
 	};
 }
 
@@ -3982,11 +4007,6 @@ export type libcomet_BackupJobDetail = {
 	 */
 	TotalUnlicensedMailsCount?: number
 	/**
-	 * The CRC32 of the billing data for this job.
-	 * Omission from JSON will be interpreted as 0 (zero)
-	 */
-	BillingCrc32?: number
-	/**
 	 * If this field is present, this job did not perform some work because the Storage Vault is
 	 * currently busy.
 	 * This field is available in Comet 24.9.2 and later.
@@ -4014,6 +4034,11 @@ export type libcomet_BackupJobDetail = {
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	DestinationSizeEnd?: libcomet_SizeMeasurement
+	/**
+	 * The tags sent as BackupJobOptions, Useful for Groupings
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	Tags?: string
 }
 
 export function New_Zero_libcomet_BackupJobDetail(): libcomet_BackupJobDetail {
@@ -4138,6 +4163,10 @@ export type libcomet_BackupRuleConfig = {
 	 */
 	LogLevel: string
 	/**
+	 * Default disabled
+	 */
+	Tags: string
+	/**
 	 * Scheduled start times
 	 */
 	Schedules: libcomet_ScheduleConfig[]
@@ -4166,6 +4195,7 @@ export function New_Zero_libcomet_BackupRuleConfig(): libcomet_BackupRuleConfig 
 		"AutoRetentionLevel": 0,
 		"ConcurrencyCount": 0,
 		"LogLevel": "",
+		"Tags": "",
 		"Schedules": [],
 		"EventTriggers": New_Zero_libcomet_BackupRuleEventTriggers(),
 	};
@@ -4181,6 +4211,7 @@ export function libcomet_BackupRuleConfig_set_embedded_libcomet_BackupJobAdvance
 	dest.AutoRetentionLevel = src.AutoRetentionLevel;
 	dest.ConcurrencyCount = src.ConcurrencyCount;
 	dest.LogLevel = src.LogLevel;
+	dest.Tags = src.Tags;
 }
 
 
@@ -4218,19 +4249,6 @@ export type libcomet_BackupRuleEventTriggers = {
 
 export function New_Zero_libcomet_BackupRuleEventTriggers(): libcomet_BackupRuleEventTriggers {
 	return {
-	};
-}
-
-
-export type libcomet_BlockInfo = {
-	DeviceID: string
-	DiskNodeName: string
-}
-
-export function New_Zero_libcomet_BlockInfo(): libcomet_BlockInfo {
-	return {
-		"DeviceID": "",
-		"DiskNodeName": "",
 	};
 }
 
@@ -4301,6 +4319,18 @@ export type libcomet_BrandingOptions = {
 	WindowsCodeSignAzureAppSecretFormat: number
 	WindowsCodeSignAzureAppSecret: string
 	WindowsCodeSignAzureTenantID: string
+	/**
+	 * URL of the SAS Relic server, with protocol (https://) and trailing slash
+	 */
+	WindowsCodeSignRelicServerURL: string
+	/**
+	 * The SAS Relic client keypair in PEM format
+	 */
+	WindowsCodeSignRelicKeypairFile: string
+	/**
+	 * The name of the key to select on the remote SAS Relic server
+	 */
+	WindowsCodeSignRelicKeyName: string
 	MacOSCodeSign: libcomet_MacOSCodeSignProperties
 }
 
@@ -4349,6 +4379,9 @@ export function New_Zero_libcomet_BrandingOptions(): libcomet_BrandingOptions {
 		"WindowsCodeSignAzureAppSecretFormat": 0,
 		"WindowsCodeSignAzureAppSecret": "",
 		"WindowsCodeSignAzureTenantID": "",
+		"WindowsCodeSignRelicServerURL": "",
+		"WindowsCodeSignRelicKeypairFile": "",
+		"WindowsCodeSignRelicKeyName": "",
 		"MacOSCodeSign": New_Zero_libcomet_MacOSCodeSignProperties(),
 	};
 }
@@ -4400,6 +4433,9 @@ export function libcomet_BrandingOptions_set_embedded_libcomet_BrandingPropertie
 	dest.WindowsCodeSignAzureAppSecretFormat = src.WindowsCodeSignAzureAppSecretFormat;
 	dest.WindowsCodeSignAzureAppSecret = src.WindowsCodeSignAzureAppSecret;
 	dest.WindowsCodeSignAzureTenantID = src.WindowsCodeSignAzureTenantID;
+	dest.WindowsCodeSignRelicServerURL = src.WindowsCodeSignRelicServerURL;
+	dest.WindowsCodeSignRelicKeypairFile = src.WindowsCodeSignRelicKeypairFile;
+	dest.WindowsCodeSignRelicKeyName = src.WindowsCodeSignRelicKeyName;
 	dest.MacOSCodeSign = src.MacOSCodeSign;
 }
 
@@ -4459,6 +4495,18 @@ export type libcomet_BrandingProperties = {
 	WindowsCodeSignAzureAppSecretFormat: number
 	WindowsCodeSignAzureAppSecret: string
 	WindowsCodeSignAzureTenantID: string
+	/**
+	 * URL of the SAS Relic server, with protocol (https://) and trailing slash
+	 */
+	WindowsCodeSignRelicServerURL: string
+	/**
+	 * The SAS Relic client keypair in PEM format
+	 */
+	WindowsCodeSignRelicKeypairFile: string
+	/**
+	 * The name of the key to select on the remote SAS Relic server
+	 */
+	WindowsCodeSignRelicKeyName: string
 	MacOSCodeSign: libcomet_MacOSCodeSignProperties
 }
 
@@ -4500,6 +4548,9 @@ export function New_Zero_libcomet_BrandingProperties(): libcomet_BrandingPropert
 		"WindowsCodeSignAzureAppSecretFormat": 0,
 		"WindowsCodeSignAzureAppSecret": "",
 		"WindowsCodeSignAzureTenantID": "",
+		"WindowsCodeSignRelicServerURL": "",
+		"WindowsCodeSignRelicKeypairFile": "",
+		"WindowsCodeSignRelicKeyName": "",
 		"MacOSCodeSign": New_Zero_libcomet_MacOSCodeSignProperties(),
 	};
 }
@@ -4544,6 +4595,9 @@ export function libcomet_BrandingProperties_set_embedded_libcomet_PrivateBrandin
 	dest.WindowsCodeSignAzureAppSecretFormat = src.WindowsCodeSignAzureAppSecretFormat;
 	dest.WindowsCodeSignAzureAppSecret = src.WindowsCodeSignAzureAppSecret;
 	dest.WindowsCodeSignAzureTenantID = src.WindowsCodeSignAzureTenantID;
+	dest.WindowsCodeSignRelicServerURL = src.WindowsCodeSignRelicServerURL;
+	dest.WindowsCodeSignRelicKeypairFile = src.WindowsCodeSignRelicKeypairFile;
+	dest.WindowsCodeSignRelicKeyName = src.WindowsCodeSignRelicKeyName;
 	dest.MacOSCodeSign = src.MacOSCodeSign;
 }
 
@@ -5943,6 +5997,31 @@ export function New_Zero_libcomet_DiskDrive(): libcomet_DiskDrive {
 		"SectorSize": 0,
 		"PartitionConflicts": [],
 	};
+}
+
+
+export type libcomet_DispatchWithJobIDResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
+	Status: number
+	Message: string
+	/**
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	JobID?: string
+}
+
+export function New_Zero_libcomet_DispatchWithJobIDResponse(): libcomet_DispatchWithJobIDResponse {
+	return {
+		"Status": 0,
+		"Message": "",
+	};
+}
+
+export function libcomet_DispatchWithJobIDResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_DispatchWithJobIDResponse, src: libcomet_CometAPIResponseMessage): void {
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -7822,12 +7901,20 @@ export function New_Zero_libcomet_PSAGroupedBy(): libcomet_PSAGroupedBy {
 }
 
 
+/**
+ * This type is used in the EngineProps for an "engine1/proxmox" Protected Item. It represents the
+ * selection state for a single disk attached to a single Proxmox VM or LXC Container. It is
+ * expected to be user-configurable.
+ * This type is available in Comet 25.8.0 and later.
+ */
 export type libcomet_PVEBackupDisk = {
 	/**
+	 * For a disk "scsi0", this field should contain: "scsi"
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Device?: string
 	/**
+	 * For a disk "scsi0", this field should contain: 0
 	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
 	DeviceNum?: number
@@ -7839,12 +7926,19 @@ export function New_Zero_libcomet_PVEBackupDisk(): libcomet_PVEBackupDisk {
 }
 
 
+/**
+ * This type is used in the EngineProps for an "engine1/proxmox" Protected Item. It represents the
+ * selection state for a single Proxmox VE node. It is expected to be user-configurable.
+ * This type is available in Comet 25.8.0 and later.
+ */
 export type libcomet_PVEBackupNode = {
 	/**
 	 * Omission from JSON will be interpreted as an empty array
 	 */
 	IncludedVMs?: libcomet_PVEBackupVM[]
 	/**
+	 * Used as a cache if the device is offline when editing the Protected Item; not considered as part
+	 * of the selection
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Name?: string
@@ -7860,12 +7954,19 @@ export function New_Zero_libcomet_PVEBackupNode(): libcomet_PVEBackupNode {
 }
 
 
+/**
+ * This type is used in the EngineProps for an "engine1/proxmox" Protected Item. It represents the
+ * selection state for a single Proxmox VM or LXC Container. It is expected to be user-configurable.
+ * This type is available in Comet 25.8.0 and later.
+ */
 export type libcomet_PVEBackupVM = {
 	/**
 	 * Omission from JSON will be interpreted as an empty array
 	 */
 	IncludedDisks?: libcomet_PVEBackupDisk[]
 	/**
+	 * Used as a cache if the device is offline when editing the Protected Item; not considered as part
+	 * of the selection
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Name?: string
@@ -7874,6 +7975,7 @@ export type libcomet_PVEBackupVM = {
 	 */
 	Selected?: boolean
 	/**
+	 * One of the PROXMOX_TYPE_ constants
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Type?: string
@@ -7901,9 +8003,10 @@ export type libcomet_PVEDisk = {
 	 */
 	Volume?: string
 	/**
-	 * Omission from JSON will be interpreted as empty-string
+	 * Bytes
+	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
-	Size?: string
+	Size?: number
 	/**
 	 * Omission from JSON will be interpreted as empty-string
 	 */
@@ -7922,6 +8025,11 @@ export function New_Zero_libcomet_PVEDisk(): libcomet_PVEDisk {
 }
 
 
+/**
+ * This type is used in the EngineProps for an "engine1/proxmox" Protected Item. It represents the
+ * entire Protected Item configuration. It is expected to be user-configurable.
+ * This type is available in Comet 25.8.0 and later.
+ */
 export type libcomet_PVEParams = {
 	/**
 	 * Omission from JSON will be interpreted as false
@@ -7932,14 +8040,12 @@ export type libcomet_PVEParams = {
 	 */
 	Exclusions?: libcomet_PVEBackupNode[]
 	/**
+	 * One of the PVE_BACKUP_METHOD constants
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	Method?: string
 	/**
-	 * Omission from JSON will be interpreted as 0 (zero)
-	 */
-	Quota?: number
-	/**
+	 * Primary node URL + SSH credentials
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	SSHConnection?: libcomet_SSHConnection
@@ -7947,29 +8053,14 @@ export type libcomet_PVEParams = {
 	 * Omission from JSON will be interpreted as an empty array
 	 */
 	Selections?: libcomet_PVEBackupNode[]
+	/**
+	 * Omission from JSON will be interpreted as false
+	 */
+	UseCBT?: boolean
 }
 
 export function New_Zero_libcomet_PVEParams(): libcomet_PVEParams {
 	return {
-	};
-}
-
-
-export type libcomet_PVERestoreSelection = {
-	/**
-	 * Omission from JSON will be interpreted as empty-string
-	 */
-	ID?: string
-	/**
-	 * Omission from JSON will be interpreted as empty-string
-	 */
-	Name?: string
-	TargetVM: libcomet_PVEVM
-}
-
-export function New_Zero_libcomet_PVERestoreSelection(): libcomet_PVERestoreSelection {
-	return {
-		"TargetVM": New_Zero_libcomet_PVEVM(),
 	};
 }
 
@@ -7990,6 +8081,9 @@ export function New_Zero_libcomet_PVEStorageName(): libcomet_PVEStorageName {
 }
 
 
+/**
+ * PVEVM describes a single Proxmox virtual machine or container.
+ */
 export type libcomet_PVEVM = {
 	CPU: string
 	Disks: libcomet_PVEDisk[]
@@ -7999,6 +8093,9 @@ export type libcomet_PVEVM = {
 	OSType: string
 	Running: boolean
 	Type: string
+	/**
+	 * String type, but always contains an integer value
+	 */
 	VMID: string
 }
 
@@ -8141,6 +8238,18 @@ export type libcomet_PrivateBrandingProperties = {
 	WindowsCodeSignAzureAppSecretFormat: number
 	WindowsCodeSignAzureAppSecret: string
 	WindowsCodeSignAzureTenantID: string
+	/**
+	 * URL of the SAS Relic server, with protocol (https://) and trailing slash
+	 */
+	WindowsCodeSignRelicServerURL: string
+	/**
+	 * The SAS Relic client keypair in PEM format
+	 */
+	WindowsCodeSignRelicKeypairFile: string
+	/**
+	 * The name of the key to select on the remote SAS Relic server
+	 */
+	WindowsCodeSignRelicKeyName: string
 	MacOSCodeSign: libcomet_MacOSCodeSignProperties
 }
 
@@ -8171,6 +8280,9 @@ export function New_Zero_libcomet_PrivateBrandingProperties(): libcomet_PrivateB
 		"WindowsCodeSignAzureAppSecretFormat": 0,
 		"WindowsCodeSignAzureAppSecret": "",
 		"WindowsCodeSignAzureTenantID": "",
+		"WindowsCodeSignRelicServerURL": "",
+		"WindowsCodeSignRelicKeypairFile": "",
+		"WindowsCodeSignRelicKeyName": "",
 		"MacOSCodeSign": New_Zero_libcomet_MacOSCodeSignProperties(),
 	};
 }
@@ -8192,6 +8304,9 @@ export function libcomet_PrivateBrandingProperties_set_embedded_libcomet_Windows
 	dest.WindowsCodeSignAzureAppSecretFormat = src.WindowsCodeSignAzureAppSecretFormat;
 	dest.WindowsCodeSignAzureAppSecret = src.WindowsCodeSignAzureAppSecret;
 	dest.WindowsCodeSignAzureTenantID = src.WindowsCodeSignAzureTenantID;
+	dest.WindowsCodeSignRelicServerURL = src.WindowsCodeSignRelicServerURL;
+	dest.WindowsCodeSignRelicKeypairFile = src.WindowsCodeSignRelicKeypairFile;
+	dest.WindowsCodeSignRelicKeyName = src.WindowsCodeSignRelicKeyName;
 }
 
 
@@ -8205,6 +8320,39 @@ export function New_Zero_libcomet_ProtectedItemEngineTypePolicy(): libcomet_Prot
 		"ShouldRestrictEngineTypeList": false,
 		"AllowedEngineTypeWhenRestricted": [],
 	};
+}
+
+
+export type libcomet_ProtectedItemWithBackupRulesResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
+	Status: number
+	Message: string
+	/**
+	 * The Protected Item configuration
+	 */
+	Source: libcomet_SourceConfig
+	/**
+	 * All backup rules for the Protected Item
+	 * Omission from JSON will be interpreted as an empty map
+	 */
+	BackupRules?: {[k: string]: libcomet_BackupRuleConfig}
+	ProfileHash: string
+}
+
+export function New_Zero_libcomet_ProtectedItemWithBackupRulesResponse(): libcomet_ProtectedItemWithBackupRulesResponse {
+	return {
+		"Status": 0,
+		"Message": "",
+		"Source": New_Zero_libcomet_SourceConfig(),
+		"ProfileHash": "",
+	};
+}
+
+export function libcomet_ProtectedItemWithBackupRulesResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_ProtectedItemWithBackupRulesResponse, src: libcomet_CometAPIResponseMessage): void {
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -9954,6 +10102,13 @@ export type libcomet_SourceConfig = {
 	 * - LOGNOTRUNC: If present, take a "Log (no truncation)" backup job. Otherwise, take a "Full (copy
 	 * only)" backup job.
 	 *
+	 * For engine1/stdout, Comet understands the following EngineProp keys:
+	 *
+	 * - COMMAND: The command to run
+	 * - WORKDIR: The working directory for the command
+	 * - SAVEAS: The virtual filename inside the backup snapshot
+	 * - Any key starting with EXTRACOMMAND- : Additional commands to run. Each value should be a JSON
+	 * array of 3 strings, equivalent to the COMMAND, WORKDIR, SAVEAS values.
 	 */
 	EngineProps: {[k: string]: string}
 	/**
@@ -11093,6 +11248,11 @@ export type libcomet_UserProfileConfig = {
 	 */
 	ServerConfig?: libcomet_UserServerConfig
 	AutoStorageTemplateGUID: string
+	/**
+	 * If enabled, Linux devices in this user account will sandbox all read/write operations to paths
+	 * inside user home directories
+	 */
+	LinuxHomedirSandbox: boolean
 }
 
 export function New_Zero_libcomet_UserProfileConfig(): libcomet_UserProfileConfig {
@@ -11129,6 +11289,7 @@ export function New_Zero_libcomet_UserProfileConfig(): libcomet_UserProfileConfi
 		"CreateTime": 0,
 		"CreationGUID": "",
 		"AutoStorageTemplateGUID": "",
+		"LinuxHomedirSandbox": false,
 	};
 }
 
@@ -11465,6 +11626,11 @@ export type libcomet_VaultSnapshot = {
 	 * This field is available in Comet 20.12.4 and later.
 	 */
 	HasOriginalPathInfo: boolean
+	/**
+	 * This field is available in Comet 25.9.4 and later.
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	Tags?: string[]
 }
 
 export function New_Zero_libcomet_VaultSnapshot(): libcomet_VaultSnapshot {
@@ -12031,6 +12197,18 @@ export type libcomet_WindowsCodeSignProperties = {
 	WindowsCodeSignAzureAppSecretFormat: number
 	WindowsCodeSignAzureAppSecret: string
 	WindowsCodeSignAzureTenantID: string
+	/**
+	 * URL of the SAS Relic server, with protocol (https://) and trailing slash
+	 */
+	WindowsCodeSignRelicServerURL: string
+	/**
+	 * The SAS Relic client keypair in PEM format
+	 */
+	WindowsCodeSignRelicKeypairFile: string
+	/**
+	 * The name of the key to select on the remote SAS Relic server
+	 */
+	WindowsCodeSignRelicKeyName: string
 }
 
 export function New_Zero_libcomet_WindowsCodeSignProperties(): libcomet_WindowsCodeSignProperties {
@@ -12051,6 +12229,9 @@ export function New_Zero_libcomet_WindowsCodeSignProperties(): libcomet_WindowsC
 		"WindowsCodeSignAzureAppSecretFormat": 0,
 		"WindowsCodeSignAzureAppSecret": "",
 		"WindowsCodeSignAzureTenantID": "",
+		"WindowsCodeSignRelicServerURL": "",
+		"WindowsCodeSignRelicKeypairFile": "",
+		"WindowsCodeSignRelicKeyName": "",
 	};
 }
 
@@ -12568,6 +12749,24 @@ export default abstract class CometServerAPIBase {
 	}
 
 	/**
+	 * AdminDeleteProtectedItem
+	 * Delete a Protected Item
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetUser Selected account username
+	 * @param {string} SourceID Selected Protected Item GUID
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async AdminDeleteProtectedItemP(TargetUser: string, SourceID: string): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["TargetUser"] = TargetUser;
+		params["SourceID"] = SourceID;
+		return await this._requestP("api/v1/admin/delete-protected-item", params);
+	}
+
+	/**
 	 * AdminDeleteUser
 	 * Delete user account
 	 * This does not remove any storage buckets. Unused storage buckets will be cleaned up by the Constellation Role.
@@ -12744,6 +12943,23 @@ export default abstract class CometServerAPIBase {
 		params["Destination"] = Destination;
 		params["Path"] = Path;
 		return await this._requestP("api/v1/admin/dispatcher/email-preview", params);
+	}
+
+	/**
+	 * AdminDispatcherForceLogin
+	 * Instruct a live connected device to re-enter login credentials
+	 * The device will terminate its live-connection process and will not reconnect.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async AdminDispatcherForceLoginP(TargetID: string): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		return await this._requestP("api/v1/admin/dispatcher/force-login", params);
 	}
 
 	/**
@@ -13357,9 +13573,9 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} BackupRule The schedule GUID
-	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 * @return {Promise<libcomet_DispatchWithJobIDResponse>}
 	 */
-	async AdminDispatcherRunBackupP(TargetID: string, BackupRule: string): Promise<libcomet_CometAPIResponseMessage> {
+	async AdminDispatcherRunBackupP(TargetID: string, BackupRule: string): Promise<libcomet_DispatchWithJobIDResponse> {
 		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["BackupRule"] = BackupRule;
@@ -13377,9 +13593,9 @@ export default abstract class CometServerAPIBase {
 	 * @param {string} Source The Protected Item GUID
 	 * @param {string} Destination The Storage Vault GUID
 	 * @param {libcomet_BackupJobAdvancedOptions|null} Options Extra job parameters (>= 19.3.6)
-	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 * @return {Promise<libcomet_DispatchWithJobIDResponse>}
 	 */
-	async AdminDispatcherRunBackupCustomP(TargetID: string, Source: string, Destination: string, Options: libcomet_BackupJobAdvancedOptions|null = null): Promise<libcomet_CometAPIResponseMessage> {
+	async AdminDispatcherRunBackupCustomP(TargetID: string, Source: string, Destination: string, Options: libcomet_BackupJobAdvancedOptions|null = null): Promise<libcomet_DispatchWithJobIDResponse> {
 		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Source"] = Source;
@@ -13404,9 +13620,9 @@ export default abstract class CometServerAPIBase {
 	 * @param {string} Destination The Storage Vault ID
 	 * @param {string|null} Snapshot If present, restore a specific snapshot. Otherwise, restore the latest snapshot for the selected Protected Item + Storage Vault pair
 	 * @param {string[]|null} Paths If present, restore these paths only. Otherwise, restore all data (>= 19.3.0)
-	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 * @return {Promise<libcomet_DispatchWithJobIDResponse>}
 	 */
-	async AdminDispatcherRunRestoreP(TargetID: string, Path: string, Source: string, Destination: string, Snapshot: string|null = null, Paths: string[]|null = null): Promise<libcomet_CometAPIResponseMessage> {
+	async AdminDispatcherRunRestoreP(TargetID: string, Path: string, Source: string, Destination: string, Snapshot: string|null = null, Paths: string[]|null = null): Promise<libcomet_DispatchWithJobIDResponse> {
 		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Path"] = Path;
@@ -13438,9 +13654,9 @@ export default abstract class CometServerAPIBase {
 	 * @param {number|null} KnownFileCount The number of files to restore, if known. Supplying this means we don't need to walk the entire tree just to find the file count and will speed up the restoration process.
 	 * @param {number|null} KnownByteCount The total size in bytes of files to restore, if known. Supplying this means we don't need to walk the entire tree just to find the total file size and will speed up the restoration process.
 	 * @param {number|null} KnownDirCount The number of directories to restore, if known. Supplying this means we don't need to walk the entire tree just to find the number of directories and will speed up the restoration process.
-	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 * @return {Promise<libcomet_DispatchWithJobIDResponse>}
 	 */
-	async AdminDispatcherRunRestoreCustomP(TargetID: string, Source: string, Destination: string, Options: libcomet_RestoreJobAdvancedOptions, Snapshot: string|null = null, Paths: string[]|null = null, KnownFileCount: number|null = null, KnownByteCount: number|null = null, KnownDirCount: number|null = null): Promise<libcomet_CometAPIResponseMessage> {
+	async AdminDispatcherRunRestoreCustomP(TargetID: string, Source: string, Destination: string, Options: libcomet_RestoreJobAdvancedOptions, Snapshot: string|null = null, Paths: string[]|null = null, KnownFileCount: number|null = null, KnownByteCount: number|null = null, KnownDirCount: number|null = null): Promise<libcomet_DispatchWithJobIDResponse> {
 		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Source"] = Source;
@@ -13544,6 +13760,24 @@ export default abstract class CometServerAPIBase {
 			params["AllowUnsafe"] = (AllowUnsafe ? "1" : "0");
 		}
 		return await this._requestP("api/v1/admin/dispatcher/unlock", params);
+	}
+
+	/**
+	 * AdminDispatcherUpdateLoginPassword
+	 * Instruct a live connected device to update its login password
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {string} NewPassword The new password of this user
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async AdminDispatcherUpdateLoginPasswordP(TargetID: string, NewPassword: string): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["NewPassword"] = NewPassword;
+		return await this._requestP("api/v1/admin/dispatcher/update-login-password", params);
 	}
 
 	/**
@@ -13797,6 +14031,24 @@ export default abstract class CometServerAPIBase {
 	 */
 	async AdminGetJobsRecentP(): Promise<libcomet_BackupJobDetail[]> {
 		return await this._requestP("api/v1/admin/get-jobs-recent", {});
+	}
+
+	/**
+	 * AdminGetProtectedItemWithBackupRules
+	 * Get a Protected Item with its backup rules
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetUser Selected account username
+	 * @param {string} SourceID Selected Protected Item GUID
+	 * @return {Promise<libcomet_ProtectedItemWithBackupRulesResponse>}
+	 */
+	async AdminGetProtectedItemWithBackupRulesP(TargetUser: string, SourceID: string): Promise<libcomet_ProtectedItemWithBackupRulesResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetUser"] = TargetUser;
+		params["SourceID"] = SourceID;
+		return await this._requestP("api/v1/admin/get-protected-item-with-backup-rules", params);
 	}
 
 	/**
@@ -14803,6 +15055,36 @@ export default abstract class CometServerAPIBase {
 	}
 
 	/**
+	 * AdminSetProtectedItemWithBackupRules
+	 * Add or update a Protected Item with its backup rules
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetUser Selected account username
+	 * @param {string} SourceID Selected Protected Item GUID
+	 * @param {string|null} RequireHash Previous account profile hash
+	 * @param {libcomet_SourceConfig|null} Source Optional Protected Item to create or update
+	 * @param {{[k: string]: libcomet_BackupRuleConfig}|null} BackupRules Optional backup rules for the Protected Item
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async AdminSetProtectedItemWithBackupRulesP(TargetUser: string, SourceID: string, RequireHash: string|null = null, Source: libcomet_SourceConfig|null = null, BackupRules: {[k: string]: libcomet_BackupRuleConfig}|null = null): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["TargetUser"] = TargetUser;
+		params["SourceID"] = SourceID;
+		if (RequireHash !== null) {
+			params["RequireHash"] = RequireHash;
+		}
+		if (Source !== null) {
+			params["Source"] = JSON.stringify(Source);
+		}
+		if (BackupRules !== null) {
+			params["BackupRules"] = JSON.stringify(BackupRules);
+		}
+		return await this._requestP("api/v1/admin/set-protected-item-with-backup-rules", params);
+	}
+
+	/**
 	 * AdminSetUserProfile
 	 * Modify user account profile
 	 *
@@ -15223,6 +15505,22 @@ export default abstract class CometServerAPIBase {
 	}
 
 	/**
+	 * UserWebDeleteProtectedItem
+	 * Delete a Protected Item
+	 *
+	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} SourceID Selected Protected Item GUID
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async UserWebDeleteProtectedItemP(SourceID: string): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["SourceID"] = SourceID;
+		return await this._requestP("api/v1/user/web/delete-protected-item", params);
+	}
+
+	/**
 	 * UserWebDispatcherBrowseVirtualMachines
 	 * Browse virtual machines in target snapshot
 	 *
@@ -15281,6 +15579,23 @@ export default abstract class CometServerAPIBase {
 		params["DestinationID"] = DestinationID;
 		params["SnapshotIDs"] = JSON.stringify(SnapshotIDs);
 		return await this._requestP("api/v1/user/web/dispatcher/delete-snapshots", params);
+	}
+
+	/**
+	 * UserWebDispatcherDropConnection
+	 * Disconnect a live connected device
+	 * The device will almost certainly attempt to reconnect.
+	 *
+	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async UserWebDispatcherDropConnectionP(TargetID: string): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		return await this._requestP("api/v1/user/web/dispatcher/drop-connection", params);
 	}
 
 	/**
@@ -15901,6 +16216,24 @@ export default abstract class CometServerAPIBase {
 	}
 
 	/**
+	 * UserWebDispatcherUpdateLoginPassword
+	 * Instruct a live connected device to update its login password
+	 *
+	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @param {string} NewPassword The new password of this user
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async UserWebDispatcherUpdateLoginPasswordP(TargetID: string, NewPassword: string): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["NewPassword"] = NewPassword;
+		return await this._requestP("api/v1/user/web/dispatcher/update-login-password", params);
+	}
+
+	/**
 	 * UserWebGetJobLog
 	 * Get backup job report log, in plaintext format (Web)
 	 *
@@ -15984,6 +16317,22 @@ export default abstract class CometServerAPIBase {
 		const params: { [s: string]: string; } = {};
 		params["Query"] = JSON.stringify(Query);
 		return await this._requestP("api/v1/user/web/get-jobs-for-custom-search", params);
+	}
+
+	/**
+	 * UserWebGetProtectedItemWithBackupRules
+	 * Get a Protected Item with its backup rules
+	 *
+	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} SourceID Selected Protected Item GUID
+	 * @return {Promise<libcomet_ProtectedItemWithBackupRulesResponse>}
+	 */
+	async UserWebGetProtectedItemWithBackupRulesP(SourceID: string): Promise<libcomet_ProtectedItemWithBackupRulesResponse> {
+		const params: { [s: string]: string; } = {};
+		params["SourceID"] = SourceID;
+		return await this._requestP("api/v1/user/web/get-protected-item-with-backup-rules", params);
 	}
 
 	/**
@@ -16141,6 +16490,34 @@ export default abstract class CometServerAPIBase {
 		params["ProfileData"] = JSON.stringify(ProfileData);
 		params["ProfileHash"] = ProfileHash;
 		return await this._requestP("api/v1/user/web/set-profile-hash", params);
+	}
+
+	/**
+	 * UserWebSetProtectedItemWithBackupRules
+	 * Add or update a Protected Item with its backup rules
+	 *
+	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} SourceID Selected Protected Item GUID
+	 * @param {string|null} RequireHash Previous account profile hash
+	 * @param {libcomet_SourceConfig|null} Source Optional Protected Item to update or create
+	 * @param {{[k: string]: libcomet_BackupRuleConfig}|null} BackupRules Optional backup rules for the Protected Item
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async UserWebSetProtectedItemWithBackupRulesP(SourceID: string, RequireHash: string|null = null, Source: libcomet_SourceConfig|null = null, BackupRules: {[k: string]: libcomet_BackupRuleConfig}|null = null): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["SourceID"] = SourceID;
+		if (RequireHash !== null) {
+			params["RequireHash"] = RequireHash;
+		}
+		if (Source !== null) {
+			params["Source"] = JSON.stringify(Source);
+		}
+		if (BackupRules !== null) {
+			params["BackupRules"] = JSON.stringify(BackupRules);
+		}
+		return await this._requestP("api/v1/user/web/set-protected-item-with-backup-rules", params);
 	}
 
 }
