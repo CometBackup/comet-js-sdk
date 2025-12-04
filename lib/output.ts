@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "25.9.6";
+export const APPLICATION_VERSION = "25.9.8";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -28,7 +28,7 @@ export const APPLICATION_VERSION_MINOR = 9;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 6;
+export const APPLICATION_VERSION_REVISION = 8;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -2702,6 +2702,30 @@ export const SEVT_USERGROUP_REMOVED = 4801;
  * @var {number}
  */
 export const SEVT_USERGROUP_UPDATED = 4802;
+
+/**
+ * SEVT_SQUOTA_NEW
+ * StreamableEventType
+ *
+ * @var {number}
+ */
+export const SEVT_SQUOTA_NEW = 4803;
+
+/**
+ * SEVT_SQUOTA_REMOVED
+ * StreamableEventType
+ *
+ * @var {number}
+ */
+export const SEVT_SQUOTA_REMOVED = 4804;
+
+/**
+ * SEVT_SQUOTA_UPDATED
+ * StreamableEventType
+ *
+ * @var {number}
+ */
+export const SEVT_SQUOTA_UPDATED = 4805;
 
 /**
  * SEVT__MAX
@@ -5480,6 +5504,11 @@ export type libcomet_DestinationConfig = {
 	 */
 	StorageLimitBytes: number
 	/**
+	 * If set, use a shared Storage Vault quota from the Comet Management Console. The direct value of
+	 * StorageLimitBytes is ignored.
+	 */
+	StorageLimitID: string
+	/**
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	Statistics?: libcomet_DestinationStatistics
@@ -5562,6 +5591,7 @@ export function New_Zero_libcomet_DestinationConfig(): libcomet_DestinationConfi
 		"RepoInitTimestamp": 0,
 		"StorageLimitEnabled": false,
 		"StorageLimitBytes": 0,
+		"StorageLimitID": "",
 		"DefaultRetention": New_Zero_libcomet_RetentionPolicy(),
 		"RebrandStorage": false,
 		"RetentionError": "",
@@ -6672,6 +6702,36 @@ export function libcomet_GetProfileHashResponseMessage_set_embedded_libcomet_Com
 }
 
 
+export type libcomet_GetSharedStorageQuotaResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
+	Status: number
+	Message: string
+	SharedStorageQuota: libcomet_SharedStorageQuota
+	SharedStorageQuotaHash: string
+	/**
+	 * Bytes
+	 */
+	CurrentUsage: number
+}
+
+export function New_Zero_libcomet_GetSharedStorageQuotaResponse(): libcomet_GetSharedStorageQuotaResponse {
+	return {
+		"Status": 0,
+		"Message": "",
+		"SharedStorageQuota": New_Zero_libcomet_SharedStorageQuota(),
+		"SharedStorageQuotaHash": "",
+		"CurrentUsage": 0,
+	};
+}
+
+export function libcomet_GetSharedStorageQuotaResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_GetSharedStorageQuotaResponse, src: libcomet_CometAPIResponseMessage): void {
+	dest.Status = src.Status;
+	dest.Message = src.Message;
+}
+
+
 export type libcomet_GetUserGroupResponse = {
 	UserGroup: libcomet_UserGroup
 	UserGroupHash: string
@@ -7078,6 +7138,29 @@ export function New_Zero_libcomet_LicenseOptions(): libcomet_LicenseOptions {
 	return {
 		"SerialNumber": "",
 	};
+}
+
+
+export type libcomet_ListSharedStorageQuotaResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
+	Status: number
+	Message: string
+	Entries: {[k: string]: libcomet_SharedStorageQuota}
+}
+
+export function New_Zero_libcomet_ListSharedStorageQuotaResponse(): libcomet_ListSharedStorageQuotaResponse {
+	return {
+		"Status": 0,
+		"Message": "",
+		"Entries": {},
+	};
+}
+
+export function libcomet_ListSharedStorageQuotaResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_ListSharedStorageQuotaResponse, src: libcomet_CometAPIResponseMessage): void {
+	dest.Status = src.Status;
+	dest.Message = src.Message;
 }
 
 
@@ -8071,12 +8154,14 @@ export function New_Zero_libcomet_PVEParams(): libcomet_PVEParams {
 export type libcomet_PVEStorageName = {
 	Name: string
 	Type: string
+	Content: string[]
 }
 
 export function New_Zero_libcomet_PVEStorageName(): libcomet_PVEStorageName {
 	return {
 		"Name": "",
 		"Type": "",
+		"Content": [],
 	};
 }
 
@@ -9896,6 +9981,51 @@ export type libcomet_SessionOptions = {
 export function New_Zero_libcomet_SessionOptions(): libcomet_SessionOptions {
 	return {
 		"ExpiredInSeconds": 0,
+	};
+}
+
+
+export type libcomet_SetSharedStorageQuotaResponse = {
+	/**
+	 * If the operation was successful, the status will be in the 200-299 range.
+	 */
+	Status: number
+	Message: string
+	SharedStorageQuotaHash: string
+}
+
+export function New_Zero_libcomet_SetSharedStorageQuotaResponse(): libcomet_SetSharedStorageQuotaResponse {
+	return {
+		"Status": 0,
+		"Message": "",
+		"SharedStorageQuotaHash": "",
+	};
+}
+
+export function libcomet_SetSharedStorageQuotaResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_SetSharedStorageQuotaResponse, src: libcomet_CometAPIResponseMessage): void {
+	dest.Status = src.Status;
+	dest.Message = src.Message;
+}
+
+
+/**
+ * A SharedStorageQuota can be applied to multiple Storage Vaults in the
+ * 'DestinationConfig.StorageLimitID' field.
+ */
+export type libcomet_SharedStorageQuota = {
+	Description: string
+	OrganizationID: string
+	/**
+	 * Bytes
+	 */
+	LimitBytes: number
+}
+
+export function New_Zero_libcomet_SharedStorageQuota(): libcomet_SharedStorageQuota {
+	return {
+		"Description": "",
+		"OrganizationID": "",
+		"LimitBytes": 0,
 	};
 }
 
@@ -13294,12 +13424,14 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_SSHConnection} Credentials The SSH connection settings
+	 * @param {string} Node The target node
 	 * @return {Promise<libcomet_BrowseProxmoxStorageResponse>}
 	 */
-	async AdminDispatcherRequestBrowseProxmoxStorageP(TargetID: string, Credentials: libcomet_SSHConnection): Promise<libcomet_BrowseProxmoxStorageResponse> {
+	async AdminDispatcherRequestBrowseProxmoxStorageP(TargetID: string, Credentials: libcomet_SSHConnection, Node: string): Promise<libcomet_BrowseProxmoxStorageResponse> {
 		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Credentials"] = JSON.stringify(Credentials);
+		params["Node"] = Node;
 		return await this._requestP("api/v1/admin/dispatcher/request-browse-proxmox/storage", params);
 	}
 
@@ -15129,6 +15261,73 @@ export default abstract class CometServerAPIBase {
 	}
 
 	/**
+	 * AdminSquotaDelete
+	 * Delete a shared storage quota and detach all users
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} SharedStorageQuotaID (No description available)
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async AdminSquotaDeleteP(SharedStorageQuotaID: string): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["SharedStorageQuotaID"] = SharedStorageQuotaID;
+		return await this._requestP("api/v1/admin/squota/delete", params);
+	}
+
+	/**
+	 * AdminSquotaGetWithHash
+	 * Get properties for a shared storage quota
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} SharedStorageQuotaID (No description available)
+	 * @return {Promise<libcomet_GetSharedStorageQuotaResponse>}
+	 */
+	async AdminSquotaGetWithHashP(SharedStorageQuotaID: string): Promise<libcomet_GetSharedStorageQuotaResponse> {
+		const params: { [s: string]: string; } = {};
+		params["SharedStorageQuotaID"] = SharedStorageQuotaID;
+		return await this._requestP("api/v1/admin/squota/get-with-hash", params);
+	}
+
+	/**
+	 * AdminSquotaListAll
+	 * List available shared storage quota objects
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @return {Promise<libcomet_ListSharedStorageQuotaResponse>}
+	 */
+	async AdminSquotaListAllP(): Promise<libcomet_ListSharedStorageQuotaResponse> {
+		return await this._requestP("api/v1/admin/squota/list-all", {});
+	}
+
+	/**
+	 * AdminSquotaSetWithHash
+	 * Create or update a shared storage quota
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} SharedStorageQuotaID (No description available)
+	 * @param {libcomet_SharedStorageQuota} SharedStorageQuota (No description available)
+	 * @param {string|null} CheckHash If supplied, validate the change against this hash. Omit to forcibly apply changes.
+	 * @return {Promise<libcomet_SetSharedStorageQuotaResponse>}
+	 */
+	async AdminSquotaSetWithHashP(SharedStorageQuotaID: string, SharedStorageQuota: libcomet_SharedStorageQuota, CheckHash: string|null = null): Promise<libcomet_SetSharedStorageQuotaResponse> {
+		const params: { [s: string]: string; } = {};
+		params["SharedStorageQuotaID"] = SharedStorageQuotaID;
+		params["SharedStorageQuota"] = JSON.stringify(SharedStorageQuota);
+		if (CheckHash !== null) {
+			params["CheckHash"] = CheckHash;
+		}
+		return await this._requestP("api/v1/admin/squota/set-with-hash", params);
+	}
+
+	/**
 	 * AdminStorageBucketProperties
 	 * Retrieve properties for a single bucket
 	 * This API can also be used to refresh the size measurement for a single bucket by passing a valid AfterTimestamp parameter.
@@ -15832,12 +16031,14 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_SSHConnection} Credentials SSH connection settings
+	 * @param {string} Node The target node
 	 * @return {Promise<libcomet_BrowseProxmoxStorageResponse>}
 	 */
-	async UserWebDispatcherRequestBrowseProxmoxStorageP(TargetID: string, Credentials: libcomet_SSHConnection): Promise<libcomet_BrowseProxmoxStorageResponse> {
+	async UserWebDispatcherRequestBrowseProxmoxStorageP(TargetID: string, Credentials: libcomet_SSHConnection, Node: string): Promise<libcomet_BrowseProxmoxStorageResponse> {
 		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		params["Credentials"] = JSON.stringify(Credentials);
+		params["Node"] = Node;
 		return await this._requestP("api/v1/user/web/dispatcher/request-browse-proxmox/storage", params);
 	}
 
