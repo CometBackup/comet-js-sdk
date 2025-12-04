@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2025-12-04 v3.11.0
+
+- Based on Comet 25.9.8
+- Add support for shared quota management APIs
+- Add Proxmox API parameter
+
 ## 2025-11-14 v3.10.0
 
 - Based on Comet 25.9.6
