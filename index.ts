@@ -1,5 +1,4 @@
 import CometServerAPIBase from "./lib/output";
-import fetch from 'cross-fetch';
 
 export type CometServerConfig = {
     url: string,

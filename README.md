@@ -11,7 +11,14 @@ This project is the SDK for Comet Servers using TypeScript and JavaScript.
 - Full coverage of Comet Server API methods, data structures, and constant definitions
 - Created to be cross-platform and work with Browsers or Node.js environments
 - Available in minified, ESM, CommonJS versions for different use cases
-- Custom HTTP request implementations may be built on `CometServerBase` by providing your own http request implementation
+- Custom HTTP request implementations may be built on `CometServerAPIBase` by providing your own http request implementation
+- No dependencies
+
+## Requirements
+
+The SDK makes its requests with the standard `fetch()` API, which is built into every current browser and into Node.js 18 and later. It has no other dependencies.
+
+On an older platform without `fetch()`, install a polyfill that defines a global `fetch` before using the SDK, or provide your own network implementation (see below).
 
 ## Getting Started
 
@@ -61,16 +68,18 @@ Note: Comet Server has [a CORS policy](https://en.wikipedia.org/wiki/Cross-origi
 
 ## Advanced: Using a custom network library
 
-
+`CometServer` sends each API call through its `_requestP(call, params)` method. To use a different network library, extend `CometServerAPIBase` and implement `_requestP` yourself: POST `params`, plus your authentication fields, as `application/x-www-form-urlencoded` to the server URL followed by `call`, and resolve with the parsed JSON response.
 
 ## Development environment
 
-- Requires Node LTS (17.x)
+- Requires Node.js 18 or later
 
 ```shell
-npm install 
+npm install
 npm run test
 ```
+
+The tests use a local stub server. Set `COMET_URL`, `COMET_USERNAME` and `COMET_PASSWORD` to also run them against a real Comet Server.
 
 **NextJS**
 
