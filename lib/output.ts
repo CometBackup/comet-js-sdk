@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "26.8.8";
+export const APPLICATION_VERSION = "26.11.2";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -21,14 +21,14 @@ export const APPLICATION_VERSION_MAJOR = 26;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_MINOR = 8;
+export const APPLICATION_VERSION_MINOR = 11;
 
 /**
  * APPLICATION_VERSION_REVISION
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 8;
+export const APPLICATION_VERSION_REVISION = 2;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -93,6 +93,14 @@ export const BRANDINGSTYLETYPE_CUSTOM_TEXT = 2;
  * @var {number}
  */
 export const BRANDINGSTYLETYPE_CUSTOM_LOGO = 3;
+
+/**
+ * BrowserRestoreDeviceID
+ * The Device ID recorded on jobs and vault locks that originate from an in-browser restore. It is a fixed sentinel value shared by all in-browser restores rather than a registered device.
+ *
+ * @var {string}
+ */
+export const BrowserRestoreDeviceID = "browser-restore_a4130236-fba2-4cd1-8e1d-47d009eddc18";
 
 /**
  * CLIENTBRANDINGBUILD_CUSTOM
@@ -477,6 +485,14 @@ export const DESTINATIONTYPE_LATEST = 1100;
 export const DESTINATIONTYPE_ALL = 1101;
 
 /**
+ * DEVICE_SECRET_HASH_RESET
+ * Set a device's DeviceSecretHash to this value in an admin profile update to remove its DeviceSecret binding.
+ *
+ * @var {string}
+ */
+export const DEVICE_SECRET_HASH_RESET = "reset";
+
+/**
  * EMAIL_WORKER_STATE_NOT_STARTED
  * EmailWorkerState: The Comet Server is still starting up and has not yet checked whether any email reports are due to be sent.
  *
@@ -726,6 +742,14 @@ export const ENGINE_BUILTIN_VMWARE = "engine1/vmware";
 export const ENGINE_BUILTIN_PROXMOX = "engine1/proxmox";
 
 /**
+ * ENGINE_BUILTIN_POSTGRESQL
+ * EngineType: PostgreSQL
+ *
+ * @var {string}
+ */
+export const ENGINE_BUILTIN_POSTGRESQL = "engine1/postgresql";
+
+/**
  * FTPS_MODE_PLAINTEXT
  * FtpsModeType: Use plain FTP, do not use FTPS.
  *
@@ -748,6 +772,15 @@ export const FTPS_MODE_IMPLICIT = 1;
  * @var {number}
  */
 export const FTPS_MODE_EXPLICIT = 2;
+
+/**
+ * HIDDEN_FIELD_PLACEHOLDER
+ * Prefix of the placeholder returned by some APIs in place of a sensitive stored value. The rest of the placeholder is a fingerprint of the stored value.
+Submitting any value with this prefix back to the Comet Server for a supported field leaves the stored value unchanged.
+ *
+ * @var {string}
+ */
+export const HIDDEN_FIELD_PLACEHOLDER = "hidden_field";
 
 /**
  * HYPERV_METHOD_VSS
@@ -1407,6 +1440,27 @@ export const OS_ONLY_LINUX = 5;
 export const PASSWORD_FORMAT_PLAINTEXT = 0;
 
 /**
+ * POSTGRESQL_DEFAULT_CONNECT_DATABASE
+ *
+ * @var {string}
+ */
+export const POSTGRESQL_DEFAULT_CONNECT_DATABASE = "postgres";
+
+/**
+ * POSTGRESQL_METADATA_STREAM_NAME
+ *
+ * @var {string}
+ */
+export const POSTGRESQL_METADATA_STREAM_NAME = ".metadata";
+
+/**
+ * POSTGRESQL_GLOBALS_STREAM_NAME
+ *
+ * @var {string}
+ */
+export const POSTGRESQL_GLOBALS_STREAM_NAME = ".globals.sql";
+
+/**
  * PROVIDER_GENERIC
  * OidcProvider
  *
@@ -1720,6 +1774,14 @@ export const REPLICATOR_DISPLAYCLASS_STORAGE = 100;
 export const REPLICATOR_DISPLAYCLASS_USER = 101;
 
 /**
+ * RESTORE_DATA_RECOVERY_KEY_DISABLE
+ * Set RestoreDataRecoveryKey to this value in a profile update to turn off the "Allow administrator to restore data" feature.
+ *
+ * @var {string}
+ */
+export const RESTORE_DATA_RECOVERY_KEY_DISABLE = "disable";
+
+/**
  * RESTOREARCHIVEFORMAT_TAR
  * RestoreArchiveFormat: Tar file format
  *
@@ -1910,6 +1972,15 @@ export const RESTORETYPE_CLOUD_STORAGE = 15;
  * @var {number}
  */
 export const RESTORETYPE_VMDK_FILE_CLOUD_STORAGE = 16;
+
+/**
+ * RESTORETYPE_POSTGRESQL
+ * RestoreType: Stream restore as SQL statements into a target PostgreSQL server
+ * This const is available in Comet 26.11.0 and later.
+ *
+ * @var {number}
+ */
+export const RESTORETYPE_POSTGRESQL = 17;
 
 /**
  * RESTORETYPE_PROCESS_TARBALL
@@ -2510,6 +2581,14 @@ export const SEVERITY_WARNING = "W";
 export const SEVERITY_ERROR = "E";
 
 /**
+ * SEVERITY_PRIVATE
+ * Severity: Diagnostic detail. The server returns entries with this severity only to top-level administrators without permission restrictions.
+ *
+ * @var {string}
+ */
+export const SEVERITY_PRIVATE = "P";
+
+/**
  * SEVT__MIN
  * StreamableEventType
  *
@@ -2889,12 +2968,71 @@ export const SEVT_SQUOTA_REMOVED = 4804;
 export const SEVT_SQUOTA_UPDATED = 4805;
 
 /**
+ * SEVT_SELFBACKUP_START
+ * StreamableEventType: Self-backup started. Data is a SelfBackupEventData object
+ * This const is available in Comet 26.11.1 and later.
+ *
+ * @var {number}
+ */
+export const SEVT_SELFBACKUP_START = 4900;
+
+/**
+ * SEVT_SELFBACKUP_SUCCEEDED
+ * StreamableEventType: Self-backup succeeded. Data is a SelfBackupEventData object
+ * This const is available in Comet 26.11.1 and later.
+ *
+ * @var {number}
+ */
+export const SEVT_SELFBACKUP_SUCCEEDED = 4901;
+
+/**
+ * SEVT_SELFBACKUP_FAILED
+ * StreamableEventType: Self-backup failed. Data is a SelfBackupEventData object
+ * This const is available in Comet 26.11.1 and later.
+ *
+ * @var {number}
+ */
+export const SEVT_SELFBACKUP_FAILED = 4902;
+
+/**
  * SEVT__MAX
  * StreamableEventType
  *
  * @var {number}
  */
 export const SEVT__MAX = 4999;
+
+/**
+ * SMTP_OAUTH_PROVIDER_MICROSOFT
+ * SMTPOAuthProvider: Microsoft Entra ID (Microsoft 365 / Exchange Online)
+ *
+ * @var {number}
+ */
+export const SMTP_OAUTH_PROVIDER_MICROSOFT = 1;
+
+/**
+ * SMTP_OAUTH_PROVIDER_GOOGLE
+ * SMTPOAuthProvider: Google (Gmail / Google Workspace)
+ *
+ * @var {number}
+ */
+export const SMTP_OAUTH_PROVIDER_GOOGLE = 2;
+
+/**
+ * SMTP_OAUTH_FLOW_AUTHORIZATION_CODE
+ * SMTPOAuthFlow: A mailbox user grants consent interactively; the resulting refresh token is stored in RefreshToken
+ *
+ * @var {number}
+ */
+export const SMTP_OAUTH_FLOW_AUTHORIZATION_CODE = 1;
+
+/**
+ * SMTP_OAUTH_FLOW_CLIENT_CREDENTIALS
+ * SMTPOAuthFlow: The application authenticates as itself. Only supported for SMTP_OAUTH_PROVIDER_MICROSOFT
+ *
+ * @var {number}
+ */
+export const SMTP_OAUTH_FLOW_CLIENT_CREDENTIALS = 2;
 
 /**
  * SOURCEFIELD_BOOL
@@ -3225,6 +3363,13 @@ export const STREAMER_TYPE_WEBSOCKET = "websocket";
 export const STREAMER_TYPE_FILE = "file";
 
 /**
+ * SelfAddressPlaceholder
+ *
+ * @var {string}
+ */
+export const SelfAddressPlaceholder = "$self$";
+
+/**
  * TOTPRequiredError
  * If an API response returns in failure, but it includes this value in the CometAPIResponseMessage->Message parameter, it indicates that your supplied authentication was insufficient, and you must supply additional two-factor authentication credentials.
  *
@@ -3385,6 +3530,13 @@ export const VMWARE_BACKUP_CBT = "cbt";
 export const VMWARE_BACKUP_COPY = "copy";
 
 /**
+ * VhdxPartitionNotNtfsData
+ *
+ * @var {string}
+ */
+export const VhdxPartitionNotNtfsData = "not a ntfs data partition";
+
+/**
  * VhdxPartitonReadErrMsg
  *
  * @var {string}
@@ -3466,6 +3618,49 @@ directly to a Slack Incoming Webhook URL.
 export const WEBHOOK_FORMAT_SLACK = "slack";
 
 /**
+ * WEBHOOK_FORMAT_EMAIL
+ * WebhookFormat: The event is sent as an email to the address in the WebhookOption URL field, using the
+email settings of the organization that owns the webhook.
+ * This const is available in Comet 26.11.1 and later.
+ *
+ * @var {string}
+ */
+export const WEBHOOK_FORMAT_EMAIL = "email";
+
+/**
+ * WEBHOOK_FORMAT_AWS_SNS
+ * WebhookFormat: The raw StreamableEvent JSON object is published to an Amazon SNS topic. The URL field is the
+topic ARN, and the AWS field holds the credentials. The event type is attached as the
+"TypeString" message attribute.
+ * This const is available in Comet 26.11.1 and later.
+ *
+ * @var {string}
+ */
+export const WEBHOOK_FORMAT_AWS_SNS = "aws_sns";
+
+/**
+ * WEBHOOK_FORMAT_AWS_SQS
+ * WebhookFormat: The raw StreamableEvent JSON object is sent to an Amazon SQS queue. The URL field is the queue
+URL, and the AWS field holds the credentials. The event type is attached as the "TypeString"
+message attribute.
+ * This const is available in Comet 26.11.1 and later.
+ *
+ * @var {string}
+ */
+export const WEBHOOK_FORMAT_AWS_SQS = "aws_sqs";
+
+/**
+ * WEBHOOK_FORMAT_AWS_EVENTBRIDGE
+ * WebhookFormat: The raw StreamableEvent JSON object is put on an Amazon EventBridge event bus as the event
+detail, with the event type as the detail type and "cometd" as the source. The URL field is
+the event bus ARN, and the AWS field holds the credentials.
+ * This const is available in Comet 26.11.1 and later.
+ *
+ * @var {string}
+ */
+export const WEBHOOK_FORMAT_AWS_EVENTBRIDGE = "aws_eventbridge";
+
+/**
  * WINDOWSCODESIGN_METHOD_AUTO
  * WindowsCodesignMethod: When upgrading from a version of Comet Server prior to 23.3.0, this option will be automatically converted to a more specific type.
  *
@@ -3513,6 +3708,30 @@ export const WINDOWSCODESIGN_METHOD_AZUREKEYVAULT = 4;
  * @var {number}
  */
 export const WINDOWSCODESIGN_METHOD_RELICSERVER = 5;
+
+/**
+ * WINDOWSCODESIGN_METHOD_AWSKMS
+ * WindowsCodesignMethod: Use a configured AWS Key Management Service (KMS) key for Authenticode codesigning
+ *
+ * @var {number}
+ */
+export const WINDOWSCODESIGN_METHOD_AWSKMS = 6;
+
+/**
+ * WINDOWSCODESIGN_METHOD_GCPKMS
+ * WindowsCodesignMethod: Use a configured Google Cloud Key Management Service (Cloud KMS) key for Authenticode codesigning
+ *
+ * @var {number}
+ */
+export const WINDOWSCODESIGN_METHOD_GCPKMS = 7;
+
+/**
+ * WINDOWSCODESIGN_METHOD_AZUREARTIFACTSIGNING
+ * WindowsCodesignMethod: Use Azure Artifact Signing (formerly Azure Trusted Signing) for Authenticode codesigning
+ *
+ * @var {number}
+ */
+export const WINDOWSCODESIGN_METHOD_AZUREARTIFACTSIGNING = 8;
 
 /**
  * customBrandingMaxInlineItemSize
@@ -3706,6 +3925,19 @@ export type libcomet_AdminAccountPropertiesResponse = {
 	 * This field is available in Comet 26.8.4 and later.
 	 */
 	APITokenCreateRequiresPassword: boolean
+	/**
+	 * True if this account logs in via an external OpenID Connect identity provider (single sign-on).
+	 * The identity provider may enforce its own multi-factor authentication.
+	 * This field is available in Comet 26.11.2 and later.
+	 */
+	ExternalSourceIsOIDC: boolean
+	/**
+	 * True if this account logs in via an external authentication source that is configured to skip
+	 * Comet multi-factor authentication. In that case, the account's TOTP and WebAuthn settings are
+	 * not enforced at login.
+	 * This field is available in Comet 26.11.2 and later.
+	 */
+	ExternalSourceSkipsMFA: boolean
 }
 
 export function New_Zero_libcomet_AdminAccountPropertiesResponse(): libcomet_AdminAccountPropertiesResponse {
@@ -3715,6 +3947,8 @@ export function New_Zero_libcomet_AdminAccountPropertiesResponse(): libcomet_Adm
 		"Security": New_Zero_libcomet_AdminSecurityOptions(),
 		"AllowAPITokens": false,
 		"APITokenCreateRequiresPassword": false,
+		"ExternalSourceIsOIDC": false,
+		"ExternalSourceSkipsMFA": false,
 	};
 }
 
@@ -4849,6 +5083,77 @@ export type libcomet_BrandingOptions = {
 	 * The name of the key to select on the remote SAS Relic server
 	 */
 	WindowsCodeSignRelicKeyName: string
+	/**
+	 * The AWS region containing the KMS key, e.g. us-east-1
+	 */
+	WindowsCodeSignAWSRegion: string
+	/**
+	 * The access key ID of an IAM user permitted to call kms:GetPublicKey and kms:Sign on the key
+	 */
+	WindowsCodeSignAWSAccessKeyID: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
+	WindowsCodeSignAWSSecretAccessKeyFormat: number
+	WindowsCodeSignAWSSecretAccessKey: string
+	/**
+	 * The KMS key ID, key ARN, alias name (alias/...) or alias ARN of an asymmetric SIGN_VERIFY key
+	 */
+	WindowsCodeSignAWSKMSKeyID: string
+	/**
+	 * The X.509 code signing certificate for the KMS key, and optionally its intermediate
+	 * certificates, in PEM or DER format
+	 */
+	WindowsCodeSignAWSCertfile: string
+	/**
+	 * The full resource name of a Cloud KMS asymmetric signing key version:
+	 * projects/PROJECT/locations/LOCATION/keyRings/KEYRING/cryptoKeys/KEY/cryptoKeyVersions/VERSION
+	 */
+	WindowsCodeSignGCPKMSKeyVersion: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
+	WindowsCodeSignGCPServiceAccountKeyFormat: number
+	/**
+	 * The JSON key file contents of a Google Cloud service account with the Cloud KMS Signer/Verifier
+	 * role on the key version. Only keys of type service_account are accepted.
+	 */
+	WindowsCodeSignGCPServiceAccountKey: string
+	/**
+	 * The X.509 code signing certificate for the Cloud KMS key, and optionally its intermediate
+	 * certificates, in PEM or DER format
+	 */
+	WindowsCodeSignGCPCertfile: string
+	/**
+	 * The regional endpoint of the Azure Artifact Signing account, e.g.
+	 * https://eus.codesigning.azure.net
+	 */
+	WindowsCodeSignAzureArtifactSigningEndpoint: string
+	/**
+	 * The Azure Artifact Signing account name
+	 */
+	WindowsCodeSignAzureArtifactSigningAccount: string
+	/**
+	 * The certificate profile name within the Azure Artifact Signing account
+	 */
+	WindowsCodeSignAzureArtifactSigningProfile: string
+	/**
+	 * The Microsoft Entra tenant ID of the app registration
+	 */
+	WindowsCodeSignAzureArtifactSigningTenantID: string
+	/**
+	 * The application (client) ID of a Microsoft Entra app registration with the Artifact Signing
+	 * Certificate Profile Signer role on the certificate profile
+	 */
+	WindowsCodeSignAzureArtifactSigningAppID: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
+	WindowsCodeSignAzureArtifactSigningAppSecretFormat: number
+	/**
+	 * A client secret of the app registration
+	 */
+	WindowsCodeSignAzureArtifactSigningAppSecret: string
 	MacOSCodeSign: libcomet_MacOSCodeSignProperties
 	LinuxRpmCodeSign: libcomet_LinuxRpmCodeSignProperties
 }
@@ -4901,6 +5206,23 @@ export function New_Zero_libcomet_BrandingOptions(): libcomet_BrandingOptions {
 		"WindowsCodeSignRelicServerURL": "",
 		"WindowsCodeSignRelicKeypairFile": "",
 		"WindowsCodeSignRelicKeyName": "",
+		"WindowsCodeSignAWSRegion": "",
+		"WindowsCodeSignAWSAccessKeyID": "",
+		"WindowsCodeSignAWSSecretAccessKeyFormat": 0,
+		"WindowsCodeSignAWSSecretAccessKey": "",
+		"WindowsCodeSignAWSKMSKeyID": "",
+		"WindowsCodeSignAWSCertfile": "",
+		"WindowsCodeSignGCPKMSKeyVersion": "",
+		"WindowsCodeSignGCPServiceAccountKeyFormat": 0,
+		"WindowsCodeSignGCPServiceAccountKey": "",
+		"WindowsCodeSignGCPCertfile": "",
+		"WindowsCodeSignAzureArtifactSigningEndpoint": "",
+		"WindowsCodeSignAzureArtifactSigningAccount": "",
+		"WindowsCodeSignAzureArtifactSigningProfile": "",
+		"WindowsCodeSignAzureArtifactSigningTenantID": "",
+		"WindowsCodeSignAzureArtifactSigningAppID": "",
+		"WindowsCodeSignAzureArtifactSigningAppSecretFormat": 0,
+		"WindowsCodeSignAzureArtifactSigningAppSecret": "",
 		"MacOSCodeSign": New_Zero_libcomet_MacOSCodeSignProperties(),
 		"LinuxRpmCodeSign": New_Zero_libcomet_LinuxRpmCodeSignProperties(),
 	};
@@ -4956,6 +5278,23 @@ export function libcomet_BrandingOptions_set_embedded_libcomet_BrandingPropertie
 	dest.WindowsCodeSignRelicServerURL = src.WindowsCodeSignRelicServerURL;
 	dest.WindowsCodeSignRelicKeypairFile = src.WindowsCodeSignRelicKeypairFile;
 	dest.WindowsCodeSignRelicKeyName = src.WindowsCodeSignRelicKeyName;
+	dest.WindowsCodeSignAWSRegion = src.WindowsCodeSignAWSRegion;
+	dest.WindowsCodeSignAWSAccessKeyID = src.WindowsCodeSignAWSAccessKeyID;
+	dest.WindowsCodeSignAWSSecretAccessKeyFormat = src.WindowsCodeSignAWSSecretAccessKeyFormat;
+	dest.WindowsCodeSignAWSSecretAccessKey = src.WindowsCodeSignAWSSecretAccessKey;
+	dest.WindowsCodeSignAWSKMSKeyID = src.WindowsCodeSignAWSKMSKeyID;
+	dest.WindowsCodeSignAWSCertfile = src.WindowsCodeSignAWSCertfile;
+	dest.WindowsCodeSignGCPKMSKeyVersion = src.WindowsCodeSignGCPKMSKeyVersion;
+	dest.WindowsCodeSignGCPServiceAccountKeyFormat = src.WindowsCodeSignGCPServiceAccountKeyFormat;
+	dest.WindowsCodeSignGCPServiceAccountKey = src.WindowsCodeSignGCPServiceAccountKey;
+	dest.WindowsCodeSignGCPCertfile = src.WindowsCodeSignGCPCertfile;
+	dest.WindowsCodeSignAzureArtifactSigningEndpoint = src.WindowsCodeSignAzureArtifactSigningEndpoint;
+	dest.WindowsCodeSignAzureArtifactSigningAccount = src.WindowsCodeSignAzureArtifactSigningAccount;
+	dest.WindowsCodeSignAzureArtifactSigningProfile = src.WindowsCodeSignAzureArtifactSigningProfile;
+	dest.WindowsCodeSignAzureArtifactSigningTenantID = src.WindowsCodeSignAzureArtifactSigningTenantID;
+	dest.WindowsCodeSignAzureArtifactSigningAppID = src.WindowsCodeSignAzureArtifactSigningAppID;
+	dest.WindowsCodeSignAzureArtifactSigningAppSecretFormat = src.WindowsCodeSignAzureArtifactSigningAppSecretFormat;
+	dest.WindowsCodeSignAzureArtifactSigningAppSecret = src.WindowsCodeSignAzureArtifactSigningAppSecret;
 	dest.MacOSCodeSign = src.MacOSCodeSign;
 	dest.LinuxRpmCodeSign = src.LinuxRpmCodeSign;
 }
@@ -5028,6 +5367,77 @@ export type libcomet_BrandingProperties = {
 	 * The name of the key to select on the remote SAS Relic server
 	 */
 	WindowsCodeSignRelicKeyName: string
+	/**
+	 * The AWS region containing the KMS key, e.g. us-east-1
+	 */
+	WindowsCodeSignAWSRegion: string
+	/**
+	 * The access key ID of an IAM user permitted to call kms:GetPublicKey and kms:Sign on the key
+	 */
+	WindowsCodeSignAWSAccessKeyID: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
+	WindowsCodeSignAWSSecretAccessKeyFormat: number
+	WindowsCodeSignAWSSecretAccessKey: string
+	/**
+	 * The KMS key ID, key ARN, alias name (alias/...) or alias ARN of an asymmetric SIGN_VERIFY key
+	 */
+	WindowsCodeSignAWSKMSKeyID: string
+	/**
+	 * The X.509 code signing certificate for the KMS key, and optionally its intermediate
+	 * certificates, in PEM or DER format
+	 */
+	WindowsCodeSignAWSCertfile: string
+	/**
+	 * The full resource name of a Cloud KMS asymmetric signing key version:
+	 * projects/PROJECT/locations/LOCATION/keyRings/KEYRING/cryptoKeys/KEY/cryptoKeyVersions/VERSION
+	 */
+	WindowsCodeSignGCPKMSKeyVersion: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
+	WindowsCodeSignGCPServiceAccountKeyFormat: number
+	/**
+	 * The JSON key file contents of a Google Cloud service account with the Cloud KMS Signer/Verifier
+	 * role on the key version. Only keys of type service_account are accepted.
+	 */
+	WindowsCodeSignGCPServiceAccountKey: string
+	/**
+	 * The X.509 code signing certificate for the Cloud KMS key, and optionally its intermediate
+	 * certificates, in PEM or DER format
+	 */
+	WindowsCodeSignGCPCertfile: string
+	/**
+	 * The regional endpoint of the Azure Artifact Signing account, e.g.
+	 * https://eus.codesigning.azure.net
+	 */
+	WindowsCodeSignAzureArtifactSigningEndpoint: string
+	/**
+	 * The Azure Artifact Signing account name
+	 */
+	WindowsCodeSignAzureArtifactSigningAccount: string
+	/**
+	 * The certificate profile name within the Azure Artifact Signing account
+	 */
+	WindowsCodeSignAzureArtifactSigningProfile: string
+	/**
+	 * The Microsoft Entra tenant ID of the app registration
+	 */
+	WindowsCodeSignAzureArtifactSigningTenantID: string
+	/**
+	 * The application (client) ID of a Microsoft Entra app registration with the Artifact Signing
+	 * Certificate Profile Signer role on the certificate profile
+	 */
+	WindowsCodeSignAzureArtifactSigningAppID: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
+	WindowsCodeSignAzureArtifactSigningAppSecretFormat: number
+	/**
+	 * A client secret of the app registration
+	 */
+	WindowsCodeSignAzureArtifactSigningAppSecret: string
 	MacOSCodeSign: libcomet_MacOSCodeSignProperties
 	LinuxRpmCodeSign: libcomet_LinuxRpmCodeSignProperties
 }
@@ -5073,6 +5483,23 @@ export function New_Zero_libcomet_BrandingProperties(): libcomet_BrandingPropert
 		"WindowsCodeSignRelicServerURL": "",
 		"WindowsCodeSignRelicKeypairFile": "",
 		"WindowsCodeSignRelicKeyName": "",
+		"WindowsCodeSignAWSRegion": "",
+		"WindowsCodeSignAWSAccessKeyID": "",
+		"WindowsCodeSignAWSSecretAccessKeyFormat": 0,
+		"WindowsCodeSignAWSSecretAccessKey": "",
+		"WindowsCodeSignAWSKMSKeyID": "",
+		"WindowsCodeSignAWSCertfile": "",
+		"WindowsCodeSignGCPKMSKeyVersion": "",
+		"WindowsCodeSignGCPServiceAccountKeyFormat": 0,
+		"WindowsCodeSignGCPServiceAccountKey": "",
+		"WindowsCodeSignGCPCertfile": "",
+		"WindowsCodeSignAzureArtifactSigningEndpoint": "",
+		"WindowsCodeSignAzureArtifactSigningAccount": "",
+		"WindowsCodeSignAzureArtifactSigningProfile": "",
+		"WindowsCodeSignAzureArtifactSigningTenantID": "",
+		"WindowsCodeSignAzureArtifactSigningAppID": "",
+		"WindowsCodeSignAzureArtifactSigningAppSecretFormat": 0,
+		"WindowsCodeSignAzureArtifactSigningAppSecret": "",
 		"MacOSCodeSign": New_Zero_libcomet_MacOSCodeSignProperties(),
 		"LinuxRpmCodeSign": New_Zero_libcomet_LinuxRpmCodeSignProperties(),
 	};
@@ -5121,6 +5548,23 @@ export function libcomet_BrandingProperties_set_embedded_libcomet_PrivateBrandin
 	dest.WindowsCodeSignRelicServerURL = src.WindowsCodeSignRelicServerURL;
 	dest.WindowsCodeSignRelicKeypairFile = src.WindowsCodeSignRelicKeypairFile;
 	dest.WindowsCodeSignRelicKeyName = src.WindowsCodeSignRelicKeyName;
+	dest.WindowsCodeSignAWSRegion = src.WindowsCodeSignAWSRegion;
+	dest.WindowsCodeSignAWSAccessKeyID = src.WindowsCodeSignAWSAccessKeyID;
+	dest.WindowsCodeSignAWSSecretAccessKeyFormat = src.WindowsCodeSignAWSSecretAccessKeyFormat;
+	dest.WindowsCodeSignAWSSecretAccessKey = src.WindowsCodeSignAWSSecretAccessKey;
+	dest.WindowsCodeSignAWSKMSKeyID = src.WindowsCodeSignAWSKMSKeyID;
+	dest.WindowsCodeSignAWSCertfile = src.WindowsCodeSignAWSCertfile;
+	dest.WindowsCodeSignGCPKMSKeyVersion = src.WindowsCodeSignGCPKMSKeyVersion;
+	dest.WindowsCodeSignGCPServiceAccountKeyFormat = src.WindowsCodeSignGCPServiceAccountKeyFormat;
+	dest.WindowsCodeSignGCPServiceAccountKey = src.WindowsCodeSignGCPServiceAccountKey;
+	dest.WindowsCodeSignGCPCertfile = src.WindowsCodeSignGCPCertfile;
+	dest.WindowsCodeSignAzureArtifactSigningEndpoint = src.WindowsCodeSignAzureArtifactSigningEndpoint;
+	dest.WindowsCodeSignAzureArtifactSigningAccount = src.WindowsCodeSignAzureArtifactSigningAccount;
+	dest.WindowsCodeSignAzureArtifactSigningProfile = src.WindowsCodeSignAzureArtifactSigningProfile;
+	dest.WindowsCodeSignAzureArtifactSigningTenantID = src.WindowsCodeSignAzureArtifactSigningTenantID;
+	dest.WindowsCodeSignAzureArtifactSigningAppID = src.WindowsCodeSignAzureArtifactSigningAppID;
+	dest.WindowsCodeSignAzureArtifactSigningAppSecretFormat = src.WindowsCodeSignAzureArtifactSigningAppSecretFormat;
+	dest.WindowsCodeSignAzureArtifactSigningAppSecret = src.WindowsCodeSignAzureArtifactSigningAppSecret;
 	dest.MacOSCodeSign = src.MacOSCodeSign;
 	dest.LinuxRpmCodeSign = src.LinuxRpmCodeSign;
 }
@@ -5681,9 +6125,9 @@ export type libcomet_ContentMeasurementComponent = {
 	/**
 	 * A list of strings describing which groups of snapshots rely on reaching this component of data.
 	 * The strings may take the following formats:
-	 * - source_id/CURRENT - this data is required by the most recent backup job snapshot for the
+	 * - CURRENT/source_id - this data is required by the most recent backup job snapshot for the
 	 * listed Protected Item source.
-	 * - source_id/HISTORIC - this data is required by an older backup job snapshot for the listed
+	 * - HISTORIC/source_id - this data is required by an older backup job snapshot for the listed
 	 * Protected Item source.
 	 * - TRUNCATED/* - there are too many separate components to show, and this component represents
 	 * data that is used by some other combination of components. If present, it will be the only entry
@@ -6592,11 +7036,40 @@ export type libcomet_DeviceConfig = {
 	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
 	NinjaOneNodeId?: number
+	/**
+	 * A hash of a hardware-derived secret that the device supplies on every device-scoped API call,
+	 * binding the device to its DeviceID.
+	 * The server sets it when the device registers, or on first use for devices registered before this
+	 * field existed. It is never returned to devices or to the user web interface.
+	 * In an admin profile update, an empty value leaves the stored hash unchanged, and
+	 * DEVICE_SECRET_HASH_RESET removes it so that the device binds a new secret on its next
+	 * connection.
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	DeviceSecretHash?: string
+	/**
+	 * One of the PASSWORD_FORMAT_ constants
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	DeviceSecretHashFormat?: number
 }
 
 export function New_Zero_libcomet_DeviceConfig(): libcomet_DeviceConfig {
 	return {
 		"FriendlyName": "",
+	};
+}
+
+
+export type libcomet_DeviceIdentityResponse = {
+	DeviceID: string
+	DeviceSecret: string
+}
+
+export function New_Zero_libcomet_DeviceIdentityResponse(): libcomet_DeviceIdentityResponse {
+	return {
+		"DeviceID": "",
+		"DeviceSecret": "",
 	};
 }
 
@@ -6869,6 +7342,13 @@ export type libcomet_EmailOptions = {
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	SMTPCustomEhlo?: string
+	/**
+	 * If set, authenticate to the SMTP server with OAuth 2.0 (SASL XOAUTH2) as SMTPUsername instead of
+	 * using SMTPPassword.
+	 * This field is available in Comet 26.11.0 and later.
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	SMTPOAuth?: libcomet_SMTPOAuthOptions
 }
 
 export function New_Zero_libcomet_EmailOptions(): libcomet_EmailOptions {
@@ -9413,6 +9893,44 @@ export function New_Zero_libcomet_PolicyOptions(): libcomet_PolicyOptions {
 }
 
 
+export type libcomet_PostgreSQLConnection = {
+	Host: string
+	Port: string
+	/**
+	 * Optional
+	 */
+	Username: string
+	/**
+	 * Optional
+	 */
+	Password: string
+	/**
+	 * The database to connect to in order to list databases. If blank, "postgres" is used
+	 */
+	ConnectDatabase: string
+	UseTLS: boolean
+	TLSSkipVerify: boolean
+	TLSCustomServerCAPath: string
+	TLSCustomClientCrtPath: string
+	TLSCustomClientKeyPath: string
+}
+
+export function New_Zero_libcomet_PostgreSQLConnection(): libcomet_PostgreSQLConnection {
+	return {
+		"Host": "",
+		"Port": "",
+		"Username": "",
+		"Password": "",
+		"ConnectDatabase": "",
+		"UseTLS": false,
+		"TLSSkipVerify": false,
+		"TLSCustomServerCAPath": "",
+		"TLSCustomClientCrtPath": "",
+		"TLSCustomClientKeyPath": "",
+	};
+}
+
+
 export type libcomet_PrivateBrandingProperties = {
 	/**
 	 * One of the CLIENTBRANDINGBUILD_ constants
@@ -9469,6 +9987,77 @@ export type libcomet_PrivateBrandingProperties = {
 	 * The name of the key to select on the remote SAS Relic server
 	 */
 	WindowsCodeSignRelicKeyName: string
+	/**
+	 * The AWS region containing the KMS key, e.g. us-east-1
+	 */
+	WindowsCodeSignAWSRegion: string
+	/**
+	 * The access key ID of an IAM user permitted to call kms:GetPublicKey and kms:Sign on the key
+	 */
+	WindowsCodeSignAWSAccessKeyID: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
+	WindowsCodeSignAWSSecretAccessKeyFormat: number
+	WindowsCodeSignAWSSecretAccessKey: string
+	/**
+	 * The KMS key ID, key ARN, alias name (alias/...) or alias ARN of an asymmetric SIGN_VERIFY key
+	 */
+	WindowsCodeSignAWSKMSKeyID: string
+	/**
+	 * The X.509 code signing certificate for the KMS key, and optionally its intermediate
+	 * certificates, in PEM or DER format
+	 */
+	WindowsCodeSignAWSCertfile: string
+	/**
+	 * The full resource name of a Cloud KMS asymmetric signing key version:
+	 * projects/PROJECT/locations/LOCATION/keyRings/KEYRING/cryptoKeys/KEY/cryptoKeyVersions/VERSION
+	 */
+	WindowsCodeSignGCPKMSKeyVersion: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
+	WindowsCodeSignGCPServiceAccountKeyFormat: number
+	/**
+	 * The JSON key file contents of a Google Cloud service account with the Cloud KMS Signer/Verifier
+	 * role on the key version. Only keys of type service_account are accepted.
+	 */
+	WindowsCodeSignGCPServiceAccountKey: string
+	/**
+	 * The X.509 code signing certificate for the Cloud KMS key, and optionally its intermediate
+	 * certificates, in PEM or DER format
+	 */
+	WindowsCodeSignGCPCertfile: string
+	/**
+	 * The regional endpoint of the Azure Artifact Signing account, e.g.
+	 * https://eus.codesigning.azure.net
+	 */
+	WindowsCodeSignAzureArtifactSigningEndpoint: string
+	/**
+	 * The Azure Artifact Signing account name
+	 */
+	WindowsCodeSignAzureArtifactSigningAccount: string
+	/**
+	 * The certificate profile name within the Azure Artifact Signing account
+	 */
+	WindowsCodeSignAzureArtifactSigningProfile: string
+	/**
+	 * The Microsoft Entra tenant ID of the app registration
+	 */
+	WindowsCodeSignAzureArtifactSigningTenantID: string
+	/**
+	 * The application (client) ID of a Microsoft Entra app registration with the Artifact Signing
+	 * Certificate Profile Signer role on the certificate profile
+	 */
+	WindowsCodeSignAzureArtifactSigningAppID: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
+	WindowsCodeSignAzureArtifactSigningAppSecretFormat: number
+	/**
+	 * A client secret of the app registration
+	 */
+	WindowsCodeSignAzureArtifactSigningAppSecret: string
 	MacOSCodeSign: libcomet_MacOSCodeSignProperties
 	LinuxRpmCodeSign: libcomet_LinuxRpmCodeSignProperties
 }
@@ -9503,6 +10092,23 @@ export function New_Zero_libcomet_PrivateBrandingProperties(): libcomet_PrivateB
 		"WindowsCodeSignRelicServerURL": "",
 		"WindowsCodeSignRelicKeypairFile": "",
 		"WindowsCodeSignRelicKeyName": "",
+		"WindowsCodeSignAWSRegion": "",
+		"WindowsCodeSignAWSAccessKeyID": "",
+		"WindowsCodeSignAWSSecretAccessKeyFormat": 0,
+		"WindowsCodeSignAWSSecretAccessKey": "",
+		"WindowsCodeSignAWSKMSKeyID": "",
+		"WindowsCodeSignAWSCertfile": "",
+		"WindowsCodeSignGCPKMSKeyVersion": "",
+		"WindowsCodeSignGCPServiceAccountKeyFormat": 0,
+		"WindowsCodeSignGCPServiceAccountKey": "",
+		"WindowsCodeSignGCPCertfile": "",
+		"WindowsCodeSignAzureArtifactSigningEndpoint": "",
+		"WindowsCodeSignAzureArtifactSigningAccount": "",
+		"WindowsCodeSignAzureArtifactSigningProfile": "",
+		"WindowsCodeSignAzureArtifactSigningTenantID": "",
+		"WindowsCodeSignAzureArtifactSigningAppID": "",
+		"WindowsCodeSignAzureArtifactSigningAppSecretFormat": 0,
+		"WindowsCodeSignAzureArtifactSigningAppSecret": "",
 		"MacOSCodeSign": New_Zero_libcomet_MacOSCodeSignProperties(),
 		"LinuxRpmCodeSign": New_Zero_libcomet_LinuxRpmCodeSignProperties(),
 	};
@@ -9528,6 +10134,23 @@ export function libcomet_PrivateBrandingProperties_set_embedded_libcomet_Windows
 	dest.WindowsCodeSignRelicServerURL = src.WindowsCodeSignRelicServerURL;
 	dest.WindowsCodeSignRelicKeypairFile = src.WindowsCodeSignRelicKeypairFile;
 	dest.WindowsCodeSignRelicKeyName = src.WindowsCodeSignRelicKeyName;
+	dest.WindowsCodeSignAWSRegion = src.WindowsCodeSignAWSRegion;
+	dest.WindowsCodeSignAWSAccessKeyID = src.WindowsCodeSignAWSAccessKeyID;
+	dest.WindowsCodeSignAWSSecretAccessKeyFormat = src.WindowsCodeSignAWSSecretAccessKeyFormat;
+	dest.WindowsCodeSignAWSSecretAccessKey = src.WindowsCodeSignAWSSecretAccessKey;
+	dest.WindowsCodeSignAWSKMSKeyID = src.WindowsCodeSignAWSKMSKeyID;
+	dest.WindowsCodeSignAWSCertfile = src.WindowsCodeSignAWSCertfile;
+	dest.WindowsCodeSignGCPKMSKeyVersion = src.WindowsCodeSignGCPKMSKeyVersion;
+	dest.WindowsCodeSignGCPServiceAccountKeyFormat = src.WindowsCodeSignGCPServiceAccountKeyFormat;
+	dest.WindowsCodeSignGCPServiceAccountKey = src.WindowsCodeSignGCPServiceAccountKey;
+	dest.WindowsCodeSignGCPCertfile = src.WindowsCodeSignGCPCertfile;
+	dest.WindowsCodeSignAzureArtifactSigningEndpoint = src.WindowsCodeSignAzureArtifactSigningEndpoint;
+	dest.WindowsCodeSignAzureArtifactSigningAccount = src.WindowsCodeSignAzureArtifactSigningAccount;
+	dest.WindowsCodeSignAzureArtifactSigningProfile = src.WindowsCodeSignAzureArtifactSigningProfile;
+	dest.WindowsCodeSignAzureArtifactSigningTenantID = src.WindowsCodeSignAzureArtifactSigningTenantID;
+	dest.WindowsCodeSignAzureArtifactSigningAppID = src.WindowsCodeSignAzureArtifactSigningAppID;
+	dest.WindowsCodeSignAzureArtifactSigningAppSecretFormat = src.WindowsCodeSignAzureArtifactSigningAppSecretFormat;
+	dest.WindowsCodeSignAzureArtifactSigningAppSecret = src.WindowsCodeSignAzureArtifactSigningAppSecret;
 }
 
 
@@ -10139,46 +10762,73 @@ export type libcomet_RestoreJobAdvancedOptions = {
 	 */
 	OnDiskIndexesKey: boolean
 	/**
+	 * Default disabled. For RESTORETYPE_FILE. If set, restored files are always written in full.
+	 * Otherwise, large
+	 * zero-filled regions may be restored as sparse regions or extended without writing, which is
+	 * faster and can use
+	 * less disk space, but some files (e.g. swap files, preallocated database files) require full
+	 * allocation.
+	 * Corresponds to the "Fully allocate restored files (disable sparse files)" option
+	 * This field is available in Comet 26.11.x and later.
+	 * Omission from JSON will be interpreted as false
+	 */
+	PreventAutoSparsify?: boolean
+	/**
 	 * For RESTORETYPE_OFFICE365_CLOUD.
 	 * Omission from JSON will be interpreted as the zero value for this field type
 	 */
 	Office365Credential?: libcomet_Office365Credential
 	/**
-	 * For RESTORETYPE_MYSQL
+	 * Default disabled. For RESTORETYPE_OFFICE365_CLOUD. If set, items already present at the
+	 * destination are skipped instead of being restored again.
+	 * Corresponds to the "Skip items that are already present at the destination" option
+	 * This field is available in Comet 26.9.x and later.
+	 * Omission from JSON will be interpreted as false
+	 */
+	Office365SkipExisting?: boolean
+	/**
+	 * For RESTORETYPE_MYSQL and RESTORETYPE_POSTGRESQL
 	 */
 	Username: string
 	/**
-	 * For RESTORETYPE_MYSQL
+	 * For RESTORETYPE_MYSQL and RESTORETYPE_POSTGRESQL
 	 */
 	Password: string
 	/**
-	 * For RESTORETYPE_MYSQL
+	 * For RESTORETYPE_MYSQL and RESTORETYPE_POSTGRESQL
 	 */
 	Host: string
 	/**
-	 * For RESTORETYPE_MYSQL
+	 * For RESTORETYPE_MYSQL and RESTORETYPE_POSTGRESQL
 	 */
 	Port: string
 	/**
-	 * For RESTORETYPE_MYSQL
+	 * For RESTORETYPE_MYSQL and RESTORETYPE_POSTGRESQL
 	 */
 	UseSsl: boolean
 	/**
-	 * For RESTORETYPE_MYSQL i.e.: Self signed certs
+	 * For RESTORETYPE_MYSQL and RESTORETYPE_POSTGRESQL i.e.: Self signed certs
 	 */
 	SslAllowInvalid: boolean
 	/**
-	 * For RESTORETYPE_MYSQL
+	 * For RESTORETYPE_MYSQL and RESTORETYPE_POSTGRESQL
 	 */
 	SslCaFile: string
 	/**
-	 * For RESTORETYPE_MYSQL
+	 * For RESTORETYPE_MYSQL and RESTORETYPE_POSTGRESQL
 	 */
 	SslCrtFile: string
 	/**
-	 * For RESTORETYPE_MYSQL
+	 * For RESTORETYPE_MYSQL and RESTORETYPE_POSTGRESQL
 	 */
 	SslKeyFile: string
+	/**
+	 * For RESTORETYPE_POSTGRESQL. The database to connect to in order to
+	 * create the restored databases. If blank, "postgres" is used
+	 * This field is available in Comet 26.11.0 and later.
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	PostgresConnectDatabase?: string
 	/**
 	 * For RESTORETYPE_MSSQL.
 	 * Omission from JSON will be interpreted as the zero value for this field type
@@ -10478,6 +11128,57 @@ export function New_Zero_libcomet_SMBDestinationLocation(): libcomet_SMBDestinat
 }
 
 
+export type libcomet_SMTPOAuthOptions = {
+	/**
+	 * One of the SMTP_OAUTH_PROVIDER_ constants
+	 */
+	Provider: number
+	/**
+	 * One of the SMTP_OAUTH_FLOW_ constants
+	 */
+	Flow: number
+	/**
+	 * For SMTP_OAUTH_PROVIDER_MICROSOFT, the directory (tenant) ID or verified domain of the app
+	 * registration
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	TenantID?: string
+	/**
+	 * The OAuth 2.0 client ID of the customer-owned app registration
+	 */
+	ClientID: string
+	/**
+	 * The OAuth 2.0 client secret of the customer-owned app registration
+	 */
+	ClientSecret: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	ClientSecretFormat?: number
+	/**
+	 * For SMTP_OAUTH_FLOW_AUTHORIZATION_CODE, the refresh token returned by the
+	 * AdminMetaEmailOptionsOauthCallback API
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	RefreshToken?: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
+	RefreshTokenFormat?: number
+}
+
+export function New_Zero_libcomet_SMTPOAuthOptions(): libcomet_SMTPOAuthOptions {
+	return {
+		"Provider": 0,
+		"Flow": 0,
+		"ClientID": "",
+		"ClientSecret": "",
+	};
+}
+
+
 export type libcomet_SSHConnection = {
 	SSHServer: string
 	SSHUsername: string
@@ -10681,6 +11382,56 @@ export function New_Zero_libcomet_SearchSnapshotsResponse(): libcomet_SearchSnap
 export function libcomet_SearchSnapshotsResponse_set_embedded_libcomet_CometAPIResponseMessage(dest: libcomet_SearchSnapshotsResponse, src: libcomet_CometAPIResponseMessage): void {
 	dest.Status = src.Status;
 	dest.Message = src.Message;
+}
+
+
+/**
+ * SelfBackupEventData is the Data payload for the SEVT_SELFBACKUP_START, SEVT_SELFBACKUP_SUCCEEDED
+ * and SEVT_SELFBACKUP_FAILED events.
+ * This type is available in Comet 26.11.1 and later.
+ */
+export type libcomet_SelfBackupEventData = {
+	/**
+	 * For a System Self-Backup, the position of this target in ServerMetaVersionInfo.SelfBackup. Not
+	 * meaningful for a tenant export.
+	 */
+	TargetIndex: number
+	/**
+	 * For a tenant export, the ID of the exported tenant. Empty for a System Self-Backup.
+	 */
+	OrganizationID: string
+	/**
+	 * One of the DESTINATIONTYPE_ constants
+	 */
+	DestinationType: number
+	/**
+	 * Unix timestamp, in seconds.
+	 */
+	StartTime: number
+	/**
+	 * Unix timestamp, in seconds. Zero in SEVT_SELFBACKUP_START events.
+	 */
+	EndTime: number
+	/**
+	 * True in SEVT_SELFBACKUP_SUCCEEDED events, and false otherwise.
+	 */
+	Success: boolean
+	/**
+	 * Size of the self-backup archive, in bytes. Zero in SEVT_SELFBACKUP_START events.
+	 */
+	Size: number
+}
+
+export function New_Zero_libcomet_SelfBackupEventData(): libcomet_SelfBackupEventData {
+	return {
+		"TargetIndex": 0,
+		"OrganizationID": "",
+		"DestinationType": 0,
+		"StartTime": 0,
+		"EndTime": 0,
+		"Success": false,
+		"Size": 0,
+	};
 }
 
 
@@ -10944,6 +11695,31 @@ export function New_Zero_libcomet_ServerConfigOptions(): libcomet_ServerConfigOp
 }
 
 
+/**
+ * This type is available in Comet 26.8.10 and later.
+ */
+export type libcomet_ServerConfigOptionsAndHashResponse = {
+	Status: number
+	Message: string
+	/**
+	 * A hash identifier for the current state of the server configuration. If you supply this as the
+	 * RequireHash parameter of the AdminMetaServerConfigSet API, the server can safely reject your
+	 * change if another change has happened concurrently. This allows you to retry the request.
+	 */
+	ConfigHash: string
+	Config: libcomet_ServerConfigOptions
+}
+
+export function New_Zero_libcomet_ServerConfigOptionsAndHashResponse(): libcomet_ServerConfigOptionsAndHashResponse {
+	return {
+		"Status": 0,
+		"Message": "",
+		"ConfigHash": "",
+		"Config": New_Zero_libcomet_ServerConfigOptions(),
+	};
+}
+
+
 export type libcomet_ServerConfigOptionsBrandingFragment = {
 	Branding: libcomet_BrandingOptions
 }
@@ -10951,6 +11727,29 @@ export type libcomet_ServerConfigOptionsBrandingFragment = {
 export function New_Zero_libcomet_ServerConfigOptionsBrandingFragment(): libcomet_ServerConfigOptionsBrandingFragment {
 	return {
 		"Branding": New_Zero_libcomet_BrandingOptions(),
+	};
+}
+
+
+/**
+ * This type is available in Comet 26.8.10 and later.
+ */
+export type libcomet_ServerConfigOptionsHashResponse = {
+	Status: number
+	Message: string
+	/**
+	 * A hash identifier for the current state of the server configuration. If you supply this as the
+	 * RequireHash parameter of the AdminMetaServerConfigSet API, the server can safely reject your
+	 * change if another change has happened concurrently. This allows you to retry the request.
+	 */
+	ConfigHash: string
+}
+
+export function New_Zero_libcomet_ServerConfigOptionsHashResponse(): libcomet_ServerConfigOptionsHashResponse {
+	return {
+		"Status": 0,
+		"Message": "",
+		"ConfigHash": "",
 	};
 }
 
@@ -11011,6 +11810,11 @@ export type libcomet_ServerMetaBrandingProperties = {
 	 * custom branding is enforced via the license.
 	 */
 	AdminHideBrandedCloudStorage: boolean
+	/**
+	 * This field is available in Comet 26.8.9 and later.
+	 * Omission from JSON will be interpreted as an empty array
+	 */
+	ExperimentalOptions?: string[]
 }
 
 export function New_Zero_libcomet_ServerMetaBrandingProperties(): libcomet_ServerMetaBrandingProperties {
@@ -11478,6 +12282,39 @@ export type libcomet_SourceConfig = {
 	 * privileges to read the grant tables. Restore jobs of type RESTORETYPE_MYSQL skip this stream; it
 	 * can be retrieved with a file restore. If not present, or set to any other value, no
 	 * users-and-grants stream is added
+	 *
+	 * For engine1/postgresql, Comet understands the following EngineProp keys:
+	 *
+	 * - USERNAME: The username to connect to the PostgreSQL server
+	 * - PASSWORD: The password to connect to the PostgreSQL server
+	 * - HOST: The hostname or IP address of the PostgreSQL server
+	 * - PORT: The TCP port of the PostgreSQL server. If not present, defaults to 5432
+	 * - CONNECT_DATABASE: The database to connect to in order to list databases. If not present,
+	 * defaults to "postgres"
+	 * - USE_TLS: If set to "1", connect using TLS
+	 * - TLS_SKIP_VERIFY: If set to "1" and USE_TLS is set, skip verifying the server certificate
+	 * - TLS_CUSTOM_SERVER_CA_PATH: Path to a custom CA file for verifying the server certificate
+	 * - TLS_CUSTOM_CLIENT_CRT_PATH: Path to a client TLS certificate file
+	 * - TLS_CUSTOM_CLIENT_KEY_PATH: Path to a client TLS private key file
+	 * - PGDUMP: Path to a custom pg_dump binary. If not present, autodiscover a pg_dump binary
+	 * - EXTRA_PARAMS: Extra space-separated arguments to pass to pg_dump
+	 * - ALL_DATABASES: If present, include all databases with specified exclusions. If not present,
+	 * only back up the specified inclusions
+	 * - Any key starting with DATABASE: A database that is included. Only valid if ALL_DATABASES is
+	 * not present.
+	 * - Any key starting with EXCEPT-DATABASE: A database that is excluded. Only valid if
+	 * ALL_DATABASES is present.
+	 * - METADATA_FILE: Path to a local file whose content will be stored in the backup snapshot under
+	 * the reserved ".metadata" filename. The file is read at backup time on the device. Restore jobs
+	 * of type RESTORETYPE_POSTGRESQL skip this stream; it can be retrieved with a file restore. If not
+	 * present, no metadata stream is added
+	 * - INCLUDE_GLOBALS: Optional. If set to "1", additionally capture the PostgreSQL cluster's
+	 * globals - its roles with their privileges, and its tablespaces - as a generated SQL script,
+	 * stored in the backup snapshot under the reserved ".globals.sql" filename. Requires a pg_dumpall
+	 * binary alongside pg_dump, and the connecting role to be a superuser in order to read the cluster
+	 * catalogs. Restore jobs of type RESTORETYPE_POSTGRESQL skip this stream; it can be retrieved with
+	 * a file restore and replayed by hand. If not present, or set to any other value, no globals
+	 * stream is added
 	 */
 	EngineProps: {[k: string]: string}
 	/**
@@ -12456,6 +13293,10 @@ export type libcomet_UserPolicy = {
 	/**
 	 * Omission from JSON will be interpreted as 0 (zero)
 	 */
+	ModeAdminRestoreData?: number
+	/**
+	 * Omission from JSON will be interpreted as 0 (zero)
+	 */
 	ModeRequireUserResetPassword?: number
 	PreventDeleteSingleSnapshots: boolean
 	PreventChangeAccountPassword: boolean
@@ -12667,6 +13508,14 @@ export type libcomet_UserProfileConfig = {
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	PasswordRecovery?: string
+	/**
+	 * If this field is empty, the "Allow administrator to restore data" feature is turned off. If this
+	 * field is filled, it contains a key allowing passwordless in-browser restores for this user. In a
+	 * profile update, an empty value leaves the stored key unchanged, and
+	 * RESTORE_DATA_RECOVERY_KEY_DISABLE removes it.
+	 * Omission from JSON will be interpreted as empty-string
+	 */
+	RestoreDataRecoveryKey?: string
 	/**
 	 * Allow login using the password alone. Set this to false if the password alone should not be
 	 * sufficient.
@@ -13568,12 +14417,39 @@ export function New_Zero_libcomet_WebInterfaceBrandingProperties(): libcomet_Web
 
 
 /**
+ * WebhookAWSOptions holds the credentials for the WEBHOOK_FORMAT_AWS_ webhook formats. Only these
+ * credentials are used; the Comet Server's own AWS environment or instance role is never consulted.
+ * This type is available in Comet 26.11.1 and later.
+ */
+export type libcomet_WebhookAWSOptions = {
+	AccessKeyID: string
+	/**
+	 * The secret access key, encrypted according to SecretAccessKeyFormat.
+	 */
+	SecretAccessKey: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants. It controls the encryption of the SecretAccessKey field.
+	 */
+	SecretAccessKeyFormat: number
+}
+
+export function New_Zero_libcomet_WebhookAWSOptions(): libcomet_WebhookAWSOptions {
+	return {
+		"AccessKeyID": "",
+		"SecretAccessKey": "",
+		"SecretAccessKeyFormat": 0,
+	};
+}
+
+
+/**
  * WebhookOption defines the configuration of a webhook target. The Comet Server will send a live
  * HTTP POST event to the webhook URL when certain events happen.
  */
 export type libcomet_WebhookOption = {
 	/**
-	 * The target URL to POST the event data to
+	 * The target URL to POST the event data to. If PayloadFormat is WEBHOOK_FORMAT_EMAIL, this is
+	 * instead the recipient email address.
 	 */
 	URL: string
 	/**
@@ -13596,11 +14472,29 @@ export type libcomet_WebhookOption = {
 	 * One of the WEBHOOK_FORMAT_ constants. This controls how the event payload is encoded in the
 	 * outgoing POST request. If empty (WEBHOOK_FORMAT_RAW), the raw StreamableEvent JSON object is
 	 * sent. When set to WEBHOOK_FORMAT_SLACK ("slack"), the event is reformatted as a Slack
-	 * Incoming Webhook message so it renders natively in a Slack channel.
+	 * Incoming Webhook message so it renders natively in a Slack channel. When set to
+	 * WEBHOOK_FORMAT_EMAIL ("email"), the event is sent as an email instead of an HTTP request, and
+	 * CustomHeaders is ignored.
 	 * This field is available in Comet 26.5.2 and later.
 	 * Omission from JSON will be interpreted as empty-string
 	 */
 	PayloadFormat?: string
+	/**
+	 * If set, SEVT_JOB_NEW and SEVT_JOB_COMPLETED events are only sent for jobs that match this
+	 * filter, using the same fields as the job search and email report filters. Other event types
+	 * are unaffected. If the filter cannot be evaluated, the job event is not sent. If unset (null),
+	 * all job events are sent.
+	 * This field is available in Comet 26.11.1 and later.
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	JobFilter?: libcomet_SearchClause
+	/**
+	 * Credentials for the WEBHOOK_FORMAT_AWS_ formats. Required for those formats, and ignored
+	 * otherwise.
+	 * This field is available in Comet 26.11.1 and later.
+	 * Omission from JSON will be interpreted as the zero value for this field type
+	 */
+	AWS?: libcomet_WebhookAWSOptions
 }
 
 export function New_Zero_libcomet_WebhookOption(): libcomet_WebhookOption {
@@ -13688,6 +14582,77 @@ export type libcomet_WindowsCodeSignProperties = {
 	 * The name of the key to select on the remote SAS Relic server
 	 */
 	WindowsCodeSignRelicKeyName: string
+	/**
+	 * The AWS region containing the KMS key, e.g. us-east-1
+	 */
+	WindowsCodeSignAWSRegion: string
+	/**
+	 * The access key ID of an IAM user permitted to call kms:GetPublicKey and kms:Sign on the key
+	 */
+	WindowsCodeSignAWSAccessKeyID: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
+	WindowsCodeSignAWSSecretAccessKeyFormat: number
+	WindowsCodeSignAWSSecretAccessKey: string
+	/**
+	 * The KMS key ID, key ARN, alias name (alias/...) or alias ARN of an asymmetric SIGN_VERIFY key
+	 */
+	WindowsCodeSignAWSKMSKeyID: string
+	/**
+	 * The X.509 code signing certificate for the KMS key, and optionally its intermediate
+	 * certificates, in PEM or DER format
+	 */
+	WindowsCodeSignAWSCertfile: string
+	/**
+	 * The full resource name of a Cloud KMS asymmetric signing key version:
+	 * projects/PROJECT/locations/LOCATION/keyRings/KEYRING/cryptoKeys/KEY/cryptoKeyVersions/VERSION
+	 */
+	WindowsCodeSignGCPKMSKeyVersion: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
+	WindowsCodeSignGCPServiceAccountKeyFormat: number
+	/**
+	 * The JSON key file contents of a Google Cloud service account with the Cloud KMS Signer/Verifier
+	 * role on the key version. Only keys of type service_account are accepted.
+	 */
+	WindowsCodeSignGCPServiceAccountKey: string
+	/**
+	 * The X.509 code signing certificate for the Cloud KMS key, and optionally its intermediate
+	 * certificates, in PEM or DER format
+	 */
+	WindowsCodeSignGCPCertfile: string
+	/**
+	 * The regional endpoint of the Azure Artifact Signing account, e.g.
+	 * https://eus.codesigning.azure.net
+	 */
+	WindowsCodeSignAzureArtifactSigningEndpoint: string
+	/**
+	 * The Azure Artifact Signing account name
+	 */
+	WindowsCodeSignAzureArtifactSigningAccount: string
+	/**
+	 * The certificate profile name within the Azure Artifact Signing account
+	 */
+	WindowsCodeSignAzureArtifactSigningProfile: string
+	/**
+	 * The Microsoft Entra tenant ID of the app registration
+	 */
+	WindowsCodeSignAzureArtifactSigningTenantID: string
+	/**
+	 * The application (client) ID of a Microsoft Entra app registration with the Artifact Signing
+	 * Certificate Profile Signer role on the certificate profile
+	 */
+	WindowsCodeSignAzureArtifactSigningAppID: string
+	/**
+	 * One of the ENCRYPTIONMETHOD_ constants
+	 */
+	WindowsCodeSignAzureArtifactSigningAppSecretFormat: number
+	/**
+	 * A client secret of the app registration
+	 */
+	WindowsCodeSignAzureArtifactSigningAppSecret: string
 }
 
 export function New_Zero_libcomet_WindowsCodeSignProperties(): libcomet_WindowsCodeSignProperties {
@@ -13711,6 +14676,23 @@ export function New_Zero_libcomet_WindowsCodeSignProperties(): libcomet_WindowsC
 		"WindowsCodeSignRelicServerURL": "",
 		"WindowsCodeSignRelicKeypairFile": "",
 		"WindowsCodeSignRelicKeyName": "",
+		"WindowsCodeSignAWSRegion": "",
+		"WindowsCodeSignAWSAccessKeyID": "",
+		"WindowsCodeSignAWSSecretAccessKeyFormat": 0,
+		"WindowsCodeSignAWSSecretAccessKey": "",
+		"WindowsCodeSignAWSKMSKeyID": "",
+		"WindowsCodeSignAWSCertfile": "",
+		"WindowsCodeSignGCPKMSKeyVersion": "",
+		"WindowsCodeSignGCPServiceAccountKeyFormat": 0,
+		"WindowsCodeSignGCPServiceAccountKey": "",
+		"WindowsCodeSignGCPCertfile": "",
+		"WindowsCodeSignAzureArtifactSigningEndpoint": "",
+		"WindowsCodeSignAzureArtifactSigningAccount": "",
+		"WindowsCodeSignAzureArtifactSigningProfile": "",
+		"WindowsCodeSignAzureArtifactSigningTenantID": "",
+		"WindowsCodeSignAzureArtifactSigningAppID": "",
+		"WindowsCodeSignAzureArtifactSigningAppSecretFormat": 0,
+		"WindowsCodeSignAzureArtifactSigningAppSecret": "",
 	};
 }
 
@@ -13743,10 +14725,11 @@ export default abstract class CometServerAPIBase {
 	 * Create a new personal API token for the current admin account
 	 * The response contains the plaintext token. It is shown exactly once and cannot be retrieved again - store it securely.
 	 * The token inherits the current permissions of the admin account that created it, evaluated live on each request; it does not capture a fixed snapshot of permissions.
+	 * To authenticate with the token, send it in the Token field with AuthType=Token, or in the Password field with AuthType=Password. The latter lets SDKs and integrations that only support password authentication use a token without needing to handle 2FA.
 	 * Creating a token requires you to supply your current password, unless the request is already authenticated with a password, or the account is managed by an external authentication source. Check AdminAccountProperties.APITokenCreateRequiresPassword to know whether it is needed.
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} Description Human-readable label for this token
 	 * @param {number|null} ExpireTime Unix timestamp, in seconds, when the token stops working. Must be in the future. If this parameter is omitted entirely, the token expires after 90 days. Pass zero explicitly for a token that never expires
@@ -13767,7 +14750,7 @@ export default abstract class CometServerAPIBase {
 	 * This does not include the token itself, which is only returned once when the token is created.
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_AdminAccountAPITokenListResponse>}
 	 */
@@ -13781,7 +14764,7 @@ export default abstract class CometServerAPIBase {
 	 * An admin may always revoke their own tokens, even if API tokens have since been disabled for their account or this server.
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TokenID The token identifier, as shown in the token list
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -13799,7 +14782,7 @@ export default abstract class CometServerAPIBase {
 	 * In Comet 26.8.4 and later, when authenticating with an admin API token, the account's password hash is additionally obscured.
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_AdminAccountPropertiesResponse>}
 	 */
@@ -13813,7 +14796,7 @@ export default abstract class CometServerAPIBase {
 	 * The secret is returned as a `data-uri` image of a QR code. The new secret is immediately applied to the current admin account.
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_TotpRegeneratedResponse>}
 	 */
@@ -13826,7 +14809,7 @@ export default abstract class CometServerAPIBase {
 	 * Revoke a session key (log out)
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
@@ -13839,7 +14822,7 @@ export default abstract class CometServerAPIBase {
 	 * Generate a session key (log in)
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string|null} SelfAddress External URL of this server (>= 18.9.9)
 	 * @return {Promise<libcomet_SessionKeyRegeneratedResponse>}
@@ -13859,7 +14842,7 @@ export default abstract class CometServerAPIBase {
 	 * Generate a session key for an end-user (log in as end-user)
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser Target account username
 	 * @return {Promise<libcomet_SessionKeyRegeneratedResponse>}
@@ -13875,7 +14858,7 @@ export default abstract class CometServerAPIBase {
 	 * Exchange an SSO one-time token for a session key
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_SessionKeyRegeneratedResponse>}
 	 */
@@ -13892,7 +14875,7 @@ export default abstract class CometServerAPIBase {
 	 * In Comet 24.12.2 and later, this API can change the IPWhitelist field. Prior to this, changes to the IPWhitelist field were ignored.
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {libcomet_AdminSecurityOptions} Security Updated account properties
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -13911,7 +14894,7 @@ export default abstract class CometServerAPIBase {
 	 * to allow their use with the WebAuthn endpoints.
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} SelfAddress External URL of this server, used as U2F AppID and Facet
 	 * @return {Promise<libcomet_U2FRegistrationChallengeResponse>}
@@ -13930,7 +14913,7 @@ export default abstract class CometServerAPIBase {
 	 * to allow their use with the WebAuthn endpoints.
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} U2FChallengeID Associated value from AdminAccountU2fRequestRegistrationChallenge API
 	 * @param {string} U2FClientData U2F response data supplied by hardware token
@@ -13956,7 +14939,7 @@ export default abstract class CometServerAPIBase {
 	 * Validate the TOTP code before turning 2fa(TOTP) on
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TOTPCode Six-digit code after scanning barcode image
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -13972,7 +14955,7 @@ export default abstract class CometServerAPIBase {
 	 * Register a new FIDO2 WebAuthn token
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} SelfAddress External URL of this server, used as WebAuthn ID
 	 * @return {Promise<libcomet_WebAuthnRegistrationChallengeResponse>}
@@ -13988,7 +14971,7 @@ export default abstract class CometServerAPIBase {
 	 * Register a new FIDO2 WebAuthn token
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} SelfAddress External URL of this server, used as WebAuthn ID
 	 * @param {string} ChallengeID Associated value from AdminAccountWebAuthnRequestRegistrationChallenge API
@@ -14024,16 +15007,17 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser New account username (>= 17.2.0)
 	 * @param {string} TargetPassword New account password (>= 17.2.0)
 	 * @param {number|null} StoreRecoveryCode If set to 1, store and keep a password recovery code for the generated user (>= 18.3.9)
 	 * @param {number|null} RequirePasswordChange If set to 1, require to reset password at the first login for the generated user (>= 20.3.4)
 	 * @param {string|null} TargetOrganization If present, create the user account on behalf of another organization. Only allowed for administrator accounts in the top-level organization. (>= 22.5.0)
+	 * @param {number|null} StoreDataRecoveryCode If set to 1, store and keep a data recovery code for the generated user (>= 26.8.10)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
-	async AdminAddUserP(TargetUser: string, TargetPassword: string, StoreRecoveryCode: number|null = null, RequirePasswordChange: number|null = null, TargetOrganization: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
+	async AdminAddUserP(TargetUser: string, TargetPassword: string, StoreRecoveryCode: number|null = null, RequirePasswordChange: number|null = null, TargetOrganization: string|null = null, StoreDataRecoveryCode: number|null = null): Promise<libcomet_CometAPIResponseMessage> {
 		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
 		params["TargetPassword"] = TargetPassword;
@@ -14046,6 +15030,9 @@ export default abstract class CometServerAPIBase {
 		if (TargetOrganization !== null) {
 			params["TargetOrganization"] = TargetOrganization;
 		}
+		if (StoreDataRecoveryCode !== null) {
+			params["StoreDataRecoveryCode"] = ""+StoreDataRecoveryCode;
+		}
 		return await this._requestP("api/v1/admin/add-user", params);
 	}
 
@@ -14056,7 +15043,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser New account username (>= 17.2.0)
 	 * @param {libcomet_UserProfileConfig} ProfileData New account profile (>= 17.2.0)
@@ -14080,14 +15067,18 @@ export default abstract class CometServerAPIBase {
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser the username of the admin to be deleted
+	 * @param {string|null} TargetOrgID the organization ID of the admin to be deleted. If omitted, defaults to the top-level organization. (>= 26.11.0)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
-	async AdminAdminUserDeleteP(TargetUser: string): Promise<libcomet_CometAPIResponseMessage> {
+	async AdminAdminUserDeleteP(TargetUser: string, TargetOrgID: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
 		const params: { [s: string]: string; } = {};
 		params["TargetUser"] = TargetUser;
+		if (TargetOrgID !== null) {
+			params["TargetOrgID"] = TargetOrgID;
+		}
 		return await this._requestP("api/v1/admin/admin-user/delete", params);
 	}
 
@@ -14098,12 +15089,17 @@ export default abstract class CometServerAPIBase {
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
+	 * @param {string|null} TargetOrgID If present, only list the administrators belonging to this organization. Otherwise, administrators from all organizations are listed. (>= 26.11.0)
 	 * @return {Promise<libcomet_AllowedAdminUser[]>}
 	 */
-	async AdminAdminUserListP(): Promise<libcomet_AllowedAdminUser[]> {
-		return await this._requestP("api/v1/admin/admin-user/list", {});
+	async AdminAdminUserListP(TargetOrgID: string|null = null): Promise<libcomet_AllowedAdminUser[]> {
+		const params: { [s: string]: string; } = {};
+		if (TargetOrgID !== null) {
+			params["TargetOrgID"] = TargetOrgID;
+		}
+		return await this._requestP("api/v1/admin/admin-user/list", params);
 	}
 
 	/**
@@ -14113,11 +15109,11 @@ export default abstract class CometServerAPIBase {
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser the username for this new admin
 	 * @param {string} TargetPassword the password for this new admin user
-	 * @param {string|null} TargetOrgID provide the organization ID for this user, it will default to the org of the authenticating user otherwise
+	 * @param {string|null} TargetOrgID provide the organization ID for this user, it will default to the top-level organization otherwise.
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminAdminUserNewP(TargetUser: string, TargetPassword: string, TargetOrgID: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
@@ -14128,6 +15124,36 @@ export default abstract class CometServerAPIBase {
 			params["TargetOrgID"] = TargetOrgID;
 		}
 		return await this._requestP("api/v1/admin/admin-user/new", params);
+	}
+
+	/**
+	 * AdminAdminUserSet
+	 * Update another administrator
+	 * This API cannot update your own administrator account. Use the AdminAccountSetProperties API instead.
+	 * The supplied Profile replaces the stored administrator account as-is, with the following exceptions:
+	 * - The Username and OrganizationID fields must either be empty or match the target administrator. This API cannot rename an administrator or move it to another organization.
+	 * - To set a new plaintext password, use a password format of 0 (PASSWORD_FORMAT_PLAINTEXT); it must be at least 8 characters. A password format of 4 (PASSWORD_FORMAT_UNVERIFIABLE) leaves the password unchanged.
+	 * - APITokens may only be removed, or have their Description changed. New tokens must be created by the administrator themselves. Other fields of retained tokens are ignored.
+	 * - IPWhitelist is cleared if the server license does not permit it.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * Access to this API may be prevented on a per-administrator basis.
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
+	 *
+	 * @param {string} TargetUser the username of the admin to be updated (>= 26.11.0)
+	 * @param {libcomet_AllowedAdminUser} Profile the updated administrator account (>= 26.11.0)
+	 * @param {string|null} TargetOrgID the organization ID of the admin to be updated. If omitted, defaults to the top-level organization. (>= 26.11.0)
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async AdminAdminUserSetP(TargetUser: string, Profile: libcomet_AllowedAdminUser, TargetOrgID: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["TargetUser"] = TargetUser;
+		params["Profile"] = JSON.stringify(Profile);
+		if (TargetOrgID !== null) {
+			params["TargetOrgID"] = TargetOrgID;
+		}
+		return await this._requestP("api/v1/admin/admin-user/set", params);
 	}
 
 	/**
@@ -14173,7 +15199,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} Subject Bulletin subject line (>= 17.3.5)
 	 * @param {string} Content Bulletin message content (>= 17.3.5)
@@ -14192,7 +15218,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Constellation Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_ConstellationCheckReport>}
 	 */
@@ -14206,7 +15232,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Constellation Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_ConstellationCheckReport>}
 	 */
@@ -14221,7 +15247,7 @@ export default abstract class CometServerAPIBase {
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * This API requires the Constellation Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
@@ -14235,7 +15261,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Constellation Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_ConstellationStatusAPIResponse>}
 	 */
@@ -14248,7 +15274,7 @@ export default abstract class CometServerAPIBase {
 	 * Convert IAM Storage Role vault to its underlying S3 type
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser The user to receive the new Storage Vault
 	 * @param {string} DestinationId The id of the old storage role destination to convert
@@ -14267,7 +15293,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {libcomet_SearchClause} Query (No description available)
 	 * @return {Promise<libcomet_CountJobsResponse>}
@@ -14287,7 +15313,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser Selected account username
 	 * @param {string} TargetPassword Selected account password (>= 20.9.1)
@@ -14310,7 +15336,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser Selected account username
 	 * @param {string} SourceID Selected Protected Item GUID
@@ -14333,7 +15359,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser Selected account username (>= 17.2.0)
 	 * @param {libcomet_UninstallConfig|null} UninstallConfig Uninstall software configuration (>= 20.3.5)
@@ -14354,7 +15380,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser Selected account username
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -14372,7 +15398,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Destination The Storage Vault GUID
@@ -14391,7 +15417,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} DestinationID The Storage Vault GUID
@@ -14407,13 +15433,31 @@ export default abstract class CometServerAPIBase {
 	}
 
 	/**
+	 * AdminDispatcherClearLoginPassword
+	 * Instruct a live connected device to discard its stored login password and return to the login screen
+	 * The device keeps its username and server URL, so only the new password needs to be re-entered. Use this after a server-side password change when the device should not be given the new password automatically. Devices older than 26.11.3 cannot retain the login details and receive the force-login behavior instead, discarding all stored credentials.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async AdminDispatcherClearLoginPasswordP(TargetID: string): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		return await this._requestP("api/v1/admin/dispatcher/clear-login-password", params);
+	}
+
+	/**
 	 * AdminDispatcherDeepverifyStorageVault
 	 * Instruct a live connected device to deeply verify Storage Vault content
 	 * This command is understood by Comet Backup 18.8.2 and newer.
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Destination The Storage Vault GUID
@@ -14432,7 +15476,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} DestinationID The Storage Vault GUID
@@ -14454,7 +15498,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} DestinationID The Storage Vault GUID
@@ -14476,7 +15520,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID (>= 17.2.0)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -14494,7 +15538,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Snapshot where the email belongs to
@@ -14518,7 +15562,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -14536,7 +15580,7 @@ export default abstract class CometServerAPIBase {
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} OrganizationID Target organization
 	 * @return {Promise<libcomet_OrganizationLoginURLResponse>}
@@ -14554,7 +15598,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} ImportSourceID The selected import source, as found by the AdminDispatcherRequestImportSources API
@@ -14574,7 +15618,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID (>= 17.2.0)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -14591,7 +15635,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string|null} UserNameFilter User name filter string (>= 22.6.5)
 	 * @return {Promise<{[k: string]: libcomet_LiveUserConnection}>}
@@ -14611,7 +15655,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_Office365Credential} Credentials The Office365 account credential
@@ -14630,7 +15674,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_DestinationLocation} ExtraData The destination location settings
@@ -14650,7 +15694,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID (>= 17.2.0)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -14668,7 +15712,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} EmailAddress The email address of the Azure AD administrator
@@ -14688,7 +15732,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Continuation The ID returned from the AdminDispatcherRegisterOfficeApplicationBegin endpoint
@@ -14708,7 +15752,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Destination The Storage Vault GUID
@@ -14727,7 +15771,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @return {Promise<libcomet_BrowseDiskDrivesResponse>}
@@ -14744,7 +15788,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @return {Promise<libcomet_BrowseEDBResponse>}
@@ -14761,7 +15805,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @return {Promise<libcomet_BrowseHVResponse>}
@@ -14779,7 +15823,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_MongoDBConnection} Credentials The Mongo database authentication settings
@@ -14799,7 +15843,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_MSSQLConnection} Credentials The MSSQL database authentication settings
@@ -14819,7 +15863,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_MySQLConnection} Credentials The MySQL database authentication settings
@@ -14833,12 +15877,32 @@ export default abstract class CometServerAPIBase {
 	}
 
 	/**
+	 * AdminDispatcherRequestBrowsePostgresql
+	 * Request a list of databases in a PostgreSQL server
+	 * The remote device must have given consent for an MSP to browse their files.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Auth Role to be enabled.
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
+	 *
+	 * @param {string} TargetID The live connection GUID (>= 26.11.0)
+	 * @param {libcomet_PostgreSQLConnection} Credentials The PostgreSQL database authentication settings (>= 26.11.0)
+	 * @return {Promise<libcomet_BrowseSQLServerResponse>}
+	 */
+	async AdminDispatcherRequestBrowsePostgresqlP(TargetID: string, Credentials: libcomet_PostgreSQLConnection): Promise<libcomet_BrowseSQLServerResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Credentials"] = JSON.stringify(Credentials);
+		return await this._requestP("api/v1/admin/dispatcher/request-browse-postgresql", params);
+	}
+
+	/**
 	 * AdminDispatcherRequestBrowseProxmox
 	 * Request a list of Proxmox virtual machines and containers
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_ProxmoxConnection} Credentials The Proxmox connection settings
@@ -14857,7 +15921,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_SSHConnection} Credentials The SSH connection settings
@@ -14876,7 +15940,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_SSHConnection} Credentials The SSH connection settings
@@ -14898,7 +15962,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_VMwareConnection} Credentials The VMware vSphere connection settings
@@ -14918,7 +15982,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_VMwareConnection} Credentials The VMware vSphere connection settings
@@ -14938,7 +16002,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_VMwareConnection} Credentials The VMware vSphere connection settings
@@ -14960,7 +16024,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_VMwareConnection} Credentials The VMware vSphere connection settings
@@ -14982,7 +16046,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_VMwareConnection} Credentials The VMware vSphere connection settings
@@ -15003,7 +16067,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @return {Promise<libcomet_BrowseVSSResponse>}
@@ -15021,7 +16085,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string|null} Path Browse objects inside this path. If empty or not present, returns the top-level device paths
@@ -15042,7 +16106,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @return {Promise<libcomet_DispatcherAdminSourcesResponse>}
@@ -15061,7 +16125,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_Office365Credential} Credentials The Office365 account credential
@@ -15081,7 +16145,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_Office365Credential} Credentials The Office365 account credential
@@ -15102,7 +16166,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Destination The Storage Vault ID
@@ -15131,7 +16195,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Destination The Storage Vault ID
@@ -15150,7 +16214,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Destination The Storage Vault ID
@@ -15171,7 +16235,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID (>= 17.2.0)
 	 * @param {string} BackupRule The schedule GUID
@@ -15190,7 +16254,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID (>= 17.2.0)
 	 * @param {string} Source The Protected Item GUID (>= 17.2.0)
@@ -15216,7 +16280,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Path The local path to restore to
@@ -15248,7 +16312,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Source The Protected Item ID
@@ -15291,7 +16355,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} DestinationID The Storage Vault GUID
@@ -15314,7 +16378,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_SSHConnection} Credentials The SSH connection settings
@@ -15333,7 +16397,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {libcomet_WinSMBAuth} Wsa The target credentials to test
@@ -15352,7 +16416,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {boolean} RemoveConfigFile Determine if the config.dat file will be deleted at the same time
@@ -15373,7 +16437,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} Destination The Storage Vault GUID
@@ -15397,7 +16461,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} NewPassword The new password of this user
@@ -15417,7 +16481,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID
 	 * @param {string} NewURL The new external URL of this server
@@ -15437,23 +16501,28 @@ export default abstract class CometServerAPIBase {
 	/**
 	 * AdminDispatcherUpdateSoftware
 	 * Instruct a live connected device to download a software update
+	 * By default the request is queued for delivery and this API returns immediately, without waiting for the device. If WaitForConfirmation is true and the device supports confirming update requests, this API instead waits up to ten seconds for the device to confirm that it has accepted the request, and reports the device's response. A device that does not support it is sent the request without waiting, as if WaitForConfirmation were false.
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
 	 * This API requires the Software Build Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetID The live connection GUID (>= 17.2.0)
 	 * @param {string|null} SelfAddress The external URL of this server, used to resolve conflicts (>= 19.3.11)
+	 * @param {boolean|null} WaitForConfirmation If true, wait for the device to confirm that it accepted the request (>= 26.11.2)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
-	async AdminDispatcherUpdateSoftwareP(TargetID: string, SelfAddress: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
+	async AdminDispatcherUpdateSoftwareP(TargetID: string, SelfAddress: string|null = null, WaitForConfirmation: boolean|null = null): Promise<libcomet_CometAPIResponseMessage> {
 		const params: { [s: string]: string; } = {};
 		params["TargetID"] = TargetID;
 		if (SelfAddress === null) {
 			params["SelfAddress"] = this._server_url;
 		} else {
 			params["SelfAddress"] = SelfAddress;
+		}
+		if (WaitForConfirmation !== null) {
+			params["WaitForConfirmation"] = (WaitForConfirmation ? "1" : "0");
 		}
 		return await this._requestP("api/v1/admin/dispatcher/update-software", params);
 	}
@@ -15463,7 +16532,7 @@ export default abstract class CometServerAPIBase {
 	 * Delete an external admin authentication source
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} SourceID (No description available)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -15479,7 +16548,7 @@ export default abstract class CometServerAPIBase {
 	 * Get a map of all external admin authentication sources
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<{[k: string]: libcomet_ExternalAuthenticationSource}>}
 	 */
@@ -15492,7 +16561,7 @@ export default abstract class CometServerAPIBase {
 	 * Create an external admin authentication source
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {libcomet_ExternalAuthenticationSource} Source (No description available)
 	 * @param {string|null} SourceID (No description available)
@@ -15513,7 +16582,7 @@ export default abstract class CometServerAPIBase {
 	 * sources for the tenant; none will be preserved.
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {{[k: string]: libcomet_ExternalAuthenticationSource}} Sources (No description available)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -15530,7 +16599,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} JobID Selected job ID (>= 17.2.0)
 	 * @return {Promise<string>}
@@ -15547,7 +16616,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} JobID Selected job ID
 	 * @param {string|null} MinSeverity Return only job log entries with equal or higher severity (>= 23.3.1)
@@ -15572,7 +16641,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} JobID Selected job ID (>= 17.2.0)
 	 * @return {Promise<libcomet_BackupJobDetail>}
@@ -15590,7 +16659,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_BackupJobDetail[]>}
 	 */
@@ -15605,7 +16674,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {libcomet_SearchClause} Query (No description available)
 	 * @return {Promise<libcomet_BackupJobDetail[]>}
@@ -15631,7 +16700,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {number} Start Timestamp (Unix)
 	 * @param {number} End Timestamp (Unix)
@@ -15651,7 +16720,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser Selected username (>= 17.2.0)
 	 * @return {Promise<libcomet_BackupJobDetail[]>}
@@ -15669,7 +16738,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_BackupJobDetail[]>}
 	 */
@@ -15683,7 +16752,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser Selected account username
 	 * @param {string} SourceID Selected Protected Item GUID
@@ -15702,7 +16771,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser Selected account username (>= 17.2.0)
 	 * @return {Promise<libcomet_UserProfileConfig>}
@@ -15721,7 +16790,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser Selected account username (>= 17.2.0)
 	 * @return {Promise<libcomet_GetProfileAndHashResponseMessage>}
@@ -15740,7 +16809,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser Selected account username (>= 17.2.0)
 	 * @return {Promise<libcomet_GetProfileHashResponseMessage>}
@@ -15758,7 +16827,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} DeviceID The live connection Device GUID
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -15775,7 +16844,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} DeviceID The live connection Device GUID
 	 * @param {string} TargetUser Selected account username
@@ -15796,7 +16865,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<{[k: string]: libcomet_RegistrationLobbyConnection}>}
 	 */
@@ -15812,7 +16881,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser Username
 	 * @param {string} JobID Job ID
@@ -15834,7 +16903,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser Username
 	 * @param {string} JobID Job ID
@@ -15853,7 +16922,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<string[]>}
 	 */
@@ -15867,7 +16936,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<{[k: string]: libcomet_UserProfileConfig}>}
 	 */
@@ -15881,7 +16950,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_ServerConfigOptionsBrandingFragment>}
 	 */
@@ -15896,7 +16965,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {libcomet_BrandingOptions} BrandingConfig Updated configuration content
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -15913,7 +16982,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_ServerConfigOptionsSoftwareBuildRoleFragment>}
 	 */
@@ -15927,7 +16996,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {libcomet_SoftwareBuildRoleOptions} SoftwareBuildRoleConfig Updated configuration content
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -15944,7 +17013,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Constellation Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_ConstellationRoleOptions>}
 	 */
@@ -15958,7 +17027,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Constellation Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {libcomet_ConstellationRoleOptions} ConstellationRoleOptions Constellation role options to set
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -15975,7 +17044,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_EmailOptions>}
 	 */
@@ -15984,12 +17053,34 @@ export default abstract class CometServerAPIBase {
 	}
 
 	/**
+	 * AdminMetaEmailOptionsOauthCallback
+	 * Exchange an OAuth 2.0 authorization code for an encrypted SMTP refresh token
+	 * The web interface calls this after the mailbox user grants consent. The response is the supplied SMTPOAuth with the refresh token added and secrets encrypted; store it in EmailOptions.SMTPOAuth and save it with the AdminMetaEmailOptionsSet API.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * Access to this API may be prevented on a per-administrator basis.
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
+	 *
+	 * @param {libcomet_SMTPOAuthOptions} SMTPOAuth The app registration that requested the authorization code. Flow must be SMTP_OAUTH_FLOW_AUTHORIZATION_CODE. The RefreshToken field is ignored. (>= 26.11.0)
+	 * @param {string} Code The authorization code returned to the redirect URI (>= 26.11.0)
+	 * @param {string} RedirectURI The redirect URI used in the authorization request (>= 26.11.0)
+	 * @return {Promise<libcomet_SMTPOAuthOptions>}
+	 */
+	async AdminMetaEmailOptionsOauthCallbackP(SMTPOAuth: libcomet_SMTPOAuthOptions, Code: string, RedirectURI: string): Promise<libcomet_SMTPOAuthOptions> {
+		const params: { [s: string]: string; } = {};
+		params["SMTPOAuth"] = JSON.stringify(SMTPOAuth);
+		params["Code"] = Code;
+		params["RedirectURI"] = RedirectURI;
+		return await this._requestP("api/v1/admin/meta/email-options/oauth-callback", params);
+	}
+
+	/**
 	 * AdminMetaEmailOptionsSet
 	 * Set the email options
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {libcomet_EmailOptions} EmailOptions The replacement email reporting options.
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -16006,7 +17097,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<number[]>}
 	 */
@@ -16019,7 +17110,7 @@ export default abstract class CometServerAPIBase {
 	 * Get the server PSA configuration
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_PSAConfig[]>}
 	 */
@@ -16032,7 +17123,7 @@ export default abstract class CometServerAPIBase {
 	 * Update the server PSA configuration
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {libcomet_PSAConfig[]} PSAConfigList The replacement PSA configuration list
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -16050,7 +17141,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
@@ -16064,7 +17155,7 @@ export default abstract class CometServerAPIBase {
 	 * The frontend should store the returned token on the NinjaOneConfig and persist it via the normal PSA config save flow.
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} Code The authorization code from NinjaOne
 	 * @param {string} RedirectURI The callback URI used in the authorization request
@@ -16089,7 +17180,7 @@ export default abstract class CometServerAPIBase {
 	 * Used to populate the NinjaOne Client ID dropdown in the admin UI.
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {libcomet_PSAConfig} PSAConfig The PSA configuration containing NinjaOne credentials
 	 * @return {Promise<libcomet_NinjaOneOrganization[]>}
@@ -16108,7 +17199,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {number} Log A log day, selected from the options returned by the Get Log Files API (>= 17.2.0)
 	 * @return {Promise<string>}
@@ -16127,7 +17218,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {number[]} Logs An array of log days, selected from the options returned by the Get Log Files API
 	 * @return {Promise<string>}
@@ -16144,7 +17235,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_RemoteStorageOption[]>}
 	 */
@@ -16158,7 +17249,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {libcomet_RemoteStorageOption[]} RemoteStorageOptions Updated configuration content
 	 * @param {string|null} ReplacementAutoVaultID Replacement Storage Template ID for auto Storage Vault configurations that use deleted Storage Templates (>= 24.12.0)
@@ -16179,7 +17270,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {libcomet_RemoteStorageOption} TemplateOptions Storage Template Vault Options
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -16200,7 +17291,7 @@ export default abstract class CometServerAPIBase {
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
@@ -16215,7 +17306,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {libcomet_EmailOptions} EmailOptions Updated configuration content
 	 * @param {string} Recipient Target email address to send test email
@@ -16235,7 +17326,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {libcomet_EmailReportingOption} EmailReportingOption Test email reporting option for sending
 	 * @param {string|null} TargetOrganization If present, Testing email with a target organization. Only allowed for top-level admins. (>= 24.3.0)
@@ -16256,7 +17347,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 *
 	 * @return {Promise<libcomet_ServerConfigOptions>}
@@ -16266,13 +17357,47 @@ export default abstract class CometServerAPIBase {
 	}
 
 	/**
+	 * AdminMetaServerConfigGetAndHash
+	 * Get server configuration (atomic)
+	 * The resulting hash parameter can be passed to the AdminMetaServerConfigSet API, to atomically ensure that no changes occur between get/set operations.
+	 * The hash format is not publicly documented and may change in a future server version. Use server APIs to retrieve current hash values.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * Access to this API may be prevented on a per-administrator basis.
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
+	 *
+	 * @return {Promise<libcomet_ServerConfigOptionsAndHashResponse>}
+	 */
+	async AdminMetaServerConfigGetAndHashP(): Promise<libcomet_ServerConfigOptionsAndHashResponse> {
+		return await this._requestP("api/v1/admin/meta/server-config/get-and-hash", {});
+	}
+
+	/**
+	 * AdminMetaServerConfigGetHash
+	 * Get server configuration (hash)
+	 * The hash can be used to determine if the server configuration has changed.
+	 * The hash format is not publicly documented and may change in a future server version. Use server APIs to retrieve current hash values.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * Access to this API may be prevented on a per-administrator basis.
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
+	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
+	 *
+	 * @return {Promise<libcomet_ServerConfigOptionsHashResponse>}
+	 */
+	async AdminMetaServerConfigGetHashP(): Promise<libcomet_ServerConfigOptionsHashResponse> {
+		return await this._requestP("api/v1/admin/meta/server-config/get-hash", {});
+	}
+
+	/**
 	 * AdminMetaServerConfigNetworkInterfaces
 	 * List the available network interfaces on the PC running Comet Server
 	 * Any IPv6 addresses are listed in compressed form without square-brackets.
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 *
 	 * @return {Promise<string[]>}
@@ -16290,15 +17415,19 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 *
 	 * @param {libcomet_ServerConfigOptions} Config Updated configuration content (>= 17.3.8)
+	 * @param {string|null} RequireHash If present, the change is only applied if the server configuration is unchanged since this hash was retrieved from the AdminMetaServerConfigGetAndHash API. Otherwise, the change is rejected with status 409 and the server does not restart. (>= 26.11.0)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
-	async AdminMetaServerConfigSetP(Config: libcomet_ServerConfigOptions): Promise<libcomet_CometAPIResponseMessage> {
+	async AdminMetaServerConfigSetP(Config: libcomet_ServerConfigOptions, RequireHash: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
 		const params: { [s: string]: string; } = {};
 		params["Config"] = JSON.stringify(Config);
+		if (RequireHash !== null) {
+			params["RequireHash"] = RequireHash;
+		}
 		return await this._requestP("api/v1/admin/meta/server-config/set", params);
 	}
 
@@ -16312,7 +17441,7 @@ export default abstract class CometServerAPIBase {
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
@@ -16325,7 +17454,7 @@ export default abstract class CometServerAPIBase {
 	 * Get software update news from the software provider
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_SoftwareUpdateNewsResponse>}
 	 */
@@ -16339,7 +17468,7 @@ export default abstract class CometServerAPIBase {
 	 * The returned key-value map is not necessarily ordered. Client-side code should sort the result before display.
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {boolean} Simple Remove redundant statistics (>= 18.9.1)
 	 * @return {Promise<{[k: number]: libcomet_StatResult}>}
@@ -16356,7 +17485,7 @@ export default abstract class CometServerAPIBase {
 	 * Retrieve the version number and basic properties about the server.
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_ServerMetaVersionInfo>}
 	 */
@@ -16370,7 +17499,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<{[k: string]: libcomet_WebhookOption}>}
 	 */
@@ -16385,7 +17514,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {{[k: string]: libcomet_WebhookOption}} WebhookOptions The replacement webhook target options. (>= 20.6.8)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -16402,7 +17531,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<{[k: string]: libcomet_NewsEntry}>}
 	 */
@@ -16416,7 +17545,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} NewsItem Selected news item GUID (>= 17.2.0)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -16433,7 +17562,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} NewsContent Content of news item (>= 17.2.0)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -16450,7 +17579,7 @@ export default abstract class CometServerAPIBase {
 	 * This is a pure computation with no device round-trip. The optional Accounts list is used only to enrich the generated rules' display metadata.
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {libcomet_Office365CustomSettingV2} Selection The legacy selection to convert
 	 * @param {libcomet_Office365MixedVirtualAccount[]|null} Accounts The organization's account list, for display-name enrichment
@@ -16471,7 +17600,7 @@ export default abstract class CometServerAPIBase {
 	 * Returns the effective selection for every account, including per-service rule attribution. This is a pure computation with no device round-trip.
 	 *
 	 * You must supply administrator authentication credentials to use this API.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {libcomet_Office365SelectionRule[]} Rules The ordered rule list to evaluate
 	 * @param {libcomet_Office365MixedVirtualAccount[]} Accounts The organization's account list
@@ -16492,7 +17621,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string|null} OrganizationID (No description available)
 	 * @param {libcomet_UninstallConfig|null} UninstallConfig Uninstall software configuration
@@ -16515,7 +17644,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {libcomet_SelfBackupExportOptions} Options The export config options
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -16532,7 +17661,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<{[k: string]: libcomet_Organization}>}
 	 */
@@ -16548,7 +17677,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string|null} OrganizationID (No description available)
 	 * @param {libcomet_Organization|null} Organization (No description available)
@@ -16571,7 +17700,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} PolicyID The policy ID to update or create
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -16589,7 +17718,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} PolicyID The policy ID to retrieve
 	 * @return {Promise<libcomet_GetGroupPolicyResponse>}
@@ -16607,7 +17736,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string|null} TargetOrganization If present, list the policies belonging to another organization. Only allowed for administrator accounts in the top-level organization. (>= 22.5.0)
 	 * @return {Promise<{[k: string]: string}>}
@@ -16627,7 +17756,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string|null} TargetOrganization If present, list the policies belonging to another organization. Only allowed for administrator accounts in the top-level organization. (>= 22.5.0)
 	 * @return {Promise<{[k: string]: libcomet_GroupPolicy}>}
@@ -16646,7 +17775,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {libcomet_GroupPolicy} Policy The policy data
 	 * @return {Promise<libcomet_CreateGroupPolicyResponse>}
@@ -16665,7 +17794,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} PolicyID The policy ID to update or create
 	 * @param {libcomet_GroupPolicy} Policy The policy data
@@ -16692,7 +17821,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser Selected account username
 	 * @param {libcomet_EmailReportConfig} EmailReportConfig Email report configuration to preview
@@ -16715,7 +17844,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_ReplicatorStateAPIResponse[]>}
 	 */
@@ -16732,7 +17861,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser The user to receive the new Storage Vault
 	 * @param {string} StorageProvider ID for the storage template destination
@@ -16765,7 +17894,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string|null} TargetOrganization If present, list the storage template options belonging to another organization. Only allowed for administrator accounts in the top-level organization. (>= 22.5.0)
 	 * @return {Promise<{[k: string]: string}>}
@@ -16785,7 +17914,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser Selected account username
 	 * @param {string} NewPassword New account password
@@ -16809,7 +17938,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser Selected account username
 	 * @param {string} TargetDevice Selected Device ID
@@ -16828,7 +17957,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
@@ -16842,7 +17971,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser Selected account username
 	 * @param {string} SourceID Selected Protected Item GUID
@@ -16873,7 +18002,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser Selected account username (>= 17.2.0)
 	 * @param {libcomet_UserProfileConfig} ProfileData Modified user profile (>= 17.2.0)
@@ -16898,7 +18027,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser Selected account username (>= 17.2.0)
 	 * @param {libcomet_UserProfileConfig} ProfileData Modified user profile (>= 17.2.0)
@@ -16923,7 +18052,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} SharedStorageQuotaID (No description available)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -16940,7 +18069,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} SharedStorageQuotaID (No description available)
 	 * @return {Promise<libcomet_GetSharedStorageQuotaResponse>}
@@ -16957,7 +18086,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_ListSharedStorageQuotaResponse>}
 	 */
@@ -16971,7 +18100,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} SharedStorageQuotaID (No description available)
 	 * @param {libcomet_SharedStorageQuota} SharedStorageQuota (No description available)
@@ -16995,7 +18124,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Storage Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} BucketID Bucket ID
 	 * @param {number|null} AfterTimestamp Allow a stale size measurement if it is at least as new as the supplied Unix timestamp. Timestamps in the future may produce a result clamped down to the Comet Server's current time. If not present, the size measurement may be arbitrarily stale.
@@ -17017,7 +18146,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Storage Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} BucketID Selected bucket name (>= 17.2.0)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -17035,7 +18164,7 @@ export default abstract class CometServerAPIBase {
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
 	 * This API requires the Storage Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 *
 	 * @param {string|null} BucketID (This parameter is not used)
@@ -17055,7 +18184,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Storage Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<{[k: string]: libcomet_BucketProperties}>}
 	 */
@@ -17069,7 +18198,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * Access to this API may be prevented on a per-administrator basis.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 *
 	 * @param {libcomet_DestinationLocation} ExtraData The destination location settings
@@ -17089,7 +18218,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Storage Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string|null} SetBucketValue Bucket ID (>= 17.2.0)
 	 * @param {string|null} SetKeyHashFormat Bucket key hashing format (>= 17.2.0)
@@ -17115,13 +18244,32 @@ export default abstract class CometServerAPIBase {
 	}
 
 	/**
+	 * AdminStorageRotateBucketKey
+	 * Issue a new key for an existing bucket, replacing the previous one
+	 * The previous key stops working immediately. Any device or Storage Vault still using it loses access to the bucket until it is given the new key, so this can be used to cut off a backup job that is no longer supposed to be writing.
+	 * The new key is returned in the response message. It is not recoverable afterwards; if it is lost, issue another one.
+	 *
+	 * You must supply administrator authentication credentials to use this API.
+	 * This API requires the Storage Role to be enabled.
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
+	 *
+	 * @param {string} BucketID Selected bucket name
+	 * @return {Promise<libcomet_AddBucketResponseMessage>}
+	 */
+	async AdminStorageRotateBucketKeyP(BucketID: string): Promise<libcomet_AddBucketResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["BucketID"] = BucketID;
+		return await this._requestP("api/v1/admin/storage/rotate-bucket-key", params);
+	}
+
+	/**
 	 * AdminUpdateCampaignStart
 	 * Start a new software update campaign
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * This API requires the Software Build Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 * This API requires the Auth Role to be enabled.
 	 *
 	 * @param {libcomet_UpdateCampaignOptions} Options Configure targets for the software update campaign
@@ -17140,7 +18288,7 @@ export default abstract class CometServerAPIBase {
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * This API requires the Software Build Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 * This API requires the Auth Role to be enabled.
 	 *
 	 * @return {Promise<libcomet_UpdateCampaignStatus>}
@@ -17155,7 +18303,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} GroupID The user group ID to delete
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
@@ -17172,7 +18320,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} GroupID The user group ID to retrieve
 	 * @param {boolean|null} IncludeUsers If present, includes the users array in the response.
@@ -17194,7 +18342,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string|null} TargetOrganization If present, list the user groups belonging to another organization. Only allowed for administrator accounts in the top-level organization.
 	 * @return {Promise<{[k: string]: string}>}
@@ -17214,7 +18362,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string|null} TargetOrganization If present, list the user groups belonging to the specified organization. Only allowed for administrator accounts in the top-level organization.
 	 * @return {Promise<{[k: string]: libcomet_UserGroup}>}
@@ -17233,7 +18381,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} Name this is the name of the group.
 	 * @param {string|null} TargetOrganization If present, list the policies belonging to another organization. Only allowed for administrator accounts in the top-level organization.
@@ -17254,7 +18402,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} GroupID The user group ID to update or create
 	 * @param {libcomet_UserGroup} Group The user group data
@@ -17275,7 +18423,7 @@ export default abstract class CometServerAPIBase {
 	 *
 	 * You must supply administrator authentication credentials to use this API.
 	 * This API requires the Auth Role to be enabled.
-	 * This API accepts admin personal API token authentication (AuthType=Token).
+	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} GroupID The user group ID to update
 	 * @param {string[]} Users An array of usernames.
@@ -17294,7 +18442,7 @@ export default abstract class CometServerAPIBase {
 	 * This hybrid API allows you to log in to the Comet Server as either an administrator or end-user account.
 	 * This API behaves like either AdminAccountSessionStart or UserWebSessionStart, depending on what the supplied credentials were valid for.
 	 *
-	 * This API does not accept admin personal API token authentication (AuthType=Token).
+	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @return {Promise<libcomet_SessionKeyRegeneratedResponse>}
 	 */
@@ -17415,6 +18563,23 @@ export default abstract class CometServerAPIBase {
 		params["DestinationID"] = DestinationID;
 		params["SnapshotID"] = SnapshotID;
 		return await this._requestP("api/v1/user/web/dispatcher/browse-virtual-machines", params);
+	}
+
+	/**
+	 * UserWebDispatcherClearLoginPassword
+	 * Instruct a live connected device to discard its stored login password and return to the login screen
+	 * The device keeps its username and server URL, so only the new password needs to be re-entered. Devices older than 26.11.3 cannot retain the login details and discard all stored credentials instead.
+	 *
+	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async UserWebDispatcherClearLoginPasswordP(TargetID: string): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		return await this._requestP("api/v1/user/web/dispatcher/clear-login-password", params);
 	}
 
 	/**
@@ -17662,6 +18827,24 @@ export default abstract class CometServerAPIBase {
 		params["TargetID"] = TargetID;
 		params["Credentials"] = JSON.stringify(Credentials);
 		return await this._requestP("api/v1/user/web/dispatcher/request-browse-mysql", params);
+	}
+
+	/**
+	 * UserWebDispatcherRequestBrowsePostgresql
+	 * Request a list of databases in a PostgreSQL server
+	 *
+	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} TargetID The live connection GUID (>= 26.11.0)
+	 * @param {libcomet_PostgreSQLConnection} Credentials The PostgreSQL database authentication settings (>= 26.11.0)
+	 * @return {Promise<libcomet_BrowseSQLServerResponse>}
+	 */
+	async UserWebDispatcherRequestBrowsePostgresqlP(TargetID: string, Credentials: libcomet_PostgreSQLConnection): Promise<libcomet_BrowseSQLServerResponse> {
+		const params: { [s: string]: string; } = {};
+		params["TargetID"] = TargetID;
+		params["Credentials"] = JSON.stringify(Credentials);
+		return await this._requestP("api/v1/user/web/dispatcher/request-browse-postgresql", params);
 	}
 
 	/**
@@ -18248,6 +19431,25 @@ export default abstract class CometServerAPIBase {
 	}
 
 	/**
+	 * UserWebJobAbandon
+	 * Mark a running job as abandoned
+	 * This will change the status of a running job to abandoned.
+	 * This is intended to be used on jobs which are definitely no longer running but are stuck in the running state; it will not attempt to cancel the job. If the job is detected to still be running after being marked as abandoned, it will be revived.
+	 * This is the user-facing counterpart to /api/v1/admin/job/abandon; it can only abandon jobs belonging to the authenticated user.
+	 *
+	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
+	 * This API requires the Auth Role to be enabled.
+	 *
+	 * @param {string} JobID Job ID
+	 * @return {Promise<libcomet_CometAPIResponseMessage>}
+	 */
+	async UserWebJobAbandonP(JobID: string): Promise<libcomet_CometAPIResponseMessage> {
+		const params: { [s: string]: string; } = {};
+		params["JobID"] = JobID;
+		return await this._requestP("api/v1/user/web/job/abandon", params);
+	}
+
+	/**
 	 * UserWebJobCancel
 	 * Cancel a running job
 	 * A request is sent to the live-connected device, asking it to cancel the operation. This may fail if there is no live-connection.
@@ -18477,11 +19679,12 @@ export type ApiRequestMap = {
 	"/api/v1/admin/account/webauthn/request-registration-challenge": { SelfAddress: string };
 	"/api/v1/admin/account/webauthn/submit-challenge-response": { SelfAddress: string; ChallengeID: string; Credential: string };
 	"/api/v1/admin/add-first-admin-user": { TargetUser: string; TargetPassword: string };
-	"/api/v1/admin/add-user": { TargetUser: string; TargetPassword: string; StoreRecoveryCode?: number; RequirePasswordChange?: number; TargetOrganization?: string };
+	"/api/v1/admin/add-user": { TargetUser: string; TargetPassword: string; StoreRecoveryCode?: number; RequirePasswordChange?: number; TargetOrganization?: string; StoreDataRecoveryCode?: number };
 	"/api/v1/admin/add-user-from-profile": { TargetUser: string; ProfileData: libcomet_UserProfileConfig; TargetOrganization?: string };
-	"/api/v1/admin/admin-user/delete": { TargetUser: string };
-	"/api/v1/admin/admin-user/list": Record<never, never>;
+	"/api/v1/admin/admin-user/delete": { TargetUser: string; TargetOrgID?: string };
+	"/api/v1/admin/admin-user/list": { TargetOrgID?: string };
 	"/api/v1/admin/admin-user/new": { TargetUser: string; TargetPassword: string; TargetOrgID?: string };
+	"/api/v1/admin/admin-user/set": { TargetUser: string; Profile: libcomet_AllowedAdminUser; TargetOrgID?: string };
 	"/api/v1/admin/branding/available-platforms": Record<never, never>;
 	"/api/v1/admin/branding/generate-client/test": { Platform: number; SelfAddress?: string };
 	"/api/v1/admin/bulletin/submit": { Subject: string; Content: string };
@@ -18497,6 +19700,7 @@ export type ApiRequestMap = {
 	"/api/v1/admin/disable-user-totp": { TargetUser: string };
 	"/api/v1/admin/dispatcher/apply-retention-rules": { TargetID: string; Destination: string };
 	"/api/v1/admin/dispatcher/browse-virtual-machines": { TargetID: string; DestinationID: string; SnapshotID: string };
+	"/api/v1/admin/dispatcher/clear-login-password": { TargetID: string };
 	"/api/v1/admin/dispatcher/deepverify-storage-vault": { TargetID: string; Destination: string };
 	"/api/v1/admin/dispatcher/delete-snapshot": { TargetID: string; DestinationID: string; SnapshotID: string };
 	"/api/v1/admin/dispatcher/delete-snapshots": { TargetID: string; DestinationID: string; SnapshotIDs: string[] };
@@ -18519,6 +19723,7 @@ export type ApiRequestMap = {
 	"/api/v1/admin/dispatcher/request-browse-mongodb": { TargetID: string; Credentials: libcomet_MongoDBConnection };
 	"/api/v1/admin/dispatcher/request-browse-mssql": { TargetID: string; Credentials: libcomet_MSSQLConnection };
 	"/api/v1/admin/dispatcher/request-browse-mysql": { TargetID: string; Credentials: libcomet_MySQLConnection };
+	"/api/v1/admin/dispatcher/request-browse-postgresql": { TargetID: string; Credentials: libcomet_PostgreSQLConnection };
 	"/api/v1/admin/dispatcher/request-browse-proxmox": { TargetID: string; Credentials: libcomet_ProxmoxConnection };
 	"/api/v1/admin/dispatcher/request-browse-proxmox/nodes": { TargetID: string; Credentials: libcomet_SSHConnection };
 	"/api/v1/admin/dispatcher/request-browse-proxmox/storage": { TargetID: string; Credentials: libcomet_SSHConnection; Node: string };
@@ -18546,7 +19751,7 @@ export type ApiRequestMap = {
 	"/api/v1/admin/dispatcher/unlock": { TargetID: string; Destination: string; AllowUnsafe?: boolean };
 	"/api/v1/admin/dispatcher/update-login-password": { TargetID: string; NewPassword: string };
 	"/api/v1/admin/dispatcher/update-login-url": { TargetID: string; NewURL: string; Force?: boolean };
-	"/api/v1/admin/dispatcher/update-software": { TargetID: string; SelfAddress?: string };
+	"/api/v1/admin/dispatcher/update-software": { TargetID: string; SelfAddress?: string; WaitForConfirmation?: boolean };
 	"/api/v1/admin/external-auth-sources/delete": { SourceID: string };
 	"/api/v1/admin/external-auth-sources/get": Record<never, never>;
 	"/api/v1/admin/external-auth-sources/new": { Source: libcomet_ExternalAuthenticationSource; SourceID?: string };
@@ -18577,6 +19782,7 @@ export type ApiRequestMap = {
 	"/api/v1/admin/meta/constellation/config/get": Record<never, never>;
 	"/api/v1/admin/meta/constellation/config/set": { ConstellationRoleOptions: libcomet_ConstellationRoleOptions };
 	"/api/v1/admin/meta/email-options/get": Record<never, never>;
+	"/api/v1/admin/meta/email-options/oauth-callback": { SMTPOAuth: libcomet_SMTPOAuthOptions; Code: string; RedirectURI: string };
 	"/api/v1/admin/meta/email-options/set": { EmailOptions: libcomet_EmailOptions };
 	"/api/v1/admin/meta/list-available-log-days": Record<never, never>;
 	"/api/v1/admin/meta/psa-config-list/get": Record<never, never>;
@@ -18593,8 +19799,10 @@ export type ApiRequestMap = {
 	"/api/v1/admin/meta/send-test-email": { EmailOptions: libcomet_EmailOptions; Recipient: string };
 	"/api/v1/admin/meta/send-test-report": { EmailReportingOption: libcomet_EmailReportingOption; TargetOrganization?: string };
 	"/api/v1/admin/meta/server-config/get": Record<never, never>;
+	"/api/v1/admin/meta/server-config/get-and-hash": Record<never, never>;
+	"/api/v1/admin/meta/server-config/get-hash": Record<never, never>;
 	"/api/v1/admin/meta/server-config/network-interfaces": Record<never, never>;
-	"/api/v1/admin/meta/server-config/set": { Config: libcomet_ServerConfigOptions };
+	"/api/v1/admin/meta/server-config/set": { Config: libcomet_ServerConfigOptions; RequireHash?: string };
 	"/api/v1/admin/meta/shutdown-service": Record<never, never>;
 	"/api/v1/admin/meta/software-update-news": Record<never, never>;
 	"/api/v1/admin/meta/stats": { Simple: boolean };
@@ -18636,6 +19844,7 @@ export type ApiRequestMap = {
 	"/api/v1/admin/storage/list-buckets": Record<never, never>;
 	"/api/v1/admin/storage/ping-destination": { ExtraData: libcomet_DestinationLocation };
 	"/api/v1/admin/storage/register-bucket": { SetBucketValue?: string; SetKeyHashFormat?: string; SetKeyHashValue?: string; SetOrganizationID?: string };
+	"/api/v1/admin/storage/rotate-bucket-key": { BucketID: string };
 	"/api/v1/admin/update-campaign/start": { Options: libcomet_UpdateCampaignOptions };
 	"/api/v1/admin/update-campaign/status": Record<never, never>;
 	"/api/v1/admin/user-groups/delete": { GroupID: string };
@@ -18652,6 +19861,7 @@ export type ApiRequestMap = {
 	"/api/v1/user/web/account/validate-totp": { ProfileHash: string; TOTPCode: string };
 	"/api/v1/user/web/delete-protected-item": { SourceID: string };
 	"/api/v1/user/web/dispatcher/browse-virtual-machines": { TargetID: string; DestinationID: string; SnapshotID: string };
+	"/api/v1/user/web/dispatcher/clear-login-password": { TargetID: string };
 	"/api/v1/user/web/dispatcher/delete-snapshot": { TargetID: string; DestinationID: string; SnapshotID: string };
 	"/api/v1/user/web/dispatcher/delete-snapshots": { TargetID: string; DestinationID: string; SnapshotIDs: string[] };
 	"/api/v1/user/web/dispatcher/drop-connection": { TargetID: string };
@@ -18666,6 +19876,7 @@ export type ApiRequestMap = {
 	"/api/v1/user/web/dispatcher/request-browse-mongodb": { TargetID: string; Credentials: libcomet_MongoDBConnection };
 	"/api/v1/user/web/dispatcher/request-browse-mssql": { TargetID: string; Credentials: libcomet_MSSQLConnection };
 	"/api/v1/user/web/dispatcher/request-browse-mysql": { TargetID: string; Credentials: libcomet_MySQLConnection };
+	"/api/v1/user/web/dispatcher/request-browse-postgresql": { TargetID: string; Credentials: libcomet_PostgreSQLConnection };
 	"/api/v1/user/web/dispatcher/request-browse-proxmox": { TargetID: string; Credentials: libcomet_ProxmoxConnection };
 	"/api/v1/user/web/dispatcher/request-browse-proxmox/nodes": { TargetID: string; Credentials: libcomet_SSHConnection };
 	"/api/v1/user/web/dispatcher/request-browse-proxmox/storage": { TargetID: string; Credentials: libcomet_SSHConnection; Node: string };
@@ -18695,6 +19906,7 @@ export type ApiRequestMap = {
 	"/api/v1/user/web/get-jobs-for-custom-search": { Query: libcomet_SearchClause };
 	"/api/v1/user/web/get-protected-item-with-backup-rules": { SourceID: string };
 	"/api/v1/user/web/get-user-profile-and-hash": Record<never, never>;
+	"/api/v1/user/web/job/abandon": { JobID: string };
 	"/api/v1/user/web/job/cancel": { JobID: string };
 	"/api/v1/user/web/news/get-all": Record<never, never>;
 	"/api/v1/user/web/office365/convert-legacy-selection": { Selection: libcomet_Office365CustomSettingV2; Accounts?: libcomet_Office365MixedVirtualAccount[] };
@@ -18730,6 +19942,7 @@ export type ApiResponseMap = {
 	"/api/v1/admin/admin-user/delete": libcomet_CometAPIResponseMessage;
 	"/api/v1/admin/admin-user/list": libcomet_AllowedAdminUser[];
 	"/api/v1/admin/admin-user/new": libcomet_CometAPIResponseMessage;
+	"/api/v1/admin/admin-user/set": libcomet_CometAPIResponseMessage;
 	"/api/v1/admin/branding/available-platforms": {[k: number]: libcomet_AvailableDownload};
 	"/api/v1/admin/branding/generate-client/test": libcomet_CometAPIResponseMessage;
 	"/api/v1/admin/bulletin/submit": libcomet_CometAPIResponseMessage;
@@ -18745,6 +19958,7 @@ export type ApiResponseMap = {
 	"/api/v1/admin/disable-user-totp": libcomet_CometAPIResponseMessage;
 	"/api/v1/admin/dispatcher/apply-retention-rules": libcomet_CometAPIResponseMessage;
 	"/api/v1/admin/dispatcher/browse-virtual-machines": libcomet_DispatcherListSnapshotVirtualMachinesResponse;
+	"/api/v1/admin/dispatcher/clear-login-password": libcomet_CometAPIResponseMessage;
 	"/api/v1/admin/dispatcher/deepverify-storage-vault": libcomet_CometAPIResponseMessage;
 	"/api/v1/admin/dispatcher/delete-snapshot": libcomet_CometAPIResponseMessage;
 	"/api/v1/admin/dispatcher/delete-snapshots": libcomet_CometAPIResponseMessage;
@@ -18767,6 +19981,7 @@ export type ApiResponseMap = {
 	"/api/v1/admin/dispatcher/request-browse-mongodb": libcomet_BrowseSQLServerResponse;
 	"/api/v1/admin/dispatcher/request-browse-mssql": libcomet_BrowseSQLServerResponse;
 	"/api/v1/admin/dispatcher/request-browse-mysql": libcomet_BrowseSQLServerResponse;
+	"/api/v1/admin/dispatcher/request-browse-postgresql": libcomet_BrowseSQLServerResponse;
 	"/api/v1/admin/dispatcher/request-browse-proxmox": libcomet_BrowseProxmoxResponse;
 	"/api/v1/admin/dispatcher/request-browse-proxmox/nodes": libcomet_BrowseProxmoxNodesResponse;
 	"/api/v1/admin/dispatcher/request-browse-proxmox/storage": libcomet_BrowseProxmoxStorageResponse;
@@ -18825,6 +20040,7 @@ export type ApiResponseMap = {
 	"/api/v1/admin/meta/constellation/config/get": libcomet_ConstellationRoleOptions;
 	"/api/v1/admin/meta/constellation/config/set": libcomet_CometAPIResponseMessage;
 	"/api/v1/admin/meta/email-options/get": libcomet_EmailOptions;
+	"/api/v1/admin/meta/email-options/oauth-callback": libcomet_SMTPOAuthOptions;
 	"/api/v1/admin/meta/email-options/set": libcomet_CometAPIResponseMessage;
 	"/api/v1/admin/meta/list-available-log-days": number[];
 	"/api/v1/admin/meta/psa-config-list/get": libcomet_PSAConfig[];
@@ -18841,6 +20057,8 @@ export type ApiResponseMap = {
 	"/api/v1/admin/meta/send-test-email": libcomet_CometAPIResponseMessage;
 	"/api/v1/admin/meta/send-test-report": libcomet_CometAPIResponseMessage;
 	"/api/v1/admin/meta/server-config/get": libcomet_ServerConfigOptions;
+	"/api/v1/admin/meta/server-config/get-and-hash": libcomet_ServerConfigOptionsAndHashResponse;
+	"/api/v1/admin/meta/server-config/get-hash": libcomet_ServerConfigOptionsHashResponse;
 	"/api/v1/admin/meta/server-config/network-interfaces": string[];
 	"/api/v1/admin/meta/server-config/set": libcomet_CometAPIResponseMessage;
 	"/api/v1/admin/meta/shutdown-service": libcomet_CometAPIResponseMessage;
@@ -18884,6 +20102,7 @@ export type ApiResponseMap = {
 	"/api/v1/admin/storage/list-buckets": {[k: string]: libcomet_BucketProperties};
 	"/api/v1/admin/storage/ping-destination": libcomet_CometAPIResponseMessage;
 	"/api/v1/admin/storage/register-bucket": libcomet_AddBucketResponseMessage;
+	"/api/v1/admin/storage/rotate-bucket-key": libcomet_AddBucketResponseMessage;
 	"/api/v1/admin/update-campaign/start": libcomet_CometAPIResponseMessage;
 	"/api/v1/admin/update-campaign/status": libcomet_UpdateCampaignStatus;
 	"/api/v1/admin/user-groups/delete": libcomet_CometAPIResponseMessage;
@@ -18900,6 +20119,7 @@ export type ApiResponseMap = {
 	"/api/v1/user/web/account/validate-totp": libcomet_CometAPIResponseMessage;
 	"/api/v1/user/web/delete-protected-item": libcomet_CometAPIResponseMessage;
 	"/api/v1/user/web/dispatcher/browse-virtual-machines": libcomet_DispatcherListSnapshotVirtualMachinesResponse;
+	"/api/v1/user/web/dispatcher/clear-login-password": libcomet_CometAPIResponseMessage;
 	"/api/v1/user/web/dispatcher/delete-snapshot": libcomet_CometAPIResponseMessage;
 	"/api/v1/user/web/dispatcher/delete-snapshots": libcomet_CometAPIResponseMessage;
 	"/api/v1/user/web/dispatcher/drop-connection": libcomet_CometAPIResponseMessage;
@@ -18914,6 +20134,7 @@ export type ApiResponseMap = {
 	"/api/v1/user/web/dispatcher/request-browse-mongodb": libcomet_BrowseSQLServerResponse;
 	"/api/v1/user/web/dispatcher/request-browse-mssql": libcomet_BrowseSQLServerResponse;
 	"/api/v1/user/web/dispatcher/request-browse-mysql": libcomet_BrowseSQLServerResponse;
+	"/api/v1/user/web/dispatcher/request-browse-postgresql": libcomet_BrowseSQLServerResponse;
 	"/api/v1/user/web/dispatcher/request-browse-proxmox": libcomet_BrowseProxmoxResponse;
 	"/api/v1/user/web/dispatcher/request-browse-proxmox/nodes": libcomet_BrowseProxmoxNodesResponse;
 	"/api/v1/user/web/dispatcher/request-browse-proxmox/storage": libcomet_BrowseProxmoxStorageResponse;
@@ -18943,6 +20164,7 @@ export type ApiResponseMap = {
 	"/api/v1/user/web/get-jobs-for-custom-search": libcomet_BackupJobDetail[];
 	"/api/v1/user/web/get-protected-item-with-backup-rules": libcomet_ProtectedItemWithBackupRulesResponse;
 	"/api/v1/user/web/get-user-profile-and-hash": libcomet_GetProfileAndHashResponseMessage;
+	"/api/v1/user/web/job/abandon": libcomet_CometAPIResponseMessage;
 	"/api/v1/user/web/job/cancel": libcomet_CometAPIResponseMessage;
 	"/api/v1/user/web/news/get-all": {[k: string]: libcomet_NewsEntry};
 	"/api/v1/user/web/office365/convert-legacy-selection": libcomet_Office365ConvertSelectionResponse;
