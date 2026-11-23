@@ -12,6 +12,8 @@ on:
   push:
     tags:
       - 'v*'
+  # Fallback: run it from the Actions tab, choosing the tag, if a tag push did not start a run
+  workflow_dispatch:
 
 permissions:
   contents: read

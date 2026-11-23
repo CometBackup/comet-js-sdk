@@ -29,10 +29,6 @@
     "import": {
       "types": "./dist/mjs/index.d.mts",
       "default": "./dist/mjs/index.mjs"
-    },
-    "browser": {
-      "types": "./dist/cjs/browser-entrypoint.d.ts",
-      "default": "./dist/comet.min.js"
     }
   },
   "keywords": [

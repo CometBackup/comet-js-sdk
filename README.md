@@ -48,7 +48,7 @@ const res = await srv.AdminAccountPropertiesP();
 Note: Comet Server has [a CORS policy](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) that will block direct API calls - you will need to have a gateway or proxy service to allow this API call to work.
 
 ```html
-<script src="https://unpkg.com/comet-js-sdk@^1/dist/comet.min.js" ></script>
+<script src="https://unpkg.com/comet-js-sdk@^4/dist/comet.min.js" ></script>
 <script>
     const config = {
         url: "http://localhost:8060/",
