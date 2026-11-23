@@ -6,16 +6,20 @@
     "clean": "rm -rf dist/",
     "build:browser": "esbuild browser-entrypoint.ts --sourcemap --bundle --target=chrome58,firefox57,safari11,edge16 > dist/comet.js && esbuild browser-entrypoint.ts --minify --bundle --target=chrome58,firefox57,safari11,edge16 > dist/comet.min.js",
     "build": "tsc -b tsconfig.esm.json tsconfig.cjs.json && sh fixup.sh && npm run build:browser",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "test": "npm run build && node --test test/"
   },
   "engines": {
     "node": ">=18"
   },
-  "repository": "https://github.com/CometBackup/comet-js-sdk",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CometBackup/comet-js-sdk.git"
+  },
   "type": "commonjs",
   "files": [
-    "dist/"
+    "dist/",
+    "!dist/**/*.tsbuildinfo"
   ],
   "exports": {
     "require": {

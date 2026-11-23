@@ -1,0 +1,50 @@
+# Publishes comet-js-sdk to npm when a version tag (v1.2.3) is pushed, using npm trusted publishing:
+# npm verifies this workflow run's identity through GitHub's OIDC token, so no npm token is stored
+# anywhere, and npm attaches provenance to the published package.
+#
+# The trusted publisher configured for the package on npmjs.com names this repository and this
+# workflow file (publish.yml). Renaming either stops publishing until that configuration is updated.
+# See https://docs.npmjs.com/trusted-publishers
+
+name: Publish to npm
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    # The internal mirror receives the same tags, but only the public repository is a trusted publisher
+    if: github.repository == 'CometBackup/comet-js-sdk'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # npm trusted publishing
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '26' # trusted publishing needs npm 11.5.1+ and Node 22.14+
+          registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false # no cache in a job that can publish
+
+      - name: Check the tag matches package.json
+        run: |
+          version="v$(node -p 'require("./package.json").version')"
+          if [ "${version}" != "${GITHUB_REF_NAME}" ]; then
+            echo "::error::Tag ${GITHUB_REF_NAME} does not match the package.json version ${version}"
+            exit 1
+          fi
+
+      - run: npm ci
+
+      - run: npm test
+
+      - run: npm publish

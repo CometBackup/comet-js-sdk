@@ -87,9 +87,10 @@ The Comet Server API works great with [Next.js](https://nextjs.org/). There is a
 
 ## Releasing
 
-- Bump version of library in package.json
+The package is published to npm by the [Publish to npm](.github/workflows/publish.yml) workflow, using [npm trusted publishing](https://docs.npmjs.com/trusted-publishers), so no npm token is needed.
+
 - Update the changelog
-- Run tests `npm run test`
-- Login `npm login`
-- Build the publish dist folder `npm run prepublish`
-- Publish `npm publish`
+- Bump the version in package.json, and commit
+- Tag the commit with the same version (e.g. `v4.0.0`) and push the tag to https://github.com/CometBackup/comet-js-sdk
+
+Pushing the tag runs the workflow, which checks that the tag matches package.json, runs the tests, and publishes.
