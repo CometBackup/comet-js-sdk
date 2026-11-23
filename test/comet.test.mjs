@@ -44,6 +44,24 @@ test("sends the credentials and API parameters as a form post", async () => {
     }
 });
 
+test("sends an API token with AuthType=Token", async () => {
+    const stub = await startStub(200, { Status: 200, Message: "OK" });
+    try {
+        const token = "bkup_0123456789abcdef0123456789abcdef_" + "A".repeat(43);
+        const srv = new CometServer({ url: stub.url, username: "admin", token });
+        await srv.AdminDispatcherRefetchProfileP("device-1");
+
+        assert.deepEqual(stub.requests[0].form, {
+            AuthType: "Token",
+            Username: "admin",
+            Token: token,
+            TargetID: "device-1",
+        });
+    } finally {
+        stub.close();
+    }
+});
+
 test("throws a CometError for an unsuccessful API status", async () => {
     const stub = await startStub(200, { Status: 403, Message: "Invalid authentication" });
     try {

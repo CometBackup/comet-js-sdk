@@ -6,6 +6,16 @@ export type CometServerConfig = {
     password: string
 }
 
+export type CometServerTokenConfig = {
+    url: string,
+    username: string,
+    /**
+     * An admin API token. It is sent with AuthType=Token, so it is not subject to 2FA. APIs that
+     * do not accept API token authentication will refuse the request.
+     */
+    token: string
+}
+
 export class CometError extends Error {
     public status: number;
     constructor(obj: {Status: number, Message: string}) {
@@ -20,7 +30,7 @@ export class CometServer extends CometServerAPIBase {
      * Construct a new CometServerAPIBase instance.
      *
      */
-     constructor(private config: CometServerConfig) {
+     constructor(private config: CometServerConfig | CometServerTokenConfig) {
         super(config.url);
      }
 
@@ -34,9 +44,15 @@ export class CometServer extends CometServerAPIBase {
     async _requestP(call: string, params: {[x: string]: string}): Promise<any> {
 
         const requestBody = new URLSearchParams();
-        requestBody.append("AuthType", "Password");
-        requestBody.append("Username", this.config.username);
-        requestBody.append("Password", this.config.password)
+        if ("token" in this.config) {
+            requestBody.append("AuthType", "Token");
+            requestBody.append("Username", this.config.username);
+            requestBody.append("Token", this.config.token);
+        } else {
+            requestBody.append("AuthType", "Password");
+            requestBody.append("Username", this.config.username);
+            requestBody.append("Password", this.config.password)
+        }
 
         for (const paramsKey in params) {
             requestBody.append(paramsKey, params[paramsKey]);

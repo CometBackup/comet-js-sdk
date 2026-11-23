@@ -43,6 +43,18 @@ const srv = new CometServer({
 const res = await srv.AdminAccountPropertiesP();
 ```
 
+**Admin API tokens**
+
+To authenticate with an admin API token instead of a password, pass `token` in place of `password`. Token requests aren't subject to 2FA. APIs that don't accept API token authentication refuse the request.
+
+```ts
+const srv = new CometServer({
+    url: "https://your-server-name-here.offsitenetwork.net/",
+    username: "admin",
+    token: "bkup_..."
+})
+```
+
 **In the browser**
 
 Note: Comet Server has [a CORS policy](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) that will block direct API calls - you will need to have a gateway or proxy service to allow this API call to work.
