@@ -7,7 +7,7 @@
  *
  * @var {string}
  */
-export const APPLICATION_VERSION = "26.11.2";
+export const APPLICATION_VERSION = "26.11.3";
 
 /**
  * APPLICATION_VERSION_MAJOR
@@ -28,7 +28,7 @@ export const APPLICATION_VERSION_MINOR = 11;
  *
  * @var {number}
  */
-export const APPLICATION_VERSION_REVISION = 2;
+export const APPLICATION_VERSION_REVISION = 3;
 
 /**
  * BACKUPJOBAUTORETENTION_AUTOMATIC
@@ -15070,7 +15070,7 @@ export default abstract class CometServerAPIBase {
 	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
 	 * @param {string} TargetUser the username of the admin to be deleted
-	 * @param {string|null} TargetOrgID the organization ID of the admin to be deleted. If omitted, defaults to the top-level organization. (>= 26.11.0)
+	 * @param {string|null} TargetOrgID the organization ID of the admin to be deleted. If omitted, defaults to the top-level organization. (>= 26.10.2)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminAdminUserDeleteP(TargetUser: string, TargetOrgID: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
@@ -15091,7 +15091,7 @@ export default abstract class CometServerAPIBase {
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
-	 * @param {string|null} TargetOrgID If present, only list the administrators belonging to this organization. Otherwise, administrators from all organizations are listed. (>= 26.11.0)
+	 * @param {string|null} TargetOrgID If present, only list the administrators belonging to this organization. Otherwise, administrators from all organizations are listed. (>= 26.10.2)
 	 * @return {Promise<libcomet_AllowedAdminUser[]>}
 	 */
 	async AdminAdminUserListP(TargetOrgID: string|null = null): Promise<libcomet_AllowedAdminUser[]> {
@@ -15141,9 +15141,9 @@ export default abstract class CometServerAPIBase {
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 * This API does not accept admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
-	 * @param {string} TargetUser the username of the admin to be updated (>= 26.11.0)
-	 * @param {libcomet_AllowedAdminUser} Profile the updated administrator account (>= 26.11.0)
-	 * @param {string|null} TargetOrgID the organization ID of the admin to be updated. If omitted, defaults to the top-level organization. (>= 26.11.0)
+	 * @param {string} TargetUser the username of the admin to be updated (>= 26.10.2)
+	 * @param {libcomet_AllowedAdminUser} Profile the updated administrator account (>= 26.10.2)
+	 * @param {string|null} TargetOrgID the organization ID of the admin to be updated. If omitted, defaults to the top-level organization. (>= 26.10.2)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminAdminUserSetP(TargetUser: string, Profile: libcomet_AllowedAdminUser, TargetOrgID: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
@@ -15441,7 +15441,7 @@ export default abstract class CometServerAPIBase {
 	 * This API requires the Auth Role to be enabled.
 	 * This API accepts admin personal API token authentication (AuthType=Token, or the token supplied as the password with AuthType=Password).
 	 *
-	 * @param {string} TargetID The live connection GUID
+	 * @param {string} TargetID The live connection GUID (>= 26.11.3)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminDispatcherClearLoginPasswordP(TargetID: string): Promise<libcomet_CometAPIResponseMessage> {
@@ -17419,7 +17419,7 @@ export default abstract class CometServerAPIBase {
 	 * This API is only available for top-level administrator accounts, not for Tenant administrator accounts.
 	 *
 	 * @param {libcomet_ServerConfigOptions} Config Updated configuration content (>= 17.3.8)
-	 * @param {string|null} RequireHash If present, the change is only applied if the server configuration is unchanged since this hash was retrieved from the AdminMetaServerConfigGetAndHash API. Otherwise, the change is rejected with status 409 and the server does not restart. (>= 26.11.0)
+	 * @param {string|null} RequireHash If present, the change is only applied if the server configuration is unchanged since this hash was retrieved from the AdminMetaServerConfigGetAndHash API. Otherwise, the change is rejected with status 409 and the server does not restart. (>= 26.10.2)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async AdminMetaServerConfigSetP(Config: libcomet_ServerConfigOptions, RequireHash: string|null = null): Promise<libcomet_CometAPIResponseMessage> {
@@ -18573,7 +18573,7 @@ export default abstract class CometServerAPIBase {
 	 * You must supply user authentication credentials to use this API, and the user account must be authorized for web access.
 	 * This API requires the Auth Role to be enabled.
 	 *
-	 * @param {string} TargetID The live connection GUID
+	 * @param {string} TargetID The live connection GUID (>= 26.11.3)
 	 * @return {Promise<libcomet_CometAPIResponseMessage>}
 	 */
 	async UserWebDispatcherClearLoginPasswordP(TargetID: string): Promise<libcomet_CometAPIResponseMessage> {
