@@ -12,6 +12,9 @@ export type CometServerTokenConfig = {
     /**
      * An admin API token. It is sent with AuthType=Token, so it is not subject to 2FA. APIs that
      * do not accept API token authentication will refuse the request.
+     *
+     * Admin personal API tokens require Comet Server 26.8.3 or later. Since Comet Server 26.11.3,
+     * a token can also be passed as the `password` of a CometServerConfig.
      */
     token: string
 }

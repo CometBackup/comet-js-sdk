@@ -47,6 +47,8 @@ const res = await srv.AdminAccountPropertiesP();
 
 To authenticate with an admin API token instead of a password, pass `token` in place of `password`. Token requests aren't subject to 2FA. APIs that don't accept API token authentication refuse the request.
 
+Admin API tokens require Comet Server 26.8.3 or later. Since Comet Server 26.11.3, you can also pass a token as the `password`.
+
 ```ts
 const srv = new CometServer({
     url: "https://your-server-name-here.offsitenetwork.net/",
